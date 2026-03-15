@@ -1,0 +1,44 @@
+{
+  "defaultMode": "auto-accept",
+  "permissions": {
+    "allow": [
+      "bash:git status",
+      "bash:git diff",
+      "bash:git add *",
+      "bash:git commit *",
+      "bash:git log *",
+      "bash:ls *",
+      "bash:cat *",
+      "bash:echo *",
+      "bash:find *",
+      "bash:grep *",
+      "bash:python3 *",
+      "bash:node *",
+      "bash:npx lighthouse *"
+    ],
+    "deny": [
+      "bash:git push --force",
+      "bash:git push origin main --force",
+      "bash:rm -rf *",
+      "bash:rm -f .env*",
+      "bash:curl * | bash",
+      "bash:wget * | bash",
+      "bash:chmod 777 *",
+      "edit:.env",
+      "edit:.env.local",
+      "edit:.env.production",
+      "edit:**/credentials.json",
+      "edit:**/secrets*",
+      "edit:**/*secret*"
+    ]
+  },
+  "env": {
+    "MAIN_SITE": "https://www.nosh7.com",
+    "ORDER_URL": "https://www.nosh7.com/order",
+    "SITE_URL": "https://nosh7.in",
+    "BUSINESS_NAME": "NOSH7",
+    "CITY": "Ahmedabad",
+    "STATE": "Gujarat",
+    "COUNTRY": "India"
+  }
+}
