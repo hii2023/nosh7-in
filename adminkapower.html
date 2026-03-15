@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOSH7 Admin Panel</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--gd:#1a3c2e;--gm:#2d6a4f;--gf:#52b788;--gl:#b7e4c7;--cr:#faf7f0;--cd:#f0ebe0;--sf:#f4a61d;--sl:#fde68a;--ch:#1c1c1c;--tm:#5a6b62;--wh:#ffffff;--red:#e74c3c;--blue:#3498db;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',sans-serif;background:#0f1f18;color:var(--wh);min-height:100vh;}
+
+    /* LOGIN */
+    #loginScreen{position:fixed;inset:0;background:linear-gradient(135deg,#0a1510,#1a3c2e);display:flex;align-items:center;justify-content:center;z-index:1000;flex-direction:column;gap:1.5rem;}
+    .login-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;padding:3rem;width:360px;text-align:center;backdrop-filter:blur(20px);}
+    .login-box img{width:80px;height:80px;border-radius:50%;margin-bottom:1rem;}
+    .login-box h1{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.4rem;}
+    .login-box p{color:rgba(255,255,255,.5);font-size:.85rem;margin-bottom:2rem;}
+    .login-box input{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:.8rem;padding:.9rem 1.2rem;color:var(--wh);font-family:'DM Sans',sans-serif;font-size:1rem;margin-bottom:1rem;outline:none;transition:border .2s;}
+    .login-box input:focus{border-color:var(--gf);}
+    .login-btn{width:100%;background:var(--gf);color:var(--gd);border:none;padding:1rem;border-radius:.8rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;}
+    .login-btn:hover{background:var(--gl);}
+    .login-err{color:#ff6b6b;font-size:.82rem;display:none;margin-top:.5rem;}
+
+    /* MAIN LAYOUT */
+    #adminApp{display:none;}
+    .topbar{background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+    .topbar-logo{display:flex;align-items:center;gap:.8rem;}
+    .topbar-logo img{height:40px;width:40px;border-radius:50%;}
+    .topbar-logo span{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--wh);}
+    .topbar-right{display:flex;align-items:center;gap:1rem;font-size:.85rem;color:rgba(255,255,255,.5);}
+    .logout-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);padding:.4rem 1rem;border-radius:100px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;transition:all .2s;}
+    .logout-btn:hover{background:rgba(255,255,255,.15);}
+
+    .layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px);}
+    .sidebar{background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.07);padding:1.5rem 0;}
+    .nav-item{display:flex;align-items:center;gap:.8rem;padding:.8rem 1.5rem;cursor:pointer;transition:all .2s;color:rgba(255,255,255,.6);font-size:.88rem;border-left:3px solid transparent;}
+    .nav-item:hover{background:rgba(255,255,255,.05);color:var(--wh);}
+    .nav-item.active{background:rgba(82,183,136,.1);color:var(--gf);border-left-color:var(--gf);}
+    .nav-item .ni{font-size:1.2rem;width:24px;text-align:center;}
+    .nav-section{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:.8rem 1.5rem .4rem;}
+
+    .content{padding:2rem;overflow-y:auto;}
+    .panel{display:none;}
+    .panel.active{display:block;}
+
+    /* CARDS */
+    .page-title{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.4rem;}
+    .page-sub{color:rgba(255,255,255,.4);font-size:.88rem;margin-bottom:2rem;}
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2rem;}
+    .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:1.5rem;}
+    .stat-card .val{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gf);}
+    .stat-card .lbl{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.3rem;}
+
+    .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1.2rem;padding:1.5rem;margin-bottom:1.5rem;}
+    .card h3{font-size:1rem;font-weight:600;margin-bottom:1.2rem;color:var(--wh);display:flex;align-items:center;gap:.5rem;}
+
+    /* FORMS */
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+    .form-group{margin-bottom:1rem;}
+    label{display:block;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.05em;}
+    input[type=text],input[type=email],input[type=url],input[type=password],textarea,select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:.7rem;padding:.75rem 1rem;color:var(--wh);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border .2s;}
+    input[type=text]:focus,input[type=email]:focus,input[type=url]:focus,textarea:focus,select:focus{border-color:var(--gf);}
+    textarea{resize:vertical;min-height:100px;}
+    select option{background:#1a3c2e;color:var(--wh);}
+
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:.7rem;border:none;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;}
+    .btn-green{background:var(--gf);color:var(--gd);}
+    .btn-green:hover{background:var(--gl);}
+    .btn-red{background:rgba(231,76,60,.2);color:#ff6b6b;border:1px solid rgba(231,76,60,.3);}
+    .btn-red:hover{background:rgba(231,76,60,.35);}
+    .btn-ghost{background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);}
+    .btn-ghost:hover{background:rgba(255,255,255,.12);}
+    .btn-sm{padding:.4rem .9rem;font-size:.78rem;}
+    .btn-saffron{background:var(--sf);color:var(--gd);}
+
+    /* TABLE */
+    table{width:100%;border-collapse:collapse;font-size:.85rem;}
+    th{text-align:left;padding:.7rem 1rem;color:rgba(255,255,255,.4);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,.08);}
+    td{padding:.8rem 1rem;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.8);vertical-align:middle;}
+    tr:last-child td{border:none;}
+    tr:hover td{background:rgba(255,255,255,.02);}
+    .badge{display:inline-block;font-size:.68rem;font-weight:600;padding:.2rem .6rem;border-radius:100px;}
+    .badge-green{background:rgba(82,183,136,.2);color:var(--gf);}
+    .badge-red{background:rgba(231,76,60,.2);color:#ff6b6b;}
+    .badge-gold{background:rgba(244,166,29,.2);color:var(--sf);}
+
+    /* UPLOAD */
+    .upload-zone{border:2px dashed rgba(82,183,136,.4);border-radius:1rem;padding:2.5rem;text-align:center;cursor:pointer;transition:all .2s;background:rgba(82,183,136,.03);}
+    .upload-zone:hover,.upload-zone.drag{border-color:var(--gf);background:rgba(82,183,136,.07);}
+    .upload-zone .uz-icon{font-size:2.5rem;margin-bottom:.8rem;}
+    .upload-zone h4{font-size:1rem;margin-bottom:.4rem;}
+    .upload-zone p{font-size:.82rem;color:rgba(255,255,255,.4);}
+    input[type=file]{display:none;}
+
+    /* GOOGLE REVIEWS */
+    .review-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:1rem;padding:1.2rem;margin-bottom:.8rem;}
+    .rv-stars{color:var(--sf);font-size:1rem;margin-bottom:.4rem;}
+    .rv-text{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:.6rem;}
+    .rv-author{font-size:.78rem;color:rgba(255,255,255,.4);}
+    .rv-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(66,133,244,.15);border:1px solid rgba(66,133,244,.3);border-radius:100px;padding:.25rem .7rem;font-size:.72rem;color:#7eb3ff;margin-bottom:.8rem;}
+
+    /* TOAST */
+    #toast{position:fixed;bottom:2rem;right:2rem;background:var(--gd);color:var(--wh);padding:1rem 1.5rem;border-radius:.8rem;font-size:.9rem;border-left:4px solid var(--gf);display:none;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,.4);max-width:320px;}
+    #toast.error{border-left-color:var(--red);}
+    #toast.show{display:flex;align-items:center;gap:.6rem;animation:slideIn .3s ease;}
+    @keyframes slideIn{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+
+    /* QUICK LINKS */
+    .qlinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;}
+    .qlink{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:1.2rem;text-decoration:none;color:var(--wh);transition:all .2s;display:flex;align-items:center;gap:.8rem;}
+    .qlink:hover{background:rgba(82,183,136,.08);border-color:var(--gf);}
+    .qlink .qi{font-size:1.5rem;}
+    .qlink .qt{font-size:.85rem;font-weight:600;}
+    .qlink .qs{font-size:.75rem;color:rgba(255,255,255,.4);}
+
+    @media(max-width:768px){
+      .layout{grid-template-columns:1fr;}
+      .sidebar{display:none;}
+      .form-row{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <img src="/assets/logo.png" alt="NOSH7"/>
+    <h1>Admin Panel</h1>
+    <p>NOSH7 Control Center — Authorized Access Only</p>
+    <input type="password" id="pwInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')login()"/>
+    <button class="login-btn" onclick="login()">Sign In →</button>
+    <div class="login-err" id="loginErr">⚠️ Incorrect password. Try again.</div>
+  </div>
+</div>
+
+<!-- ADMIN APP -->
+<div id="adminApp">
+  <div class="topbar">
+    <div class="topbar-logo">
+      <img src="/assets/logo.png" alt="NOSH7"/>
+      <span>NOSH7 Admin</span>
+    </div>
+    <div class="topbar-right">
+      <span id="adminTime"></span>
+      <a href="/" target="_blank" class="logout-btn">View Site ↗</a>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="nav-section">Main</div>
+      <div class="nav-item active" onclick="showPanel('dashboard',this)"><span class="ni">📊</span>Dashboard</div>
+      <div class="nav-section">Content</div>
+      <div class="nav-item" onclick="showPanel('blog',this)"><span class="ni">✍️</span>Blog Posts</div>
+      <div class="nav-item" onclick="showPanel('menu',this)"><span class="ni">📋</span>Monthly Menu</div>
+      <div class="nav-section">Pages</div>
+      <div class="nav-item" onclick="showPanel('homepage',this)"><span class="ni">🏠</span>Homepage</div>
+      <div class="nav-item" onclick="showPanel('plans',this)"><span class="ni">💳</span>Plans & Pricing</div>
+      <div class="nav-item" onclick="showPanel('reviews',this)"><span class="ni">⭐</span>Google Reviews</div>
+      <div class="nav-section">Settings</div>
+      <div class="nav-item" onclick="showPanel('settings',this)"><span class="ni">⚙️</span>Site Settings</div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="page-title">Good Morning, NOSH7 👋</div>
+        <div class="page-sub">Here's your site overview.</div>
+        <div class="stat-row" id="dashStats">
+          <div class="stat-card"><div class="val" id="ds-posts">—</div><div class="lbl">Blog Posts Live</div></div>
+          <div class="stat-card"><div class="val" id="ds-menu">—</div><div class="lbl">Menus Uploaded</div></div>
+          <div class="stat-card"><div class="val">2000+</div><div class="lbl">Happy Customers</div></div>
+          <div class="stat-card"><div class="val">3</div><div class="lbl">Active Plans</div></div>
+        </div>
+        <div class="qlinks">
+          <a href="/" target="_blank" class="qlink"><span class="qi">🏠</span><div><div class="qt">Homepage</div><div class="qs">nosh7.in</div></div></a>
+          <a href="/blog.html" target="_blank" class="qlink"><span class="qi">✍️</span><div><div class="qt">Blog</div><div class="qs">nosh7.in/blog.html</div></div></a>
+          <a href="/subscription.html" target="_blank" class="qlink"><span class="qi">💳</span><div><div class="qt">Plans Page</div><div class="qs">nosh7.in/subscription.html</div></div></a>
+          <a href="https://www.nosh7.com/order" target="_blank" class="qlink"><span class="qi">🛒</span><div><div class="qt">Order Page</div><div class="qs">nosh7.com/order</div></div></a>
+        </div>
+        <div class="card">
+          <h3>📰 Recent Blog Posts</h3>
+          <div id="dash-recent-posts">Loading...</div>
+        </div>
+      </div>
+
+      <!-- BLOG POSTS -->
+      <div class="panel" id="panel-blog">
+        <div class="page-title">Blog Posts ✍️</div>
+        <div class="page-sub">Add, edit, or hide healthy habit articles. New posts appear live on blog.html immediately.</div>
+
+        <div class="card">
+          <h3>➕ Add New Post</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Emoji</label>
+              <input type="text" id="b-emoji" value="🌿" placeholder="🌿" style="font-size:1.5rem;"/>
+            </div>
+            <div class="form-group">
+              <label>Tag Label</label>
+              <input type="text" id="b-tag" placeholder="e.g. Mindful Eating"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category</label>
+              <select id="b-cat">
+                <option value="chewing">Chewing</option>
+                <option value="sleep">Sleep</option>
+                <option value="fibre">Fibre</option>
+                <option value="timing">Meal Timing</option>
+                <option value="mindful" selected>Mindful Eating</option>
+                <option value="nutrition">Nutrition</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Read Time</label>
+              <input type="text" id="b-time" value="4 min"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Title (include SEO keyword)</label>
+            <input type="text" id="b-title" placeholder="e.g. Achhe Se Chabaana — Ek Habit Jo Sab Kuch Badal Deti Hai"/>
+          </div>
+          <div class="form-group">
+            <label>Excerpt (2-3 sentences, include keyword naturally)</label>
+            <textarea id="b-excerpt" placeholder="Write a compelling 2-3 sentence summary..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Key Insight (1 science fact — shown as callout)</label>
+            <input type="text" id="b-insight" placeholder="e.g. Chewing 20-30 times per bite can reduce calorie intake by 12%"/>
+          </div>
+          <div class="form-group">
+            <label>Keywords (comma separated)</label>
+            <input type="text" id="b-keywords" placeholder="mindful eating benefits India, healthy habits, conscious eating"/>
+          </div>
+          <button class="btn btn-green" onclick="addPost()">➕ Publish Post</button>
+        </div>
+
+        <div class="card">
+          <h3>📋 All Posts</h3>
+          <div id="posts-table">Loading...</div>
+        </div>
+      </div>
+
+      <!-- MONTHLY MENU -->
+      <div class="panel" id="panel-menu">
+        <div class="page-title">Monthly Menu 📋</div>
+        <div class="page-sub">Upload this month's salad menu. Customers see the latest active menu on the subscription page.</div>
+
+        <div class="card">
+          <h3>📤 Upload New Menu</h3>
+          <div class="form-group">
+            <label>Month Label</label>
+            <input type="text" id="m-label" placeholder="e.g. March 2025 Menu"/>
+          </div>
+          <div class="form-group">
+            <label>Menu File URL (upload to Google Drive / Dropbox and paste public link)</label>
+            <input type="url" id="m-url" placeholder="https://drive.google.com/file/d/..."/>
+          </div>
+          <div class="form-group">
+            <label>File Name (shown to customers)</label>
+            <input type="text" id="m-fname" placeholder="NOSH7-March-2025-Menu.pdf"/>
+          </div>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:1rem;">
+            💡 How to get a Google Drive public link: Upload file → Right click → Share → Anyone with link → Copy link
+          </p>
+          <button class="btn btn-green" onclick="uploadMenu()">📤 Publish Menu</button>
+        </div>
+
+        <div class="card">
+          <h3>📋 Menu History</h3>
+          <div id="menu-table">Loading...</div>
+        </div>
+      </div>
+
+      <!-- HOMEPAGE EDITOR -->
+      <div class="panel" id="panel-homepage">
+        <div class="page-title">Homepage Editor 🏠</div>
+        <div class="page-sub">Edit key text blocks on the homepage. Changes save to database and reflect on site after next page load.</div>
+        <div class="card">
+          <h3>🦸 Hero Section</h3>
+          <div class="form-group">
+            <label>Main Headline</label>
+            <input type="text" id="hp-headline" placeholder="Loading..."/>
+          </div>
+          <div class="form-group">
+            <label>Sub Text</label>
+            <textarea id="hp-subtext" placeholder="Loading..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Customer Count (stats bar)</label>
+            <input type="text" id="hp-customers" placeholder="2000+"/>
+          </div>
+          <button class="btn btn-green" onclick="saveHomepage()">💾 Save Homepage Settings</button>
+        </div>
+        <div class="card">
+          <h3>📱 Social & Contact</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>WhatsApp Number (with country code)</label>
+              <input type="text" id="hp-wa" placeholder="919712989498"/>
+            </div>
+            <div class="form-group">
+              <label>Instagram URL</label>
+              <input type="url" id="hp-ig" placeholder="https://www.instagram.com/nosh7salad"/>
+            </div>
+          </div>
+          <button class="btn btn-green" onclick="saveSocial()">💾 Save Social Links</button>
+        </div>
+      </div>
+
+      <!-- PLANS EDITOR -->
+      <div class="panel" id="panel-plans">
+        <div class="page-title">Plans & Pricing 💳</div>
+        <div class="page-sub">View current plan structure. Prices are set — contact your developer to change core pricing logic.</div>
+        <div class="card">
+          <h3>📊 Current Plans</h3>
+          <table>
+            <thead><tr><th>Plan</th><th>Price</th><th>Days</th><th>Per Day</th><th>Discount</th><th>Health Drink</th></tr></thead>
+            <tbody>
+              <tr><td>Trial Pack</td><td>₹999</td><td>5</td><td>₹200</td><td><span class="badge badge-gold">16% OFF</span></td><td>—</td></tr>
+              <tr><td>26-Day Plan</td><td>₹4,914</td><td>26</td><td>₹189</td><td><span class="badge badge-gold">21% OFF</span></td><td><span class="badge badge-green">1 week free</span></td></tr>
+              <tr><td>60-Day Plan</td><td>₹10,740</td><td>60</td><td>₹179</td><td><span class="badge badge-gold">25% OFF</span></td><td><span class="badge badge-green">2 weeks free</span></td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.3);margin-top:1rem;">Single meal reference price: ₹239 | Seeds included in every plan | Jain Dairy paneer</p>
+        </div>
+        <div class="card">
+          <h3>✏️ Plan Notes / Highlights</h3>
+          <div class="form-group">
+            <label>Special Offer Text (shown on subscription page)</label>
+            <input type="text" id="pl-offer" placeholder="e.g. 🎉 Holi Special: Extra 5% off on 60-day plan"/>
+          </div>
+          <button class="btn btn-saffron" onclick="saveOffer()">💾 Save Offer Text</button>
+        </div>
+      </div>
+
+      <!-- GOOGLE REVIEWS -->
+      <div class="panel" id="panel-reviews">
+        <div class="page-title">Google Reviews ⭐</div>
+        <div class="page-sub">Connect your Google Business Profile to show real reviews on your website.</div>
+
+        <div class="card">
+          <h3>🔗 How to Connect Google Reviews</h3>
+          <div style="background:rgba(255,255,255,.04);border-radius:.8rem;padding:1.2rem;margin-bottom:1rem;font-size:.85rem;line-height:1.8;color:rgba(255,255,255,.7);">
+            <p><strong style="color:var(--gf);">Step 1:</strong> Go to <a href="https://business.google.com" target="_blank" style="color:var(--sf);">business.google.com</a> → Your business → Get your Place ID</p>
+            <p><strong style="color:var(--gf);">Step 2:</strong> Visit <a href="https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder" target="_blank" style="color:var(--sf);">Place ID Finder</a> → Search "NOSH7 Ahmedabad" → Copy the Place ID</p>
+            <p><strong style="color:var(--gf);">Step 3:</strong> Paste it below and save. Reviews will auto-embed on your website.</p>
+          </div>
+          <div class="form-group">
+            <label>Google Place ID</label>
+            <input type="text" id="gplace-id" placeholder="e.g. ChIJ...your-place-id..."/>
+          </div>
+          <button class="btn btn-green" onclick="savePlaceId()">💾 Save Place ID</button>
+        </div>
+
+        <div class="card">
+          <h3>📋 Review Widget Embed Code</h3>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.5);margin-bottom:1rem;">Once you have your Place ID, add this script to index.html before closing &lt;/body&gt;:</p>
+          <div id="embed-code-box" style="background:rgba(0,0,0,.3);border-radius:.8rem;padding:1.2rem;font-family:monospace;font-size:.78rem;color:var(--gf);line-height:1.6;white-space:pre-wrap;">Enter Place ID above to generate embed code.</div>
+          <button class="btn btn-ghost btn-sm" style="margin-top:.8rem;" onclick="copyEmbed()">📋 Copy Code</button>
+        </div>
+
+        <div class="card">
+          <h3>⭐ Manual Review Showcase</h3>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.4);margin-bottom:1rem;">Add handpicked reviews to display on your site while waiting for Google API setup:</p>
+          <div class="rv-badge">⭐ Google Review</div>
+          <div class="review-card">
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"NOSH7 ne meri life change kar di. 60-day plan liya aur 4 kilo gaya. Taste bhi bahut aacha hai!"</div>
+            <div class="rv-author">— Priya Shah, Satellite Ahmedabad</div>
+          </div>
+          <div class="review-card">
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"Office lunch ke liye perfect. Trial pack se shuru kiya, ab 26-day plan pe hoon. Fresh aur tasty!"</div>
+            <div class="rv-author">— Rohan Patel, Navrangpura</div>
+          </div>
+          <div class="review-card">
+            <div class="rv-stars">★★★★★</div>
+            <div class="rv-text">"₹179/day mein itna fresh khana — Gujarat ka best deal! Jain Dairy paneer is the best quality."</div>
+            <div class="rv-author">— Meera Desai, Bodakdev</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="panel" id="panel-settings">
+        <div class="page-title">Site Settings ⚙️</div>
+        <div class="page-sub">Core configuration for nosh7.in</div>
+        <div class="card">
+          <h3>🔑 Admin Password</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>New Password</label>
+              <input type="password" id="new-pw" placeholder="Enter new password"/>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <input type="password" id="new-pw2" placeholder="Confirm new password"/>
+            </div>
+          </div>
+          <button class="btn btn-ghost" onclick="changePw()">🔑 Update Password</button>
+        </div>
+        <div class="card">
+          <h3>📋 All Settings (Raw)</h3>
+          <div id="settings-table">Loading...</div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /layout -->
+</div><!-- /adminApp -->
+
+<div id="toast"></div>
+
+<script>
+const SB_URL = 'https://sqosmiifjqecidxhyjtg.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxb3NtaWlmanFlY2lkeGh5anRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4MDczNzQsImV4cCI6MjA4ODM4MzM3NH0.xAVThNZNjRbZ5ObA721XZLexUiRUIVSXx0UZNs0ZwTI';
+const ADMIN_PW = 'nosh7admin2025';
+
+// ── AUTH ──────────────────────────────────────────────────
+function login() {
+  const pw = document.getElementById('pwInput').value;
+  if (pw === ADMIN_PW) {
+    sessionStorage.setItem('nosh7admin', '1');
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminApp').style.display = 'block';
+    initAdmin();
+  } else {
+    document.getElementById('loginErr').style.display = 'block';
+    document.getElementById('pwInput').value = '';
+    setTimeout(() => document.getElementById('loginErr').style.display = 'none', 3000);
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('nosh7admin');
+  location.reload();
+}
+
+if (sessionStorage.getItem('nosh7admin')) {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminApp').style.display = 'block';
+}
+
+// ── INIT ──────────────────────────────────────────────────
+async function initAdmin() {
+  updateTime();
+  setInterval(updateTime, 60000);
+  loadDashboard();
+  loadSettings();
+}
+
+function updateTime() {
+  const now = new Date();
+  document.getElementById('adminTime').textContent = now.toLocaleString('en-IN', {weekday:'short',hour:'2-digit',minute:'2-digit'});
+}
+
+// ── API ───────────────────────────────────────────────────
+async function sbGet(table, params='') {
+  const res = await fetch(SB_URL + '/rest/v1/' + table + params, {
+    headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY }
+  });
+  return res.json();
+}
+
+async function sbPost(table, data) {
+  const res = await fetch(SB_URL + '/rest/v1/' + table, {
+    method: 'POST',
+    headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', Prefer: 'return=representation' },
+    body: JSON.stringify(data)
+  });
+  return res.json();
+}
+
+async function sbPatch(table, col, val, data) {
+  const res = await fetch(SB_URL + '/rest/v1/' + table + '?' + col + '=eq.' + encodeURIComponent(val), {
+    method: 'PATCH',
+    headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  return res.status;
+}
+
+async function sbDelete(table, col, val) {
+  const res = await fetch(SB_URL + '/rest/v1/' + table + '?' + col + '=eq.' + encodeURIComponent(val), {
+    method: 'DELETE',
+    headers: { apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY }
+  });
+  return res.status;
+}
+
+// ── TOAST ─────────────────────────────────────────────────
+function toast(msg, type='ok') {
+  const t = document.getElementById('toast');
+  t.textContent = (type === 'ok' ? '✅ ' : '⚠️ ') + msg;
+  t.className = 'show' + (type === 'error' ? ' error' : '');
+  setTimeout(() => t.className = '', 3500);
+}
+
+// ── PANELS ────────────────────────────────────────────────
+function showPanel(id, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  el.classList.add('active');
+  if (id === 'blog') loadPostsTable();
+  if (id === 'menu') loadMenuTable();
+  if (id === 'homepage') loadHomepageFields();
+  if (id === 'settings') loadSettingsTable();
+  if (id === 'dashboard') loadDashboard();
+}
+
+// ── DASHBOARD ─────────────────────────────────────────────
+async function loadDashboard() {
+  const posts = await sbGet('blog_posts', '?select=id,title,tag,date_label,published&order=created_at.desc&limit=5');
+  document.getElementById('ds-posts').textContent = Array.isArray(posts) ? posts.filter(p=>p.published).length : '—';
+  const menus = await sbGet('monthly_menu', '?select=id');
+  document.getElementById('ds-menu').textContent = Array.isArray(menus) ? menus.length : 0;
+  if (Array.isArray(posts) && posts.length) {
+    document.getElementById('dash-recent-posts').innerHTML = '<table><thead><tr><th>Title</th><th>Tag</th><th>Date</th><th>Status</th></tr></thead><tbody>' +
+      posts.map(p => `<tr><td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${p.title}</td><td>${p.tag}</td><td>${p.date_label}</td><td><span class="badge ${p.published?'badge-green':'badge-red'}">${p.published?'Live':'Hidden'}</span></td></tr>`).join('') +
+      '</tbody></table>';
+  }
+}
+
+// ── BLOG ──────────────────────────────────────────────────
+async function loadPostsTable() {
+  const posts = await sbGet('blog_posts', '?select=*&order=created_at.desc');
+  const el = document.getElementById('posts-table');
+  if (!Array.isArray(posts) || !posts.length) { el.innerHTML = '<p style="color:rgba(255,255,255,.4)">No posts yet.</p>'; return; }
+  el.innerHTML = '<table><thead><tr><th>Emoji</th><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody>' +
+    posts.map(p => `<tr>
+      <td style="font-size:1.5rem">${p.emoji}</td>
+      <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.82rem">${p.title}</td>
+      <td><span class="badge badge-green">${p.category}</span></td>
+      <td style="font-size:.78rem">${p.date_label}</td>
+      <td><span class="badge ${p.published?'badge-green':'badge-red'}">${p.published?'Live':'Hidden'}</span></td>
+      <td style="display:flex;gap:.4rem;">
+        <button class="btn btn-ghost btn-sm" onclick="togglePost('${p.id}',${p.published})">${p.published?'Hide':'Show'}</button>
+        <button class="btn btn-red btn-sm" onclick="deletePost('${p.id}')">Delete</button>
+      </td>
+    </tr>`).join('') + '</tbody></table>';
+}
+
+async function addPost() {
+  const title = document.getElementById('b-title').value.trim();
+  const excerpt = document.getElementById('b-excerpt').value.trim();
+  if (!title || !excerpt) { toast('Title and excerpt are required','error'); return; }
+  const id = title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'').substring(0,60);
+  const keywords = document.getElementById('b-keywords').value.split(',').map(k=>k.trim()).filter(Boolean);
+  const today = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  const data = {
+    id, emoji: document.getElementById('b-emoji').value, tag: document.getElementById('b-tag').value,
+    category: document.getElementById('b-cat').value, title, excerpt,
+    insight: document.getElementById('b-insight').value.trim()||null,
+    keywords, date_label: today, read_time: document.getElementById('b-time').value, published: true
+  };
+  const res = await sbPost('blog_posts', data);
+  if (Array.isArray(res) || res.id) {
+    toast('Post published successfully!');
+    ['b-title','b-excerpt','b-insight','b-keywords'].forEach(id => document.getElementById(id).value = '');
+    loadPostsTable();
+  } else {
+    toast('Error: ' + JSON.stringify(res), 'error');
+  }
+}
+
+async function togglePost(id, current) {
+  await sbPatch('blog_posts', 'id', id, { published: !current });
+  toast(current ? 'Post hidden' : 'Post is now live');
+  loadPostsTable();
+}
+
+async function deletePost(id) {
+  if (!confirm('Delete this post? Cannot be undone.')) return;
+  await sbDelete('blog_posts', 'id', id);
+  toast('Post deleted');
+  loadPostsTable();
+}
+
+// ── MENU ──────────────────────────────────────────────────
+async function loadMenuTable() {
+  const menus = await sbGet('monthly_menu', '?select=*&order=uploaded_at.desc');
+  const el = document.getElementById('menu-table');
+  if (!Array.isArray(menus) || !menus.length) { el.innerHTML = '<p style="color:rgba(255,255,255,.4)">No menus uploaded yet.</p>'; return; }
+  el.innerHTML = '<table><thead><tr><th>Month</th><th>File</th><th>Status</th><th>Uploaded</th><th>Actions</th></tr></thead><tbody>' +
+    menus.map(m => `<tr>
+      <td>${m.month_label}</td>
+      <td><a href="${m.file_url}" target="_blank" style="color:var(--sf);">${m.file_name} ↗</a></td>
+      <td><span class="badge ${m.is_active?'badge-green':'badge-red'}">${m.is_active?'Active':'Inactive'}</span></td>
+      <td style="font-size:.78rem">${new Date(m.uploaded_at).toLocaleDateString('en-IN')}</td>
+      <td style="display:flex;gap:.4rem;">
+        ${!m.is_active ? `<button class="btn btn-green btn-sm" onclick="setMenuActive(${m.id})">Set Active</button>` : '<span style="font-size:.78rem;color:var(--gf);">✓ Active</span>'}
+        <button class="btn btn-red btn-sm" onclick="deleteMenu(${m.id})">Delete</button>
+      </td>
+    </tr>`).join('') + '</tbody></table>';
+}
+
+async function uploadMenu() {
+  const label = document.getElementById('m-label').value.trim();
+  const url = document.getElementById('m-url').value.trim();
+  const fname = document.getElementById('m-fname').value.trim();
+  if (!label || !url || !fname) { toast('All fields required','error'); return; }
+  // Deactivate all existing menus first
+  const existing = await sbGet('monthly_menu', '?select=id&is_active=eq.true');
+  if (Array.isArray(existing)) {
+    for (const m of existing) await sbPatch('monthly_menu','id',m.id,{is_active:false});
+  }
+  const res = await sbPost('monthly_menu', { month_label: label, file_url: url, file_name: fname, is_active: true });
+  if (res && !res.error) {
+    toast('Menu published! Customers can now see it.');
+    ['m-label','m-url','m-fname'].forEach(id => document.getElementById(id).value='');
+    loadMenuTable();
+  } else {
+    toast('Error saving menu','error');
+  }
+}
+
+async function setMenuActive(id) {
+  const existing = await sbGet('monthly_menu','?select=id&is_active=eq.true');
+  if (Array.isArray(existing)) for (const m of existing) await sbPatch('monthly_menu','id',m.id,{is_active:false});
+  await sbPatch('monthly_menu','id',id,{is_active:true});
+  toast('Menu set as active');
+  loadMenuTable();
+}
+
+async function deleteMenu(id) {
+  if (!confirm('Delete this menu?')) return;
+  await sbDelete('monthly_menu','id',id);
+  toast('Menu deleted');
+  loadMenuTable();
+}
+
+// ── HOMEPAGE ──────────────────────────────────────────────
+async function loadHomepageFields() {
+  const settings = await sbGet('site_settings','?select=key,value');
+  if (!Array.isArray(settings)) return;
+  const m = Object.fromEntries(settings.map(s=>[s.key,s.value]));
+  document.getElementById('hp-headline').value = m.hero_headline||'';
+  document.getElementById('hp-subtext').value = m.hero_subtext||'';
+  document.getElementById('hp-customers').value = m.stats_customers||'2000+';
+  document.getElementById('hp-wa').value = m.whatsapp_number||'';
+  document.getElementById('hp-ig').value = m.instagram_url||'';
+  document.getElementById('gplace-id').value = m.google_place_id||'';
+  updateEmbedCode(m.google_place_id||'');
+}
+
+async function saveSetting(key, value) {
+  await sbPatch('site_settings','key',key,{value, updated_at: new Date().toISOString()});
+}
+
+async function saveHomepage() {
+  await saveSetting('hero_headline', document.getElementById('hp-headline').value);
+  await saveSetting('hero_subtext', document.getElementById('hp-subtext').value);
+  await saveSetting('stats_customers', document.getElementById('hp-customers').value);
+  toast('Homepage settings saved!');
+}
+
+async function saveSocial() {
+  await saveSetting('whatsapp_number', document.getElementById('hp-wa').value);
+  await saveSetting('instagram_url', document.getElementById('hp-ig').value);
+  toast('Social links saved!');
+}
+
+async function saveOffer() {
+  await saveSetting('special_offer', document.getElementById('pl-offer').value);
+  toast('Offer text saved!');
+}
+
+// ── SETTINGS ──────────────────────────────────────────────
+async function loadSettings() {
+  loadSettingsTable();
+}
+
+async function loadSettingsTable() {
+  const settings = await sbGet('site_settings','?select=key,value,updated_at&order=key.asc');
+  const el = document.getElementById('settings-table');
+  if (!Array.isArray(settings)) { el.innerHTML = '<p>Loading...</p>'; return; }
+  el.innerHTML = '<table><thead><tr><th>Key</th><th>Value</th><th>Updated</th></tr></thead><tbody>' +
+    settings.map(s => `<tr><td style="font-family:monospace;font-size:.78rem;color:var(--gf);">${s.key}</td><td style="font-size:.82rem">${s.key==='admin_password'?'••••••':s.value}</td><td style="font-size:.75rem;color:rgba(255,255,255,.3)">${s.updated_at ? new Date(s.updated_at).toLocaleDateString('en-IN') : '—'}</td></tr>`).join('') +
+    '</tbody></table>';
+}
+
+async function changePw() {
+  const p1 = document.getElementById('new-pw').value;
+  const p2 = document.getElementById('new-pw2').value;
+  if (!p1) { toast('Enter a new password','error'); return; }
+  if (p1 !== p2) { toast('Passwords do not match','error'); return; }
+  await saveSetting('admin_password', p1);
+  toast('Password updated. Reload page to use new password.');
+}
+
+// ── GOOGLE REVIEWS ────────────────────────────────────────
+async function savePlaceId() {
+  const pid = document.getElementById('gplace-id').value.trim();
+  await saveSetting('google_place_id', pid);
+  updateEmbedCode(pid);
+  toast('Place ID saved!');
+}
+
+function updateEmbedCode(pid) {
+  const box = document.getElementById('embed-code-box');
+  if (!pid) { box.textContent = 'Enter Place ID above to generate embed code.'; return; }
+  box.textContent = `<!-- NOSH7 Google Reviews Widget -->
+<script src="https://widgets.sociablekit.com/google-reviews/widget.js" async></` + `script>
+<div class='sk-ww-google-reviews' data-embed-id='${pid}'></div>
+<!-- Alternative: use elfsight.com or reviewshake.com for Indian businesses -->`;
+}
+
+function copyEmbed() {
+  const text = document.getElementById('embed-code-box').textContent;
+  navigator.clipboard.writeText(text).then(() => toast('Embed code copied!'));
+}
+</script>
+</body>
+</html>
