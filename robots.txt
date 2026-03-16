@@ -2,8 +2,11 @@ User-agent: *
 Allow: /
 Disallow: /adminkapower.html
 
-# Allow AI crawlers — being cited by AI drives brand awareness
+# AI crawlers — allowed for brand citation in AI search
 User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: ClaudeBot
@@ -12,7 +15,7 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# Block AI training crawlers that don't contribute to search visibility
+# ByteDance crawler — blocked (no search value)
 User-agent: Bytespider
 Disallow: /
 

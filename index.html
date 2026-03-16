@@ -34,13 +34,15 @@
         "name": "NOSH7",
         "description": "Ahmedabad ka salad cloud kitchen. Fresh salad subscriptions, health drinks, healthy seeds. Eat Healthy, Feel Great.",
         "url": "https://nosh7.in",
-        "sameAs": ["https://www.nosh7.com", "https://www.instagram.com/nosh7salad"],
+        "sameAs": ["https://www.nosh7.com", "https://www.instagram.com/nosh7salad", "https://www.zomato.com/ahmedabad/nosh7-satellite", "https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457"],
         "telephone": "+91-9712989498",
         "logo": "https://nosh7.in/assets/logo.png",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "5A, Akshat Avenue, Opposite Revtri Tower, Ramdevnagar Road, Satellite",
           "addressLocality": "Ahmedabad",
           "addressRegion": "Gujarat",
+          "postalCode": "380015",
           "addressCountry": "IN"
         },
         "servesCuisine": "Pure Vegetarian, Salads, Healthy Food, Jain Friendly", "suitableForDiet": "VegetarianDiet",
@@ -67,7 +69,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Sans+Devanagari:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Preload critical fonts to avoid render blocking -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&family=Noto+Sans+Devanagari:wght@400;600&display=swap"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet"/></noscript>
 
   <style>
     :root {
@@ -85,7 +91,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
 
     /* ── NAV ── */
     nav {
@@ -98,7 +104,7 @@
     }
     .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
     .nav-logo img { height: 52px; width: 52px; border-radius: 50%; object-fit: cover; }
-    .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--green-deep); line-height: 1.1; }
+    .nav-logo-text { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 900; color: var(--green-deep); line-height: 1.1; }
     .nav-logo-text span { display: block; font-size: 0.6rem; font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
     .nav-links { display: flex; gap: 1.5rem; align-items: center; }
     .nav-links a { text-decoration: none; color: var(--green-deep); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
@@ -118,7 +124,7 @@
       opacity: 0.4; pointer-events: none;
     }
     .hero-tag { display: inline-block; background: var(--saffron-light); color: var(--green-deep); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.2rem; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; color: var(--green-deep); margin-bottom: 0.6rem; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; color: var(--green-deep); margin-bottom: 0.6rem; }
     .hero h1 .hindi { font-family: 'Noto Sans Devanagari', sans-serif; display: block; font-size: clamp(1.4rem, 3vw, 2.2rem); color: var(--green-mid); font-weight: 600; margin-top: 0.4rem; }
     .hero-sub { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin: 1.5rem 0 2.5rem; max-width: 480px; }
     .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -139,13 +145,13 @@
     /* ── STATS ── */
     .stats-bar { background: var(--green-deep); color: var(--cream); display: flex; justify-content: space-around; padding: 2rem 4rem; flex-wrap: wrap; gap: 2rem; }
     .stat { text-align: center; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--saffron); display: block; }
+    .stat-num { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; font-weight: 900; color: var(--saffron); display: block; }
     .stat-label { font-size: 0.85rem; color: var(--green-light); margin-top: 0.2rem; }
 
     /* ── SECTIONS ── */
     section { padding: 5rem 4rem; }
     .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-fresh); margin-bottom: 0.8rem; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--green-deep); line-height: 1.2; margin-bottom: 1rem; }
+    .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--green-deep); line-height: 1.2; margin-bottom: 1rem; }
     .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 560px; }
 
     /* ── WHY ── */
@@ -155,7 +161,7 @@
     .why-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
     .why-card:hover::before { transform: scaleX(1); }
     .why-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .why-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--green-deep); margin-bottom: 0.5rem; }
+    .why-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: var(--green-deep); margin-bottom: 0.5rem; }
     .why-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
     /* ── PLANS ── */
@@ -165,13 +171,13 @@
     .plan-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
     .plan-card.featured { border-color: var(--green-fresh); background: var(--green-deep); color: var(--cream); }
     .plan-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--saffron); color: var(--white); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 100px; white-space: nowrap; }
-    .plan-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 0.3rem; }
+    .plan-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 0.3rem; }
     .plan-card.featured h3 { color: var(--cream); }
     .plan-tagline { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; }
     .plan-card.featured .plan-tagline { color: var(--green-light); }
 
     .plan-price-block { margin-bottom: 0.4rem; }
-    .plan-price { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900; color: var(--green-deep); }
+    .plan-price { font-family: 'Playfair Display', Georgia, serif; font-size: 2.6rem; font-weight: 900; color: var(--green-deep); }
     .plan-card.featured .plan-price { color: var(--saffron); }
     .plan-price .period { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
     .plan-card.featured .plan-price .period { color: var(--green-light); }
@@ -210,7 +216,7 @@
     .blog-card-top { background: linear-gradient(135deg, var(--green-light) 0%, var(--saffron-light) 100%); padding: 2rem; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; min-height: 120px; }
     .blog-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
     .blog-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-fresh); background: var(--green-light); padding: 0.2rem 0.6rem; border-radius: 100px; margin-bottom: 0.7rem; }
-    .blog-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.5rem; line-height: 1.4; }
+    .blog-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.5rem; line-height: 1.4; }
     .blog-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
     .blog-meta { margin-top: 1rem; font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; }
     .blog-read { font-size: 0.8rem; font-weight: 600; color: var(--green-mid); text-decoration: none; margin-top: 1rem; display: inline-block; }
@@ -227,7 +233,7 @@
 
     /* ── CTA ── */
     .cta-section { background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%); color: var(--cream); text-align: center; padding: 5rem 2rem; }
-    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
+    .cta-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
     .cta-section p { font-size: 1.1rem; color: var(--green-light); margin-bottom: 2.5rem; }
     .btn-saffron { background: var(--saffron); color: var(--green-deep); box-shadow: 0 8px 28px rgba(244,166,29,0.4); font-size: 1.1rem; padding: 1rem 2.5rem; }
     .btn-saffron:hover { background: var(--saffron-light); }
@@ -304,6 +310,21 @@
     .hero-content > *:nth-child(3) { animation-delay: 0.35s; }
     .hero-content > *:nth-child(4) { animation-delay: 0.5s; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "NOSH7 Healthy Eating Habits Blog",
+    "url": "https://nosh7.in/blog.html",
+    "description": "Science-backed daily healthy eating habits — chewing, sleep, fibre, mindful eating for India",
+    "publisher": {"@type": "Organization", "name": "NOSH7", "logo": {"@type": "ImageObject", "url": "https://nosh7.in/assets/logo.png"}},
+    "blogPost": [
+      {"@type": "BlogPosting", "headline": "Why Chewing Your Food Slowly Is One of the Best Health Habits", "datePublished": "2025-03-15", "url": "https://nosh7.in/blog.html", "keywords": "chewing food slowly benefits, healthy eating habits, mindful eating Ahmedabad"},
+      {"@type": "BlogPosting", "headline": "Sleep Is Actual Medicine: How Rest Transforms Your Health", "datePublished": "2025-03-14", "url": "https://nosh7.in/blog.html", "keywords": "sleep health benefits, sleep weight loss, healthy lifestyle"},
+      {"@type": "BlogPosting", "headline": "High Fibre Foods: The Surprising Key to More Energy and Less Weight", "datePublished": "2025-03-13", "url": "https://nosh7.in/blog.html", "keywords": "high fibre diet India, fibre weight loss, gut health energy"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -332,7 +353,7 @@
       </h1>
       <p class="hero-sub">
         Fresh salads, health drinks aur healthy seeds — 5-day trial se shuru karo ya directly monthly plan lo.
-        Gujarat ke local ingredients, aapke ghar pe delivered. Sirf ₹179/day se.
+        Seasonal ingredients, Jain Dairy paneer, seeds har meal mein. Sirf ₹179/day se.
       </p>
       <div class="hero-buttons">
         <a href="https://www.nosh7.com/order" class="btn-primary">Subscription Shuru Karo →</a>
@@ -463,8 +484,7 @@
         <ul class="plan-features">
           <li class="plan-feature">60 fresh salads daily</li>
           <li class="plan-feature">🥤 2 weeks health drink free</li>
-          <li class="plan-feature">Seeds pack every week</li>
-          <li class="plan-feature">Nutritionist consultation (2 sessions)</li>
+          <li class="plan-feature">Seeds in every meal</li>
           <li class="plan-feature">2 nutritionist consultations</li>
           <li class="plan-feature">Priority WhatsApp support</li>
         </ul>
@@ -482,7 +502,7 @@
   <section class="menu-section" aria-labelledby="menu-title">
     <span class="section-tag">This Week's Menu</span>
     <h2 class="section-title" id="menu-title">Aaj kya fresh hai?</h2>
-    <p class="section-sub">Gujarat seasonal produce se inspired — har hafte naya menu.</p>
+    <p class="section-sub">Seasonal fresh ingredients — har hafte naya menu.</p>
     <div class="menu-grid">
       <div class="menu-card"><div class="emoji">🧀</div><h4>Tandoori Paneer Salad</h4><p>Jain Dairy paneer, tandoori spices, fresh greens</p></div>
       <div class="menu-card"><div class="emoji">🍚</div><h4>Tax Max Rice Bowl</h4><p>Wholesome rice bowl, seasonal veggies, seeds</p></div>
@@ -536,7 +556,37 @@
     <h2 class="section-title" id="blog-title">Daily Health Tips &<br/>Eating Habits</h2>
     <p class="section-sub">Expert-backed tips on healthy eating in India — updated daily with fresh content.</p>
     <div class="blog-grid" id="blogGrid">
-      <!-- Posts rendered by JS below -->
+      <!-- Static blog posts — Google indexes these; JS replaces with live data -->
+      <article class="blog-card" id="chew-your-food-slowly-benefits" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blog-card-top">🦷</div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Chewing</span>
+          <h3 itemprop="headline">Why Chewing Your Food Slowly Is One of the Best Health Habits</h3>
+          <p itemprop="description">Chewing each bite slowly triggers better digestion, reduces bloating, and helps you eat up to 15% less without even trying.</p>
+          <div class="blog-meta"><span itemprop="datePublished">March 2025</span><span>4 min read</span></div>
+          <a href="/blog.html" class="blog-read">Read more →</a>
+        </div>
+      </article>
+      <article class="blog-card" id="chew-your-food-slowly-benefits" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blog-card-top">😴</div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Sleep</span>
+          <h3 itemprop="headline">Sleep Is Actual Medicine: How Rest Transforms Your Health</h3>
+          <p itemprop="description">Deep sleep is when your body repairs cells, balances hunger hormones, and consolidates memory. Most people severely undervalue it.</p>
+          <div class="blog-meta"><span itemprop="datePublished">March 2025</span><span>4 min read</span></div>
+          <a href="/blog.html" class="blog-read">Read more →</a>
+        </div>
+      </article>
+      <article class="blog-card" id="chew-your-food-slowly-benefits" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blog-card-top">🥗</div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Fibre</span>
+          <h3 itemprop="headline">High Fibre Foods: The Surprising Key to More Energy and Less Weight</h3>
+          <p itemprop="description">Fibre stabilises blood sugar, feeds good gut bacteria, keeps you fuller longer, and is directly linked to lower body weight.</p>
+          <div class="blog-meta"><span itemprop="datePublished">March 2025</span><span>5 min read</span></div>
+          <a href="/blog.html" class="blog-read">Read more →</a>
+        </div>
+      </article>
     </div>
     <div style="text-align:center; margin-top:2.5rem;">
       <a href="/blog.html" class="btn-primary">Saare Articles Dekho →</a>
@@ -703,7 +753,7 @@
       <h4>Contact</h4>
       <a href="/cdn-cgi/l/email-protection#9df5f8fcf1e9f5ddf3f2eef5aab3fef2f0"><span class="__cf_email__" data-cfemail="630b06020f170b230d0c100b544d000c0e">[email&#160;protected]</span></a>
       <a href="/cdn-cgi/l/email-protection#81e9e4e0edf5e9c1efeef2e9b6afe2eeec"><span class="__cf_email__" data-cfemail="c0a8a5a1acb4a880aeafb3a8f7eea3afad">[email&#160;protected]</span></a>
-      <a href="https://maps.google.com/?q=NOSH7+Vastrapur+Ahmedabad+Gujarat+India" target="_blank" rel="noopener">📍 Vastrapur, Ahmedabad, Gujarat</a>
+      <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener">📍 Satellite, Ahmedabad, Gujarat</a>
       <a href="/cdn-cgi/l/email-protection#19717c78756d715977766a712e377a7674"><span class="__cf_email__" data-cfemail="6a020f0b061e022a040519025d44090507">[email&#160;protected]</span></a>
       <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7">WhatsApp: 9712989498</a>
       <a href="tel:+919712989498">Call: +91 97129 89498</a>
@@ -756,7 +806,7 @@
       const grid = document.getElementById('blogGrid');
       if (!grid) return;
       grid.innerHTML = blogPosts.map(post => `
-        <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+        <article class="blog-card" id="chew-your-food-slowly-benefits" itemscope itemtype="https://schema.org/BlogPosting">
           <div class="blog-card-top">${post.emoji}</div>
           <div class="blog-card-body">
             <span class="blog-tag">${post.tag}</span>
@@ -775,6 +825,6 @@
         const posts=await res.json();
         if(!Array.isArray(posts)||!posts.length){grid.innerHTML='<p style="color:var(--text-muted);grid-column:1/-1">Health tips coming soon!</p>';return;}
         grid.innerHTML=posts.map(p=>`
-          <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+          <article class="blog-card" id="chew-your-food-slowly-benefits" itemscope itemtype="https://schema.org/BlogPosting">
             <div class="blog-card-top">${p.emoji}</div>
             <di
