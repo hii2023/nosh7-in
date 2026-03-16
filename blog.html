@@ -89,6 +89,26 @@
       .fe{display:none;}
       footer{padding:2rem 1.5rem;}
     }
+
+    /* ── ARTICLE MODAL ── */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(4px);}
+    .modal-overlay.open{display:flex;}
+    .modal-box{background:var(--cr);border-radius:1.5rem;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.3);}
+    .modal-header{padding:2rem 2rem 1rem;border-bottom:1px solid var(--cd);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;position:sticky;top:0;background:var(--cr);border-radius:1.5rem 1.5rem 0 0;z-index:1;}
+    .modal-close{width:36px;height:36px;border-radius:50%;background:var(--cd);border:none;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;}
+    .modal-close:hover{background:var(--gl);}
+    .modal-emoji{font-size:2.5rem;margin-bottom:.5rem;}
+    .modal-tag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gf);background:var(--gl);padding:.18rem .55rem;border-radius:100px;margin-bottom:.5rem;}
+    .modal-title{font-family:'Syne',sans-serif;font-size:1.4rem;color:var(--gd);line-height:1.3;}
+    .modal-body{padding:1.5rem 2rem 2rem;}
+    .modal-excerpt{font-size:1rem;color:var(--body);line-height:1.75;margin-bottom:1.5rem;}
+    .modal-insight{background:linear-gradient(90deg,var(--pale),var(--sun));border-left:4px solid var(--mint);border-radius:0 .8rem .8rem 0;padding:1rem 1.2rem;margin-bottom:1.5rem;font-size:.9rem;color:var(--gd);font-weight:500;font-style:italic;line-height:1.6;}
+    .modal-meta{font-size:.78rem;color:var(--muted);display:flex;gap:1rem;margin-bottom:1rem;}
+    .modal-kws{display:flex;gap:.4rem;flex-wrap:wrap;}
+    .modal-kw{font-size:.68rem;background:var(--cd);color:var(--muted);padding:.15rem .5rem;border-radius:4px;}
+    .modal-cta{display:block;text-align:center;background:var(--gd);color:var(--cr);padding:.85rem;border-radius:100px;text-decoration:none;font-weight:600;font-size:.92rem;margin-top:1.5rem;transition:all .25s;}
+    .modal-cta:hover{background:var(--gm);}
+
   </style>
 </head>
 <body>
@@ -134,7 +154,7 @@
       <span class="fbadge">⭐ Featured</span>
       <h2>5 Healthy Habits Jo Aapki Life Badal Denge — Bina Diet Ke</h2>
       <p>Koi strict diet nahi, koi expensive supplement nahi. Sirf 5 daily habits — sahi tarike se chabaana, sone ka sahi time, fibre-rich khana, late night avoid karna, aur mindfully eat karna. Science-backed, India-relevant.</p>
-      <a href="#" class="btn-f">Read Full Article →</a>
+      <a href="#five-habits" class="btn-f" onclick="expandPost('five-habits')">Read Full Article →</a>
     </div>
     <div class="fe">🌿</div>
   </div>
@@ -227,6 +247,64 @@ function sub(btn) {
 }
 
 loadPosts();
+
+function expandPost(id){
+  const post = allPosts.find(p => p.id === id);
+  if(!post) return;
+  document.getElementById('modal-emoji').textContent = post.emoji;
+  document.getElementById('modal-tag').textContent = post.tag;
+  document.getElementById('modal-title-text').textContent = post.title;
+  document.getElementById('modal-date').textContent = post.date_label;
+  document.getElementById('modal-time').textContent = '⏱ ' + post.read_time;
+  document.getElementById('modal-excerpt').textContent = post.excerpt;
+  const insightEl = document.getElementById('modal-insight');
+  if(post.insight){ insightEl.textContent = '💡 ' + post.insight; insightEl.style.display='block'; }
+  else { insightEl.style.display='none'; }
+  const kwsEl = document.getElementById('modal-kws');
+  kwsEl.innerHTML = (post.keywords||[]).map(k=>`<span class="modal-kw">${k}</span>`).join('');
+  document.getElementById('articleModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e){
+  if(e.target === document.getElementById('articleModal')){
+    document.getElementById('articleModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    document.getElementById('articleModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
 </script>
+
+<!-- ARTICLE MODAL -->
+<div class="modal-overlay" id="articleModal" onclick="closeModal(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
+    <div class="modal-header">
+      <div>
+        <div class="modal-emoji" id="modal-emoji">🌿</div>
+        <span class="modal-tag" id="modal-tag">Nutrition</span>
+        <h2 class="modal-title" id="modal-title-text">Article Title</h2>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('articleModal').classList.remove('open')" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta">
+        <span id="modal-date">—</span>
+        <span id="modal-time">— min read</span>
+      </div>
+      <p class="modal-excerpt" id="modal-excerpt"></p>
+      <div class="modal-insight" id="modal-insight" style="display:none;"></div>
+      <div class="modal-kws" id="modal-kws"></div>
+      <a href="/subscription.html" class="modal-cta">Start Healthy Journey with NOSH7 →</a>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
