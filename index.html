@@ -264,6 +264,8 @@
     .hero-content > *:nth-child(3) { animation-delay: 0.35s; }
     .hero-content > *:nth-child(4) { animation-delay: 0.5s; }
   </style>
+  <!-- SociableKit Google Reviews -->
+  <script src="https://widgets.sociablekit.com/google-reviews/widget.js" async defer></script>
 </head>
 <body>
 
@@ -321,11 +323,11 @@
   <!-- ORDER PLATFORMS -->
   <div style="background:#1a3c2e;padding:1.2rem 4rem;display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap;" id="order-platforms">
     <span style="color:#b7e4c7;font-size:.85rem;font-weight:500;">Order via:</span>
-    <a id="hp-zomato" href="#" class="platform-btn" style="display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1.3rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:.88rem;background:#CB202D;color:#fff;transition:all .25s;" target="_blank" rel="noopener">
+    <a id="hp-zomato" href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" class="platform-btn" style="display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1.3rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:.88rem;background:#CB202D;color:#fff;transition:all .25s;" target="_blank" rel="noopener">
       <svg width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#CB202D" stroke="#fff" stroke-width="1"/><text x="12" y="17" text-anchor="middle" font-size="14" font-weight="900" fill="white" font-family="Arial">Z</text></svg>
       Zomato
     </a>
-    <a id="hp-swiggy" href="#" class="platform-btn" style="display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1.3rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:.88rem;background:#FC8019;color:#fff;transition:all .25s;" target="_blank" rel="noopener">
+    <a id="hp-swiggy" href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true" class="platform-btn" style="display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1.3rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:.88rem;background:#FC8019;color:#fff;transition:all .25s;" target="_blank" rel="noopener">
       <svg width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#FC8019"/><text x="12" y="17" text-anchor="middle" font-size="11" font-weight="900" fill="white" font-family="Arial">SW</text></svg>
       Swiggy
     </a>
@@ -514,9 +516,8 @@
     <span style="display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green-fresh);margin-bottom:.8rem;">Customer Reviews</span>
     <h2 id="reviews-title" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--green-deep);margin-bottom:.6rem;">What Ahmedabad Is Saying ⭐</h2>
     <p style="font-size:1rem;color:var(--text-muted);margin-bottom:2rem;">Real reviews from real customers across Ahmedabad.</p>
-    <!-- Google Reviews Widget (SociableKit) -->
-    <script src="https://widgets.sociablekit.com/google-reviews/widget.js" async></script>
-    <div class='sk-ww-google-reviews' data-embed-id='17645698082307800471' style="margin-bottom:1.5rem;"></div>
+    <!-- Google Reviews Widget (SociableKit) — embed ID: 17645698082307800471 -->
+    <div class="sk-ww-google-reviews" data-embed-id="17645698082307800471" style="margin-bottom:2rem;"></div>
     <!-- Manual review cards shown alongside widget -->
     <div id="manual-reviews" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:1.5rem;">
       <div style="background:var(--white);border-radius:1.2rem;padding:2rem;box-shadow:0 4px 20px rgba(0,0,0,.04);">
@@ -673,19 +674,6 @@
     }
     loadBlogPreview();
 
-    // Load delivery platform links dynamically
-    async function loadPlatformLinks(){
-      try{
-        const res=await fetch(SB_URL+'/rest/v1/site_settings?select=key,value&key=in.(zomato_url,swiggy_url)',{headers:{apikey:SB_KEY,'Authorization':'Bearer '+SB_KEY}});
-        const data=await res.json();
-        if(!Array.isArray(data))return;
-        const m=Object.fromEntries(data.map(x=>[x.key,x.value]));
-        const zEl=document.getElementById('hp-zomato');
-        const sEl=document.getElementById('hp-swiggy');
-        if(zEl&&m.zomato_url)zEl.href=m.zomato_url;
-        if(sEl&&m.swiggy_url)sEl.href=m.swiggy_url;
-      }catch(e){console.error('Platform links error:',e);}
-    }
-    loadPlatformLinks();
+    // Platform links are hardcoded for reliability
   </script>
 </body>
