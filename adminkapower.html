@@ -163,6 +163,7 @@
       <div class="nav-item" onclick="showPanel('homepage',this)"><span class="ni">🏠</span>Homepage</div>
       <div class="nav-item" onclick="showPanel('plans',this)"><span class="ni">💳</span>Plans & Pricing</div>
       <div class="nav-item" onclick="showPanel('reviews',this)"><span class="ni">⭐</span>Google Reviews</div>
+      <div class="nav-item" onclick="showPanel('delivery',this)"><span class="ni">🛵</span>Delivery Platforms</div>
       <div class="nav-section">Settings</div>
       <div class="nav-item" onclick="showPanel('settings',this)"><span class="ni">⚙️</span>Site Settings</div>
     </div>
@@ -258,21 +259,67 @@
 
         <div class="card">
           <h3>📤 Upload New Menu</h3>
+
+          <!-- TAB SELECTOR -->
+          <div style="display:flex;gap:.5rem;margin-bottom:1.5rem;">
+            <button class="btn btn-green btn-sm" id="tab-img" onclick="switchMenuTab('img')">📸 Image / Photo</button>
+            <button class="btn btn-ghost btn-sm" id="tab-gdrive" onclick="switchMenuTab('gdrive')">📁 Google Drive</button>
+            <button class="btn btn-ghost btn-sm" id="tab-url" onclick="switchMenuTab('url')">🔗 Direct URL</button>
+          </div>
+
           <div class="form-group">
             <label>Month Label</label>
             <input type="text" id="m-label" placeholder="e.g. March 2025 Menu"/>
           </div>
-          <div class="form-group">
-            <label>Menu File URL (upload to Google Drive / Dropbox and paste public link)</label>
-            <input type="url" id="m-url" placeholder="https://drive.google.com/file/d/..."/>
+
+          <!-- IMAGE TAB -->
+          <div id="tab-img-content">
+            <div class="form-group">
+              <label>Image URL (from Google Drive or direct link)</label>
+              <input type="url" id="m-image-url" placeholder="https://drive.google.com/uc?export=view&id=FILE_ID"/>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border-radius:.8rem;padding:1.2rem;font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:1rem;">
+              <strong style="color:var(--gf);">📸 Upload image from Google Drive:</strong><br/>
+              1. Upload your menu JPG/PNG to Google Drive<br/>
+              2. Right click → Share → Anyone with link → Copy link<br/>
+              3. Link looks like: drive.google.com/file/d/<strong>FILE_ID</strong>/view<br/>
+              4. Paste direct image URL: <code style="color:var(--sf);">https://drive.google.com/uc?export=view&id=FILE_ID</code><br/>
+              <strong style="color:var(--sf);">Recommended size: 800×1100px (A4 portrait), max 5MB</strong>
+            </div>
           </div>
-          <div class="form-group">
-            <label>File Name (shown to customers)</label>
-            <input type="text" id="m-fname" placeholder="NOSH7-March-2025-Menu.pdf"/>
+
+          <!-- GOOGLE DRIVE TAB -->
+          <div id="tab-gdrive-content" style="display:none;">
+            <div class="form-group">
+              <label>Google Drive Share Link</label>
+              <input type="url" id="m-gdrive" placeholder="https://drive.google.com/file/d/FILE_ID/view"/>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border-radius:.8rem;padding:1.2rem;font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:1rem;">
+              <strong style="color:var(--gf);">📁 For PDF or any file type:</strong><br/>
+              1. Upload PDF / image to Google Drive<br/>
+              2. Right click → Share → Anyone with link → Copy link<br/>
+              3. Paste the full link here — we'll embed it automatically<br/>
+              <strong style="color:var(--sf);">Works with PDF, JPG, PNG. Recommended max: 10MB</strong>
+            </div>
           </div>
-          <p style="font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:1rem;">
-            💡 How to get a Google Drive public link: Upload file → Right click → Share → Anyone with link → Copy link
-          </p>
+
+          <!-- DIRECT URL TAB -->
+          <div id="tab-url-content" style="display:none;">
+            <div class="form-group">
+              <label>Direct File URL</label>
+              <input type="url" id="m-url" placeholder="https://yoursite.com/menu-march-2025.pdf"/>
+            </div>
+            <div class="form-group">
+              <label>File Name (shown to customers)</label>
+              <input type="text" id="m-fname" placeholder="NOSH7-March-2025-Menu.pdf"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>File Size (optional, shown to customers)</label>
+            <input type="text" id="m-size" placeholder="e.g. 2.4 MB · JPG · 800×1100px"/>
+          </div>
+
           <button class="btn btn-green" onclick="uploadMenu()">📤 Publish Menu</button>
         </div>
 
@@ -389,6 +436,42 @@
             <div class="rv-text">"₹179/day mein itna fresh khana — Gujarat ka best deal! Jain Dairy paneer is the best quality."</div>
             <div class="rv-author">— Meera Desai, Bodakdev</div>
           </div>
+        </div>
+      </div>
+
+
+      <!-- DELIVERY PLATFORMS -->
+      <div class="panel" id="panel-delivery">
+        <div class="page-title">Delivery Platforms 🛵</div>
+        <div class="page-sub">Add your Zomato and Swiggy restaurant links. These appear on the subscription page and homepage.</div>
+        <div class="card">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><rect width="24" height="24" rx="4" fill="#CB202D"/><text x="12" y="17" text-anchor="middle" font-size="14" font-weight="900" fill="white" font-family="Arial">Z</text></svg>
+            Zomato Restaurant Link
+          </h3>
+          <div class="form-group">
+            <label>Your Zomato Restaurant URL</label>
+            <input type="url" id="zomato-url" placeholder="https://www.zomato.com/ahmedabad/nosh7-..."/>
+          </div>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:1rem;">How to find: Open Zomato app → Your restaurant page → Share → Copy link</p>
+          <button class="btn btn-green" onclick="saveDelivery('zomato_url','zomato-url')">💾 Save Zomato Link</button>
+        </div>
+        <div class="card">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><rect width="24" height="24" rx="4" fill="#FC8019"/><text x="12" y="17" text-anchor="middle" font-size="11" font-weight="900" fill="white" font-family="Arial">SW</text></svg>
+            Swiggy Restaurant Link
+          </h3>
+          <div class="form-group">
+            <label>Your Swiggy Restaurant URL</label>
+            <input type="url" id="swiggy-url" placeholder="https://www.swiggy.com/restaurants/nosh7-..."/>
+          </div>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:1rem;">How to find: Open Swiggy → Your restaurant → Share → Copy link</p>
+          <button class="btn btn-green" onclick="saveDelivery('swiggy_url','swiggy-url')">💾 Save Swiggy Link</button>
+        </div>
+        <div class="card">
+          <h3>👁️ Preview</h3>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.5);margin-bottom:1rem;">Current saved links:</p>
+          <div id="delivery-preview" style="font-size:.85rem;color:rgba(255,255,255,.6);">Loading...</div>
         </div>
       </div>
 
@@ -518,6 +601,7 @@ function showPanel(id, el) {
   if (id === 'homepage') loadHomepageFields();
   if (id === 'settings') loadSettingsTable();
   if (id === 'dashboard') loadDashboard();
+  if (id === 'delivery') loadDeliveryLinks();
 }
 
 // ── DASHBOARD ─────────────────────────────────────────────
@@ -606,25 +690,7 @@ async function loadMenuTable() {
     </tr>`).join('') + '</tbody></table>';
 }
 
-async function uploadMenu() {
-  const label = document.getElementById('m-label').value.trim();
-  const url = document.getElementById('m-url').value.trim();
-  const fname = document.getElementById('m-fname').value.trim();
-  if (!label || !url || !fname) { toast('All fields required','error'); return; }
-  // Deactivate all existing menus first
-  const existing = await sbGet('monthly_menu', '?select=id&is_active=eq.true');
-  if (Array.isArray(existing)) {
-    for (const m of existing) await sbPatch('monthly_menu','id',m.id,{is_active:false});
-  }
-  const res = await sbPost('monthly_menu', { month_label: label, file_url: url, file_name: fname, is_active: true });
-  if (res && !res.error) {
-    toast('Menu published! Customers can now see it.');
-    ['m-label','m-url','m-fname'].forEach(id => document.getElementById(id).value='');
-    loadMenuTable();
-  } else {
-    toast('Error saving menu','error');
-  }
-}
+// uploadMenu defined below
 
 async function setMenuActive(id) {
   const existing = await sbGet('monthly_menu','?select=id&is_active=eq.true');
@@ -689,6 +755,80 @@ async function loadSettingsTable() {
   el.innerHTML = '<table><thead><tr><th>Key</th><th>Value</th><th>Updated</th></tr></thead><tbody>' +
     settings.map(s => `<tr><td style="font-family:monospace;font-size:.78rem;color:var(--gf);">${s.key}</td><td style="font-size:.82rem">${s.key==='admin_password'?'••••••':s.value}</td><td style="font-size:.75rem;color:rgba(255,255,255,.3)">${s.updated_at ? new Date(s.updated_at).toLocaleDateString('en-IN') : '—'}</td></tr>`).join('') +
     '</tbody></table>';
+}
+
+// ── DELIVERY PLATFORMS ───────────────────────────────────
+async function loadDeliveryLinks(){
+  const s=await sbGet('site_settings','?select=key,value&key=in.(zomato_url,swiggy_url)');
+  if(!Array.isArray(s))return;
+  const m=Object.fromEntries(s.map(x=>[x.key,x.value]));
+  if(document.getElementById('zomato-url'))document.getElementById('zomato-url').value=m.zomato_url||'';
+  if(document.getElementById('swiggy-url'))document.getElementById('swiggy-url').value=m.swiggy_url||'';
+  const prev=document.getElementById('delivery-preview');
+  if(prev){
+    prev.innerHTML=`
+      <div style="margin-bottom:.6rem;">🔴 Zomato: <a href="${m.zomato_url||'#'}" target="_blank" style="color:var(--sf);">${m.zomato_url||'Not set yet'}</a></div>
+      <div>🟠 Swiggy: <a href="${m.swiggy_url||'#'}" target="_blank" style="color:var(--sf);">${m.swiggy_url||'Not set yet'}</a></div>`;
+  }
+}
+
+async function saveDelivery(key,inputId){
+  const val=document.getElementById(inputId).value.trim();
+  await saveSetting(key,val);
+  toast('Link saved! Visible on website now.');
+  loadDeliveryLinks();
+}
+
+// ── MENU TABS ─────────────────────────────────────────────
+function switchMenuTab(tab){
+  ['img','gdrive','url'].forEach(t=>{
+    document.getElementById('tab-'+t+'-content').style.display=t===tab?'block':'none';
+    document.getElementById('tab-'+t).className='btn btn-sm '+(t===tab?'btn-green':'btn-ghost');
+  });
+}
+
+// ── UPDATED UPLOAD MENU ───────────────────────────────────
+async function uploadMenu(){
+  const label=document.getElementById('m-label').value.trim();
+  if(!label){toast('Month label is required','error');return;}
+
+  const imgUrl=document.getElementById('m-image-url')?.value.trim();
+  const gdriveUrl=document.getElementById('m-gdrive')?.value.trim();
+  const directUrl=document.getElementById('m-url')?.value.trim();
+  const fname=document.getElementById('m-fname')?.value.trim();
+  const fsize=document.getElementById('m-size')?.value.trim();
+
+  // Determine what was provided
+  let data={month_label:label,file_url:'',file_name:fname||label,is_active:true,file_size:fsize||null};
+
+  if(imgUrl){
+    data.image_url=imgUrl;
+    data.file_url=imgUrl;
+    data.file_name=fname||label+'.jpg';
+  }else if(gdriveUrl){
+    data.gdrive_embed=gdriveUrl;
+    data.file_url=gdriveUrl;
+    data.file_name=fname||label;
+  }else if(directUrl){
+    data.file_url=directUrl;
+    data.file_name=fname||label;
+  }else{
+    toast('Please provide at least one of: image URL, Google Drive link, or direct URL','error');
+    return;
+  }
+
+  // Deactivate existing menus
+  const existing=await sbGet('monthly_menu','?select=id&is_active=eq.true');
+  if(Array.isArray(existing))for(const m of existing)await sbPatch('monthly_menu','id',m.id,{is_active:false});
+
+  const res=await sbPost('monthly_menu',data);
+  if(res&&!res.error){
+    toast('Menu published! Customers can now see it on the subscription page.');
+    ['m-label','m-image-url','m-gdrive','m-url','m-fname','m-size'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    loadMenuTable();
+  }else{
+    toast('Error saving menu: '+JSON.stringify(res),'error');
+  }
 }
 
 async function changePw() {
