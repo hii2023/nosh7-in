@@ -167,6 +167,39 @@
       .value-bar{gap:1.5rem;padding:1rem 1.5rem;}
       footer{padding:2rem 1.5rem;}
     }
+
+    @media (max-width:900px){
+      .plans-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}
+      .ngrid{grid-template-columns:1fr 1fr;}
+      .diet-grid{grid-template-columns:1fr;}
+    }
+    @media (max-width:768px){
+      nav{padding:.6rem 1rem;}
+      .page-hero{padding:6rem 1.5rem 2rem;}
+      section{padding:3rem 1.5rem !important;}
+      .order-bar,.contact-strip,.val-bar{padding:1rem;}
+      .plans-grid{grid-template-columns:1fr;max-width:100%;}
+      .ctable{font-size:.75rem;}
+      .ctable th,.ctable td{padding:.6rem .7rem;}
+      .diet-grid{grid-template-columns:1fr;}
+      .ngrid{grid-template-columns:1fr 1fr;}
+      footer{padding:2rem 1rem;}
+      .val-bar{gap:1rem;}
+      .vi .big{font-size:1.3rem;}
+    }
+    @media (max-width:480px){
+      .page-hero h1{font-size:1.8rem;}
+      .plan-card{padding:1.8rem 1.5rem;}
+      .pmain{font-size:2rem;}
+      .ngrid{grid-template-columns:1fr;}
+      .order-bar{gap:.4rem;}
+      .pb{padding:.42rem .8rem;font-size:.75rem;}
+      nav{padding:.5rem .8rem;}
+    }
+
+    @media(max-width:900px){.plans-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto;}.ngrid{grid-template-columns:1fr 1fr;}.diet-grid{grid-template-columns:1fr;}}
+    @media(max-width:768px){nav{padding:.6rem 1rem;}.page-hero{padding:6rem 1.5rem 2rem;}section{padding:3rem 1.5rem !important;}.order-bar,.contact-strip,.val-bar{padding:1rem;}.plans-grid{max-width:100%;}.ctable{font-size:.76rem;}.ctable th,.ctable td{padding:.55rem .6rem;}.diet-grid{grid-template-columns:1fr;}.ngrid{grid-template-columns:1fr 1fr;}footer{padding:2rem 1rem;}}
+    @media(max-width:480px){.page-hero h1{font-size:1.8rem;}.plan-card{padding:1.8rem 1.5rem;}.pmain{font-size:2rem;}.ngrid{grid-template-columns:1fr;}.order-bar{gap:.4rem;}.pb{padding:.42rem .8rem;font-size:.75rem;}nav{padding:.5rem .8rem;}}
   </style>
 </head>
 <body>
@@ -189,6 +222,7 @@
     <span class="tc">🧀 Jain Dairy Paneer</span>
     <span class="tc">🌱 Seeds Every Meal</span>
     <span class="tc">👥 2000+ Customers</span>
+    <span class="tc">🌱 100% Pure Veg · No Eggs</span>
     <span class="tc">🛵 Order on Zomato & Swiggy</span>
   </div>
 </div>
@@ -438,8 +472,30 @@
   <h2 id="menu-h" class="section-title">This Month's Salad Menu 📋</h2>
   <p class="section-sub">We share the complete monthly menu in advance — know what's fresh and coming your way.</p>
   <div class="menu-display">
-    <div id="menu-box" class="menu-box" style="display:none;"></div>
-    <div id="menu-loading" class="menu-loading">⏳ Loading this month's menu...</div>
+    <div class="menu-box">
+      <img src="/assets/nosh7-menu.jpg"
+           alt="NOSH7 Monthly Salad Menu – Pure Veg Ahmedabad"
+           loading="lazy"
+           style="width:100%;display:block;cursor:zoom-in;border-radius:1.5rem 1.5rem 0 0;"
+           onclick="window.open('/assets/nosh7-menu.jpg','_blank')"
+           onerror="this.style.display='none';document.getElementById('menu-fallback').style.display='block'"/>
+      <div id="menu-fallback" style="display:none;padding:3rem;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:1rem;">📋</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.2rem;color:var(--gd);">Menu Coming Soon</div>
+        <div style="font-size:.84rem;color:var(--tm);margin-top:.8rem;">
+          Upload <strong>nosh7-menu.jpg</strong> to GitHub assets folder<br/>
+          <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" style="color:var(--gm);font-weight:600;margin-top:.5rem;display:inline-block;">WhatsApp for today's menu →</a>
+        </div>
+      </div>
+      <div class="menu-box-body">
+        <div class="menu-box-title">This Month's Salad Menu</div>
+        <div class="menu-box-sub">Tap image to view full size · <strong>100% Pure Veg · No Eggs</strong></div>
+        <a href="/assets/nosh7-menu.jpg" target="_blank"
+           style="display:inline-block;background:var(--gd);color:var(--cr);padding:.65rem 1.8rem;border-radius:100px;text-decoration:none;font-weight:600;font-size:.88rem;margin-top:.8rem;">
+          📋 Open Full Menu ↗
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -541,25 +597,7 @@ async function loadPlatforms(){
   }
 }
 
-function loadMenu(){
-  const MENU_IMAGE='/assets/nosh7-menu.jpg';
-  const loading=document.getElementById('menu-loading');
-  const box=document.getElementById('menu-box');
-  if(!loading||!box)return;
-  const img=new Image();
-  img.onload=function(){
-    loading.style.display='none';
-    box.style.display='block';
-    box.innerHTML=`<img src="${MENU_IMAGE}" alt="NOSH7 Monthly Salad Menu Ahmedabad" loading="lazy" style="width:100%;display:block;cursor:zoom-in;" onclick="window.open('${MENU_IMAGE}','_blank')"/><div class="menu-box-body"><div class="menu-box-title">This Month's Salad Menu</div><div class="menu-box-sub">Tap image to zoom</div><a href="${MENU_IMAGE}" target="_blank" style="display:inline-block;background:var(--gd);color:var(--cr);padding:.7rem 1.8rem;border-radius:100px;text-decoration:none;font-weight:600;font-size:.88rem;margin-top:.8rem;">📋 Open Full Menu ↗</a></div>`;
-  };
-  img.onerror=function(){
-    loading.style.display='none';
-    box.style.display='block';
-    box.innerHTML=`<div class="menu-box-body" style="padding:3rem 2rem;text-align:center;"><div style="font-size:3rem;margin-bottom:1rem;">📋</div><div class="menu-box-title">Menu Coming Soon</div><div class="menu-box-sub" style="margin-top:.8rem;">Upload <strong>nosh7-menu.jpg</strong> to your GitHub <strong>assets/</strong> folder.<br/><a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" style="color:var(--gm);font-weight:600;margin-top:.5rem;display:inline-block;">WhatsApp for today's menu →</a></div></div>`;
-  };
-  img.src=MENU_IMAGE;
-}
-loadMenu();html>
+// Menu image displayed directly from /assets/nosh7-menu.jpghtml>
 <html lang="hi-IN">
 <head>
   <meta charset="UTF-8"/>
@@ -728,6 +766,39 @@ loadMenu();html>
       .value-bar{gap:1.5rem;padding:1rem 1.5rem;}
       footer{padding:2rem 1.5rem;}
     }
+
+    @media (max-width:900px){
+      .plans-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}
+      .ngrid{grid-template-columns:1fr 1fr;}
+      .diet-grid{grid-template-columns:1fr;}
+    }
+    @media (max-width:768px){
+      nav{padding:.6rem 1rem;}
+      .page-hero{padding:6rem 1.5rem 2rem;}
+      section{padding:3rem 1.5rem !important;}
+      .order-bar,.contact-strip,.val-bar{padding:1rem;}
+      .plans-grid{grid-template-columns:1fr;max-width:100%;}
+      .ctable{font-size:.75rem;}
+      .ctable th,.ctable td{padding:.6rem .7rem;}
+      .diet-grid{grid-template-columns:1fr;}
+      .ngrid{grid-template-columns:1fr 1fr;}
+      footer{padding:2rem 1rem;}
+      .val-bar{gap:1rem;}
+      .vi .big{font-size:1.3rem;}
+    }
+    @media (max-width:480px){
+      .page-hero h1{font-size:1.8rem;}
+      .plan-card{padding:1.8rem 1.5rem;}
+      .pmain{font-size:2rem;}
+      .ngrid{grid-template-columns:1fr;}
+      .order-bar{gap:.4rem;}
+      .pb{padding:.42rem .8rem;font-size:.75rem;}
+      nav{padding:.5rem .8rem;}
+    }
+
+    @media(max-width:900px){.plans-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto;}.ngrid{grid-template-columns:1fr 1fr;}.diet-grid{grid-template-columns:1fr;}}
+    @media(max-width:768px){nav{padding:.6rem 1rem;}.page-hero{padding:6rem 1.5rem 2rem;}section{padding:3rem 1.5rem !important;}.order-bar,.contact-strip,.val-bar{padding:1rem;}.plans-grid{max-width:100%;}.ctable{font-size:.76rem;}.ctable th,.ctable td{padding:.55rem .6rem;}.diet-grid{grid-template-columns:1fr;}.ngrid{grid-template-columns:1fr 1fr;}footer{padding:2rem 1rem;}}
+    @media(max-width:480px){.page-hero h1{font-size:1.8rem;}.plan-card{padding:1.8rem 1.5rem;}.pmain{font-size:2rem;}.ngrid{grid-template-columns:1fr;}.order-bar{gap:.4rem;}.pb{padding:.42rem .8rem;font-size:.75rem;}nav{padding:.5rem .8rem;}}
   </style>
 </head>
 <body>
@@ -750,6 +821,7 @@ loadMenu();html>
     <span class="tc">🧀 Jain Dairy Paneer</span>
     <span class="tc">🌱 Seeds Every Meal</span>
     <span class="tc">👥 2000+ Customers</span>
+    <span class="tc">🌱 100% Pure Veg · No Eggs</span>
     <span class="tc">🛵 Order on Zomato & Swiggy</span>
   </div>
 </div>
@@ -999,8 +1071,30 @@ loadMenu();html>
   <h2 id="menu-h" class="section-title">This Month's Salad Menu 📋</h2>
   <p class="section-sub">We share the complete monthly menu in advance — know what's fresh and coming your way.</p>
   <div class="menu-display">
-    <div id="menu-box" class="menu-box" style="display:none;"></div>
-    <div id="menu-loading" class="menu-loading">⏳ Loading this month's menu...</div>
+    <div class="menu-box">
+      <img src="/assets/nosh7-menu.jpg"
+           alt="NOSH7 Monthly Salad Menu – Pure Veg Ahmedabad"
+           loading="lazy"
+           style="width:100%;display:block;cursor:zoom-in;border-radius:1.5rem 1.5rem 0 0;"
+           onclick="window.open('/assets/nosh7-menu.jpg','_blank')"
+           onerror="this.style.display='none';document.getElementById('menu-fallback').style.display='block'"/>
+      <div id="menu-fallback" style="display:none;padding:3rem;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:1rem;">📋</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.2rem;color:var(--gd);">Menu Coming Soon</div>
+        <div style="font-size:.84rem;color:var(--tm);margin-top:.8rem;">
+          Upload <strong>nosh7-menu.jpg</strong> to GitHub assets folder<br/>
+          <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" style="color:var(--gm);font-weight:600;margin-top:.5rem;display:inline-block;">WhatsApp for today's menu →</a>
+        </div>
+      </div>
+      <div class="menu-box-body">
+        <div class="menu-box-title">This Month's Salad Menu</div>
+        <div class="menu-box-sub">Tap image to view full size · <strong>100% Pure Veg · No Eggs</strong></div>
+        <a href="/assets/nosh7-menu.jpg" target="_blank"
+           style="display:inline-block;background:var(--gd);color:var(--cr);padding:.65rem 1.8rem;border-radius:100px;text-decoration:none;font-weight:600;font-size:.88rem;margin-top:.8rem;">
+          📋 Open Full Menu ↗
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1102,7 +1196,7 @@ async function loadPlatforms(){
   }
 }
 
-async function loadMenu(){
+async function {
   const loading=document.getElementById('menu-loading');
   const box=document.getElementById('menu-box');
   try{
