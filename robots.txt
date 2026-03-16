@@ -1,8 +1,22 @@
 User-agent: *
 Allow: /
+Disallow: /adminkapower.html
 
-# Sitemap location
+# Allow AI crawlers — being cited by AI drives brand awareness
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Block AI training crawlers that don't contribute to search visibility
+User-agent: Bytespider
+Disallow: /
+
+# Sitemap
 Sitemap: https://nosh7.in/sitemap.xml
 
-# Crawl-delay for polite bots
 Crawl-delay: 1
