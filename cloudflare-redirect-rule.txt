@@ -1,0 +1,46 @@
+=====================================================================
+  CLOUDFLARE REDIRECT RULES — NOSH7.IN
+  Follow these steps in your Cloudflare dashboard
+=====================================================================
+
+HOW TO ACCESS:
+  Go to → https://dash.cloudflare.com
+  Select your domain → nosh7.in
+  Click → Rules → Redirect Rules
+
+---------------------------------------------------------------------
+RULE 1: Force HTTPS (HTTP → HTTPS)
+---------------------------------------------------------------------
+  Rule name:    HTTP to HTTPS
+  When:         Custom filter expression
+                Field: "Protocol" → equals → "HTTP"
+  Then:         Redirect to → https://nosh7.in${uri}
+  Type:         301 (Permanent)
+
+  WHY: Anyone who types "http://nosh7.in" (without the 's') should
+       automatically land on the secure "https://nosh7.in" version.
+       Google also gives a small ranking boost to secure sites.
+
+---------------------------------------------------------------------
+RULE 2: Remove www (www → non-www)
+---------------------------------------------------------------------
+  Rule name:    www to non-www
+  When:         Custom filter expression
+                Field: "Hostname" → equals → "www.nosh7.in"
+  Then:         Redirect to → https://nosh7.in${uri}
+  Type:         301 (Permanent)
+
+  WHY: "www.nosh7.in" and "nosh7.in" are treated as 2 different sites
+       by Google. This rule makes sure both point to the same place.
+
+---------------------------------------------------------------------
+ALSO CHECK IN CLOUDFLARE:
+---------------------------------------------------------------------
+  1. SSL/TLS → Overview → set to "Full (strict)"
+  2. SSL/TLS → Edge Certificates → toggle ON "Always Use HTTPS"
+  3. SSL/TLS → Edge Certificates → toggle ON "HSTS" with max-age 1 year
+
+  These settings mean Cloudflare handles the HTTPS enforcement
+  at server level — no code changes needed.
+
+=====================================================================

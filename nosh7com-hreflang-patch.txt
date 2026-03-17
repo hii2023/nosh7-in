@@ -1,0 +1,48 @@
+=====================================================================
+  NOSH7.COM — HREFLANG RECIPROCAL PATCH
+  Generated: 2026-03-18
+  Purpose: Add these tags to nosh7.com so Google links the
+           Hindi (nosh7.in) and English (nosh7.com) versions properly.
+=====================================================================
+
+PLAIN ENGLISH EXPLANATION:
+  Right now, nosh7.in tells Google: "my English version is on nosh7.com"
+  But nosh7.com doesn't say: "my Hindi version is on nosh7.in"
+  Google requires BOTH sides to agree — so we need to add tags to nosh7.com too.
+
+---------------------------------------------------------------------
+PAGE: https://www.nosh7.com/  (Homepage)
+---------------------------------------------------------------------
+ADD THESE LINES INSIDE <head> on nosh7.com's homepage:
+
+  <link rel="alternate" hreflang="hi-IN" href="https://nosh7.in/" />
+  <link rel="alternate" hreflang="en" href="https://www.nosh7.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.nosh7.com/" />
+
+---------------------------------------------------------------------
+PAGE: https://www.nosh7.com/ahmedabad
+---------------------------------------------------------------------
+ADD THESE LINES INSIDE <head> on nosh7.com/ahmedabad:
+
+  <link rel="alternate" hreflang="hi-IN" href="https://nosh7.in/ahmedabad.html" />
+  <link rel="alternate" hreflang="en" href="https://www.nosh7.com/ahmedabad" />
+  <link rel="alternate" hreflang="x-default" href="https://www.nosh7.com/ahmedabad" />
+
+---------------------------------------------------------------------
+PAGE: https://www.nosh7.com/plans
+---------------------------------------------------------------------
+ADD THESE LINES INSIDE <head> on nosh7.com/plans:
+
+  <link rel="alternate" hreflang="hi-IN" href="https://nosh7.in/subscription.html" />
+  <link rel="alternate" hreflang="en" href="https://www.nosh7.com/plans" />
+  <link rel="alternate" hreflang="x-default" href="https://www.nosh7.com/plans" />
+
+=====================================================================
+HOW TO VERIFY AFTER APPLYING:
+=====================================================================
+  Go to: https://search.google.com/search-console/
+  Select your nosh7.com property
+  Click: URL Inspection → enter any page URL → click "Inspect"
+  Look for: "Alternate page with proper canonical tag" under Indexing
+
+=====================================================================
