@@ -824,4 +824,16 @@
             <span class="blog-tag">${p.tag}</span>
             <h3 itemprop="headline">${p.title}</h3>
             <p itemprop="description">${p.excerpt.slice(0,120)}...</p>
-            <div class="blog-meta"><span itemprop="datePublished">${p.date_label}</span><span
+            <div class="blog-meta"><span itemprop="datePublished">${p.date_label}</span><span>${p.read_time}</span></div>
+          <a href="/blog.html" class="blog-read">Read more →</a>
+        </div>
+      </article>
+    `).join('');
+  } catch(e) {
+    grid.innerHTML='<p style="color:var(--text-muted);grid-column:1/-1;text-align:center;padding:2rem;">Visit our blog for daily health tips!</p>';
+  }
+}
+loadBlogPreview();
+</script>
+</body>
+</html>
