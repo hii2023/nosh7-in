@@ -1,0 +1,58 @@
+=== CLOUDFLARE SETUP INSTRUCTIONS ===
+(Save this file — these are manual steps to do in Cloudflare dashboard)
+
+--------------------------------------------------
+PART 1: SECURITY HEADERS
+--------------------------------------------------
+
+Go to: Cloudflare Dashboard → nosh7.in → Rules → Transform Rules → Modify Response Headers
+
+Click "Create rule" and name it: Security Headers
+
+Set the condition:
+- When: Hostname → equals → nosh7.in
+
+Set the action (add each one as a "Set" header):
+  Header Name                    Value
+  ───────────────────────────────────────────────────────────────────
+  Strict-Transport-Security      max-age=31536000; includeSubDomains
+  X-Frame-Options                SAMEORIGIN
+  X-Content-Type-Options         nosniff
+  Referrer-Policy                strict-origin-when-cross-origin
+  Permissions-Policy             geolocation=(), microphone=(), camera=()
+
+Click Save.
+
+--------------------------------------------------
+PART 2: HTTP TO HTTPS REDIRECT RULE
+--------------------------------------------------
+
+Go to: Cloudflare Dashboard → nosh7.in → Rules → Redirect Rules
+
+Click "Create rule" and name it: HTTP to HTTPS
+
+Set the condition:
+- When: http.scheme → equals → "http"
+
+Set the action:
+- Redirect to: https://${http.host}${http.request.uri.path}
+- Type: 301 Permanent
+
+Click Save.
+
+--------------------------------------------------
+PART 3: SSL SETTINGS (if not already done)
+--------------------------------------------------
+
+Go to: Cloudflare Dashboard → nosh7.in → SSL/TLS → Overview
+- Set SSL mode to: Full (strict)
+
+Go to: SSL/TLS → Edge Certificates
+- Enable: Always Use HTTPS (toggle ON)
+- Enable: HSTS (optional, advanced)
+
+--------------------------------------------------
+NOTE: GitHub Pages already gives you HTTPS automatically.
+The above Cloudflare rules add extra security headers on top.
+You only need Part 1 once Cloudflare is connected as your proxy.
+--------------------------------------------------
