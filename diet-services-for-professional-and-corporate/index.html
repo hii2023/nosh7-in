@@ -15,19 +15,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --saffron:    #E8861A;
-      --saffron-d:  #C46E0E;
-      --saffron-l:  #FFF3E0;
-      --saffron-m:  #FDDBA0;
-      --dark:       #1A1208;
-      --text:       #2D2010;
-      --muted:      #7A6040;
-      --border:     #EDD9B0;
-      --surface:    #FFFAF3;
+      --green:      #15803d;
+      --green-d:    #14532d;
+      --green-l:    #f0fdf4;
+      --green-m:    #86efac;
+      --dark:       #0f172a;
+      --text:       #1e293b;
+      --muted:      #64748b;
+      --border:     #d1fae5;
+      --surface:    #f8fafc;
       --white:      #FFFFFF;
       --radius:     12px;
-      --shadow:     0 2px 16px rgba(232,134,26,.10);
-      --shadow-md:  0 6px 28px rgba(232,134,26,.15);
+      --shadow:     0 2px 16px rgba(21,128,61,.10);
+      --shadow-md:  0 6px 28px rgba(21,128,61,.15);
     }
 
     html { scroll-behavior: smooth; }
@@ -38,6 +38,36 @@
       color: var(--text);
       line-height: 1.6;
     }
+
+    /* ── LANGUAGE BAR ─────────────────────────────────────── */
+    .lang-bar {
+      background: var(--dark);
+      padding: 7px 24px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 6px;
+    }
+    .lang-lbl {
+      font-size: 11px;
+      color: rgba(255,255,255,.4);
+      font-weight: 500;
+      margin-right: 4px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.65);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all .15s;
+    }
+    .lang-btn:hover { border-color: var(--green-m); color: var(--green-m); }
+    .lang-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
 
     /* ── NAV ─────────────────────────────────────────────── */
     nav {
@@ -59,7 +89,7 @@
     }
     .logo-mark {
       width: 36px; height: 36px; border-radius: 9px;
-      background: linear-gradient(135deg, var(--saffron), var(--saffron-d));
+      background: linear-gradient(135deg, var(--green), var(--green-d));
       display: flex; align-items: center; justify-content: center;
       font-weight: 800; font-size: 15px; color: #fff; letter-spacing: -0.5px;
     }
@@ -71,19 +101,19 @@
       text-decoration: none; padding: 6px 12px; border-radius: 6px;
       transition: color .15s, background .15s;
     }
-    .nav-link:hover { color: var(--saffron); background: var(--saffron-l); }
+    .nav-link:hover { color: var(--green); background: var(--green-l); }
     .nav-cta {
-      background: var(--saffron); color: #fff;
+      background: var(--green); color: #fff;
       padding: 8px 18px; border-radius: 8px;
       font-size: 13px; font-weight: 600;
       text-decoration: none;
       transition: background .15s, transform .1s;
     }
-    .nav-cta:hover { background: var(--saffron-d); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--green-d); transform: translateY(-1px); }
 
     /* ── HERO ────────────────────────────────────────────── */
     .hero {
-      background: linear-gradient(135deg, #FFF8EE 0%, #FFF3E0 50%, #FDE8C0 100%);
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
       padding: 88px 24px 80px;
       text-align: center;
       position: relative; overflow: hidden;
@@ -91,13 +121,13 @@
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,134,26,.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(21,128,61,.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 6px;
       background: var(--white); border: 1.5px solid var(--border);
-      color: var(--saffron-d); font-size: 11px; font-weight: 600;
+      color: var(--green-d); font-size: 11px; font-weight: 600;
       padding: 5px 14px; border-radius: 999px; margin-bottom: 24px;
       letter-spacing: 0.6px; text-transform: uppercase;
     }
@@ -106,21 +136,21 @@
       font-weight: 800; line-height: 1.15; letter-spacing: -1.5px;
       color: var(--dark); max-width: 780px; margin: 0 auto 20px;
     }
-    .hero h1 span { color: var(--saffron); }
+    .hero h1 span { color: var(--green); }
     .hero p {
       font-size: 17px; color: var(--muted);
       max-width: 580px; margin: 0 auto 36px; line-height: 1.7;
     }
     .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
-      background: var(--saffron); color: #fff;
+      background: var(--green); color: #fff;
       padding: 14px 28px; border-radius: 10px;
       font-size: 15px; font-weight: 700;
       text-decoration: none; display: inline-block;
       transition: background .15s, transform .1s, box-shadow .15s;
-      box-shadow: 0 4px 16px rgba(232,134,26,.35);
+      box-shadow: 0 4px 16px rgba(21,128,61,.35);
     }
-    .btn-primary:hover { background: var(--saffron-d); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(232,134,26,.45); }
+    .btn-primary:hover { background: var(--green-d); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(21,128,61,.45); }
     .btn-ghost {
       background: var(--white); color: var(--dark);
       padding: 14px 28px; border-radius: 10px;
@@ -128,7 +158,7 @@
       text-decoration: none; display: inline-block;
       transition: border-color .15s, color .15s;
     }
-    .btn-ghost:hover { border-color: var(--saffron); color: var(--saffron); }
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); }
     .hero-stats {
       display: flex; justify-content: center; gap: 0;
       margin-top: 56px; flex-wrap: wrap;
@@ -139,14 +169,14 @@
       text-align: center;
     }
     .stat:last-child { border-right: none; }
-    .stat-num { font-size: 28px; font-weight: 800; color: var(--saffron); letter-spacing: -1px; }
+    .stat-num { font-size: 28px; font-weight: 800; color: var(--green); letter-spacing: -1px; }
     .stat-lbl { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 2px; }
 
     /* ── SECTION WRAPPER ─────────────────────────────────── */
     section { padding: 72px 24px; }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-tag {
-      font-size: 11px; font-weight: 700; color: var(--saffron);
+      font-size: 11px; font-weight: 700; color: var(--green);
       letter-spacing: 1.2px; text-transform: uppercase;
       margin-bottom: 10px; display: block;
     }
@@ -176,23 +206,23 @@
     .cat-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--saffron), var(--saffron-m));
+      background: linear-gradient(90deg, var(--green), var(--green-m));
       opacity: 0; transition: opacity .2s;
     }
-    .cat-card:hover { border-color: var(--saffron-m); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .cat-card:hover { border-color: var(--green-m); box-shadow: var(--shadow-md); transform: translateY(-2px); }
     .cat-card:hover::before { opacity: 1; }
     .cat-icon { font-size: 32px; margin-bottom: 14px; display: block; }
     .cat-card h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
     .cat-card p  { font-size: 14px; color: var(--muted); line-height: 1.65; }
     .cat-tag {
       display: inline-block; margin-top: 14px;
-      background: var(--saffron-l); color: var(--saffron-d);
+      background: var(--green-l); color: var(--green-d);
       font-size: 11px; font-weight: 600; padding: 3px 10px;
       border-radius: 999px;
     }
 
     /* ── WHY NOSH7 ───────────────────────────────────────── */
-    .why { background: var(--saffron-l); }
+    .why { background: var(--green-l); }
     .why-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -204,7 +234,7 @@
     }
     .why-icon {
       width: 46px; height: 46px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--saffron), var(--saffron-d));
+      background: linear-gradient(135deg, var(--green), var(--green-d));
       display: flex; align-items: center; justify-content: center;
       font-size: 22px; margin-bottom: 16px;
     }
@@ -225,11 +255,11 @@
       content: '→';
       position: absolute; right: -10px; top: 50%;
       transform: translateY(-50%);
-      font-size: 20px; color: var(--saffron-m);
+      font-size: 20px; color: var(--green-m);
     }
     .step-num {
       width: 48px; height: 48px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--saffron), var(--saffron-d));
+      background: linear-gradient(135deg, var(--green), var(--green-d));
       color: #fff; font-size: 18px; font-weight: 800;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 16px;
@@ -239,12 +269,12 @@
 
     /* ── FORM SECTION ────────────────────────────────────── */
     .form-section {
-      background: linear-gradient(135deg, #1A1208 0%, #2E1F0A 100%);
+      background: linear-gradient(135deg, #052e16 0%, #14532d 100%);
       padding: 80px 24px;
     }
-    .form-section .section-tag { color: var(--saffron-m); }
+    .form-section .section-tag { color: var(--green-m); }
     .form-section .section-title { color: var(--white); }
-    .form-section .section-sub   { color: #C4A06A; }
+    .form-section .section-sub   { color: #86efac; }
     .form-wrap {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -253,14 +283,14 @@
       margin-top: 48px;
     }
     .form-info h3 { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
-    .form-info p  { font-size: 14px; color: #C4A06A; line-height: 1.7; margin-bottom: 24px; }
+    .form-info p  { font-size: 14px; color: #86efac; line-height: 1.7; margin-bottom: 24px; }
     .form-perks { list-style: none; }
     .form-perks li {
       display: flex; align-items: flex-start; gap: 10px;
-      font-size: 14px; color: #D4B07A; margin-bottom: 12px; line-height: 1.5;
+      font-size: 14px; color: #bbf7d0; margin-bottom: 12px; line-height: 1.5;
     }
     .form-perks li::before {
-      content: '✓'; color: var(--saffron); font-weight: 700;
+      content: '✓'; color: var(--green-m); font-weight: 700;
       flex-shrink: 0; margin-top: 1px;
     }
     .form-card {
@@ -285,20 +315,20 @@
       outline: none; transition: border-color .15s;
     }
     .fg input:focus, .fg select:focus, .fg textarea:focus {
-      border-color: var(--saffron); background: var(--white);
+      border-color: var(--green); background: var(--white);
     }
     .fg textarea { resize: vertical; min-height: 88px; }
     .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .submit-btn {
       width: 100%; padding: 14px;
-      background: linear-gradient(135deg, var(--saffron), var(--saffron-d));
+      background: linear-gradient(135deg, var(--green), var(--green-d));
       color: #fff; border: none; border-radius: 10px;
       font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif;
       cursor: pointer; margin-top: 8px;
       transition: opacity .15s, transform .1s, box-shadow .15s;
-      box-shadow: 0 4px 16px rgba(232,134,26,.4);
+      box-shadow: 0 4px 16px rgba(21,128,61,.4);
     }
-    .submit-btn:hover { opacity: .92; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(232,134,26,.5); }
+    .submit-btn:hover { opacity: .92; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(21,128,61,.5); }
     .submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
     #form-msg {
       margin-top: 14px; text-align: center;
@@ -309,7 +339,7 @@
 
     /* ── FOOTER ──────────────────────────────────────────── */
     footer {
-      background: var(--dark); color: #A08060;
+      background: var(--dark); color: #64748b;
       padding: 40px 24px; text-align: center;
     }
     .footer-inner { max-width: 900px; margin: 0 auto; }
@@ -320,14 +350,14 @@
     .footer-logo .logo-mark { width: 32px; height: 32px; font-size: 13px; }
     .footer-logo .logo-text { color: var(--white); font-size: 16px; }
     footer p { font-size: 13px; line-height: 1.8; }
-    footer a { color: var(--saffron-m); text-decoration: none; }
-    footer a:hover { color: var(--saffron); }
+    footer a { color: var(--green-m); text-decoration: none; }
+    footer a:hover { color: var(--green); }
     .footer-links {
       display: flex; justify-content: center; gap: 20px;
       margin: 14px 0; flex-wrap: wrap;
     }
     .footer-links a { font-size: 12px; font-weight: 500; }
-    .footer-copy { font-size: 11px; color: #5A4030; margin-top: 16px; }
+    .footer-copy { font-size: 11px; color: #334155; margin-top: 16px; }
 
     /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 768px) {
@@ -342,10 +372,20 @@
       .form-card { order: 1; }
       .fg-row { grid-template-columns: 1fr; }
       section { padding: 52px 20px; }
+      .lang-bar { justify-content: center; flex-wrap: wrap; padding: 6px 16px; }
     }
   </style>
 </head>
 <body>
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <span class="lang-lbl">Language:</span>
+  <button class="lang-btn active" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('hinglish')">Hinglish</button>
+  <button class="lang-btn" onclick="setLang('hi')">हिन्दी</button>
+  <button class="lang-btn" onclick="setLang('gu')">ગુજરાતી</button>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -358,39 +398,39 @@
       </div>
     </a>
     <div class="nav-links">
-      <a href="#who" class="nav-link">Who We Serve</a>
-      <a href="#why" class="nav-link">Why Nosh7</a>
-      <a href="#how" class="nav-link">How It Works</a>
-      <a href="#partner-form" class="nav-cta">Let's Partner</a>
+      <a href="#who" class="nav-link" data-i18n="nav_who">Who We Serve</a>
+      <a href="#why" class="nav-link" data-i18n="nav_why">Why Nosh7</a>
+      <a href="#how" class="nav-link" data-i18n="nav_how">How It Works</a>
+      <a href="#partner-form" class="nav-cta" data-i18n="nav_cta">Let's Partner</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">🌿 Ahmedabad-based · Professional Services</div>
-  <h1>Your Nutrition Partner for <span>Professionals & Corporates</span></h1>
-  <p>Nosh7 works alongside health professionals, fitness studios and corporate teams — bringing personalised nutrition consultations and fresh, chef-crafted meal solutions to their clients.</p>
+  <div class="hero-badge" data-i18n="hero_badge">🌿 Ahmedabad-based · Professional Services</div>
+  <h1 data-i18n-html="hero_h1">Your Nutrition Partner for <span>Professionals & Corporates</span></h1>
+  <p data-i18n="hero_p">Nosh7 works alongside health professionals, fitness studios and corporate teams — bringing personalised nutrition consultations and fresh, chef-crafted meal solutions to their clients.</p>
   <div class="hero-btns">
-    <a href="#partner-form" class="btn-primary">Start a Conversation</a>
-    <a href="#who" class="btn-ghost">See Who We Work With</a>
+    <a href="#partner-form" class="btn-primary" data-i18n="btn_start">Start a Conversation</a>
+    <a href="#who" class="btn-ghost" data-i18n="btn_see">See Who We Work With</a>
   </div>
   <div class="hero-stats">
     <div class="stat">
       <div class="stat-num">460+</div>
-      <div class="stat-lbl">Professionals in Network</div>
+      <div class="stat-lbl" data-i18n="stat1">Professionals in Network</div>
     </div>
     <div class="stat">
       <div class="stat-num">6</div>
-      <div class="stat-lbl">Professional Categories</div>
+      <div class="stat-lbl" data-i18n="stat2">Professional Categories</div>
     </div>
     <div class="stat">
       <div class="stat-num">100%</div>
-      <div class="stat-lbl">Custom Arrangements</div>
+      <div class="stat-lbl" data-i18n="stat3">Custom Arrangements</div>
     </div>
     <div class="stat">
-      <div class="stat-num">Ahmedabad</div>
-      <div class="stat-lbl">Home City</div>
+      <div class="stat-num" data-i18n="stat4_num">Ahmedabad</div>
+      <div class="stat-lbl" data-i18n="stat4">Home City</div>
     </div>
   </div>
 </section>
@@ -399,9 +439,9 @@
 <section class="who" id="who">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Who We Work With</span>
-      <h2 class="section-title">Built for Health Professionals<br/>& Corporate Teams</h2>
-      <p class="section-sub">Every partnership is designed around your specific audience, workflow and goals — not a template.</p>
+      <span class="section-tag" data-i18n="who_tag">Who We Work With</span>
+      <h2 class="section-title" data-i18n-html="who_title">Built for Health Professionals<br/>& Corporate Teams</h2>
+      <p class="section-sub" data-i18n="who_sub">Every partnership is designed around your specific audience, workflow and goals — not a template.</p>
     </div>
     <div class="cat-grid">
 
@@ -455,9 +495,9 @@
 <section class="why" id="why">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag">Why Nosh7</span>
-      <h2 class="section-title">Not Just Meals.<br/>A Nutrition Partnership.</h2>
-      <p class="section-sub">We don't sell packages off a shelf. Every collaboration is built around your clients, your workflow and your brand.</p>
+      <span class="section-tag" data-i18n="why_tag">Why Nosh7</span>
+      <h2 class="section-title" data-i18n-html="why_title">Not Just Meals.<br/>A Nutrition Partnership.</h2>
+      <p class="section-sub" data-i18n="why_sub">We don't sell packages off a shelf. Every collaboration is built around your clients, your workflow and your brand.</p>
     </div>
     <div class="why-grid">
 
@@ -505,34 +545,34 @@
 <section class="how" id="how">
   <div class="container">
     <div class="section-header" style="text-align:center">
-      <span class="section-tag">How It Works</span>
-      <h2 class="section-title">Simple. Personal. No Pressure.</h2>
-      <p class="section-sub" style="margin:0 auto">No fixed packages, no sales pitches. We start with a conversation and build from there.</p>
+      <span class="section-tag" data-i18n="how_tag">How It Works</span>
+      <h2 class="section-title" data-i18n="how_title">Simple. Personal. No Pressure.</h2>
+      <p class="section-sub" data-i18n="how_sub" style="margin:0 auto">No fixed packages, no sales pitches. We start with a conversation and build from there.</p>
     </div>
     <div class="steps">
 
       <div class="step">
         <div class="step-num">1</div>
-        <h3>You Reach Out</h3>
-        <p>Fill in the short form below. Tell us what you do and what you're looking for — that's all we need to start.</p>
+        <h3 data-i18n="step1_h">You Reach Out</h3>
+        <p data-i18n="step1_p">Fill in the short form below. Tell us what you do and what you're looking for — that's all we need to start.</p>
       </div>
 
       <div class="step">
         <div class="step-num">2</div>
-        <h3>We Connect</h3>
-        <p>A member of the Nosh7 team reaches out directly — usually within 24 hours — to understand your setup, clients and goals.</p>
+        <h3 data-i18n="step2_h">We Connect</h3>
+        <p data-i18n="step2_p">A member of the Nosh7 team reaches out directly — usually within 24 hours — to understand your setup, clients and goals.</p>
       </div>
 
       <div class="step">
         <div class="step-num">3</div>
-        <h3>We Design Together</h3>
-        <p>We design a collaboration model that genuinely works for your business. If it's a fit, we move forward — if not, no hard feelings.</p>
+        <h3 data-i18n="step3_h">We Design Together</h3>
+        <p data-i18n="step3_p">We design a collaboration model that genuinely works for your business. If it's a fit, we move forward — if not, no hard feelings.</p>
       </div>
 
       <div class="step">
         <div class="step-num">4</div>
-        <h3>We Deliver</h3>
-        <p>Meals, consultations, referral programs — whatever we agree on is set in motion, tracked and refined as we go.</p>
+        <h3 data-i18n="step4_h">We Deliver</h3>
+        <p data-i18n="step4_p">Meals, consultations, referral programs — whatever we agree on is set in motion, tracked and refined as we go.</p>
       </div>
 
     </div>
@@ -542,53 +582,53 @@
 <!-- PARTNER FORM -->
 <section class="form-section" id="partner-form">
   <div class="container">
-    <span class="section-tag">Get In Touch</span>
-    <h2 class="section-title">Let's Start a Conversation</h2>
-    <p class="section-sub">No commitment. No pitch. Just a quick chat to see if there's a fit.</p>
+    <span class="section-tag" data-i18n="form_tag">Get In Touch</span>
+    <h2 class="section-title" data-i18n="form_title">Let's Start a Conversation</h2>
+    <p class="section-sub" data-i18n="form_sub">No commitment. No pitch. Just a quick chat to see if there's a fit.</p>
 
     <div class="form-wrap">
       <div class="form-info">
-        <h3>Why professionals choose to partner with Nosh7</h3>
-        <p>We've built relationships across Ahmedabad's health and corporate ecosystem — and every one started with a simple conversation like this.</p>
+        <h3 data-i18n="form_info_h">Why professionals choose to partner with Nosh7</h3>
+        <p data-i18n="form_info_p">We've built relationships across Ahmedabad's health and corporate ecosystem — and every one started with a simple conversation like this.</p>
         <ul class="form-perks">
-          <li>Custom-built arrangement — no off-the-shelf packages</li>
-          <li>Direct access to the Nosh7 team (no account managers)</li>
-          <li>Fresh, chef-prepared meals aligned to your client's needs</li>
-          <li>Flexible referral, white-label or co-branded structures</li>
-          <li>Fully Ahmedabad-based — fast, reliable, local</li>
-          <li>No lock-in — start small, grow as it makes sense</li>
+          <li data-i18n="perk1">Custom-built arrangement — no off-the-shelf packages</li>
+          <li data-i18n="perk2">Direct access to the Nosh7 team (no account managers)</li>
+          <li data-i18n="perk3">Fresh, chef-prepared meals aligned to your client's needs</li>
+          <li data-i18n="perk4">Flexible referral, white-label or co-branded structures</li>
+          <li data-i18n="perk5">Fully Ahmedabad-based — fast, reliable, local</li>
+          <li data-i18n="perk6">No lock-in — start small, grow as it makes sense</li>
         </ul>
         <div style="margin-top:28px;padding:20px 24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px">
-          <p style="color:#E8C07A;font-weight:600;font-size:14px;margin-bottom:4px">Team Nosh7</p>
-          <p style="color:#A08060;font-size:13px">Ahmedabad, Gujarat · nosh7.com · nosh7.in</p>
+          <p style="color:#86efac;font-weight:600;font-size:14px;margin-bottom:4px">Team Nosh7</p>
+          <p style="color:#4ade80;font-size:13px">Ahmedabad, Gujarat · nosh7.com · nosh7.in</p>
         </div>
       </div>
 
       <div class="form-card">
-        <h3>Tell us about your business</h3>
-        <p>We'll be in touch within 24 hours.</p>
+        <h3 data-i18n="fcard_h">Tell us about your business</h3>
+        <p data-i18n="fcard_p">We'll be in touch within 24 hours.</p>
         <form id="partner-form-el" novalidate>
           <div class="fg-row">
             <div class="fg">
-              <label for="f-name">Your Name *</label>
+              <label for="f-name" data-i18n="lbl_name">Your Name *</label>
               <input type="text" id="f-name" placeholder="e.g. Dr. Priya Shah" required />
             </div>
             <div class="fg">
-              <label for="f-phone">Phone Number *</label>
+              <label for="f-phone" data-i18n="lbl_phone">Phone Number *</label>
               <input type="tel" id="f-phone" placeholder="98XXXXXXXX" required />
             </div>
           </div>
           <div class="fg">
-            <label for="f-biz">Business / Organisation Name *</label>
+            <label for="f-biz" data-i18n="lbl_biz">Business / Organisation Name *</label>
             <input type="text" id="f-biz" placeholder="e.g. Priya's Nutrition Clinic" required />
           </div>
           <div class="fg">
-            <label for="f-email">Email Address</label>
+            <label for="f-email" data-i18n="lbl_email">Email Address</label>
             <input type="email" id="f-email" placeholder="you@yourbusiness.com" />
           </div>
           <div class="fg-row">
             <div class="fg">
-              <label for="f-cat">I represent a *</label>
+              <label for="f-cat" data-i18n="lbl_cat">I represent a *</label>
               <select id="f-cat" required>
                 <option value="" disabled selected>Select type</option>
                 <option value="Dietitian">Dietitian</option>
@@ -603,15 +643,15 @@
               </select>
             </div>
             <div class="fg">
-              <label for="f-area">Area / Locality</label>
+              <label for="f-area" data-i18n="lbl_area">Area / Locality</label>
               <input type="text" id="f-area" placeholder="e.g. Bodakdev, Thaltej" />
             </div>
           </div>
           <div class="fg">
-            <label for="f-msg">What are you looking for?</label>
+            <label for="f-msg" data-i18n="lbl_msg">What are you looking for?</label>
             <textarea id="f-msg" placeholder="Tell us briefly about your clients, your setup and what kind of collaboration you have in mind..."></textarea>
           </div>
-          <button type="submit" class="submit-btn" id="submit-btn">Start the Conversation →</button>
+          <button type="submit" class="submit-btn" id="submit-btn" data-i18n="submit_btn">Start the Conversation →</button>
           <div id="form-msg"></div>
         </form>
       </div>
@@ -626,19 +666,189 @@
       <div class="logo-mark">N7</div>
       <div class="logo-text">Nosh7</div>
     </a>
-    <p>Healthy meals and nutrition consultations for professionals and corporates across Ahmedabad.</p>
+    <p data-i18n="footer_p">Healthy meals and nutrition consultations for professionals and corporates across Ahmedabad.</p>
     <div class="footer-links">
       <a href="https://nosh7.com" target="_blank">nosh7.com</a>
       <a href="https://nosh7.in" target="_blank">nosh7.in</a>
-      <a href="#who">Who We Serve</a>
-      <a href="#partner-form">Partner with Us</a>
+      <a href="#who" data-i18n="nav_who">Who We Serve</a>
+      <a href="#partner-form" data-i18n="nav_cta">Let's Partner</a>
     </div>
-    <div class="footer-copy">© 2026 Nosh7. All rights reserved. Ahmedabad, Gujarat, India.</div>
+    <div class="footer-copy" data-i18n="footer_copy">© 2026 Nosh7. All rights reserved. Ahmedabad, Gujarat, India.</div>
   </div>
 </footer>
 
 <script>
-  // ── Supabase config (same as CRM) ──────────────────────────────────
+  // ── Translations ────────────────────────────────────────────────────
+  const I18N = {
+    en: {
+      nav_who:"Who We Serve", nav_why:"Why Nosh7", nav_how:"How It Works", nav_cta:"Let's Partner",
+      hero_badge:"🌿 Ahmedabad-based · Professional Services",
+      hero_h1:"Your Nutrition Partner for <span>Professionals & Corporates</span>",
+      hero_p:"Nosh7 works alongside health professionals, fitness studios and corporate teams — bringing personalised nutrition consultations and fresh, chef-crafted meal solutions to their clients.",
+      btn_start:"Start a Conversation", btn_see:"See Who We Work With",
+      stat1:"Professionals in Network", stat2:"Professional Categories", stat3:"Custom Arrangements", stat4_num:"Ahmedabad", stat4:"Home City",
+      who_tag:"Who We Work With", who_title:"Built for Health Professionals<br/>& Corporate Teams",
+      who_sub:"Every partnership is designed around your specific audience, workflow and goals — not a template.",
+      why_tag:"Why Nosh7", why_title:"Not Just Meals.<br/>A Nutrition Partnership.",
+      why_sub:"We don't sell packages off a shelf. Every collaboration is built around your clients, your workflow and your brand.",
+      how_tag:"How It Works", how_title:"Simple. Personal. No Pressure.",
+      how_sub:"No fixed packages, no sales pitches. We start with a conversation and build from there.",
+      step1_h:"You Reach Out", step1_p:"Fill in the short form below. Tell us what you do and what you're looking for — that's all we need to start.",
+      step2_h:"We Connect", step2_p:"A member of the Nosh7 team reaches out directly — usually within 24 hours — to understand your setup, clients and goals.",
+      step3_h:"We Design Together", step3_p:"We design a collaboration model that genuinely works for your business. If it's a fit, we move forward — if not, no hard feelings.",
+      step4_h:"We Deliver", step4_p:"Meals, consultations, referral programs — whatever we agree on is set in motion, tracked and refined as we go.",
+      form_tag:"Get In Touch", form_title:"Let's Start a Conversation", form_sub:"No commitment. No pitch. Just a quick chat to see if there's a fit.",
+      form_info_h:"Why professionals choose to partner with Nosh7",
+      form_info_p:"We've built relationships across Ahmedabad's health and corporate ecosystem — and every one started with a simple conversation like this.",
+      perk1:"Custom-built arrangement — no off-the-shelf packages",
+      perk2:"Direct access to the Nosh7 team (no account managers)",
+      perk3:"Fresh, chef-prepared meals aligned to your client's needs",
+      perk4:"Flexible referral, white-label or co-branded structures",
+      perk5:"Fully Ahmedabad-based — fast, reliable, local",
+      perk6:"No lock-in — start small, grow as it makes sense",
+      fcard_h:"Tell us about your business", fcard_p:"We'll be in touch within 24 hours.",
+      lbl_name:"Your Name *", lbl_phone:"Phone Number *", lbl_biz:"Business / Organisation Name *",
+      lbl_email:"Email Address", lbl_cat:"I represent a *", lbl_area:"Area / Locality", lbl_msg:"What are you looking for?",
+      submit_btn:"Start the Conversation →",
+      success_msg:"Thank you! We'll be in touch within 24 hours. We look forward to connecting with you.",
+      error_msg:"Something went wrong. Please try again or contact us directly at nosh7.com.",
+      footer_p:"Healthy meals and nutrition consultations for professionals and corporates across Ahmedabad.",
+      footer_copy:"© 2026 Nosh7. All rights reserved. Ahmedabad, Gujarat, India."
+    },
+    hinglish: {
+      nav_who:"Hum Kiske Saath Kaam Karte Hain", nav_why:"Kyun Nosh7", nav_how:"Kaise Kaam Karta Hai", nav_cta:"Partner Banein",
+      hero_badge:"🌿 Ahmedabad Based · Professional Services",
+      hero_h1:"Professionals & Corporates ke Liye <span>Aapka Nutrition Partner</span>",
+      hero_p:"Nosh7 health professionals, fitness studios aur corporate teams ke saath kaam karta hai — personalized nutrition consultations aur fresh chef-crafted meals unke clients tak pahunchata hai.",
+      btn_start:"Baat Shuru Karein", btn_see:"Dekhein Hum Kiske Saath Kaam Karte Hain",
+      stat1:"Professionals Network Mein", stat2:"Professional Categories", stat3:"Custom Arrangements", stat4_num:"Ahmedabad", stat4:"Hamara Sheher",
+      who_tag:"Hum Kiske Saath Kaam Karte Hain", who_title:"Health Professionals<br/>& Corporate Teams ke Liye Bana Hai",
+      who_sub:"Har partnership aapke specific audience, workflow aur goals ke hisaab se design ki jaati hai — koi template nahi.",
+      why_tag:"Kyun Nosh7", why_title:"Sirf Khana Nahi.<br/>Ek Nutrition Partnership.",
+      why_sub:"Hum shelf se packages nahi bechte. Har collaboration aapke clients, workflow aur brand ke around build hota hai.",
+      how_tag:"Kaise Kaam Karta Hai", how_title:"Simple. Personal. Koi Pressure Nahi.",
+      how_sub:"Koi fixed packages nahi, koi sales pitch nahi. Hum baat se shuru karte hain aur aage badhte hain.",
+      step1_h:"Aap Reach Out Karo", step1_p:"Neeche diya short form bharo. Batao aap kya karte ho — bas itna kaafi hai shuru karne ke liye.",
+      step2_h:"Hum Connect Karte Hain", step2_p:"Nosh7 team ka ek member directly sampark karta hai — aam tor par 24 ghante mein — aapka setup, clients aur goals samajhne ke liye.",
+      step3_h:"Milke Design Karte Hain", step3_p:"Hum ek collaboration model design karte hain jo aapke business ke liye genuinely kaam kare. Fit hai toh aage, nahi toh koi baat nahi.",
+      step4_h:"Hum Deliver Karte Hain", step4_p:"Meals, consultations, referral programs — jo bhi agree ho wo shuru ho jaata hai, track hota hai aur refine hota rehta hai.",
+      form_tag:"Sampark Karein", form_title:"Baat Shuru Karein", form_sub:"Koi commitment nahi. Koi pitch nahi. Bas ek chhoti si baat, dekhte hain kya fit hai.",
+      form_info_h:"Kyun professionals Nosh7 ke saath partner karna choose karte hain",
+      form_info_p:"Humne Ahmedabad ke health aur corporate ecosystem mein relationships build ki hain — aur har ek isi simple baat se shuru hui thi.",
+      perk1:"Custom-built arrangement — koi ready-made packages nahi",
+      perk2:"Nosh7 team tak direct access (koi account managers nahi)",
+      perk3:"Fresh, chef-prepared meals jo aapke client ki zaroorat se match karein",
+      perk4:"Flexible referral, white-label ya co-branded structures",
+      perk5:"Poora Ahmedabad-based — fast, reliable, local",
+      perk6:"Koi lock-in nahi — chhote se shuru karo, jab sense bane tab badho",
+      fcard_h:"Apne business ke baare mein batao", fcard_p:"Hum 24 ghante mein sampark karenge.",
+      lbl_name:"Aapka Naam *", lbl_phone:"Phone Number *", lbl_biz:"Business / Organisation Ka Naam *",
+      lbl_email:"Email Address", lbl_cat:"Main represent karta/karti hoon *", lbl_area:"Area / Locality", lbl_msg:"Aap kya dhundh rahe hain?",
+      submit_btn:"Baat Shuru Karein →",
+      success_msg:"Shukriya! Hum 24 ghante mein aapse sampark karenge. Aapse milke khushi hogi.",
+      error_msg:"Kuch galat ho gaya. Dobara koshish karein ya seedha nosh7.com par sampark karein.",
+      footer_p:"Ahmedabad mein professionals aur corporates ke liye healthy meals aur nutrition consultations.",
+      footer_copy:"© 2026 Nosh7. Sabhi adhikar surakshit. Ahmedabad, Gujarat, India."
+    },
+    hi: {
+      nav_who:"हम किसके साथ काम करते हैं", nav_why:"क्यों नोश7", nav_how:"यह कैसे काम करता है", nav_cta:"पार्टनर बनें",
+      hero_badge:"🌿 अहमदाबाद आधारित · पेशेवर सेवाएं",
+      hero_h1:"पेशेवरों और कॉर्पोरेट्स के लिए <span>आपका पोषण साझेदार</span>",
+      hero_p:"नोश7 स्वास्थ्य पेशेवरों, फिटनेस स्टूडियो और कॉर्पोरेट टीमों के साथ काम करता है — व्यक्तिगत पोषण परामर्श और ताजा, शेफ-निर्मित भोजन समाधान उनके ग्राहकों तक पहुंचाता है।",
+      btn_start:"बातचीत शुरू करें", btn_see:"देखें हम किसके साथ काम करते हैं",
+      stat1:"नेटवर्क में पेशेवर", stat2:"पेशेवर श्रेणियां", stat3:"कस्टम व्यवस्थाएं", stat4_num:"अहमदाबाद", stat4:"हमारा शहर",
+      who_tag:"हम किसके साथ काम करते हैं", who_title:"स्वास्थ्य पेशेवरों<br/>और कॉर्पोरेट टीमों के लिए बना है",
+      who_sub:"हर साझेदारी आपके विशिष्ट दर्शकों, वर्कफ़्लो और लक्ष्यों के आसपास डिज़ाइन की जाती है — कोई टेम्पलेट नहीं।",
+      why_tag:"क्यों नोश7", why_title:"सिर्फ भोजन नहीं।<br/>एक पोषण साझेदारी।",
+      why_sub:"हम शेल्फ से पैकेज नहीं बेचते। हर सहयोग आपके ग्राहकों, वर्कफ़्लो और ब्रांड के आसपास बनाया जाता है।",
+      how_tag:"यह कैसे काम करता है", how_title:"सरल। व्यक्तिगत। कोई दबाव नहीं।",
+      how_sub:"कोई फिक्स्ड पैकेज नहीं, कोई सेल्स पिच नहीं। हम बातचीत से शुरू करते हैं।",
+      step1_h:"आप संपर्क करें", step1_p:"नीचे दिया छोटा फॉर्म भरें। बताएं आप क्या करते हैं — शुरुआत के लिए बस इतना काफी है।",
+      step2_h:"हम जुड़ते हैं", step2_p:"नोश7 टीम का एक सदस्य सीधे संपर्क करता है — आमतौर पर 24 घंटों के भीतर — आपके सेटअप, ग्राहकों और लक्ष्यों को समझने के लिए।",
+      step3_h:"मिलकर डिज़ाइन करते हैं", step3_p:"हम एक सहयोग मॉडल डिज़ाइन करते हैं जो आपके व्यवसाय के लिए वास्तव में काम करे। अगर फिट है आगे बढ़ते हैं — नहीं तो कोई बात नहीं।",
+      step4_h:"हम डिलीवर करते हैं", step4_p:"भोजन, परामर्श, रेफरल प्रोग्राम — जो भी तय हो वह शुरू होता है, ट्रैक होता है और परिष्कृत होता रहता है।",
+      form_tag:"संपर्क करें", form_title:"बातचीत शुरू करते हैं", form_sub:"कोई प्रतिबद्धता नहीं। कोई पिच नहीं। बस एक छोटी बात, देखते हैं क्या फिट है।",
+      form_info_h:"पेशेवर नोश7 के साथ साझेदारी क्यों चुनते हैं",
+      form_info_p:"हमने अहमदाबाद के स्वास्थ्य और कॉर्पोरेट इकोसिस्टम में रिश्ते बनाए हैं — और हर एक इसी तरह की एक सरल बातचीत से शुरू हुआ था।",
+      perk1:"कस्टम-बिल्ट व्यवस्था — कोई रेडीमेड पैकेज नहीं",
+      perk2:"नोश7 टीम तक सीधी पहुंच (कोई अकाउंट मैनेजर नहीं)",
+      perk3:"ताजा, शेफ-तैयार भोजन जो आपके ग्राहक की जरूरतों से मेल खाए",
+      perk4:"लचीला रेफरल, व्हाइट-लेबल या को-ब्रांडेड ढांचा",
+      perk5:"पूरी तरह अहमदाबाद-आधारित — तेज़, विश्वसनीय, स्थानीय",
+      perk6:"कोई लॉक-इन नहीं — छोटे से शुरू करें, जब सही लगे तब बढ़ें",
+      fcard_h:"अपने व्यवसाय के बारे में बताएं", fcard_p:"हम 24 घंटों के भीतर संपर्क करेंगे।",
+      lbl_name:"आपका नाम *", lbl_phone:"फोन नंबर *", lbl_biz:"व्यवसाय / संगठन का नाम *",
+      lbl_email:"ईमेल पता", lbl_cat:"मैं प्रतिनिधित्व करता/करती हूं *", lbl_area:"क्षेत्र / इलाका", lbl_msg:"आप क्या ढूंढ रहे हैं?",
+      submit_btn:"बातचीत शुरू करें →",
+      success_msg:"धन्यवाद! हम 24 घंटों के भीतर आपसे संपर्क करेंगे। आपसे मिलने की प्रतीक्षा है।",
+      error_msg:"कुछ गलत हो गया। कृपया फिर से प्रयास करें या nosh7.com पर सीधे संपर्क करें।",
+      footer_p:"अहमदाबाद में पेशेवरों और कॉर्पोरेट्स के लिए स्वस्थ भोजन और पोषण परामर्श।",
+      footer_copy:"© 2026 नोश7. सर्वाधिकार सुरक्षित। अहमदाबाद, गुजरात, भारत।"
+    },
+    gu: {
+      nav_who:"અમે કોની સાથે કામ કરીએ", nav_why:"શા માટે નોશ7", nav_how:"તે કેવી રીતે કામ કરે", nav_cta:"ભાગીદાર બનો",
+      hero_badge:"🌿 અમદાવાદ આધારિત · વ્યાવસાયિક સેવાઓ",
+      hero_h1:"વ્યાવસાયિકો અને કોર્પોરેટ્સ માટે <span>તમારો પોષણ ભાગીદાર</span>",
+      hero_p:"નોશ7 આરોગ્ય વ્યાવસાયિકો, ફિટનેસ સ્ટુડિઓ અને કોર્પોરેટ ટીમો સાથે કામ કરે છે — વ્યક્તિગત પોષણ પરામર્શ અને તાજા, રસોઈ-નિર્મિત ભોજન ઉકેલો તેમના ગ્રાહકો સુધી પહોંચાડે છે.",
+      btn_start:"વાત શરૂ કરો", btn_see:"જુઓ અમે કોની સાથે કામ કરીએ",
+      stat1:"નેટવર્કમાં વ્યાવસાયિકો", stat2:"વ્યાવસાયિક કેટેગરી", stat3:"કસ્ટમ વ્યવસ્થા", stat4_num:"અમદાવાદ", stat4:"આપણું શહેર",
+      who_tag:"અમે કોની સાથે કામ કરીએ", who_title:"આરોગ્ય વ્યાવસાયિકો<br/>અને કોર્પોરેટ ટીમો માટે બન્યું",
+      who_sub:"દરેક ભાગીદારી તમારા ચોક્કસ પ્રેક્ષકો, વર્કફ્લો અને ધ્યેયોની આસપાસ ડિઝાઇન કરવામાં આવે છે — કોઈ ટેમ્પ્લેટ નહીં.",
+      why_tag:"શા માટે નોશ7", why_title:"માત્ર ભોજન નહીં.<br/>એક પોષણ ભાગીદારી.",
+      why_sub:"અમે શેલ્ફ પરથી પેકેજ વેચતા નથી. દરેક સહયોગ તમારા ગ્રાહકો, વર્કફ્લો અને બ્રાન્ડ ઇર્દ ગિર્દ બનાવવામાં આવે છે.",
+      how_tag:"તે કેવી રીતે કામ કરે", how_title:"સરળ. વ્યક્તિગત. કોઈ દબાણ નહીં.",
+      how_sub:"કોઈ ફિક્સ્ડ પેકેજ નહીં, કોઈ સેલ્સ પિચ નહીં. અમે વાતચીતથી શરૂ કરીએ છીએ.",
+      step1_h:"તમે સંપર્ક કરો", step1_p:"નીચેનું ટૂંકું ફોર્મ ભરો. જણાવો તમે શું કરો છો — શરૂ કરવા માટે બસ આટલું પૂરતું છે.",
+      step2_h:"અમે જોડાઈએ", step2_p:"નોશ7 ટીમનો એક સભ્ય સીધો સંપર્ક કરે છે — સામાન્ય રીતે 24 કલાકની અંદર — તમારો સેટઅપ, ગ્રાહકો અને ધ્યેયો સમજવા.",
+      step3_h:"સાથે મળીને ડિઝાઇન", step3_p:"અમે એક સહયોગ મોડલ ડિઝાઇન કરીએ છીએ જે તમારા વ્યવસાય માટે ખરેખર કામ કરે. ફિટ હોય તો આગળ, નહીં તો કોઈ વાત નહીં.",
+      step4_h:"અમે ડિલિવર કરીએ", step4_p:"ભોજન, પરામર્શ, રેફરલ પ્રોગ્રામ — જે પણ નક્કી થાય તે શરૂ થાય છે, ટ્રૅક થાય છે અને સુધારાય છે.",
+      form_tag:"સંપર્ક કરો", form_title:"વાત શરૂ કરીએ", form_sub:"કોઈ પ્રતિબદ્ધતા નહીં. કોઈ પિચ નહીં. બસ ટૂંકી વાત, જોઈએ ફિટ છે કે નહીં.",
+      form_info_h:"વ્યાવસાયિકો શા માટે નોશ7 સાથે ભાગીદારી પસંદ કરે છે",
+      form_info_p:"અમે અમદાવાદના આરોગ્ય અને કોર્પોરેટ ઇકોસિસ્ટમમાં સંબંધો બનાવ્યા છે — અને દરેક આ જ સરળ વાતચીતથી શરૂ થઈ હતી.",
+      perk1:"કસ્ટમ-બિલ્ટ વ્યવસ્થા — કોઈ રેડીમેડ પેકેજ નહીં",
+      perk2:"નોશ7 ટીમ સુધી સીધો પ્રવેશ (કોઈ અકાઉન્ટ મેનેજર નહીં)",
+      perk3:"તાજા, શેફ-તૈયાર ભોજન જે તમારા ગ્રાહકની જરૂરિયાત સાથે મેળ ખાય",
+      perk4:"લવચીક રેફરલ, વ્હાઇટ-લેબલ અથવા કો-બ્રાન્ડેડ સ્ટ્રક્ચર",
+      perk5:"સંપૂર્ણ અમદાવાદ-આધારિત — ઝડપી, વિશ્વસનીય, સ્થાનિક",
+      perk6:"કોઈ લૉક-ઇન નહીં — નાનાથી શરૂ કરો, જ્યારે સમજ પડે ત્યારે વધો",
+      fcard_h:"તમારા વ્યવસાય વિશે જણાવો", fcard_p:"અમે 24 કલાકની અંદર સંપર્ક કરીશું.",
+      lbl_name:"તમારું નામ *", lbl_phone:"ફોન નંબર *", lbl_biz:"વ્યવસાય / સંગઠનનું નામ *",
+      lbl_email:"ઈ-મેઈલ સરનામું", lbl_cat:"હું પ્રતિનિધિત્વ કરું છું *", lbl_area:"વિસ્તાર / મહોલ્લો", lbl_msg:"તમે શું શોધી રહ્યા છો?",
+      submit_btn:"વાત શરૂ કરો →",
+      success_msg:"આભાર! અમે 24 કલાકની અંદર તમારો સંપર્ક કરીશું. તમારી સાથે જોડાવા આતુર છીએ.",
+      error_msg:"કંઈક ખોટું થઈ ગયું. ફરી પ્રયાસ કરો અથવા nosh7.com પર સીધો સંપર્ક કરો.",
+      footer_p:"અહમદાવાદ ભરના વ્યાવસાયિકો અને કોર્પોરેટ્સ માટે સ્વસ્થ ભોજન અને પોષણ પરામર્શ.",
+      footer_copy:"© 2026 નોશ7. સર્વ અધિકાર સુરક્ષિત. અમદાવાદ, ગુજરાત, ભારત."
+    }
+  };
+
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    const t = I18N[lang];
+
+    // Update buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('onclick') === "setLang('" + lang + "')");
+    });
+
+    // Update text content
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+
+    // Update innerHTML (for spans inside headings)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.dataset.i18nHtml;
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    document.documentElement.lang = lang === 'hi' ? 'hi' : lang === 'gu' ? 'gu' : 'en';
+  }
+
+  // ── Supabase config ─────────────────────────────────────────────────
   const SB_BASE = "https://doesbktbrslcrdhmemhn.supabase.co/rest/v1";
   const SB_KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRvZXNia3RicnNsY3JkaG1lbWhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwMDY3NTEsImV4cCI6MjA4ODU4Mjc1MX0.cl93JTGAIJI36H68X5WOpZUV8TWea8ItotFwOTQU8NI";
   const SB_HDR  = {
@@ -651,12 +861,11 @@
   function genId() {
     return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
   }
-
   function today() {
     return new Date().toISOString().slice(0, 10);
   }
 
-  // ── Form submit ────────────────────────────────────────────────────
+  // ── Form submit ─────────────────────────────────────────────────────
   document.getElementById("partner-form-el").addEventListener("submit", async function(e) {
     e.preventDefault();
 
@@ -668,6 +877,7 @@
     const area  = document.getElementById("f-area").value.trim();
     const msg   = document.getElementById("f-msg").value.trim();
 
+    const t     = I18N[currentLang];
     const msgEl = document.getElementById("form-msg");
     const btn   = document.getElementById("submit-btn");
 
@@ -685,29 +895,28 @@
       return;
     }
 
-    btn.disabled      = true;
-    btn.textContent   = "Sending…";
+    btn.disabled    = true;
+    btn.textContent = "Sending…";
 
     const notes = [
       "Business: " + biz,
       msg ? "Message: " + msg : null,
-      "Source: nosh7.in — Diet Services for Professionals & Corporates landing page"
+      "Source: nosh7.in — Diet Services for Professionals & Corporates",
+      currentLang !== 'en' ? "Language: " + currentLang : null
     ].filter(Boolean).join("\n");
 
     const lead = {
       id:           genId(),
       name:         name,
       phone:        phone,
-      email:        email,
+      email:        email || null,
       website:      "",
       address:      "",
-      area:         area,
+      area:         area || "",
       category:     cat,
       status:       "New",
       notes:        notes,
-      created_date: today(),
-      follow_up_date: "",
-      last_contacted: null
+      created_date: today()
     };
 
     try {
@@ -718,27 +927,27 @@
       });
 
       if (!res.ok) {
-        const err = await res.text();
-        throw new Error(err);
+        const errText = await res.text();
+        throw new Error(errText);
       }
 
-      // Success
-      btn.textContent = "✓ Message Sent!";
+      btn.textContent      = "✓ Sent!";
       btn.style.background = "#16a34a";
-      msgEl.textContent = "Thank you! We'll be in touch within 24 hours. We look forward to connecting with you.";
-      msgEl.className   = "success";
+      msgEl.textContent    = t.success_msg;
+      msgEl.className      = "success";
       document.getElementById("partner-form-el").reset();
 
     } catch (err) {
-      btn.disabled    = false;
-      btn.textContent = "Start the Conversation →";
-      msgEl.textContent = "Something went wrong. Please try again or contact us directly at nosh7.com.";
-      msgEl.className   = "error";
+      btn.disabled         = false;
+      btn.textContent      = t.submit_btn;
+      btn.style.background = "";
+      msgEl.textContent    = t.error_msg;
+      msgEl.className      = "error";
       console.error("Form error:", err);
     }
   });
 
-  // ── Smooth scroll for anchor links ────────────────────────────────
+  // ── Smooth scroll ────────────────────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener("click", function(e) {
       const target = document.querySelector(this.getAttribute("href"));
