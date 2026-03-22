@@ -99,18 +99,18 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/></noscript>
   <style>
     :root{--gd:#1a3c2e;--gm:#2d6a4f;--gf:#52b788;--gl:#b7e4c7;--cr:#faf7f0;--cd:#f0ebe0;--sf:#f4a61d;--sl:#fde68a;--ch:#1c1c1c;--tm:#5a6b62;--wh:#ffffff;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--ch);}
+    body{font-family:'Outfit',sans-serif;background:var(--cr);color:var(--ch);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.6rem 2rem;background:rgba(250,247,240,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gl);}
     .nl{display:flex;align-items:center;gap:.6rem;text-decoration:none;}
     .nl img{height:48px;width:48px;border-radius:50%;object-fit:cover;}
     .nl-t{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--gd);line-height:1.1;}
-    .nl-t span{display:block;font-size:.6rem;font-family:'DM Sans',sans-serif;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);}
+    .nl-t span{display:block;font-size:.6rem;font-family:'Outfit',sans-serif;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);}
     .nc{background:var(--gd);color:var(--cr)!important;padding:.5rem 1.2rem;border-radius:100px;text-decoration:none;font-size:.9rem;font-weight:500;}
     .nlinks{display:flex;gap:1.5rem;align-items:center;}
     .nlinks a{text-decoration:none;color:var(--gd);font-size:.9rem;font-weight:500;}
@@ -123,7 +123,7 @@
 
     .fbar{padding:1.2rem 4rem;background:var(--cd);display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;}
     .flbl{font-size:.8rem;font-weight:600;color:var(--tm);}
-    .fbtn{font-size:.78rem;padding:.3rem .9rem;border-radius:100px;border:1px solid var(--gl);background:var(--wh);color:var(--gd);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
+    .fbtn{font-size:.78rem;padding:.3rem .9rem;border-radius:100px;border:1px solid var(--gl);background:var(--wh);color:var(--gd);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;}
     .fbtn:hover,.fbtn.active{background:var(--gd);color:var(--cr);border-color:var(--gd);}
 
     .bmain{padding:3rem 4rem;}
@@ -163,9 +163,9 @@
     .nls h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gd);margin-bottom:.5rem;}
     .nls p{color:var(--tm);margin-bottom:1.5rem;}
     .nlf{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;max-width:460px;margin:0 auto;}
-    .nlf input{flex:1;min-width:200px;padding:.8rem 1.2rem;border:2px solid var(--gl);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;background:var(--wh);}
+    .nlf input{flex:1;min-width:200px;padding:.8rem 1.2rem;border:2px solid var(--gl);border-radius:100px;font-family:'Outfit',sans-serif;font-size:.9rem;outline:none;background:var(--wh);}
     .nlf input:focus{border-color:var(--gf);}
-    .nlf button{background:var(--gd);color:var(--cr);border:none;padding:.8rem 1.8rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;font-size:.9rem;}
+    .nlf button{background:var(--gd);color:var(--cr);border:none;padding:.8rem 1.8rem;border-radius:100px;font-family:'Outfit',sans-serif;font-weight:600;cursor:pointer;font-size:.9rem;}
 
     footer{background:var(--ch);color:rgba(255,255,255,.5);padding:2rem 4rem;text-align:center;font-size:.85rem;}
     footer a{color:var(--gf);text-decoration:none;}
@@ -191,11 +191,11 @@
     .modal-tag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gf);background:var(--gl);padding:.18rem .55rem;border-radius:100px;margin-bottom:.5rem;}
     .modal-title{font-family:'Syne',Georgia,serif;font-size:1.4rem;color:var(--gd);line-height:1.3;}
     .modal-body{padding:1.5rem 2rem 2rem;}
-    .modal-excerpt{font-size:1rem;color:var(--body);line-height:1.75;margin-bottom:1.5rem;}
-    .modal-insight{background:linear-gradient(90deg,var(--pale),var(--sun));border-left:4px solid var(--mint);border-radius:0 .8rem .8rem 0;padding:1rem 1.2rem;margin-bottom:1.5rem;font-size:.9rem;color:var(--gd);font-weight:500;font-style:italic;line-height:1.6;}
-    .modal-meta{font-size:.78rem;color:var(--muted);display:flex;gap:1rem;margin-bottom:1rem;}
+    .modal-excerpt{font-size:1rem;color:var(--ch);line-height:1.75;margin-bottom:1.5rem;}
+    .modal-insight{background:linear-gradient(90deg,var(--gl),var(--sl));border-left:4px solid var(--gf);border-radius:0 .8rem .8rem 0;padding:1rem 1.2rem;margin-bottom:1.5rem;font-size:.9rem;color:var(--gd);font-weight:500;font-style:italic;line-height:1.6;}
+    .modal-meta{font-size:.78rem;color:var(--tm);display:flex;gap:1rem;margin-bottom:1rem;}
     .modal-kws{display:flex;gap:.4rem;flex-wrap:wrap;}
-    .modal-kw{font-size:.68rem;background:var(--cd);color:var(--muted);padding:.15rem .5rem;border-radius:4px;}
+    .modal-kw{font-size:.68rem;background:var(--cd);color:var(--tm);padding:.15rem .5rem;border-radius:4px;}
     .modal-cta{display:block;text-align:center;background:var(--gd);color:var(--cr);padding:.85rem;border-radius:100px;text-decoration:none;font-weight:600;font-size:.92rem;margin-top:1.5rem;transition:all .25s;}
     .modal-cta:hover{background:var(--gm);}
 
@@ -261,46 +261,46 @@
   </div>
   <div id="bgrid" class="bgrid">
     <article class="bc" id="chew-your-food-slowly-benefits" itemscope itemtype="https://schema.org/BlogPosting">
-      <div class="bc-top"><div class="bc-em">🦷</div><div class="bc-meta"><span class="bc-tag">Chewing</span><br/><span class="bc-date" itemprop="datePublished">March 2025</span></div></div>
-      <div class="bc-body"><h2 itemprop="headline">Why Chewing Your Food Slowly Is One of the Best Health Habits</h2><p itemprop="description">Most of us eat too fast. Chewing each bite slowly triggers better digestion, reduces bloating, and helps you eat up to 15% less without even trying.</p></div>
-      <div class="bc-insight">💡 Research found chewing each bite 40 times led to 12% fewer calories consumed.</div>
-      <div class="bc-kws"><span class="kw">chewing food slowly benefits</span><span class="kw">healthy eating habits</span><span class="kw">mindful eating Ahmedabad</span></div>
-      <div class="bc-foot"><a href="#" class="bc-read" onclick="event.preventDefault();if(allPosts.length)expandPost('chew-your-food-slowly-benefits')">Read full article</a><span class="bc-time">4 min</span></div>
+      <div class="bct"><div class="bem">🦷</div><div class="bcm"><span class="btag">Chewing</span><br/><span class="bdate" itemprop="datePublished">March 2025</span></div></div>
+      <div class="bcb"><h2 itemprop="headline">Why Chewing Your Food Slowly Is One of the Best Health Habits</h2><p itemprop="description">Most of us eat too fast. Chewing each bite slowly triggers better digestion, reduces bloating, and helps you eat up to 15% less without even trying.</p></div>
+      <div class="insight">💡 Research found chewing each bite 40 times led to 12% fewer calories consumed.</div>
+      <div class="bkws"><span class="kw">chewing food slowly benefits</span><span class="kw">healthy eating habits</span><span class="kw">mindful eating Ahmedabad</span></div>
+      <div class="bfoot"><a href="#" class="bread" onclick="event.preventDefault();if(allPosts.length)expandPost('chew-your-food-slowly-benefits')">Read full article</a><span class="btime">4 min</span></div>
     </article>
     <article class="bc" id="sleep-is-actual-medicine-health" itemscope itemtype="https://schema.org/BlogPosting">
-      <div class="bc-top"><div class="bc-em">😴</div><div class="bc-meta"><span class="bc-tag">Sleep</span><br/><span class="bc-date" itemprop="datePublished">March 2025</span></div></div>
-      <div class="bc-body"><h2 itemprop="headline">Sleep Is Actual Medicine: How Rest Transforms Your Health</h2><p itemprop="description">Deep sleep is when your body repairs cells, balances hunger hormones, and consolidates memory. Most people severely undervalue it.</p></div>
-      <div class="bc-insight">💡 Harvard: one week of under 6 hours sleep changes over 700 genes linked to inflammation.</div>
-      <div class="bc-kws"><span class="kw">sleep health benefits India</span><span class="kw">sleep for weight loss</span><span class="kw">healthy lifestyle tips</span></div>
-      <div class="bc-foot"><a href="#" class="bc-read" onclick="event.preventDefault();if(allPosts.length)expandPost('sleep-is-actual-medicine-health')">Read full article</a><span class="bc-time">4 min</span></div>
+      <div class="bct"><div class="bem">😴</div><div class="bcm"><span class="btag">Sleep</span><br/><span class="bdate" itemprop="datePublished">March 2025</span></div></div>
+      <div class="bcb"><h2 itemprop="headline">Sleep Is Actual Medicine: How Rest Transforms Your Health</h2><p itemprop="description">Deep sleep is when your body repairs cells, balances hunger hormones, and consolidates memory. Most people severely undervalue it.</p></div>
+      <div class="insight">💡 Harvard: one week of under 6 hours sleep changes over 700 genes linked to inflammation.</div>
+      <div class="bkws"><span class="kw">sleep health benefits India</span><span class="kw">sleep for weight loss</span><span class="kw">healthy lifestyle tips</span></div>
+      <div class="bfoot"><a href="#" class="bread" onclick="event.preventDefault();if(allPosts.length)expandPost('sleep-is-actual-medicine-health')">Read full article</a><span class="btime">4 min</span></div>
     </article>
     <article class="bc" id="high-fibre-diet-energy-weight-loss" itemscope itemtype="https://schema.org/BlogPosting">
-      <div class="bc-top"><div class="bc-em">🥗</div><div class="bc-meta"><span class="bc-tag">Fibre</span><br/><span class="bc-date" itemprop="datePublished">March 2025</span></div></div>
-      <div class="bc-body"><h2 itemprop="headline">High Fibre Foods: The Surprising Key to More Energy and Less Weight</h2><p itemprop="description">Fibre stabilises blood sugar, feeds gut bacteria, keeps you fuller longer, and is directly linked to lower body weight and more energy.</p></div>
-      <div class="bc-insight">💡 30g fibre daily alone led to nearly as much weight loss as a complex diet — Annals of Internal Medicine.</div>
-      <div class="bc-kws"><span class="kw">high fibre diet benefits India</span><span class="kw">fibre weight loss</span><span class="kw">healthy salad Ahmedabad</span></div>
-      <div class="bc-foot"><a href="#" class="bc-read" onclick="event.preventDefault();if(allPosts.length)expandPost('high-fibre-diet-energy-weight-loss')">Read full article</a><span class="bc-time">5 min</span></div>
+      <div class="bct"><div class="bem">🥗</div><div class="bcm"><span class="btag">Fibre</span><br/><span class="bdate" itemprop="datePublished">March 2025</span></div></div>
+      <div class="bcb"><h2 itemprop="headline">High Fibre Foods: The Surprising Key to More Energy and Less Weight</h2><p itemprop="description">Fibre stabilises blood sugar, feeds gut bacteria, keeps you fuller longer, and is directly linked to lower body weight and more energy.</p></div>
+      <div class="insight">💡 30g fibre daily alone led to nearly as much weight loss as a complex diet — Annals of Internal Medicine.</div>
+      <div class="bkws"><span class="kw">high fibre diet benefits India</span><span class="kw">fibre weight loss</span><span class="kw">healthy salad Ahmedabad</span></div>
+      <div class="bfoot"><a href="#" class="bread" onclick="event.preventDefault();if(allPosts.length)expandPost('high-fibre-diet-energy-weight-loss')">Read full article</a><span class="btime">5 min</span></div>
     </article>
     <article class="bc" id="no-late-night-eating-real-science" itemscope itemtype="https://schema.org/BlogPosting">
-      <div class="bc-top"><div class="bc-em">🌙</div><div class="bc-meta"><span class="bc-tag">Meal Timing</span><br/><span class="bc-date" itemprop="datePublished">March 2025</span></div></div>
-      <div class="bc-body"><h2 itemprop="headline">No Late Night Eating: The Real Science Behind Why It Matters</h2><p itemprop="description">Eating late silently disrupts your metabolism, sleep quality, and weight management. Your body processes food less efficiently after 8pm.</p></div>
-      <div class="bc-insight">💡 Eating largest meal after 3pm = 22% less weight loss over 20 weeks despite same calories — journal Obesity.</div>
-      <div class="bc-kws"><span class="kw">late night eating effects</span><span class="kw">meal timing weight loss</span><span class="kw">healthy eating India</span></div>
-      <div class="bc-foot"><a href="#" class="bc-read" onclick="event.preventDefault();if(allPosts.length)expandPost('no-late-night-eating-real-science')">Read full article</a><span class="bc-time">5 min</span></div>
+      <div class="bct"><div class="bem">🌙</div><div class="bcm"><span class="btag">Meal Timing</span><br/><span class="bdate" itemprop="datePublished">March 2025</span></div></div>
+      <div class="bcb"><h2 itemprop="headline">No Late Night Eating: The Real Science Behind Why It Matters</h2><p itemprop="description">Eating late silently disrupts your metabolism, sleep quality, and weight management. Your body processes food less efficiently after 8pm.</p></div>
+      <div class="insight">💡 Eating largest meal after 3pm = 22% less weight loss over 20 weeks despite same calories — journal Obesity.</div>
+      <div class="bkws"><span class="kw">late night eating effects</span><span class="kw">meal timing weight loss</span><span class="kw">healthy eating India</span></div>
+      <div class="bfoot"><a href="#" class="bread" onclick="event.preventDefault();if(allPosts.length)expandPost('no-late-night-eating-real-science')">Read full article</a><span class="btime">5 min</span></div>
     </article>
     <article class="bc" id="mindful-eating-benefits-science" itemscope itemtype="https://schema.org/BlogPosting">
-      <div class="bc-top"><div class="bc-em">🧘</div><div class="bc-meta"><span class="bc-tag">Mindful Eating</span><br/><span class="bc-date" itemprop="datePublished">March 2025</span></div></div>
-      <div class="bc-body"><h2 itemprop="headline">Eating Mindfully Has Amazing Benefits — Here Is What the Science Says</h2><p itemprop="description">Mindful eating is scientifically backed practice of bringing full attention to your food — taste, texture, smell. It reduces binge eating and improves digestion.</p></div>
-      <div class="bc-insight">💡 Mindful eating reduced binge eating by 70% and emotional eating by 40% in just 6 weeks — clinical trial.</div>
-      <div class="bc-kws"><span class="kw">mindful eating benefits India</span><span class="kw">how to eat mindfully</span><span class="kw">healthy eating habits</span></div>
-      <div class="bc-foot"><a href="#" class="bc-read" onclick="event.preventDefault();if(allPosts.length)expandPost('mindful-eating-benefits-science')">Read full article</a><span class="bc-time">4 min</span></div>
+      <div class="bct"><div class="bem">🧘</div><div class="bcm"><span class="btag">Mindful Eating</span><br/><span class="bdate" itemprop="datePublished">March 2025</span></div></div>
+      <div class="bcb"><h2 itemprop="headline">Eating Mindfully Has Amazing Benefits — Here Is What the Science Says</h2><p itemprop="description">Mindful eating is scientifically backed practice of bringing full attention to your food — taste, texture, smell. It reduces binge eating and improves digestion.</p></div>
+      <div class="insight">💡 Mindful eating reduced binge eating by 70% and emotional eating by 40% in just 6 weeks — clinical trial.</div>
+      <div class="bkws"><span class="kw">mindful eating benefits India</span><span class="kw">how to eat mindfully</span><span class="kw">healthy eating habits</span></div>
+      <div class="bfoot"><a href="#" class="bread" onclick="event.preventDefault();if(allPosts.length)expandPost('mindful-eating-benefits-science')">Read full article</a><span class="btime">4 min</span></div>
     </article>
     <article class="bc" id="seeds-in-every-meal-why" itemscope itemtype="https://schema.org/BlogPosting">
-      <div class="bc-top"><div class="bc-em">🌱</div><div class="bc-meta"><span class="bc-tag">Nutrition</span><br/><span class="bc-date" itemprop="datePublished">March 2025</span></div></div>
-      <div class="bc-body"><h2 itemprop="headline">Why NOSH7 Puts Seeds in Every Single Meal</h2><p itemprop="description">Flaxseeds, sunflower, pumpkin and hemp seeds deliver complete protein, omega-3, zinc, magnesium and selenium. Including them daily is the simplest nutrition upgrade possible.</p></div>
-      <div class="bc-insight">💡 Just 2 tbsp mixed seeds = 20% daily omega-3, 15% protein, 12% fibre, 30% magnesium in only 80 calories.</div>
-      <div class="bc-kws"><span class="kw">seeds health benefits India</span><span class="kw">omega-3 vegetarian India</span><span class="kw">NOSH7 pure veg salad Ahmedabad</span></div>
-      <div class="bc-foot"><a href="#" class="bc-read" onclick="event.preventDefault();if(allPosts.length)expandPost('seeds-in-every-meal-why')">Read full article</a><span class="bc-time">3 min</span></div>
+      <div class="bct"><div class="bem">🌱</div><div class="bcm"><span class="btag">Nutrition</span><br/><span class="bdate" itemprop="datePublished">March 2025</span></div></div>
+      <div class="bcb"><h2 itemprop="headline">Why NOSH7 Puts Seeds in Every Single Meal</h2><p itemprop="description">Flaxseeds, sunflower, pumpkin and hemp seeds deliver complete protein, omega-3, zinc, magnesium and selenium. Including them daily is the simplest nutrition upgrade possible.</p></div>
+      <div class="insight">💡 Just 2 tbsp mixed seeds = 20% daily omega-3, 15% protein, 12% fibre, 30% magnesium in only 80 calories.</div>
+      <div class="bkws"><span class="kw">seeds health benefits India</span><span class="kw">omega-3 vegetarian India</span><span class="kw">NOSH7 pure veg salad Ahmedabad</span></div>
+      <div class="bfoot"><a href="#" class="bread" onclick="event.preventDefault();if(allPosts.length)expandPost('seeds-in-every-meal-why')">Read full article</a><span class="btime">3 min</span></div>
     </article>
   </div>
 </main>
