@@ -99,24 +99,25 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet"/></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet"/></noscript>
   <style>
     :root{--gd:#1a3c2e;--gm:#2d6a4f;--gf:#52b788;--gl:#b7e4c7;--cr:#faf7f0;--cd:#f0ebe0;--sf:#f4a61d;--sl:#fde68a;--ch:#1c1c1c;--tm:#5a6b62;--wh:#ffffff;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{font-family:'Inter',sans-serif;background:var(--cr);color:var(--ch);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cr);color:var(--ch);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
+    h1,h2,h3,h4{font-family:'Inter',-apple-system,sans-serif;font-weight:700;letter-spacing:-0.02em;line-height:1.2;}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.6rem 2rem;background:rgba(250,247,240,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gl);}
     .nl{display:flex;align-items:center;gap:.6rem;text-decoration:none;}
     .nl img{height:48px;width:48px;border-radius:50%;object-fit:cover;}
-    .nl-t{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--gd);line-height:1.1;}
+    .nl-t{font-family:'Inter',-apple-system,sans-serif;font-size:1.2rem;font-weight:900;color:var(--gd);line-height:1.1;}
     .nl-t span{display:block;font-size:.6rem;font-family:'Inter',sans-serif;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);}
     .nc{background:var(--gd);color:var(--cr)!important;padding:.5rem 1.2rem;border-radius:100px;text-decoration:none;font-size:.9rem;font-weight:500;}
     .nlinks{display:flex;gap:1.5rem;align-items:center;}
     .nlinks a{text-decoration:none;color:var(--gd);font-size:.9rem;font-weight:500;}
 
     .hero{padding:7rem 4rem 3rem;background:linear-gradient(135deg,var(--gd) 0%,var(--gm) 100%);color:var(--cr);}
-    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);margin-bottom:.8rem;}
+    .hero h1{font-family:'Inter',-apple-system,sans-serif;font-size:clamp(2rem,4vw,3rem);margin-bottom:.8rem;}
     .hero p{color:var(--gl);max-width:600px;line-height:1.7;font-size:1rem;}
     .htags{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem;}
     .htag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:var(--cr);font-size:.78rem;padding:.3rem .8rem;border-radius:100px;}
@@ -129,7 +130,7 @@
     .bmain{padding:3rem 4rem;}
     .feat{background:var(--gd);color:var(--cr);border-radius:1.5rem;padding:2.5rem;margin-bottom:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
     .fbadge{display:inline-block;background:var(--sf);color:var(--wh);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .9rem;border-radius:100px;margin-bottom:.8rem;}
-    .feat h2{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.8rem;line-height:1.3;}
+    .feat h2{font-family:'Inter',-apple-system,sans-serif;font-size:1.6rem;margin-bottom:.8rem;line-height:1.3;}
     .feat p{color:var(--gl);font-size:.92rem;line-height:1.7;}
     .fe{font-size:5rem;}
     .btn-f{display:inline-block;background:var(--gl);color:var(--gd);padding:.7rem 1.6rem;border-radius:100px;text-decoration:none;font-weight:600;font-size:.88rem;margin-top:1.2rem;transition:all .2s;}
@@ -144,7 +145,7 @@
     .btag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gf);background:var(--gl);padding:.18rem .55rem;border-radius:100px;margin-bottom:.3rem;}
     .bdate{font-size:.72rem;color:var(--tm);}
     .bcb{padding:0 1.8rem;flex:1;}
-    .bcb h2{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gd);margin-bottom:.5rem;line-height:1.4;}
+    .bcb h2{font-family:'Inter',-apple-system,sans-serif;font-size:1.05rem;color:var(--gd);margin-bottom:.5rem;line-height:1.4;}
     .bcb p{font-size:.86rem;color:var(--tm);line-height:1.65;}
     .insight{background:linear-gradient(90deg,var(--gl),var(--sl));border-left:4px solid var(--gf);border-radius:0 .8rem .8rem 0;padding:.8rem 1.2rem;margin:.8rem 1.8rem;font-size:.82rem;color:var(--gd);font-weight:500;font-style:italic;}
     .bkws{padding:.8rem 1.8rem 0;display:flex;gap:.4rem;flex-wrap:wrap;}
@@ -160,7 +161,7 @@
     .empty{text-align:center;padding:4rem;color:var(--tm);}
 
     .nls{background:var(--sl);padding:3rem 4rem;text-align:center;}
-    .nls h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gd);margin-bottom:.5rem;}
+    .nls h3{font-family:'Inter',-apple-system,sans-serif;font-size:1.6rem;color:var(--gd);margin-bottom:.5rem;}
     .nls p{color:var(--tm);margin-bottom:1.5rem;}
     .nlf{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;max-width:460px;margin:0 auto;}
     .nlf input{flex:1;min-width:200px;padding:.8rem 1.2rem;border:2px solid var(--gl);border-radius:100px;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;background:var(--wh);}

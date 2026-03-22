@@ -81,9 +81,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Preload critical fonts to avoid render blocking -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet"/></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet"/></noscript>
 
   <style>
     :root {
@@ -102,6 +102,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+    h1, h2, h3, h4 { font-family: 'Inter', -apple-system, sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
 
     /* ── NAV ── */
     nav {
@@ -114,7 +115,7 @@
     }
     .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
     .nav-logo img { height: 52px; width: 52px; border-radius: 50%; object-fit: cover; }
-    .nav-logo-text { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 900; color: var(--green-deep); line-height: 1.1; }
+    .nav-logo-text { font-family: 'Inter', -apple-system, sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--green-deep); line-height: 1.1; }
     .nav-logo-text span { display: block; font-size: 0.6rem; font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
     .nav-links { display: flex; gap: 1.5rem; align-items: center; }
     .nav-links a { text-decoration: none; color: var(--green-deep); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
@@ -144,7 +145,7 @@
       opacity: 0.4; pointer-events: none;
     }
     .hero-tag { display: inline-block; background: var(--saffron-light); color: var(--green-deep); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.2rem; }
-    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; color: var(--green-deep); margin-bottom: 0.6rem; }
+    .hero h1 { font-family: 'Inter', -apple-system, sans-serif; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; color: var(--green-deep); margin-bottom: 0.6rem; }
     .hero h1 .hindi { font-family: 'Noto Sans Devanagari', sans-serif; display: block; font-size: clamp(1.4rem, 3vw, 2.2rem); color: var(--green-mid); font-weight: 600; margin-top: 0.4rem; }
     .hero-sub { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin: 1.5rem 0 2.5rem; max-width: 480px; }
     .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -165,13 +166,13 @@
     /* ── STATS ── */
     .stats-bar { background: var(--green-deep); color: var(--cream); display: flex; justify-content: space-around; padding: 2rem 4rem; flex-wrap: wrap; gap: 2rem; }
     .stat { text-align: center; }
-    .stat-num { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; font-weight: 900; color: var(--saffron); display: block; }
+    .stat-num { font-family: 'Inter', -apple-system, sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--saffron); display: block; }
     .stat-label { font-size: 0.85rem; color: var(--green-light); margin-top: 0.2rem; }
 
     /* ── SECTIONS ── */
     section { padding: 5rem 4rem; }
     .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-fresh); margin-bottom: 0.8rem; }
-    .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--green-deep); line-height: 1.2; margin-bottom: 1rem; }
+    .section-title { font-family: 'Inter', -apple-system, sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--green-deep); line-height: 1.2; margin-bottom: 1rem; }
     .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 560px; }
 
     /* ── WHY ── */
@@ -181,7 +182,7 @@
     .why-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
     .why-card:hover::before { transform: scaleX(1); }
     .why-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .why-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: var(--green-deep); margin-bottom: 0.5rem; }
+    .why-card h3 { font-family: 'Inter', -apple-system, sans-serif; font-size: 1.2rem; color: var(--green-deep); margin-bottom: 0.5rem; }
     .why-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
     /* ── PLANS ── */
@@ -191,13 +192,13 @@
     .plan-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
     .plan-card.featured { border-color: var(--green-fresh); background: var(--green-deep); color: var(--cream); }
     .plan-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--saffron); color: var(--white); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 100px; white-space: nowrap; }
-    .plan-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 0.3rem; }
+    .plan-card h3 { font-family: 'Inter', -apple-system, sans-serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 0.3rem; }
     .plan-card.featured h3 { color: var(--cream); }
     .plan-tagline { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; }
     .plan-card.featured .plan-tagline { color: var(--green-light); }
 
     .plan-price-block { margin-bottom: 0.4rem; }
-    .plan-price { font-family: 'Playfair Display', Georgia, serif; font-size: 2.6rem; font-weight: 900; color: var(--green-deep); }
+    .plan-price { font-family: 'Inter', -apple-system, sans-serif; font-size: 2.6rem; font-weight: 900; color: var(--green-deep); }
     .plan-card.featured .plan-price { color: var(--saffron); }
     .plan-price .period { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
     .plan-card.featured .plan-price .period { color: var(--green-light); }
@@ -236,7 +237,7 @@
     .blog-card-top { background: linear-gradient(135deg, var(--green-light) 0%, var(--saffron-light) 100%); padding: 2rem; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; min-height: 120px; }
     .blog-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
     .blog-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-fresh); background: var(--green-light); padding: 0.2rem 0.6rem; border-radius: 100px; margin-bottom: 0.7rem; }
-    .blog-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.5rem; line-height: 1.4; }
+    .blog-card h3 { font-family: 'Inter', -apple-system, sans-serif; font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.5rem; line-height: 1.4; }
     .blog-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
     .blog-meta { margin-top: 1rem; font-size: 0.75rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; }
     .blog-read { font-size: 0.8rem; font-weight: 600; color: var(--green-mid); text-decoration: none; margin-top: 1rem; display: inline-block; }
@@ -253,7 +254,7 @@
 
     /* ── CTA ── */
     .cta-section { background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%); color: var(--cream); text-align: center; padding: 5rem 2rem; }
-    .cta-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
+    .cta-section h2 { font-family: 'Inter', -apple-system, sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
     .cta-section p { font-size: 1.1rem; color: var(--green-light); margin-bottom: 2.5rem; }
     .btn-saffron { background: var(--saffron); color: var(--green-deep); box-shadow: 0 8px 28px rgba(244,166,29,0.4); font-size: 1.1rem; padding: 1rem 2.5rem; }
     .btn-saffron:hover { background: var(--saffron-light); }
@@ -564,28 +565,28 @@
   <!-- CONDITION SPECIFIC DIET -->
   <section style="padding:5rem 4rem;background:var(--cream-dark);" aria-labelledby="diet-title">
     <span style="display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green-fresh);margin-bottom:.8rem;">Condition-Specific Plans</span>
-    <h2 id="diet-title" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--green-deep);line-height:1.2;margin-bottom:.8rem;">Aapki Health Condition Ke Liye<br/>Customized Salad Plan 🌿</h2>
+    <h2 id="diet-title" style="font-family:'Inter',-apple-system,sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--green-deep);line-height:1.2;margin-bottom:.8rem;">Aapki Health Condition Ke Liye<br/>Customized Salad Plan 🌿</h2>
     <p style="font-size:1rem;color:var(--text-muted);margin-bottom:2.5rem;max-width:560px;line-height:1.7;">Tell us your health goal — we customize every meal to support it. WhatsApp us to get started.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;">
       <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+am+interested+in+Weight+Loss+Plan." style="text-decoration:none;background:var(--white);border-radius:1.2rem;padding:1.5rem;border:2px solid #ffe0cc;display:flex;align-items:center;gap:1rem;transition:all .3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="width:48px;height:48px;border-radius:50%;background:#fff0e6;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">⚖️</div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--green-deep);font-weight:700;">Weight Loss</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">High fibre · Low calorie · Portion controlled</div></div>
+        <div><div style="font-family:'Inter',-apple-system,sans-serif;font-size:1rem;color:var(--green-deep);font-weight:700;">Weight Loss</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">High fibre · Low calorie · Portion controlled</div></div>
       </a>
       <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+am+diabetic+and+need+a+Diabetes+Plan." style="text-decoration:none;background:var(--white);border-radius:1.2rem;padding:1.5rem;border:2px solid #cce4ff;display:flex;align-items:center;gap:1rem;transition:all .3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="width:48px;height:48px;border-radius:50%;background:#e8f4ff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">🩸</div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--green-deep);font-weight:700;">Diabetes</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Low GI · No refined carbs · Blood sugar friendly</div></div>
+        <div><div style="font-family:'Inter',-apple-system,sans-serif;font-size:1rem;color:var(--green-deep);font-weight:700;">Diabetes</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Low GI · No refined carbs · Blood sugar friendly</div></div>
       </a>
       <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+have+thyroid+and+need+a+Thyroid+Plan." style="text-decoration:none;background:var(--white);border-radius:1.2rem;padding:1.5rem;border:2px solid #ffd6f0;display:flex;align-items:center;gap:1rem;transition:all .3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="width:48px;height:48px;border-radius:50%;background:#fff0fa;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">🦋</div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--green-deep);font-weight:700;">Thyroid</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Selenium rich · Anti-inflammatory · Hormone support</div></div>
+        <div><div style="font-family:'Inter',-apple-system,sans-serif;font-size:1rem;color:var(--green-deep);font-weight:700;">Thyroid</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Selenium rich · Anti-inflammatory · Hormone support</div></div>
       </a>
       <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+have+PCOD+and+need+a+PCOD+Plan." style="text-decoration:none;background:var(--white);border-radius:1.2rem;padding:1.5rem;border:2px solid #e8ccff;display:flex;align-items:center;gap:1rem;transition:all .3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="width:48px;height:48px;border-radius:50%;background:#f5eeff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">🌸</div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--green-deep);font-weight:700;">PCOD / PCOS</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Omega-3 rich · Hormone balance · Low sugar</div></div>
+        <div><div style="font-family:'Inter',-apple-system,sans-serif;font-size:1rem;color:var(--green-deep);font-weight:700;">PCOD / PCOS</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Omega-3 rich · Hormone balance · Low sugar</div></div>
       </a>
       <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+want+a+High+Protein+%2F+Muscle+Gain+Plan." style="text-decoration:none;background:var(--white);border-radius:1.2rem;padding:1.5rem;border:2px solid var(--green-light);display:flex;align-items:center;gap:1rem;transition:all .3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="width:48px;height:48px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">💪</div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--green-deep);font-weight:700;">High Protein / Muscle</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Extra paneer · Protein seeds · Muscle recovery</div></div>
+        <div><div style="font-family:'Inter',-apple-system,sans-serif;font-size:1rem;color:var(--green-deep);font-weight:700;">High Protein / Muscle</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem;">Extra paneer · Protein seeds · Muscle recovery</div></div>
       </a>
     </div>
     <div style="text-align:center;margin-top:2rem;">
@@ -640,7 +641,7 @@
   <!-- GOOGLE REVIEWS -->
   <section style="padding:5rem 4rem;background:var(--cream-dark);" aria-labelledby="reviews-title">
     <span style="display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green-fresh);margin-bottom:.8rem;">Customer Reviews</span>
-    <h2 id="reviews-title" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--green-deep);margin-bottom:.6rem;">What Ahmedabad Is Saying ⭐</h2>
+    <h2 id="reviews-title" style="font-family:'Inter',-apple-system,sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--green-deep);margin-bottom:.6rem;">What Ahmedabad Is Saying ⭐</h2>
     <p style="font-size:1rem;color:var(--text-muted);margin-bottom:2rem;">Real reviews from real customers across Ahmedabad.</p>
     <!-- NOSH7 Google Reviews Widget -->
     
@@ -660,7 +661,7 @@
       <!-- Delivery Slots -->
       <div class="delivery-col">
         <span style="display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green-fresh);margin-bottom:.8rem;">🚗 Delivery Slots</span>
-        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;color:var(--green-deep);margin-bottom:.6rem;">4 Delivery Batches</h2>
+        <h2 style="font-family:'Inter',-apple-system,sans-serif;font-size:1.8rem;color:var(--green-deep);margin-bottom:.6rem;">4 Delivery Batches</h2>
         <p style="font-size:.9rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.6;">Salads prepared 1 hour before each batch — fresh like home-made. Each batch delivers within 2 hours.</p>
         <div style="display:flex;flex-direction:column;gap:.8rem;">
           <div style="background:var(--white);border:1px solid var(--green-light);border-left:4px solid var(--green-fresh);border-radius:.8rem;padding:1rem 1.2rem;display:flex;align-items:center;gap:1rem;">
@@ -685,7 +686,7 @@
       <!-- FAQ -->
       <div class="faq-col">
         <span style="display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green-fresh);margin-bottom:.8rem;">❓ FAQ</span>
-        <h2 id="faq-heading" style="font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;color:var(--green-deep);margin-bottom:1.5rem;">Common Questions</h2>
+        <h2 id="faq-heading" style="font-family:'Inter',-apple-system,sans-serif;font-size:1.8rem;color:var(--green-deep);margin-bottom:1.5rem;">Common Questions</h2>
         <div style="display:flex;flex-direction:column;gap:0;">
           <details style="border-bottom:1px solid var(--green-light);padding:.9rem 0;">
             <summary style="font-weight:600;color:var(--green-deep);cursor:pointer;font-size:.92rem;list-style:none;display:flex;justify-content:space-between;">How many delivery slots do you have? <span>+</span></summary>
@@ -719,7 +720,7 @@
   <!-- CTA BANNER -->
   <section style="background:linear-gradient(135deg,#0d2b1e 0%,#1a3c2e 50%,#2d6a4f 100%);padding:5rem 2rem;text-align:center;color:var(--cream);position:relative;overflow:hidden;">
     <div style="position:relative;z-index:1;max-width:640px;margin:0 auto;">
-      <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Healthy Life ka Pehla Step Aaj Lo 🌿</h2>
+      <h2 style="font-family:'Inter',-apple-system,sans-serif;font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">Healthy Life ka Pehla Step Aaj Lo 🌿</h2>
       <p style="color:var(--green-light);font-size:1.05rem;margin-bottom:2.5rem;line-height:1.7;">5-day trial sirf ₹999. Cancel karo kabhi bhi. Sirf fresh. Sirf NOSH7.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
         <a href="https://www.nosh7.com/order" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--saffron);color:var(--green-deep);padding:.85rem 2rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:.95rem;transition:all .25s;">Abhi Subscribe Karo →</a>
@@ -734,7 +735,7 @@
     <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;">
       <div class="footer-brand">
         <img src="/assets/logo.png" alt="NOSH7 logo" style="height:60px;width:60px;border-radius:50%;object-fit:cover;margin-bottom:.8rem;"/>
-        <p style="font-family:'Playfair Display',Georgia,serif;color:var(--green-fresh);font-size:1rem;font-weight:700;margin-bottom:.3rem;">Eat Healthy, Feel Great</p>
+        <p style="font-family:'Inter',-apple-system,sans-serif;color:var(--green-fresh);font-size:1rem;font-weight:700;margin-bottom:.3rem;">Eat Healthy, Feel Great</p>
         <p>Ahmedabad ka pure veg salad subscription. No eggs. Daily delivery. Real results.</p>
       </div>
       <div>
