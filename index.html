@@ -129,7 +129,9 @@
     .hero-hindi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: clamp(1.3rem, 2.5vw, 1.9rem); color: var(--green-mid); font-weight: 600; display: block; margin-top: 0.4rem; }
     .hero-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; margin: 1.5rem 0 2rem; max-width: 460px; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-    .hero-trust { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .hero-trust { display: inline-flex; align-items: center; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-pill); padding: 0.45rem 1rem; gap: 0; flex-wrap: nowrap; backdrop-filter: blur(8px); }
+    .hero-trust .trust-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 700; color: var(--green-deep); padding: 0 0.9rem; white-space: nowrap; }
+    .hero-trust .trust-item + .trust-item { border-left: 1px solid rgba(26,60,46,0.2); }
     .trust-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; color: var(--muted); }
     .trust-item svg { flex-shrink: 0; }
     .trust-stars { color: var(--saffron); font-size: 0.75rem; letter-spacing: -0.5px; }
@@ -320,6 +322,16 @@
       .blog-section { padding: 3.5rem 2rem; }
     }
 
+    /* ── SEO ARTICLE ── */
+    .seo-section { padding: 5rem 4rem; background: var(--cream-dark); }
+    .seo-inner { max-width: 860px; margin: 0 auto; }
+    .seo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2.5rem; }
+    .seo-cta-bar { background: var(--white); border-radius: var(--radius-lg); padding: 1.5rem 2rem; margin-top: 2.5rem; border-left: 4px solid var(--green-fresh); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    @media (max-width: 768px) {
+      .seo-section { padding: 3rem 1.5rem; }
+      .seo-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+
     /* ── CTA ── */
     .cta-section { background: linear-gradient(135deg, #0d2b1e 0%, var(--green-deep) 50%, var(--green-mid) 100%); padding: 5rem 2rem; text-align: center; color: var(--cream); position: relative; overflow: hidden; }
     .cta-section::before { content: ''; position: absolute; top: -50%; left: -20%; width: 140%; height: 200%; background: radial-gradient(ellipse at center, rgba(82,183,136,.12) 0%, transparent 60%); pointer-events: none; }
@@ -384,7 +396,7 @@
       .hero { grid-template-columns: 1fr; padding: 5.5rem 2rem 3rem; gap: 2rem; text-align: center; }
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-btns { justify-content: center; }
-      .hero-trust { justify-content: center; }
+      .hero-trust { justify-content: center; flex-wrap: wrap; }
       .hero-visual { order: -1; }
       .hero-img-wrap { width: 240px; height: 240px; }
       .nav-links { display: none; }
@@ -800,20 +812,13 @@
 
 <!-- ── MENU ── -->
 <section class="menu-section" id="menu" aria-labelledby="menu-title">
-  <div class="menu-header-bar">
-    <div>
-      <span class="section-tag">Subscription Meal Menu</span>
-      <h2 class="section-title" id="menu-title">April 2026 <span class="menu-month-badge">Dinner Menu</span></h2>
-    </div>
-    <div class="menu-stats-strip">avg 377 cal &middot; 18g protein &middot; 52g carbs &middot; All bowls 380 to 480g</div>
-  </div>
-  <div style="text-align:center; padding:2.5rem 1rem 1rem;">
-    <p style="color:var(--green-light); font-size:0.9rem; margin-bottom:1.5rem; line-height:1.7;">25+ varieties rotated every week &middot; avg 377 cal &middot; 18g protein &middot; All bowls 380 to 480g &middot; Jain option available</p>
-    <a href="https://nosh7.in/assets/nosh7-menu.jpg" target="_blank" rel="noopener" class="btn btn-saffron" style="font-size:1rem; padding:1rem 2.5rem;">
+  <div style="text-align:center; padding:1rem 1rem 2rem;">
+    <span class="section-tag">Subscription Meal Menu</span>
+    <h2 class="section-title" id="menu-title" style="color:var(--cream);">April 2026 <span class="menu-month-badge">Dinner Menu</span></h2>
+    <a href="/assets/nosh7-menu-april2026.jpg" target="_blank" rel="noopener" class="btn btn-saffron" style="font-size:1rem; padding:1rem 2.5rem; margin-top:1.5rem;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-      View April 2026 Menu
+      View April Menu
     </a>
-    <p style="margin-top:1rem; font-size:0.78rem; color:rgba(183,228,199,.5);">Opens full menu image &middot; Updated monthly</p>
   </div>
 </section>
 
@@ -1104,12 +1109,12 @@
 </section>
 
 <!-- ── SEO ARTICLE ── -->
-<section style="padding:5rem 4rem; background:var(--cream-dark);" aria-labelledby="seo-article-title">
-  <div style="max-width:860px; margin:0 auto;">
+<section class="seo-section" aria-labelledby="seo-article-title">
+  <div class="seo-inner">
     <span class="section-tag">Healthy Living in Ahmedabad</span>
     <h2 class="section-title" id="seo-article-title">Your Guide to Healthy Meals in Ahmedabad</h2>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; margin-top:2.5rem;">
+    <div class="seo-grid">
       <div>
         <h3 style="font-family:'Playfair Display SC',serif;font-size:1.1rem;color:var(--green-deep);margin-bottom:0.7rem;">Why Finding Diet Food in Ahmedabad Is Hard</h3>
         <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;">Most people searching for <strong>diet food in Ahmedabad</strong> face the same problem: restaurants prioritise taste over nutrition, and cooking healthy at home takes time most working professionals simply don't have. Oil-heavy street food, erratic portion sizes, and no visibility into calories make it nearly impossible to eat clean consistently.</p>
@@ -1136,7 +1141,7 @@
       </div>
     </div>
 
-    <div style="background:var(--white);border-radius:var(--radius-lg);padding:1.5rem 2rem;margin-top:2.5rem;border-left:4px solid var(--green-fresh);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <div class="seo-cta-bar">
       <div>
         <div style="font-family:'Playfair Display SC',serif;font-size:1rem;color:var(--green-deep);margin-bottom:0.3rem;">Ready to start eating healthy in Ahmedabad?</div>
         <div style="font-size:0.85rem;color:var(--muted);">Try 5 days for ₹999. No commitment, full refund if you're not happy.</div>
