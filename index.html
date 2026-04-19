@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOSH7 | Ahmedabad ki Fresh Salad Subscription | Eat Healthy, Feel Great</title>
+  <meta name="description" content="NOSH7, Ahmedabad ka #1 pure veg salad cloud kitchen. 5-day trial ₹999, 26-day ₹4914, 60-day ₹10740. Fresh daily, no preservatives, Jain options. Order now." />
+  <meta name="keywords" content="salad delivery Ahmedabad, healthy meal subscription Ahmedabad, cloud kitchen Ahmedabad, pure veg salad Gujarat, NOSH7, सलाद डिलीवरी अहमदाबाद, Jain friendly salad" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://nosh7.in/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nosh7.in/" />
+  <meta property="og:title" content="NOSH7 | Ahmedabad ki Fresh Salad Subscription" />
+  <meta property="og:description" content="Fresh salads, health drinks. Trial ₹999, 26-day ₹4914, 60-day ₹10740. Ahmedabad delivery." />
+  <meta property="og:image" content="https://nosh7.in/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":["FoodEstablishment","LocalBusiness"],"@id":"https://nosh7.in/#business","name":"NOSH7","description":"Ahmedabad ka pure veg salad cloud kitchen. Fresh salad subscriptions, health drinks, healthy seeds.","url":"https://nosh7.in","sameAs":["https://www.nosh7.com","https://www.instagram.com/nosh7salad"],"telephone":"+91-9712989498","logo":"https://nosh7.in/assets/logo.png","address":{"@type":"PostalAddress","streetAddress":"5A, Akshat Avenue, Opposite Revtri Tower, Ramdevnagar Road, Satellite","addressLocality":"Ahmedabad","addressRegion":"Gujarat","postalCode":"380015","addressCountry":"IN"},"servesCuisine":"Pure Vegetarian, Salads","suitableForDiet":"VegetarianDiet","priceRange":"₹₹","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"20:00"}}]}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@700;900&family=Karla:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-deep:   #1a3c2e;
+      --green-mid:    #2d6a4f;
+      --green-fresh:  #52b788;
+      --green-light:  #b7e4c7;
+      --cream:        #faf7f0;
+      --cream-dark:   #f0ebe0;
+      --saffron:      #f4a61d;
+      --saffron-lt:   #fde68a;
+      --charcoal:     #1c1c1c;
+      --muted:        #5a6b62;
+      --white:        #ffffff;
+      --radius-lg:    1.5rem;
+      --radius-md:    1rem;
+      --radius-pill:  100px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Karla', -apple-system, sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; line-height: 1.6; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ── UTILS ── */
+    .section-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-fresh); margin-bottom: 0.75rem; }
+    .section-title { font-family: 'Playfair Display SC', Georgia, serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--green-deep); line-height: 1.2; margin-bottom: 0.9rem; }
+    .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 560px; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: var(--radius-pill); font-family: 'Karla', sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; }
+    .btn-primary { background: var(--green-deep); color: var(--cream); box-shadow: 0 4px 20px rgba(26,60,46,.25); }
+    .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,60,46,.3); }
+    .btn-saffron { background: var(--saffron); color: var(--green-deep); box-shadow: 0 4px 20px rgba(244,166,29,.35); }
+    .btn-saffron:hover { background: #e09210; transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--green-deep); border: 2px solid var(--green-light); }
+    .btn-outline:hover { border-color: var(--green-fresh); background: var(--green-light); }
+    .btn-block { display: flex; width: 100%; justify-content: center; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.65rem 2rem;
+      background: rgba(250,247,240,0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--green-light);
+      transition: box-shadow 0.2s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .nav-logo img { height: 48px; width: 48px; border-radius: 50%; object-fit: cover; }
+    .nav-logo-text { font-family: 'Playfair Display SC', serif; font-size: 1.25rem; font-weight: 700; color: var(--green-deep); line-height: 1; }
+    .nav-logo-text span { display: block; font-family: 'Karla', sans-serif; font-size: 0.58rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { color: var(--green-deep); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-fresh); }
+    .nav-cta { background: var(--green-deep); color: var(--cream) !important; padding: 0.45rem 1.2rem; border-radius: var(--radius-pill); }
+    .nav-cta:hover { background: var(--green-mid) !important; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 0.4rem; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--green-deep); border-radius: 2px; transition: all .3s; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    .nav-mobile { display: none; position: fixed; top: 65px; left: 0; right: 0; background: var(--cream); border-bottom: 2px solid var(--green-light); padding: 1rem 1.5rem 1.5rem; z-index: 190; flex-direction: column; gap: 0.2rem; box-shadow: 0 8px 30px rgba(0,0,0,.08); }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { display: flex; align-items: center; gap: 0.7rem; padding: 0.75rem 1rem; border-radius: var(--radius-md); color: var(--green-deep); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background .2s; }
+    .nav-mobile a:hover { background: var(--cream-dark); }
+    .nav-mobile .mob-cta { background: var(--green-deep); color: var(--cream) !important; justify-content: center; margin-top: 0.5rem; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 4rem 5rem;
+      gap: 4rem;
+      position: relative; overflow: hidden;
+      background: var(--cream);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 65% 70% at 85% 50%, #d0f0e0 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--saffron-lt); color: var(--green-deep); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: var(--radius-pill); margin-bottom: 1.3rem; }
+    .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; color: var(--green-deep); margin-bottom: 0.5rem; }
+    .hero h1 .accent { color: var(--green-fresh); }
+    .hero-hindi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: clamp(1.3rem, 2.5vw, 1.9rem); color: var(--green-mid); font-weight: 600; display: block; margin-top: 0.4rem; }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; margin: 1.5rem 0 2rem; max-width: 460px; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-trust { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+    .trust-item svg { flex-shrink: 0; }
+    .trust-stars { color: var(--saffron); font-size: 0.75rem; letter-spacing: -0.5px; }
+
+    .hero-visual { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; }
+    .hero-img-wrap {
+      width: 420px; height: 420px; border-radius: 50%;
+      background: linear-gradient(135deg, #e0f5ea 0%, #c5edda 100%);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 40px 100px rgba(26,60,46,.18);
+      animation: float 5s ease-in-out infinite;
+      position: relative; overflow: hidden;
+    }
+    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+    .hero-spin-badge {
+      position: absolute; top: 24px; right: -8px;
+      width: 96px; height: 96px; border-radius: 50%;
+      background: var(--saffron);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Karla', sans-serif; font-size: 0.7rem; font-weight: 700;
+      color: var(--white); text-align: center; line-height: 1.3;
+      box-shadow: 0 8px 24px rgba(244,166,29,.45);
+    }
+    .hero-spin-outer { animation: spin-slow 9s linear infinite; }
+    .hero-spin-inner { animation: spin-slow 9s linear infinite reverse; }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+    /* ── PLATFORM BAR ── */
+    .platform-bar {
+      background: var(--green-deep);
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .platform-bar span { color: var(--green-light); font-size: 0.82rem; font-weight: 600; }
+    .pbar-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.1rem; border-radius: var(--radius-pill); font-family: 'Karla', sans-serif; font-weight: 700; font-size: 0.85rem; text-decoration: none; transition: opacity .2s; }
+    .pbar-btn:hover { opacity: 0.85; }
+    .pbar-zomato { background: #CB202D; color: #fff; }
+    .pbar-swiggy { background: #FC8019; color: #fff; }
+    .pbar-direct { background: var(--saffron); color: var(--green-deep); }
+    .pbar-wa { background: #25D366; color: #fff; }
+    .pbar-call { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+
+    /* ── STATS ── */
+    .stats-bar { background: var(--green-mid); padding: 2.5rem 4rem; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; }
+    .stat { text-align: center; }
+    .stat-num { font-family: 'Playfair Display SC', serif; font-size: 2.4rem; font-weight: 700; color: var(--saffron); display: block; }
+    .stat-label { font-size: 0.82rem; color: var(--green-light); margin-top: 0.2rem; letter-spacing: 0.04em; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { padding: 5rem 4rem; background: var(--white); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .how-step { text-align: center; padding: 2.5rem 2rem; border-radius: var(--radius-lg); background: var(--cream); border: 1px solid var(--cream-dark); position: relative; }
+    .how-step::after { content: ''; position: absolute; top: 50%; right: -1rem; transform: translateY(-50%); width: 2rem; height: 2px; background: var(--green-light); }
+    .how-step:last-child::after { display: none; }
+    .step-num { font-family: 'Playfair Display SC', serif; font-size: 3rem; font-weight: 700; color: var(--green-light); line-height: 1; margin-bottom: 1rem; display: block; }
+    .step-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--green-deep); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; }
+    .how-step h3 { font-family: 'Playfair Display SC', serif; font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.5rem; }
+    .how-step p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── PLANS ── */
+    .plans-section { padding: 5rem 4rem; background: var(--cream-dark); }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .plan-card { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; border: 2px solid transparent; position: relative; transition: all .3s; }
+    .plan-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.08); }
+    .plan-card.featured { background: var(--green-deep); border-color: var(--green-fresh); }
+    .plan-hot { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--saffron); color: var(--white); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.28rem 1rem; border-radius: var(--radius-pill); white-space: nowrap; }
+    .plan-title { font-family: 'Playfair Display SC', serif; font-size: 1.3rem; color: var(--green-deep); margin-bottom: 0.2rem; }
+    .plan-card.featured .plan-title { color: var(--cream); }
+    .plan-hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .plan-card.featured .plan-hint { color: var(--green-light); }
+    .plan-price { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: var(--green-deep); line-height: 1; }
+    .plan-card.featured .plan-price { color: var(--saffron); }
+    .plan-period { font-family: 'Karla', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--muted); }
+    .plan-card.featured .plan-period { color: var(--green-light); }
+    .plan-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0 1.4rem; }
+    .pill { font-size: 0.72rem; font-weight: 700; padding: 0.22rem 0.7rem; border-radius: var(--radius-pill); }
+    .pill-day { background: var(--green-light); color: var(--green-deep); }
+    .pill-off { background: var(--saffron-lt); color: #7a4a00; }
+    .pill-save { background: #fff0f0; color: #c0392b; }
+    .plan-card.featured .pill-day { background: rgba(183,228,199,.18); color: var(--green-light); }
+    .plan-card.featured .pill-off { background: var(--saffron); color: var(--white); }
+    .plan-card.featured .pill-save { background: rgba(255,255,255,.1); color: #ffc8c8; }
+    .plan-features { list-style: none; margin-bottom: 1.8rem; }
+    .plan-feature { display: flex; align-items: center; gap: 0.6rem; font-size: 0.87rem; color: var(--muted); padding: 0.45rem 0; border-bottom: 1px solid var(--cream-dark); }
+    .plan-card.featured .plan-feature { color: var(--green-light); border-color: rgba(255,255,255,.08); }
+    .plan-check { color: var(--green-fresh); flex-shrink: 0; }
+
+    /* ── WHY ── */
+    .why-section { padding: 5rem 4rem; background: var(--cream); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .why-card { background: var(--white); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid var(--cream-dark); transition: all .3s; position: relative; overflow: hidden; cursor: default; }
+    .why-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--green-fresh), var(--saffron)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.07); }
+    .why-card:hover::before { transform: scaleX(1); }
+    .why-icon-wrap { width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--cream-dark); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+    .why-card h3 { font-family: 'Playfair Display SC', serif; font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.5rem; }
+    .why-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── MENU ── */
+    .menu-section { padding: 5rem 4rem; background: var(--green-deep); color: var(--cream); }
+    .menu-section .section-title { color: var(--cream); }
+    .menu-section .section-tag { color: var(--saffron); }
+    .menu-section .section-sub { color: var(--green-light); }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 1.2rem; margin-top: 3rem; }
+    .menu-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-lg); padding: 1.8rem 1.4rem; text-align: center; transition: all .3s; cursor: default; }
+    .menu-card:hover { background: rgba(255,255,255,.12); transform: translateY(-4px); }
+    .menu-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(82,183,136,.2); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .menu-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--cream); }
+    .menu-card p { font-size: 0.78rem; color: var(--green-light); line-height: 1.55; }
+
+    /* ── APRIL MENU ── */
+    .menu-header-bar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; }
+    .menu-month-badge { font-family:'Playfair Display SC',serif; font-size:2rem; font-weight:700; color:var(--saffron); letter-spacing:0.05em; }
+    .menu-stats-strip { background:var(--green-mid); border-radius:var(--radius-pill); padding:0.4rem 1.2rem; font-size:0.78rem; font-weight:600; color:var(--green-light); letter-spacing:0.04em; text-align:center; }
+    .menu-notice { background:rgba(183,228,199,.12); border:1px solid rgba(183,228,199,.3); border-radius:var(--radius-md); padding:0.6rem 1rem; font-size:0.75rem; color:var(--green-light); text-align:center; margin-bottom:2rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; }
+    .menu-cols { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; }
+    .dish-row { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-md); padding:0.9rem 1rem; display:flex; gap:0.8rem; align-items:flex-start; transition:background .2s; }
+    .dish-row:hover { background:rgba(255,255,255,.11); }
+    .dish-date { min-width:32px; height:32px; border-radius:50%; background:var(--green-mid); display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700; color:white; flex-shrink:0; margin-top:2px; }
+    .dish-info { flex:1; }
+    .dish-name { font-weight:700; font-size:0.92rem; color:var(--cream); margin-bottom:0.25rem; }
+    .dish-badges { display:flex; gap:0.35rem; flex-wrap:wrap; margin-bottom:0.3rem; }
+    .dbadge { font-size:0.65rem; font-weight:700; padding:0.15rem 0.5rem; border-radius:var(--radius-pill); }
+    .dbadge-cal { background:var(--saffron); color:var(--green-deep); }
+    .dbadge-pro { background:rgba(82,183,136,.3); color:#b7e4c7; }
+    .dish-desc { font-size:0.78rem; color:rgba(183,228,199,.75); line-height:1.5; margin-bottom:0.3rem; }
+    .dish-dressing { display:inline-block; font-size:0.65rem; font-weight:700; background:rgba(244,166,29,.15); color:var(--saffron); padding:0.15rem 0.55rem; border-radius:var(--radius-pill); border:1px solid rgba(244,166,29,.25); }
+    .menu-drink-cta { background:rgba(244,166,29,.12); border:2px solid rgba(244,166,29,.35); border-radius:var(--radius-lg); padding:1.2rem 1.5rem; margin-top:2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .menu-drink-cta h4 { font-family:'Playfair Display SC',serif; font-size:1rem; color:var(--saffron); margin-bottom:0.2rem; }
+    .menu-drink-cta p { font-size:0.82rem; color:var(--green-light); }
+    .menu-drink-price { font-family:'Playfair Display',serif; font-size:2rem; font-weight:900; color:var(--saffron); white-space:nowrap; }
+    .menu-drink-price span { font-size:0.75rem; font-weight:500; color:var(--green-light); }
+    @media (max-width:768px) { .menu-cols { grid-template-columns:1fr; } .menu-month-badge { font-size:1.5rem; } }
+
+    /* ── HEALTH PLANS ── */
+    .health-section { padding: 5rem 4rem; background: var(--cream-dark); }
+    .health-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+    .health-card { background: var(--white); border-radius: var(--radius-lg); padding: 1.5rem; border: 2px solid var(--cream-dark); display: flex; align-items: center; gap: 1rem; text-decoration: none; transition: all .3s; cursor: pointer; }
+    .health-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.09); }
+    .health-icon-wrap { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .health-card h3 { font-family: 'Playfair Display SC', serif; font-size: 0.95rem; color: var(--green-deep); margin-bottom: 0.2rem; }
+    .health-card p { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── DELIVERY + FAQ ── */
+    .df-section { padding: 5rem 4rem; background: var(--cream); }
+    .df-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; max-width: 1100px; margin: 0 auto; }
+    .slot-card { background: var(--white); border: 1px solid var(--green-light); border-radius: var(--radius-md); padding: 1rem 1.2rem; display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
+    .slot-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .slot-time { font-weight: 700; color: var(--green-deep); font-size: 0.93rem; }
+    .slot-sub { font-size: 0.76rem; color: var(--muted); }
+    details { border-bottom: 1px solid var(--green-light); }
+    details summary { font-weight: 600; color: var(--green-deep); cursor: pointer; font-size: 0.91rem; padding: 0.9rem 0; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] summary .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform .2s; flex-shrink: 0; }
+    details p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; padding-bottom: 0.9rem; }
+
+    /* ── TESTIMONIALS ── */
+    .testi-section { padding: 5rem 4rem; background: var(--white); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .testi-card { background: var(--cream); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid var(--cream-dark); }
+    .testi-stars { display: flex; gap: 3px; margin-bottom: 1rem; }
+    .testi-text { font-size: 0.93rem; color: var(--charcoal); line-height: 1.7; font-style: italic; }
+    .testi-author { margin-top: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .testi-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display SC', serif; font-size: 0.9rem; font-weight: 700; color: var(--green-deep); flex-shrink: 0; }
+    .testi-name { font-weight: 700; color: var(--green-deep); font-size: 0.88rem; }
+    .testi-loc { font-size: 0.76rem; color: var(--muted); }
+
+    /* ── CTA ── */
+    .cta-section { background: linear-gradient(135deg, #0d2b1e 0%, var(--green-deep) 50%, var(--green-mid) 100%); padding: 5rem 2rem; text-align: center; color: var(--cream); position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: -50%; left: -20%; width: 140%; height: 200%; background: radial-gradient(ellipse at center, rgba(82,183,136,.12) 0%, transparent 60%); pointer-events: none; }
+    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; position: relative; }
+    .cta-section p { font-size: 1.05rem; color: var(--green-light); margin-bottom: 2.5rem; line-height: 1.7; position: relative; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--charcoal); color: rgba(255,255,255,.5); padding: 3.5rem 4rem 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 3rem; justify-content: space-between; padding-bottom: 3rem; }
+    .footer-brand { max-width: 240px; }
+    .footer-brand img { height: 58px; width: 58px; border-radius: 50%; object-fit: cover; margin-bottom: 0.9rem; }
+    .footer-brand-name { font-family: 'Playfair Display SC', serif; color: var(--green-fresh); font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .footer-brand p { font-size: 0.83rem; line-height: 1.65; }
+    .footer-col h4 { color: rgba(255,255,255,.9); font-size: 0.88rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.04em; }
+    .footer-col a { display: block; font-size: 0.83rem; color: rgba(255,255,255,.45); text-decoration: none; margin-bottom: 0.5rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--green-fresh); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding: 1.2rem 0; text-align: center; font-size: 0.77rem; }
+    .footer-bottom a { color: var(--green-fresh); text-decoration: none; }
+
+    /* ── FLOATING BTNS ── */
+    .floating-btns { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 500; display: flex; flex-direction: column; gap: 0.6rem; }
+    .float-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(0,0,0,.2); }
+    .float-btn:hover { transform: scale(1.1); }
+    .float-wa { background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,.4); }
+    .float-call { background: var(--green-deep); box-shadow: 0 4px 20px rgba(26,60,46,.4); }
+
+    /* ── FADE ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-content > * { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+    .hero-content > *:nth-child(1) { animation-delay: .1s; }
+    .hero-content > *:nth-child(2) { animation-delay: .2s; }
+    .hero-content > *:nth-child(3) { animation-delay: .35s; }
+    .hero-content > *:nth-child(4) { animation-delay: .5s; }
+    .hero-content > *:nth-child(5) { animation-delay: .65s; }
+
+    /* ── HERO LOGO CIRCLE ── */
+    .hero-logo-circle {
+      width: 400px; height: 400px; border-radius: 50%;
+      background: linear-gradient(135deg, #e8f8f0 0%, #d0f0e0 100%);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 30px 80px rgba(26,60,46,0.15);
+      animation: float 4s ease-in-out infinite;
+      overflow: hidden;
+    }
+    .hero-logo-circle img { width: 88%; height: 88%; object-fit: contain; border-radius: 50%; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-18px); }
+    }
+    @media (max-width: 900px) {
+      .hero-logo-circle { width: 220px; height: 220px; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .how-step::after { display: none; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+    }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 5.5rem 2rem 3rem; gap: 2rem; text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-btns { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .hero-visual { order: -1; }
+      .hero-img-wrap { width: 240px; height: 240px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .df-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0.6rem 1.2rem; }
+      .how-section, .plans-section, .why-section, .menu-section, .health-section, .df-section, .testi-section { padding: 3rem 1.5rem; }
+      .stats-bar { padding: 1.5rem 1rem; gap: 1rem; }
+      footer { padding: 2.5rem 1.5rem 0; }
+      .footer-inner { gap: 2rem; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .health-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 4.5rem 1rem 2.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero-img-wrap { width: 190px; height: 190px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .stats-bar { flex-direction: column; align-items: center; }
+      .platform-bar { gap: 0.5rem; }
+      .cta-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <a class="nav-logo" href="/" aria-label="NOSH7 home">
+    <img src="https://nosh7.in/assets/logo.png" alt="NOSH7 logo" onerror="this.style.display='none'" />
+    <div class="nav-logo-text">NOSH7 <span>Eat Healthy, Feel Great</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="#plans">Plans</a>
+    <a href="#menu">Menu</a>
+    <a href="#health">Health Goals</a>
+    <a href="/blog.html">Blog</a>
+    <a href="https://www.nosh7.com/order" class="nav-cta" target="_blank" rel="noopener">Order Now</a>
+  </div>
+  <button class="hamburger" id="ham" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="navMob">
+  <a href="#plans">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Plans &amp; Pricing
+  </a>
+  <a href="#menu">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
+    This Week's Menu
+  </a>
+  <a href="#health">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    Health Goals
+  </a>
+  <a href="/blog.html">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Health Blog
+  </a>
+  <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp Us
+  </a>
+  <a href="https://www.nosh7.com/order" class="mob-cta" target="_blank" rel="noopener">Order Now &rarr;</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" aria-label="Hero section">
+  <div class="hero-content">
+    <div class="hero-badge-pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Ahmedabad ka #1 Pure Veg Salad Cloud Kitchen
+    </div>
+    <h1>
+      Healthy Eating,
+      <span class="hindi accent">अब बिल्कुल आसान है।</span>
+    </h1>
+    <p class="hero-sub">
+      Fresh salads, health drinks aur seeds. 5-day trial se shuru karo. Seasonal ingredients, Jain Dairy paneer, no preservatives. Sirf <strong>₹179/day</strong> se.
+    </p>
+    <div class="hero-btns">
+      <a href="https://www.nosh7.com/order" class="btn btn-saffron" target="_blank" rel="noopener">
+        Subscription Shuru Karo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#plans" class="btn btn-outline">Plans Dekho</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#FC8019"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span class="trust-stars">★★★★★</span> Swiggy 4.8
+      </div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#4285F4"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span class="trust-stars">★★★★★</span> Google 4.6
+      </div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#CB202D"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span class="trust-stars">★★★★</span> Zomato 4.4
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── PLATFORM BAR ── -->
+<div class="platform-bar" id="order-platforms">
+  <span>Order via:</span>
+  <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" class="pbar-btn pbar-zomato" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><rect width="24" height="24" rx="4" fill="#CB202D"/><text x="12" y="17" text-anchor="middle" font-size="14" font-weight="900" font-family="Arial" fill="white">Z</text></svg>
+    Zomato
+  </a>
+  <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457" class="pbar-btn pbar-swiggy" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#FC8019"/><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="900" font-family="Arial" fill="white">SW</text></svg>
+    Swiggy
+  </a>
+  <a href="https://www.nosh7.com/order" class="pbar-btn pbar-direct" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    nosh7.com
+  </a>
+  <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" class="pbar-btn pbar-wa" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+  <a href="tel:+919712989498" class="pbar-btn pbar-call">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    Call Us
+  </a>
+</div>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="stat"><span class="stat-num">2000+</span><div class="stat-label">Happy Customers in Ahmedabad</div></div>
+  <div class="stat"><span class="stat-num">₹179</span><div class="stat-label">Per Day on Best Plan</div></div>
+  <div class="stat"><span class="stat-num">25%</span><div class="stat-label">Max Savings vs Single Meal</div></div>
+  <div class="stat"><span class="stat-num">0</span><div class="stat-label">Preservatives. Ever.</div></div>
+  <div class="stat"><span class="stat-num">25+</span><div class="stat-label">Salad Varieties, Rotated Weekly</div></div>
+</div>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section" aria-labelledby="how-title">
+  <span class="section-tag">How It Works</span>
+  <h2 class="section-title" id="how-title">3 Easy Steps to<br/>Healthy Eating</h2>
+  <p class="section-sub">Subscription shuru karna sirf teen steps mein: choose, order, receive.</p>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="step-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <h3>Choose Your Plan</h3>
+      <p>5-day trial ya directly 26 or 60-day plan select karo. Apna health goal batao: weight loss, diabetes, ya muscle gain.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      </div>
+      <h3>Order on nosh7.com</h3>
+      <p>nosh7.com pe order karo. Jain option select kar sakte ho. WhatsApp pe bhi customization ho sakti hai.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <h3>Receive Fresh Daily</h3>
+      <p>4 daily batches available. Ek select karo. Salad prepare hota hai delivery se 1 ghante pehle. No frozen, no pre-made.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PLANS ── -->
+<section class="plans-section" id="plans" aria-labelledby="plans-title">
+  <span class="section-tag">Subscription Plans</span>
+  <h2 class="section-title" id="plans-title">Apna Plan Choose Karo</h2>
+  <p class="section-sub">Single meal cost ₹239 se compare karo. Kitna bachta hai dekho.</p>
+  <div class="plans-grid">
+
+    <!-- Trial -->
+    <div class="plan-card">
+      <div class="plan-title">Trial Pack</div>
+      <div class="plan-hint">Pehle try karo, phir decide karo</div>
+      <div class="plan-price">₹999 <span class="plan-period">/ 5 days</span></div>
+      <div class="plan-pills">
+        <span class="pill pill-day">₹200 / day</span>
+        <span class="pill pill-off">16% OFF</span>
+        <span class="pill pill-save">Save ₹196</span>
+      </div>
+      <ul class="plan-features">
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          5 fresh salads (1 per day)
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Jain Dairy original paneer
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Ahmedabad home delivery
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          No commitment, no auto-renewal
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Full refund if not satisfied
+        </li>
+      </ul>
+      <a href="https://www.nosh7.com/order" class="btn btn-primary btn-block" target="_blank" rel="noopener">Trial Shuru Karo &rarr;</a>
+    </div>
+
+    <!-- 26-day -->
+    <div class="plan-card featured">
+      <div class="plan-hot">Most Popular</div>
+      <div class="plan-title">26-Day Plan</div>
+      <div class="plan-hint">Best for working professionals</div>
+      <div class="plan-price">₹4,914 <span class="plan-period">/ 26 days</span></div>
+      <div class="plan-pills">
+        <span class="pill pill-day">₹189 / day</span>
+        <span class="pill pill-off">21% OFF</span>
+        <span class="pill pill-save">Save ₹1,300</span>
+      </div>
+      <ul class="plan-features">
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          26 fresh salads (daily delivery)
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Health drink FREE for first week, then ₹29/day
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Seeds pack every week
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Health goal consultation included
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Pause anytime
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Jain option available
+        </li>
+      </ul>
+      <a href="https://www.nosh7.com/order" class="btn btn-saffron btn-block" target="_blank" rel="noopener">26-Day Plan Lo &rarr;</a>
+    </div>
+
+    <!-- 60-day -->
+    <div class="plan-card">
+      <div class="plan-hot" style="background:var(--green-mid);">Best Value</div>
+      <div class="plan-title">60-Day Plan</div>
+      <div class="plan-hint">Maximum results, maximum savings</div>
+      <div class="plan-price">₹10,740 <span class="plan-period">/ 60 days</span></div>
+      <div class="plan-pills">
+        <span class="pill pill-day">₹179 / day</span>
+        <span class="pill pill-off">25% OFF</span>
+        <span class="pill pill-save">Save ₹3,600</span>
+      </div>
+      <ul class="plan-features">
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          60 fresh salads (daily delivery)
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Health drink FREE for first 2 weeks, then ₹29/day
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Seeds in every single meal
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          2 nutritionist consultations
+        </li>
+        <li class="plan-feature">
+          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Priority WhatsApp support
+        </li>
+      </ul>
+      <a href="https://www.nosh7.com/order" class="btn btn-primary btn-block" target="_blank" rel="noopener">60-Day Plan Lo &rarr;</a>
+    </div>
+
+  </div>
+  <p style="text-align:center; margin-top:1.5rem; font-size:0.83rem; color:var(--muted);">
+    *Single meal ₹239 | Free delivery across Ahmedabad | All orders at
+    <a href="https://www.nosh7.com/order" style="color:var(--green-mid); font-weight:700;">nosh7.com/order</a>
+  </p>
+</section>
+
+<!-- ── WHY NOSH7 ── -->
+<section class="why-section" aria-labelledby="why-title">
+  <span class="section-tag">Why NOSH7?</span>
+  <h2 class="section-title" id="why-title">Kya Hai Jo NOSH7 Ko<br/>Alag Banata Hai?</h2>
+  <p class="section-sub">Ahmedabad mein healthy khana easy nahi tha. Phir NOSH7 aaya.</p>
+  <div class="why-grid">
+
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><path d="M12 22V2M2 12h20"/><path d="M12 2C6 6 2 10 2 12s4 10 10 10 10-6 10-10S18 6 12 2z"/></svg>
+      </div>
+      <h3>Seasonal Fresh Ingredients</h3>
+      <p>We use what nature offers this season. Peak nutrition, better taste, maximum freshness in every bowl.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h3>Flexible Subscription</h3>
+      <p>5-day trial se start karo. Pasand aaye toh 26 ya 60-day plan lo. Jitna save karna ho utna lo.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h3>Health Goal Focused</h3>
+      <p>Every meal designed for your specific goal: weight loss, diabetes, thyroid, PCOD, or muscle gain.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <h3>Always Fresh, Never Pre-Made</h3>
+      <p>Har order 1 ghante pehle prepare hota hai. No frozen, no pre-made. Sirf aaj ka, sirf fresh.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <h3>Health Drinks + Seeds Included</h3>
+      <p>Salads ke saath health drinks aur seeds. Complete nutrition ek single subscription mein.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <h3>Nutritionist Backed Menu</h3>
+      <p>Menu designed with Ahmedabad nutritionists for real, measurable health results you can feel.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MENU ── -->
+<section class="menu-section" id="menu" aria-labelledby="menu-title">
+  <div class="menu-header-bar">
+    <div>
+      <span class="section-tag">Subscription Meal Menu</span>
+      <h2 class="section-title" id="menu-title">April 2026 <span class="menu-month-badge">Dinner Menu</span></h2>
+    </div>
+    <div class="menu-stats-strip">avg 377 cal &middot; 18g protein &middot; 52g carbs &middot; All bowls 380 to 480g</div>
+  </div>
+  <div class="menu-notice">All bowls are between 380 and 480 grams &nbsp;|&nbsp; Jain option available on request</div>
+  <div class="menu-cols" style="display:none"><!-- old grid replaced -->
+
+  </div><!-- end hidden old grid -->
+
+  <div class="menu-cols">
+    <div class="dish-row"><div class="dish-date">1</div><div class="dish-info"><div class="dish-name">Rice Noodle Veggie Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">390 Cal</span><span class="dbadge dbadge-pro">11g P</span></div><div class="dish-desc">Light rice noodles with seasonal vegetables</div><span class="dish-dressing">Schezwan Dressing</span></div></div>
+    <div class="dish-row"><div class="dish-date">14</div><div class="dish-info"><div class="dish-name">Greek Avocado Fusion</div><div class="dish-badges"><span class="dbadge dbadge-cal">390 Cal</span><span class="dbadge dbadge-pro">23g P</span></div><div class="dish-desc">Mediterranean flavors fused with creamy avocado</div><span class="dish-dressing">Tahini</span></div></div>
+    <div class="dish-row"><div class="dish-date">2</div><div class="dish-info"><div class="dish-name">Mint Paneer Rice Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">410 Cal</span><span class="dbadge dbadge-pro">19g P</span></div><div class="dish-desc">Cottage cheese with fresh mint marinade</div><span class="dish-dressing">Siracha Curd Dressing</span></div></div>
+    <div class="dish-row"><div class="dish-date">15</div><div class="dish-info"><div class="dish-name">Healthy Bhel</div><div class="dish-badges"><span class="dbadge dbadge-cal">330 Cal</span><span class="dbadge dbadge-pro">22g P</span></div><div class="dish-desc">Protein-rich sprouts and paneer with sweet apple, roasted peanuts and minty curd dressing</div><span class="dish-dressing">Tangy Curd</span></div></div>
+    <div class="dish-row"><div class="dish-date">3</div><div class="dish-info"><div class="dish-name">Schezwan Healthy Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">395 Cal</span><span class="dbadge dbadge-pro">22g P</span></div><div class="dish-desc">Spicy Schezwan-style veggies over grains</div><span class="dish-dressing">Tahini</span></div></div>
+    <div class="dish-row"><div class="dish-date">16</div><div class="dish-info"><div class="dish-name">Basil Dalia Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">390 Cal</span><span class="dbadge dbadge-pro">14g P</span></div><div class="dish-desc">Fibre-rich whole wheat dalia with crisp vegetables, cooling curd dressing and fresh basil</div><span class="dish-dressing">Basil Dressing</span></div></div>
+    <div class="dish-row"><div class="dish-date">4</div><div class="dish-info"><div class="dish-name">Chana Chatpata</div><div class="dish-badges"><span class="dbadge dbadge-cal">330 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Tangy chickpeas with spices and fresh herbs</div><span class="dish-dressing">Tangy Imli</span></div></div>
+    <div class="dish-row"><div class="dish-date">17</div><div class="dish-info"><div class="dish-name">Caesar Salad Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">360 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Classic Caesar with crunchy croutons and parmesan</div><span class="dish-dressing">Creamy Caesar</span></div></div>
+    <div class="dish-row"><div class="dish-date">6</div><div class="dish-info"><div class="dish-name">Asian Lentil Rice Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">420 Cal</span><span class="dbadge dbadge-pro">18g P</span></div><div class="dish-desc">Aromatic lentils over jasmine rice, Asian style</div><span class="dish-dressing">Mint Curd</span></div></div>
+    <div class="dish-row"><div class="dish-date">18</div><div class="dish-info"><div class="dish-name">Tex Mexican Rice Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">440 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Tex-Mex spiced rice with beans and corn</div><span class="dish-dressing">Salsa</span></div></div>
+    <div class="dish-row"><div class="dish-date">7</div><div class="dish-info"><div class="dish-name">Rainbow Sautee Veg Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">280 Cal</span><span class="dbadge dbadge-pro">10g P</span></div><div class="dish-desc">Colorful sauteed seasonal vegetables over base</div><span class="dish-dressing">Soy Siracha</span></div></div>
+    <div class="dish-row"><div class="dish-date">20</div><div class="dish-info"><div class="dish-name">Quinoa Creamy Salad</div><div class="dish-badges"><span class="dbadge dbadge-cal">370 Cal</span><span class="dbadge dbadge-pro">15g P</span></div><div class="dish-desc">Protein-rich quinoa with creamy dressing</div><span class="dish-dressing">Schezwan</span></div></div>
+    <div class="dish-row"><div class="dish-date">8</div><div class="dish-info"><div class="dish-name">Palak Cheela Wrap</div><div class="dish-badges"><span class="dbadge dbadge-cal">370 Cal</span><span class="dbadge dbadge-pro">22g P</span></div><div class="dish-desc">Fibre-rich palak and chana flour wrap stuffed with crunchy vegetables. Light, protein-packed and energizing.</div><span class="dish-dressing">Siracha Curd Dressing</span></div></div>
+    <div class="dish-row"><div class="dish-date">21</div><div class="dish-info"><div class="dish-name">Chana Chatpata</div><div class="dish-badges"><span class="dbadge dbadge-cal">330 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Tangy chickpeas with spices and fresh herbs</div><span class="dish-dressing">Tangy Imli</span></div></div>
+    <div class="dish-row"><div class="dish-date">9</div><div class="dish-info"><div class="dish-name">Lobia Salad</div><div class="dish-badges"><span class="dbadge dbadge-cal">330 Cal</span><span class="dbadge dbadge-pro">21g P</span></div><div class="dish-desc">Black-eyed peas salad with lemon chilli dressing</div><span class="dish-dressing">Lemon Chilli</span></div></div>
+    <div class="dish-row"><div class="dish-date">22</div><div class="dish-info"><div class="dish-name">Wheat Mexican Wrap</div><div class="dish-badges"><span class="dbadge dbadge-cal">450 Cal</span><span class="dbadge dbadge-pro">17g P</span></div><div class="dish-desc">Whole wheat wrap with Mexican-style filling</div><span class="dish-dressing">Creamy Salsa</span></div></div>
+    <div class="dish-row"><div class="dish-date">10</div><div class="dish-info"><div class="dish-name">Burrito Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">450 Cal</span><span class="dbadge dbadge-pro">18g P</span></div><div class="dish-desc">Seasoned rice, protein and fresh salsa with hearty beans, crisp veggies and a dollop of creamy curd</div></div></div>
+    <div class="dish-row"><div class="dish-date">23</div><div class="dish-info"><div class="dish-name">Schezwan Healthy Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">395 Cal</span><span class="dbadge dbadge-pro">22g P</span></div><div class="dish-desc">Spicy Schezwan-style veggies over grains</div><span class="dish-dressing">Tahini</span></div></div>
+    <div class="dish-row"><div class="dish-date">11</div><div class="dish-info"><div class="dish-name">Nosh 7 Special</div><div class="dish-badges"><span class="dbadge dbadge-cal">390 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Our signature house special with seasonal produce</div><span class="dish-dressing">Basil Tomato</span></div></div>
+    <div class="dish-row"><div class="dish-date">24</div><div class="dish-info"><div class="dish-name">Tandoori Paneer</div><div class="dish-badges"><span class="dbadge dbadge-cal">380 Cal</span><span class="dbadge dbadge-pro">25g P</span></div><div class="dish-desc">Smoky tandoori-spiced cottage cheese with greens</div><span class="dish-dressing">Mint Curd</span></div></div>
+    <div class="dish-row"><div class="dish-date">13</div><div class="dish-info"><div class="dish-name">Mint Paneer Rice Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">410 Cal</span><span class="dbadge dbadge-pro">19g P</span></div><div class="dish-desc">Cottage cheese with fresh mint marinade</div><span class="dish-dressing">Siracha Curd Dressing</span></div></div>
+    <div class="dish-row" style="background:rgba(255,255,255,.03);border-style:dashed;"><div class="dish-info"><div style="font-size:0.72rem;color:rgba(183,228,199,.6);line-height:1.6;"><strong style="color:var(--green-light);">Jain Meal</strong> = No Onion, Garlic, Ginger, Beetroot, Carrot, Potato, Mushroom &nbsp;|&nbsp; Customise your meal at ₹49/day</div></div></div>
+  </div>
+
+  <div class="menu-drink-cta">
+    <div>
+      <h4>Healthy Drink Add-On</h4>
+      <p>Mint Lemonade &nbsp;|&nbsp; Beetroot Carrot Juice &nbsp;|&nbsp; Nimbu Sharbat (300ml)</p>
+    </div>
+    <div class="menu-drink-price">₹29<span>/day</span></div>
+    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+want+to+add+the+healthy+drink+add-on." class="btn btn-saffron" target="_blank" rel="noopener" style="font-size:0.85rem;padding:0.7rem 1.4rem;">Add Drinks &rarr;</a>
+  </div>
+
+  <div style="text-align:center; margin-top:2rem;">
+    <a href="/assets/nosh7-menu.jpg" target="_blank" rel="noopener" class="btn btn-outline" style="color:var(--cream); border-color:var(--green-fresh);">View Full Menu Image &rarr;</a>
+  </div>
+</section>
+
+<!-- ── HEALTH PLANS ── -->
+<section class="health-section" id="health" aria-labelledby="health-title">
+  <span class="section-tag">Condition-Specific Plans</span>
+  <h2 class="section-title" id="health-title">Aapki Health Condition Ke Liye<br/>Customized Plan</h2>
+  <p class="section-sub">Apna health goal batao. Hum har meal aapke liye customize karenge. WhatsApp pe connect karo.</p>
+  <div class="health-grid">
+
+    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+am+interested+in+Weight+Loss+Plan." class="health-card" style="border-color:#ffe0cc;">
+      <div class="health-icon-wrap" style="background:#fff0e6;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e07000" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <h3>Weight Loss</h3>
+        <p>High fibre · Low calorie · Portion controlled</p>
+      </div>
+    </a>
+
+    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+am+diabetic+and+need+a+Diabetes+Plan." class="health-card" style="border-color:#cce4ff;">
+      <div class="health-icon-wrap" style="background:#e8f4ff;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="2"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M12 12v4M12 16l-2 2M12 16l2 2"/></svg>
+      </div>
+      <div>
+        <h3>Diabetes Management</h3>
+        <p>Low GI · No refined carbs · Blood sugar friendly</p>
+      </div>
+    </a>
+
+    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+have+thyroid+and+need+a+Thyroid+Plan." class="health-card" style="border-color:#ffd6f0;">
+      <div class="health-icon-wrap" style="background:#fff0fa;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#cc0077" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <div>
+        <h3>Thyroid Support</h3>
+        <p>Selenium rich · Anti-inflammatory · Hormone support</p>
+      </div>
+    </a>
+
+    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+have+PCOD+and+need+a+PCOD+Plan." class="health-card" style="border-color:#e8ccff;">
+      <div class="health-icon-wrap" style="background:#f5eeff;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8800cc" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      </div>
+      <div>
+        <h3>PCOD / PCOS</h3>
+        <p>Omega-3 rich · Hormone balance · Low sugar</p>
+      </div>
+    </a>
+
+    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+want+a+High+Protein+%2F+Muscle+Gain+Plan." class="health-card" style="border-color:var(--green-light);">
+      <div class="health-icon-wrap" style="background:var(--green-light);">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a3c2e" stroke-width="2"><path d="M6.5 6.5h11M6.5 17.5h11M3 12h18M6 6.5v11M18 6.5v11"/></svg>
+      </div>
+      <div>
+        <h3>High Protein / Muscle</h3>
+        <p>Extra paneer · Protein seeds · Muscle recovery</p>
+      </div>
+    </a>
+
+    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+need+an+Office+Tiffin+Service." class="health-card" style="border-color:#d4edda;">
+      <div class="health-icon-wrap" style="background:#e8f8ee;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a7a3c" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div>
+        <h3>Office Tiffin Service</h3>
+        <p>Bulk orders · Corporate wellness · Regular delivery</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── DELIVERY + FAQ ── -->
+<section class="df-section" aria-labelledby="faq-title">
+  <div class="df-grid">
+    <div>
+      <span class="section-tag">Delivery Slots</span>
+      <h2 class="section-title" id="delivery-title">4 Daily Batches</h2>
+      <p style="font-size:0.9rem; color:var(--muted); margin-bottom:1.5rem; line-height:1.65;">Prepared fresh 1 hour before each batch. Delivers within 2 hours.</p>
+
+      <div class="slot-card">
+        <div class="slot-dot" style="background:#52b788;"></div>
+        <div>
+          <div class="slot-time">9:30 AM to 11:30 AM</div>
+          <div class="slot-sub">Morning batch · Prep starts 8:30 AM</div>
+        </div>
+      </div>
+      <div class="slot-card">
+        <div class="slot-dot" style="background:#f4a61d;"></div>
+        <div>
+          <div class="slot-time">11:30 AM to 1:30 PM</div>
+          <div class="slot-sub">Lunch batch · Prep starts 10:30 AM</div>
+        </div>
+      </div>
+      <div class="slot-card">
+        <div class="slot-dot" style="background:#2d6a4f;"></div>
+        <div>
+          <div class="slot-time">4:30 PM to 6:30 PM</div>
+          <div class="slot-sub">Evening batch · Prep starts 3:30 PM</div>
+        </div>
+      </div>
+      <div class="slot-card">
+        <div class="slot-dot" style="background:#1a3c2e;"></div>
+        <div>
+          <div class="slot-time">6:30 PM to 8:30 PM</div>
+          <div class="slot-sub">Dinner batch · Prep starts 5:30 PM</div>
+        </div>
+      </div>
+      <p style="font-size:0.8rem; color:var(--muted); margin-top:1rem;">
+        All deliveries within Ahmedabad.
+        <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" style="color:var(--green-mid); font-weight:700;">WhatsApp to confirm your slot &rarr;</a>
+      </p>
+    </div>
+
+    <div>
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title" id="faq-title">Common Questions</h2>
+
+      <details>
+        <summary>How many delivery batches are there? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>4 daily batches: 9:30 to 11:30 AM, 11:30 AM to 1:30 PM, 4:30 to 6:30 PM, and 6:30 to 8:30 PM. Each batch is prepared fresh 1 hour before delivery.</p>
+      </details>
+      <details>
+        <summary>How fresh are the salads? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>Prepared exactly 1 hour before delivery. No pre-made, no frozen. Fresh like home-made, every single order.</p>
+      </details>
+      <details>
+        <summary>Do you have Jain options? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>Yes! Jain Dairy original paneer used. Root vegetables, onion, and garlic can be excluded. Select Jain option at time of purchase.</p>
+      </details>
+      <details>
+        <summary>What is included in the 5-day trial? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>₹999 for 5 fresh salads (one per day). No auto-renewal, no commitment. Full refund if not satisfied.</p>
+      </details>
+      <details>
+        <summary>Can I pause or cancel my subscription? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>Trial has no auto-renewal. 26-day plan: pause anytime. 60-day plan: 3-day notice required. WhatsApp 9712989498 for changes.</p>
+      </details>
+      <details>
+        <summary>Do you offer condition-specific plans? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <p>Yes! Weight Loss, Diabetes, Thyroid, PCOD/PCOS, High Protein, and Office Tiffin plans available. WhatsApp with your health goal for customization.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── GOOGLE REVIEWS ── -->
+<section class="testi-section" aria-labelledby="testi-title">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:0.5rem;">
+    <div>
+      <span class="section-tag">Google Reviews</span>
+      <h2 class="section-title" id="testi-title">What Ahmedabad Is Saying</h2>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.8rem;background:var(--cream-dark);border-radius:var(--radius-lg);padding:0.9rem 1.4rem;">
+      <svg width="28" height="28" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      <div>
+        <div style="font-family:'Playfair Display SC',serif;font-size:1.6rem;font-weight:700;color:var(--green-deep);line-height:1;">4.6</div>
+        <div style="display:flex;gap:2px;margin:2px 0;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div style="font-size:0.7rem;color:var(--muted);">Google Rating</div>
+      </div>
+    </div>
+  </div>
+  <p class="section-sub" style="margin-bottom:2rem;">Real reviews from customers across Ahmedabad.</p>
+
+  <!-- SociableKit Google Reviews Widget -->
+  <div class="sk-ww-google-reviews" data-embed-id="25663596"></div>
+  <script src="https://widgets.sociablekit.com/google-reviews/widget.js" async></script>
+
+  <!-- Fallback static reviews shown while widget loads or if it fails -->
+  <div class="testi-grid" id="staticReviews">
+    <div class="testi-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.8rem;">
+        <div class="testi-stars">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <p class="testi-text">"Started the 5-day trial and never looked back. Now on my 3rd month of the 60-day plan. Lost 6 kg and feel so much more energetic. The salads are genuinely delicious!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div><div class="testi-name">Priya Shah</div><div class="testi-loc">Satellite, Ahmedabad</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.8rem;">
+        <div class="testi-stars">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <p class="testi-text">"As a diabetic, I was struggling to find food that was both healthy AND tasty. NOSH7's diabetes plan is a game-changer. My sugar levels have stabilized noticeably."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">R</div>
+        <div><div class="testi-name">Rakesh Patel</div><div class="testi-loc">Prahlad Nagar, Ahmedabad</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.8rem;">
+        <div class="testi-stars">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <p class="testi-text">"Our office of 15 people subscribed to the corporate tiffin plan. Everyone loves the variety. Delivery is always on time and the freshness is unmatched."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div><div class="testi-name">Meera Desai</div><div class="testi-loc">Bodakdev, Ahmedabad</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+    <a href="https://g.page/r/CeuSXgSA4qXEEBE/review" target="_blank" rel="noopener" class="btn btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="white"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="white"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="white"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="white"/></svg>
+      Leave a Google Review
+    </a>
+  </div>
+</section>
+
+<!-- ── SEO ARTICLE ── -->
+<section style="padding:5rem 4rem; background:var(--cream-dark);" aria-labelledby="seo-article-title">
+  <div style="max-width:860px; margin:0 auto;">
+    <span class="section-tag">Healthy Living in Ahmedabad</span>
+    <h2 class="section-title" id="seo-article-title">Your Guide to Healthy Meals in Ahmedabad</h2>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; margin-top:2.5rem;">
+      <div>
+        <h3 style="font-family:'Playfair Display SC',serif;font-size:1.1rem;color:var(--green-deep);margin-bottom:0.7rem;">Why Finding Diet Food in Ahmedabad Is Hard</h3>
+        <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;">Most people searching for <strong>diet food in Ahmedabad</strong> face the same problem: restaurants prioritise taste over nutrition, and cooking healthy at home takes time most working professionals simply don't have. Oil-heavy street food, erratic portion sizes, and no visibility into calories make it nearly impossible to eat clean consistently.</p>
+        <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;margin-top:0.8rem;">NOSH7 was built specifically for Ahmedabad to solve this. Every bowl is designed by nutritionists, prepared fresh in Satellite, and delivered to your doorstep across the city — without the guesswork.</p>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display SC',serif;font-size:1.1rem;color:var(--green-deep);margin-bottom:0.7rem;">What Makes a Truly Healthy Meal in Ahmedabad?</h3>
+        <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;">A genuinely <strong>healthy meal in Ahmedabad</strong> goes beyond just being vegetarian. It needs the right balance of protein (for muscle and satiety), complex carbs (for energy), fibre (for gut health), and healthy fats. NOSH7's bowls average 18g of protein and 377 calories per serving — designed for real, measurable results.</p>
+        <ul style="font-size:0.87rem;color:var(--muted);line-height:1.9;margin-top:0.7rem;padding-left:1.2rem;">
+          <li>No refined flour or preservatives</li>
+          <li>Seasonal, locally sourced produce</li>
+          <li>Nutritionist-designed macros in every bowl</li>
+          <li>Jain-friendly options available</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display SC',serif;font-size:1.1rem;color:var(--green-deep);margin-bottom:0.7rem;">Salad Subscription vs. Ordering Daily: Which Is Better?</h3>
+        <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;">For anyone serious about a <strong>healthy tiffin service in Ahmedabad</strong>, a subscription beats daily ordering every time. With NOSH7, you lock in a plan, we handle the rest. No decision fatigue, no temptation to order junk, and you save up to 25% compared to single-meal pricing. The 26-day plan works out to just ₹189/day.</p>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display SC',serif;font-size:1.1rem;color:var(--green-deep);margin-bottom:0.7rem;">Weight Loss Meals in Ahmedabad That Actually Work</h3>
+        <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;">Searching for <strong>weight loss meal delivery in Ahmedabad</strong>? NOSH7's weight loss plan is high-fibre, low-calorie, and portion-controlled. Customers regularly report losing 3 to 6 kg over a 60-day plan. The key is consistency — and we make consistency easy by delivering every single day.</p>
+        <p style="font-size:0.9rem;color:var(--muted);line-height:1.75;margin-top:0.7rem;">We also offer condition-specific plans for diabetes, thyroid, PCOD/PCOS, and high-protein muscle-building — all with nutritionist-backed customisation.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border-radius:var(--radius-lg);padding:1.5rem 2rem;margin-top:2.5rem;border-left:4px solid var(--green-fresh);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <div style="font-family:'Playfair Display SC',serif;font-size:1rem;color:var(--green-deep);margin-bottom:0.3rem;">Ready to start eating healthy in Ahmedabad?</div>
+        <div style="font-size:0.85rem;color:var(--muted);">Try 5 days for ₹999. No commitment, full refund if you're not happy.</div>
+      </div>
+      <a href="https://www.nosh7.com/order" class="btn btn-saffron" target="_blank" rel="noopener" style="font-size:0.9rem;">Start Your Trial &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section" aria-labelledby="cta-title">
+  <h2 id="cta-title">Healthy Life Ka Pehla Step<br/>Aaj Hi Lo</h2>
+  <p>5-day trial sirf ₹999. Cancel karo kabhi bhi. Sirf fresh. Sirf NOSH7.</p>
+  <div class="cta-btns">
+    <a href="https://www.nosh7.com/order" class="btn btn-saffron" target="_blank" rel="noopener">
+      Abhi Subscribe Karo
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" class="btn pbar-zomato" style="padding:0.85rem 2rem;" target="_blank" rel="noopener">Order on Zomato</a>
+    <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457" class="btn pbar-swiggy" style="padding:0.85rem 2rem;" target="_blank" rel="noopener">Order on Swiggy</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://nosh7.in/assets/logo.png" alt="NOSH7 logo" onerror="this.style.display='none'" />
+      <div class="footer-brand-name">Eat Healthy, Feel Great</div>
+      <p>Ahmedabad ka pure veg salad subscription. No eggs. Daily fresh delivery. Real results.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#plans">Plans &amp; Pricing</a>
+      <a href="#menu">This Week's Menu</a>
+      <a href="#health">Health Goals</a>
+      <a href="/ahmedabad.html">Ahmedabad Delivery</a>
+      <a href="/blog.html">Health Blog</a>
+      <a href="https://www.nosh7.com/order" target="_blank" rel="noopener">Order Now</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:contact@nosh7.in">contact@nosh7.in</a>
+      <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" target="_blank" rel="noopener">WhatsApp: 9712989498</a>
+      <a href="tel:+919712989498">Call: +91 97129 89498</a>
+      <a href="https://share.google/YHl8ctFaKCW0Hw0Aq" target="_blank" rel="noopener">Satellite, Ahmedabad, Gujarat</a>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <a href="https://www.instagram.com/nosh7salad" target="_blank" rel="noopener">Instagram @nosh7salad</a>
+      <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" target="_blank" rel="noopener">Zomato (4.4 stars)</a>
+      <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457" target="_blank" rel="noopener">Swiggy (4.8 stars)</a>
+      <a href="https://www.nosh7.com" target="_blank" rel="noopener">nosh7.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 NOSH7 · Eat Healthy, Feel Great |
+    <a href="https://nosh7.in">nosh7.in</a> |
+    <a href="https://www.nosh7.com">nosh7.com</a> |
+    100% Pure Veg &middot; No Eggs &middot; Made with love in Ahmedabad, India
+  </div>
+</footer>
+
+<!-- ── FLOATING BUTTONS ── -->
+<div class="floating-btns" role="complementary" aria-label="Quick contact">
+  <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" class="float-btn float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <a href="tel:+919712989498" class="float-btn float-call" aria-label="Call NOSH7">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<script>
+  // Nav scroll shadow
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Hamburger menu
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('navMob');
+  ham.addEventListener('click', () => {
+    const isOpen = mob.classList.toggle('open');
+    ham.classList.toggle('open', isOpen);
+    ham.setAttribute('aria-expanded', isOpen);
+  });
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mob.classList.remove('open');
+    ham.classList.remove('open');
+    ham.setAttribute('aria-expanded', false);
+  }));
+  document.addEventListener('click', (e) => {
+    if (!ham.contains(e.target) && !mob.contains(e.target)) {
+      mob.classList.remove('open');
+      ham.classList.remove('open');
+      ham.setAttribute('aria-expanded', false);
+    }
+  });
+
+  // FAQ icon toggle
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      const icon = d.querySelector('.faq-icon');
+      if (icon) icon.style.transform = d.open ? 'rotate(45deg)' : '';
+    });
+  });
+</script>
+</body>
+</html>
