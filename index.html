@@ -90,11 +90,21 @@
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
-    .nav-mobile { display: none; position: fixed; top: 65px; left: 0; right: 0; background: var(--cream); border-bottom: 2px solid var(--green-light); padding: 1rem 1.5rem 1.5rem; z-index: 190; flex-direction: column; gap: 0.2rem; box-shadow: 0 8px 30px rgba(0,0,0,.08); }
+    .nav-mobile { display: none; position: fixed; top: 65px; left: 0; right: 0; background: var(--cream); border-bottom: 2px solid var(--green-light); padding: 1rem 1.5rem 1.5rem; z-index: 190; flex-direction: column; gap: 0.2rem; box-shadow: 0 8px 30px rgba(0,0,0,.08); max-height: calc(100vh - 65px); overflow-y: auto; }
     .nav-mobile.open { display: flex; }
     .nav-mobile a { display: flex; align-items: center; gap: 0.7rem; padding: 0.75rem 1rem; border-radius: var(--radius-md); color: var(--green-deep); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background .2s; }
     .nav-mobile a:hover { background: var(--cream-dark); }
     .nav-mobile .mob-cta { background: var(--green-deep); color: var(--cream) !important; justify-content: center; margin-top: 0.5rem; }
+    .mob-group { display: flex; flex-direction: column; }
+    .mob-group-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; border-radius: var(--radius-md); color: var(--green-deep); font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: background .2s; user-select: none; }
+    .mob-group-header:hover { background: var(--cream-dark); }
+    .mob-group-header .mob-chevron { transition: transform 0.25s; flex-shrink: 0; }
+    .mob-group.open .mob-chevron { transform: rotate(180deg); }
+    .mob-group-body { display: none; flex-direction: column; padding-left: 0.75rem; border-left: 2px solid var(--green-light); margin-left: 1rem; margin-bottom: 0.25rem; }
+    .mob-group.open .mob-group-body { display: flex; }
+    .mob-sub { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.75rem; border-radius: var(--radius-md); color: var(--muted); font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: all .2s; }
+    .mob-sub:hover { color: var(--green-deep); background: var(--cream-dark); }
+    .mob-section-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-fresh); padding: 0.6rem 1rem 0.2rem; }
 
     /* ── HERO ── */
     .hero {
@@ -404,24 +414,78 @@
 </nav>
 
 <div class="nav-mobile" id="navMob">
-  <a href="#plans">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    Plans &amp; Pricing
-  </a>
+
+  <!-- Plans group -->
+  <div class="mob-group" id="mobPlans">
+    <div class="mob-group-header" onclick="toggleMobGroup('mobPlans')">
+      <span style="display:flex;align-items:center;gap:0.6rem;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Plans &amp; Pricing
+      </span>
+      <svg class="mob-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="mob-group-body">
+      <div class="mob-section-label">Choose a plan</div>
+      <a href="#plans" class="mob-sub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Trial Pack &mdash; 5 Days &middot; ₹999
+      </a>
+      <a href="#plans" class="mob-sub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f4a61d" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        26-Day Plan &middot; ₹4,914 <span style="font-size:0.72rem;color:var(--green-fresh);margin-left:4px;">Popular</span>
+      </a>
+      <a href="#plans" class="mob-sub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green-mid)" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        60-Day Plan &middot; ₹10,740 <span style="font-size:0.72rem;color:var(--green-fresh);margin-left:4px;">Best Value</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Health Goals group -->
+  <div class="mob-group" id="mobHealth">
+    <div class="mob-group-header" onclick="toggleMobGroup('mobHealth')">
+      <span style="display:flex;align-items:center;gap:0.6rem;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Health Goals
+      </span>
+      <svg class="mob-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="mob-group-body">
+      <div class="mob-section-label">Condition-specific plans</div>
+      <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+am+interested+in+Weight+Loss+Plan." class="mob-sub" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e07000" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Weight Loss
+      </a>
+      <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+am+diabetic+and+need+a+Diabetes+Plan." class="mob-sub" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="2"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M12 12v4"/></svg>
+        Diabetes Management
+      </a>
+      <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+need+a+Thyroid+Support+Plan." class="mob-sub" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Thyroid Support
+      </a>
+      <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+need+a+PCOD+PCOS+Plan." class="mob-sub" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#be185d" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2"/></svg>
+        PCOD / PCOS
+      </a>
+      <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+need+a+High+Protein+Muscle+Gain+Plan." class="mob-sub" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+        High Protein / Muscle Gain
+      </a>
+    </div>
+  </div>
+
+  <!-- Flat links -->
   <a href="#menu">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
-    This Week's Menu
-  </a>
-  <a href="#health">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-    Health Goals
+    This Month's Menu
   </a>
   <a href="/blog.html">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
     Health Blog
   </a>
   <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" target="_blank" rel="noopener">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     WhatsApp Us
   </a>
   <a href="https://www.nosh7.com/order" class="mob-cta" target="_blank" rel="noopener">Order Now &rarr;</a>
@@ -499,36 +563,6 @@
   <div class="stat"><span class="stat-num">0</span><div class="stat-label">Preservatives. Ever.</div></div>
   <div class="stat"><span class="stat-num">25+</span><div class="stat-label">Salad Varieties, Rotated Weekly</div></div>
 </div>
-
-<!-- ── HOW IT WORKS ── -->
-<section class="how-section" aria-labelledby="how-title">
-  <span class="section-tag">How It Works</span>
-  <h2 class="section-title" id="how-title">3 Easy Steps to<br/>Healthy Eating</h2>
-  <p class="section-sub">Subscription shuru karna sirf teen steps mein: choose, order, receive.</p>
-  <div class="how-grid">
-    <div class="how-step">
-      <div class="step-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-      </div>
-      <h3>Choose Your Plan</h3>
-      <p>5-day trial ya directly 26 or 60-day plan select karo. Apna health goal batao: weight loss, diabetes, ya muscle gain.</p>
-    </div>
-    <div class="how-step">
-      <div class="step-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      </div>
-      <h3>Order on nosh7.com</h3>
-      <p>nosh7.com pe order karo. Jain option select kar sakte ho. WhatsApp pe bhi customization ho sakti hai.</p>
-    </div>
-    <div class="how-step">
-      <div class="step-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      </div>
-      <h3>Receive Fresh Daily</h3>
-      <p>4 daily batches available. Ek select karo. Salad prepare hota hai delivery se 1 ghante pehle. No frozen, no pre-made.</p>
-    </div>
-  </div>
-</section>
 
 <!-- ── PLANS ── -->
 <section class="plans-section" id="plans" aria-labelledby="plans-title">
@@ -653,6 +687,36 @@
     *Single meal ₹239 | Free delivery across Ahmedabad | All orders at
     <a href="https://www.nosh7.com/order" style="color:var(--green-mid); font-weight:700;">nosh7.com/order</a>
   </p>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section" aria-labelledby="how-title">
+  <span class="section-tag">How It Works</span>
+  <h2 class="section-title" id="how-title">3 Easy Steps to<br/>Healthy Eating</h2>
+  <p class="section-sub">Subscription shuru karna sirf teen steps mein: choose, order, receive.</p>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="step-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <h3>Choose Your Plan</h3>
+      <p>5-day trial ya directly 26 or 60-day plan select karo. Apna health goal batao: weight loss, diabetes, ya muscle gain.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      </div>
+      <h3>Order on nosh7.com</h3>
+      <p>nosh7.com pe order karo. Jain option select kar sakte ho. WhatsApp pe bhi customization ho sakti hai.</p>
+    </div>
+    <div class="how-step">
+      <div class="step-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <h3>Receive Fresh Daily</h3>
+      <p>4 daily batches available. Ek select karo. Salad prepare hota hai delivery se 1 ghante pehle. No frozen, no pre-made.</p>
+    </div>
+  </div>
 </section>
 
 <!-- ── WHY NOSH7 ── -->
@@ -1001,6 +1065,57 @@
   </div>
 </section>
 
+<!-- ── BLOG ── -->
+<section style="padding:5rem 4rem; background:var(--white);" id="blog" aria-labelledby="blog-title">
+  <div style="max-width:1100px; margin:0 auto;">
+    <span class="section-tag">Health Blog</span>
+    <h2 class="section-title" id="blog-title">Healthy Living Guides</h2>
+    <p class="section-sub" style="margin-bottom:2.5rem;">Ahmedabad ke busy professionals ke liye practical health tips, recipes aur nutrition science.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem;">
+
+      <a href="/blog/healthy-meal-ahmedabad.html" style="text-decoration:none; background:var(--cream); border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--cream-dark); transition:all .3s; display:flex; flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.09)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="background:linear-gradient(135deg,#1a3c2e,#2d6a4f); padding:2rem; display:flex; align-items:center; justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(183,228,199,.8)" stroke-width="1.5"><path d="M2 22c0-5 4-9 9-9s9 4 9 9"/><path d="M12 13C10 8 6 5 2 5c0 5 3 9 10 8"/><path d="M12 13c2-5 6-8 10-8-1 5-4 9-10 8"/></svg>
+        </div>
+        <div style="padding:1.4rem; flex:1; display:flex; flex-direction:column;">
+          <span style="font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-fresh); margin-bottom:0.5rem;">Nutrition</span>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--green-deep); margin-bottom:0.6rem; line-height:1.4;">Why Healthy Meals in Ahmedabad Are So Hard to Find</h3>
+          <p style="font-size:0.83rem; color:var(--muted); line-height:1.65; flex:1;">How oil-heavy street food and erratic portions make clean eating nearly impossible without a subscription.</p>
+          <span style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:var(--green-mid);">Read More &rarr;</span>
+        </div>
+      </a>
+
+      <a href="/blog/diet-food-ahmedabad.html" style="text-decoration:none; background:var(--cream); border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--cream-dark); transition:all .3s; display:flex; flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.09)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="background:linear-gradient(135deg,#7c3aed,#a855f7); padding:2rem; display:flex; align-items:center; justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div style="padding:1.4rem; flex:1; display:flex; flex-direction:column;">
+          <span style="font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-fresh); margin-bottom:0.5rem;">Weight Loss</span>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--green-deep); margin-bottom:0.6rem; line-height:1.4;">The Best Diet Food in Ahmedabad for Sustainable Weight Loss</h3>
+          <p style="font-size:0.83rem; color:var(--muted); line-height:1.65; flex:1;">Why calorie-counted, high-fibre salad bowls outperform crash diets for long-term results.</p>
+          <span style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:var(--green-mid);">Read More &rarr;</span>
+        </div>
+      </a>
+
+      <a href="/blog/pcod-diet-plan.html" style="text-decoration:none; background:var(--cream); border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--cream-dark); transition:all .3s; display:flex; flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.09)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="background:linear-gradient(135deg,#be185d,#ec4899); padding:2rem; display:flex; align-items:center; justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div style="padding:1.4rem; flex:1; display:flex; flex-direction:column;">
+          <span style="font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-fresh); margin-bottom:0.5rem;">PCOD / Hormonal Health</span>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--green-deep); margin-bottom:0.6rem; line-height:1.4;">PCOD Diet Plan: What to Eat and What to Avoid</h3>
+          <p style="font-size:0.83rem; color:var(--muted); line-height:1.65; flex:1;">A practical guide to anti-inflammatory, low-glycaemic eating for women managing PCOD in Ahmedabad.</p>
+          <span style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:var(--green-mid);">Read More &rarr;</span>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="/blog.html" class="btn btn-outline">View All Articles &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <!-- ── SEO ARTICLE ── -->
 <section style="padding:5rem 4rem; background:var(--cream-dark);" aria-labelledby="seo-article-title">
   <div style="max-width:860px; margin:0 auto;">
@@ -1135,6 +1250,12 @@
       ham.setAttribute('aria-expanded', false);
     }
   });
+
+  // Mobile nav accordion
+  function toggleMobGroup(id) {
+    const group = document.getElementById(id);
+    group.classList.toggle('open');
+  }
 
   // FAQ icon toggle
   document.querySelectorAll('details').forEach(d => {
