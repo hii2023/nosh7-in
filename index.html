@@ -299,6 +299,27 @@
     .testi-name { font-weight: 700; color: var(--green-deep); font-size: 0.88rem; }
     .testi-loc { font-size: 0.76rem; color: var(--muted); }
 
+    /* ── BLOG ── */
+    .blog-section { padding: 5rem 4rem; background: var(--white); }
+    .blog-inner { max-width: 1100px; margin: 0 auto; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .blog-card { text-decoration: none; background: var(--cream); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--cream-dark); display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s; }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.09); }
+    .blog-card-img { padding: 2rem; display: flex; align-items: center; justify-content: center; }
+    .blog-card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .blog-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-fresh); margin-bottom: 0.5rem; display: block; }
+    .blog-card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.6rem; line-height: 1.4; }
+    .blog-card-body p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; flex: 1; }
+    .blog-read-more { margin-top: 1rem; font-size: 0.82rem; font-weight: 700; color: var(--green-mid); display: block; }
+    @media (max-width: 768px) {
+      .blog-section { padding: 3rem 1.5rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+      .blog-section { padding: 3.5rem 2rem; }
+    }
+
     /* ── CTA ── */
     .cta-section { background: linear-gradient(135deg, #0d2b1e 0%, var(--green-deep) 50%, var(--green-mid) 100%); padding: 5rem 2rem; text-align: center; color: var(--cream); position: relative; overflow: hidden; }
     .cta-section::before { content: ''; position: absolute; top: -50%; left: -20%; width: 140%; height: 200%; background: radial-gradient(ellipse at center, rgba(82,183,136,.12) 0%, transparent 60%); pointer-events: none; }
@@ -476,7 +497,7 @@
   </div>
 
   <!-- Flat links -->
-  <a href="#menu">
+  <a href="https://nosh7.in/assets/nosh7-menu.jpg" target="_blank" rel="noopener">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
     This Month's Menu
   </a>
@@ -786,47 +807,13 @@
     </div>
     <div class="menu-stats-strip">avg 377 cal &middot; 18g protein &middot; 52g carbs &middot; All bowls 380 to 480g</div>
   </div>
-  <div class="menu-notice">All bowls are between 380 and 480 grams &nbsp;|&nbsp; Jain option available on request</div>
-  <div class="menu-cols" style="display:none"><!-- old grid replaced -->
-
-  </div><!-- end hidden old grid -->
-
-  <div class="menu-cols">
-    <div class="dish-row"><div class="dish-date">1</div><div class="dish-info"><div class="dish-name">Rice Noodle Veggie Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">390 Cal</span><span class="dbadge dbadge-pro">11g P</span></div><div class="dish-desc">Light rice noodles with seasonal vegetables</div><span class="dish-dressing">Schezwan Dressing</span></div></div>
-    <div class="dish-row"><div class="dish-date">14</div><div class="dish-info"><div class="dish-name">Greek Avocado Fusion</div><div class="dish-badges"><span class="dbadge dbadge-cal">390 Cal</span><span class="dbadge dbadge-pro">23g P</span></div><div class="dish-desc">Mediterranean flavors fused with creamy avocado</div><span class="dish-dressing">Tahini</span></div></div>
-    <div class="dish-row"><div class="dish-date">2</div><div class="dish-info"><div class="dish-name">Mint Paneer Rice Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">410 Cal</span><span class="dbadge dbadge-pro">19g P</span></div><div class="dish-desc">Cottage cheese with fresh mint marinade</div><span class="dish-dressing">Siracha Curd Dressing</span></div></div>
-    <div class="dish-row"><div class="dish-date">15</div><div class="dish-info"><div class="dish-name">Healthy Bhel</div><div class="dish-badges"><span class="dbadge dbadge-cal">330 Cal</span><span class="dbadge dbadge-pro">22g P</span></div><div class="dish-desc">Protein-rich sprouts and paneer with sweet apple, roasted peanuts and minty curd dressing</div><span class="dish-dressing">Tangy Curd</span></div></div>
-    <div class="dish-row"><div class="dish-date">3</div><div class="dish-info"><div class="dish-name">Schezwan Healthy Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">395 Cal</span><span class="dbadge dbadge-pro">22g P</span></div><div class="dish-desc">Spicy Schezwan-style veggies over grains</div><span class="dish-dressing">Tahini</span></div></div>
-    <div class="dish-row"><div class="dish-date">16</div><div class="dish-info"><div class="dish-name">Basil Dalia Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">390 Cal</span><span class="dbadge dbadge-pro">14g P</span></div><div class="dish-desc">Fibre-rich whole wheat dalia with crisp vegetables, cooling curd dressing and fresh basil</div><span class="dish-dressing">Basil Dressing</span></div></div>
-    <div class="dish-row"><div class="dish-date">4</div><div class="dish-info"><div class="dish-name">Chana Chatpata</div><div class="dish-badges"><span class="dbadge dbadge-cal">330 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Tangy chickpeas with spices and fresh herbs</div><span class="dish-dressing">Tangy Imli</span></div></div>
-    <div class="dish-row"><div class="dish-date">17</div><div class="dish-info"><div class="dish-name">Caesar Salad Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">360 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Classic Caesar with crunchy croutons and parmesan</div><span class="dish-dressing">Creamy Caesar</span></div></div>
-    <div class="dish-row"><div class="dish-date">6</div><div class="dish-info"><div class="dish-name">Asian Lentil Rice Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">420 Cal</span><span class="dbadge dbadge-pro">18g P</span></div><div class="dish-desc">Aromatic lentils over jasmine rice, Asian style</div><span class="dish-dressing">Mint Curd</span></div></div>
-    <div class="dish-row"><div class="dish-date">18</div><div class="dish-info"><div class="dish-name">Tex Mexican Rice Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">440 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Tex-Mex spiced rice with beans and corn</div><span class="dish-dressing">Salsa</span></div></div>
-    <div class="dish-row"><div class="dish-date">7</div><div class="dish-info"><div class="dish-name">Rainbow Sautee Veg Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">280 Cal</span><span class="dbadge dbadge-pro">10g P</span></div><div class="dish-desc">Colorful sauteed seasonal vegetables over base</div><span class="dish-dressing">Soy Siracha</span></div></div>
-    <div class="dish-row"><div class="dish-date">20</div><div class="dish-info"><div class="dish-name">Quinoa Creamy Salad</div><div class="dish-badges"><span class="dbadge dbadge-cal">370 Cal</span><span class="dbadge dbadge-pro">15g P</span></div><div class="dish-desc">Protein-rich quinoa with creamy dressing</div><span class="dish-dressing">Schezwan</span></div></div>
-    <div class="dish-row"><div class="dish-date">8</div><div class="dish-info"><div class="dish-name">Palak Cheela Wrap</div><div class="dish-badges"><span class="dbadge dbadge-cal">370 Cal</span><span class="dbadge dbadge-pro">22g P</span></div><div class="dish-desc">Fibre-rich palak and chana flour wrap stuffed with crunchy vegetables. Light, protein-packed and energizing.</div><span class="dish-dressing">Siracha Curd Dressing</span></div></div>
-    <div class="dish-row"><div class="dish-date">21</div><div class="dish-info"><div class="dish-name">Chana Chatpata</div><div class="dish-badges"><span class="dbadge dbadge-cal">330 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Tangy chickpeas with spices and fresh herbs</div><span class="dish-dressing">Tangy Imli</span></div></div>
-    <div class="dish-row"><div class="dish-date">9</div><div class="dish-info"><div class="dish-name">Lobia Salad</div><div class="dish-badges"><span class="dbadge dbadge-cal">330 Cal</span><span class="dbadge dbadge-pro">21g P</span></div><div class="dish-desc">Black-eyed peas salad with lemon chilli dressing</div><span class="dish-dressing">Lemon Chilli</span></div></div>
-    <div class="dish-row"><div class="dish-date">22</div><div class="dish-info"><div class="dish-name">Wheat Mexican Wrap</div><div class="dish-badges"><span class="dbadge dbadge-cal">450 Cal</span><span class="dbadge dbadge-pro">17g P</span></div><div class="dish-desc">Whole wheat wrap with Mexican-style filling</div><span class="dish-dressing">Creamy Salsa</span></div></div>
-    <div class="dish-row"><div class="dish-date">10</div><div class="dish-info"><div class="dish-name">Burrito Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">450 Cal</span><span class="dbadge dbadge-pro">18g P</span></div><div class="dish-desc">Seasoned rice, protein and fresh salsa with hearty beans, crisp veggies and a dollop of creamy curd</div></div></div>
-    <div class="dish-row"><div class="dish-date">23</div><div class="dish-info"><div class="dish-name">Schezwan Healthy Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">395 Cal</span><span class="dbadge dbadge-pro">22g P</span></div><div class="dish-desc">Spicy Schezwan-style veggies over grains</div><span class="dish-dressing">Tahini</span></div></div>
-    <div class="dish-row"><div class="dish-date">11</div><div class="dish-info"><div class="dish-name">Nosh 7 Special</div><div class="dish-badges"><span class="dbadge dbadge-cal">390 Cal</span><span class="dbadge dbadge-pro">16g P</span></div><div class="dish-desc">Our signature house special with seasonal produce</div><span class="dish-dressing">Basil Tomato</span></div></div>
-    <div class="dish-row"><div class="dish-date">24</div><div class="dish-info"><div class="dish-name">Tandoori Paneer</div><div class="dish-badges"><span class="dbadge dbadge-cal">380 Cal</span><span class="dbadge dbadge-pro">25g P</span></div><div class="dish-desc">Smoky tandoori-spiced cottage cheese with greens</div><span class="dish-dressing">Mint Curd</span></div></div>
-    <div class="dish-row"><div class="dish-date">13</div><div class="dish-info"><div class="dish-name">Mint Paneer Rice Bowl</div><div class="dish-badges"><span class="dbadge dbadge-cal">410 Cal</span><span class="dbadge dbadge-pro">19g P</span></div><div class="dish-desc">Cottage cheese with fresh mint marinade</div><span class="dish-dressing">Siracha Curd Dressing</span></div></div>
-    <div class="dish-row" style="background:rgba(255,255,255,.03);border-style:dashed;"><div class="dish-info"><div style="font-size:0.72rem;color:rgba(183,228,199,.6);line-height:1.6;"><strong style="color:var(--green-light);">Jain Meal</strong> = No Onion, Garlic, Ginger, Beetroot, Carrot, Potato, Mushroom &nbsp;|&nbsp; Customise your meal at ₹49/day</div></div></div>
-  </div>
-
-  <div class="menu-drink-cta">
-    <div>
-      <h4>Healthy Drink Add-On</h4>
-      <p>Mint Lemonade &nbsp;|&nbsp; Beetroot Carrot Juice &nbsp;|&nbsp; Nimbu Sharbat (300ml)</p>
-    </div>
-    <div class="menu-drink-price">₹29<span>/day</span></div>
-    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+want+to+add+the+healthy+drink+add-on." class="btn btn-saffron" target="_blank" rel="noopener" style="font-size:0.85rem;padding:0.7rem 1.4rem;">Add Drinks &rarr;</a>
-  </div>
-
-  <div style="text-align:center; margin-top:2rem;">
-    <a href="/assets/nosh7-menu.jpg" target="_blank" rel="noopener" class="btn btn-outline" style="color:var(--cream); border-color:var(--green-fresh);">View Full Menu Image &rarr;</a>
+  <div style="text-align:center; padding:2.5rem 1rem 1rem;">
+    <p style="color:var(--green-light); font-size:0.9rem; margin-bottom:1.5rem; line-height:1.7;">25+ varieties rotated every week &middot; avg 377 cal &middot; 18g protein &middot; All bowls 380 to 480g &middot; Jain option available</p>
+    <a href="https://nosh7.in/assets/nosh7-menu.jpg" target="_blank" rel="noopener" class="btn btn-saffron" style="font-size:1rem; padding:1rem 2.5rem;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      View April 2026 Menu
+    </a>
+    <p style="margin-top:1rem; font-size:0.78rem; color:rgba(183,228,199,.5);">Opens full menu image &middot; Updated monthly</p>
   </div>
 </section>
 
@@ -1066,46 +1053,46 @@
 </section>
 
 <!-- ── BLOG ── -->
-<section style="padding:5rem 4rem; background:var(--white);" id="blog" aria-labelledby="blog-title">
-  <div style="max-width:1100px; margin:0 auto;">
+<section class="blog-section" id="blog" aria-labelledby="blog-title">
+  <div class="blog-inner">
     <span class="section-tag">Health Blog</span>
     <h2 class="section-title" id="blog-title">Healthy Living Guides</h2>
     <p class="section-sub" style="margin-bottom:2.5rem;">Ahmedabad ke busy professionals ke liye practical health tips, recipes aur nutrition science.</p>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem;">
+    <div class="blog-grid">
 
-      <a href="/blog/healthy-meal-ahmedabad.html" style="text-decoration:none; background:var(--cream); border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--cream-dark); transition:all .3s; display:flex; flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.09)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="background:linear-gradient(135deg,#1a3c2e,#2d6a4f); padding:2rem; display:flex; align-items:center; justify-content:center;">
+      <a href="/blog.html" class="blog-card">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#1a3c2e,#2d6a4f);">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(183,228,199,.8)" stroke-width="1.5"><path d="M2 22c0-5 4-9 9-9s9 4 9 9"/><path d="M12 13C10 8 6 5 2 5c0 5 3 9 10 8"/><path d="M12 13c2-5 6-8 10-8-1 5-4 9-10 8"/></svg>
         </div>
-        <div style="padding:1.4rem; flex:1; display:flex; flex-direction:column;">
-          <span style="font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-fresh); margin-bottom:0.5rem;">Nutrition</span>
-          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--green-deep); margin-bottom:0.6rem; line-height:1.4;">Why Healthy Meals in Ahmedabad Are So Hard to Find</h3>
-          <p style="font-size:0.83rem; color:var(--muted); line-height:1.65; flex:1;">How oil-heavy street food and erratic portions make clean eating nearly impossible without a subscription.</p>
-          <span style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:var(--green-mid);">Read More &rarr;</span>
+        <div class="blog-card-body">
+          <span class="blog-tag">Nutrition</span>
+          <h3>Why Healthy Meals in Ahmedabad Are So Hard to Find</h3>
+          <p>How oil-heavy street food and erratic portions make clean eating nearly impossible without a subscription.</p>
+          <span class="blog-read-more">Read More &rarr;</span>
         </div>
       </a>
 
-      <a href="/blog/diet-food-ahmedabad.html" style="text-decoration:none; background:var(--cream); border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--cream-dark); transition:all .3s; display:flex; flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.09)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="background:linear-gradient(135deg,#7c3aed,#a855f7); padding:2rem; display:flex; align-items:center; justify-content:center;">
+      <a href="/blog.html" class="blog-card">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <div style="padding:1.4rem; flex:1; display:flex; flex-direction:column;">
-          <span style="font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-fresh); margin-bottom:0.5rem;">Weight Loss</span>
-          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--green-deep); margin-bottom:0.6rem; line-height:1.4;">The Best Diet Food in Ahmedabad for Sustainable Weight Loss</h3>
-          <p style="font-size:0.83rem; color:var(--muted); line-height:1.65; flex:1;">Why calorie-counted, high-fibre salad bowls outperform crash diets for long-term results.</p>
-          <span style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:var(--green-mid);">Read More &rarr;</span>
+        <div class="blog-card-body">
+          <span class="blog-tag">Weight Loss</span>
+          <h3>The Best Diet Food in Ahmedabad for Sustainable Weight Loss</h3>
+          <p>Why calorie-counted, high-fibre salad bowls outperform crash diets for long-term results.</p>
+          <span class="blog-read-more">Read More &rarr;</span>
         </div>
       </a>
 
-      <a href="/blog/pcod-diet-plan.html" style="text-decoration:none; background:var(--cream); border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--cream-dark); transition:all .3s; display:flex; flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.09)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="background:linear-gradient(135deg,#be185d,#ec4899); padding:2rem; display:flex; align-items:center; justify-content:center;">
+      <a href="/blog.html" class="blog-card">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#be185d,#ec4899);">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
-        <div style="padding:1.4rem; flex:1; display:flex; flex-direction:column;">
-          <span style="font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-fresh); margin-bottom:0.5rem;">PCOD / Hormonal Health</span>
-          <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--green-deep); margin-bottom:0.6rem; line-height:1.4;">PCOD Diet Plan: What to Eat and What to Avoid</h3>
-          <p style="font-size:0.83rem; color:var(--muted); line-height:1.65; flex:1;">A practical guide to anti-inflammatory, low-glycaemic eating for women managing PCOD in Ahmedabad.</p>
-          <span style="margin-top:1rem; font-size:0.82rem; font-weight:700; color:var(--green-mid);">Read More &rarr;</span>
+        <div class="blog-card-body">
+          <span class="blog-tag">PCOD / Hormonal Health</span>
+          <h3>PCOD Diet Plan: What to Eat and What to Avoid</h3>
+          <p>A practical guide to anti-inflammatory, low-glycaemic eating for women managing PCOD in Ahmedabad.</p>
+          <span class="blog-read-more">Read More &rarr;</span>
         </div>
       </a>
 
