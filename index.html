@@ -1422,8 +1422,8 @@
 
 <script>
 (function() {
-  const GEMINI_KEY = 'AIzaSyCOKrmeGzF_eG0L-pPcSRiX2BAMvYjPbbw';
-  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`;
+  const GROQ_KEY = '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';
+  const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
   const WA = 'https://wa.me/919712989498';
   const WA_TEXT = t => WA + '?text=' + encodeURIComponent(t);
 
@@ -1488,20 +1488,19 @@ For anything not covered above, ask the customer to WhatsApp 9712989498.`;
   }
 
   async function askGemini(userText) {
-    const contents = history.map(h => ({ role: h.role, parts: [{ text: h.text }] }));
-    contents.push({ role: 'user', parts: [{ text: userText }] });
-    const res = await fetch(GEMINI_URL, {
+    const messages = [
+      { role: 'system', content: SYSTEM_PROMPT + '\n\n' + LANG_PROMPT[lang] },
+      ...history.map(h => ({ role: h.role === 'model' ? 'assistant' : h.role, content: h.text })),
+      { role: 'user', content: userText }
+    ];
+    const res = await fetch(GROQ_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system_instruction: { parts: [{ text: SYSTEM_PROMPT + '\n\n' + LANG_PROMPT[lang] }] },
-        contents,
-        generationConfig: { temperature: 0.7, maxOutputTokens: 350 }
-      })
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_KEY}` },
+      body: JSON.stringify({ model: 'llama-3.1-8b-instant', messages, temperature: 0.7, max_tokens: 350 })
     });
     if (!res.ok) throw new Error('API error ' + res.status);
     const data = await res.json();
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+    const reply = data.choices?.[0]?.message?.content?.trim() || '';
     history.push({ role: 'user', text: userText });
     history.push({ role: 'model', text: reply });
     if (history.length > 20) history = history.slice(-20);
