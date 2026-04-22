@@ -205,6 +205,14 @@
     .stat-label { font-size: 0.75rem; color: var(--green-light); margin-top: 0.35rem; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 600; }
 
     /* ── HOW IT WORKS ── */
+    .offers-section { padding: 3rem 4rem; background: var(--cream); text-align: center; }
+    .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; text-align: left; }
+    .offer-card { background: var(--white); border-radius: var(--radius-lg); padding: 1.75rem; border: 1.5px solid #e8f5ee; display: flex; gap: 1rem; align-items: flex-start; position: relative; transition: box-shadow .25s, transform .25s; cursor: default; }
+    .offer-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,.07); transform: translateY(-2px); }
+    .offer-icon { font-size: 2rem; flex-shrink: 0; line-height: 1; }
+    .offer-content h3 { font-family: 'Playfair Display SC', Georgia, serif; font-size: 1rem; color: var(--green-deep); margin-bottom: 0.4rem; }
+    .offer-content p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .offer-badge { position: absolute; top: 1rem; right: 1rem; background: var(--green-deep); color: var(--cream); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 999px; white-space: nowrap; }
     .how-section { padding: 3rem 4rem; background: var(--white); }
     .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
     .how-step { text-align: center; padding: 2.5rem 2rem; border-radius: var(--radius-lg); background: var(--cream); border: 1px solid var(--cream-dark); position: relative; }
@@ -428,7 +436,8 @@
     }
     @media (max-width: 768px) {
       nav { padding: 0.6rem 1.2rem; }
-      .how-section, .plans-section, .why-section, .menu-section, .health-section, .df-section, .testi-section, .seo-section, .cta-section { padding: 2rem 1.5rem; }
+      .how-section, .plans-section, .why-section, .menu-section, .health-section, .df-section, .testi-section, .seo-section, .cta-section, .offers-section { padding: 2rem 1.5rem; }
+      .offer-badge { position: static; display: inline-block; margin-top: 0.5rem; }
       .stats-bar { padding: 1rem; }
       footer { padding: 2.5rem 1.5rem 0; }
       .footer-inner { gap: 2rem; }
@@ -732,6 +741,64 @@
       <a href="https://www.nosh7.com/order" class="btn btn-primary btn-block" target="_blank" rel="noopener">Get 60-Day Plan &rarr;</a>
     </div>
 
+  </div>
+</section>
+
+<!-- ── ACTIVE OFFERS ── -->
+<section class="offers-section" id="offers" aria-labelledby="offers-title">
+  <span class="section-tag">Limited Time</span>
+  <h2 class="section-title" id="offers-title">Active Offers</h2>
+  <p class="section-sub">Stack these offers on top of your plan — WhatsApp us to activate.</p>
+  <div class="offers-grid">
+
+    <div class="offer-card">
+      <div class="offer-icon">🥤</div>
+      <div class="offer-content">
+        <h3>Free Healthy Drink</h3>
+        <p>26-Day Plan: free drink subscription worth <strong>₹499</strong><br>60-Day Plan: 2 weeks free drinks worth <strong>₹999</strong></p>
+      </div>
+      <span class="offer-badge">Included in Plan</span>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">👫</div>
+      <div class="offer-content">
+        <h3>Double Subscription Cashback</h3>
+        <p>Buy 2 subscriptions together and get <strong>5% cashback</strong> on each subscription</p>
+      </div>
+      <span class="offer-badge">5% Cashback</span>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">👨‍👩‍👧</div>
+      <div class="offer-content">
+        <h3>Family &amp; Office Group</h3>
+        <p>Subscribe for <strong>3 or more people</strong> from family or office and get up to <strong>10% cashback</strong></p>
+      </div>
+      <span class="offer-badge">Up to 10% Off</span>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">🤝</div>
+      <div class="offer-content">
+        <h3>Refer a Friend</h3>
+        <p>Refer someone to NOSH7 — <strong>both of you get 2 extra meals</strong> added to your subscription</p>
+      </div>
+      <span class="offer-badge">+2 Free Meals</span>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-icon">🏆</div>
+      <div class="offer-content">
+        <h3>Loyalty Reward</h3>
+        <p>Subscribe for <strong>3 consecutive months</strong> and get <strong>3 meals free</strong> on your next monthly plan</p>
+      </div>
+      <span class="offer-badge">3 Free Meals</span>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:2rem;">
+    <a href="https://wa.me/919712989498?text=Hi+NOSH7,+I+want+to+know+more+about+your+active+offers" class="btn btn-primary" target="_blank" rel="noopener">Activate an Offer on WhatsApp &rarr;</a>
   </div>
 </section>
 
@@ -1365,20 +1432,20 @@ All plans include <strong>fresh salad meals</strong> delivered daily. Health dri
       quick: ['How to Order','Trial Pack','Delivery Areas','Jain Options']
     },
     {
-      keys: ['offer','offers','discount','deal','coupon','promo','saving','save','benefit','free','freebie','bonus','gift','cashback','scheme'],
-      reply: () => `🎁 <strong>Current NOSH7 Offers</strong><br><br>
-🥤 <strong>Offer 1 — Free Healthy Drink</strong><br>
-&nbsp;&nbsp;• 26-Day Plan: Free drink subscription worth <strong>₹499</strong><br>
-&nbsp;&nbsp;• 60-Day Plan: Free drinks for 2 weeks worth <strong>₹999</strong><br><br>
-👫 <strong>Offer 2 — Double Subscription Cashback</strong><br>
-&nbsp;&nbsp;Buy 2 subscriptions together and get <strong>5% cashback</strong> on each<br><br>
-👨‍👩‍👧 <strong>Offer 3 — Family & Office Group</strong><br>
-&nbsp;&nbsp;Subscribe for 3+ people and get <strong>up to 10% cashback</strong><br><br>
-🤝 <strong>Offer 4 — Refer a Friend</strong><br>
-&nbsp;&nbsp;Refer someone to NOSH7 and <strong>both of you get 2 extra meals</strong> added to your subscription<br><br>
-🏆 <strong>Offer 5 — Loyalty Reward</strong><br>
-&nbsp;&nbsp;Subscribe for <strong>3 consecutive months</strong> and get <strong>3 meals free</strong> on your next monthly plan<br><br>
-To avail any offer, WhatsApp us at <a href="https://wa.me/919712989498?text=Hi+NOSH7+Team,+I+want+to+know+more+about+your+current+offers" style="color:#2d6a4f;font-weight:700;">9712989498 →</a>`,
+      keys: ['offer','offers','discount','deal','coupon','promo','saving','save','benefit','free','freebie','bonus','gift','cashback','scheme','active offer'],
+      reply: () => `🎁 <strong>Active Offers — NOSH7</strong><br><br>
+🥤 <strong>1. Free Healthy Drink</strong><br>
+&nbsp;&nbsp;• 26-Day Plan: 1 week free drink worth <strong>₹499</strong><br>
+&nbsp;&nbsp;• 60-Day Plan: 2 weeks free drink worth <strong>₹999</strong><br><br>
+👫 <strong>2. Double Subscription Cashback</strong><br>
+&nbsp;&nbsp;Buy 2 subscriptions together → <strong>5% cashback</strong> on each<br><br>
+👨‍👩‍👧 <strong>3. Family &amp; Office Group</strong><br>
+&nbsp;&nbsp;3+ people subscribe together → up to <strong>10% cashback</strong><br><br>
+🤝 <strong>4. Refer a Friend</strong><br>
+&nbsp;&nbsp;Refer someone → <strong>both get 2 extra meals</strong> added to your plan<br><br>
+🏆 <strong>5. Loyalty Reward</strong><br>
+&nbsp;&nbsp;3 consecutive months → <strong>3 meals free</strong> on next monthly plan<br><br>
+To activate any offer, WhatsApp us at <a href="https://wa.me/919712989498?text=Hi+NOSH7,+I+want+to+activate+an+offer" style="color:#2d6a4f;font-weight:700;">9712989498 →</a>`,
       quick: ['How to Order','26-Day Plan','60-Day Plan','Contact Us']
     },
     {
