@@ -354,7 +354,7 @@
     .footer-bottom a { color: var(--green-fresh); text-decoration: none; }
 
     /* ── FLOATING BTNS ── */
-    .floating-btns { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 500; display: flex; flex-direction: column; gap: 0.6rem; }
+    .floating-btns { position: fixed; bottom: 7rem; right: 1.5rem; z-index: 500; display: flex; flex-direction: column; gap: 0.6rem; }
     .float-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(0,0,0,.2); }
     .float-btn:hover { transform: scale(1.1); }
     .float-wa { background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,.4); }
@@ -1278,7 +1278,7 @@
   /* Widget toggle button */
   /* Toggle launcher — pill shape */
   #julie-toggle {
-    position: fixed; bottom: 1.8rem; left: 1.5rem; z-index: 600;
+    position: fixed; bottom: 1.8rem; right: 1.5rem; left: auto; z-index: 600;
     display: flex; align-items: center; gap: 0.65rem;
     padding: 0 1.1rem 0 0.75rem; height: 52px; border-radius: 100px;
     background: linear-gradient(135deg, #1a3c2e 0%, #2d6a4f 100%);
@@ -1313,7 +1313,7 @@
 
   /* Chat window */
   #julie-window {
-    position: fixed; bottom: 6rem; left: 1.5rem; z-index: 600;
+    position: fixed; bottom: 6rem; right: 1.5rem; left: auto; z-index: 600;
     width: 340px; max-height: 520px;
     background: var(--cream); border-radius: 1.5rem;
     box-shadow: 0 20px 60px rgba(0,0,0,.18);
@@ -1429,7 +1429,7 @@
   @keyframes typing-bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
 
   @media (max-width: 400px) {
-    #julie-window { width: calc(100vw - 2rem); left: 1rem; bottom: 5rem; }
+    #julie-window { width: calc(100vw - 2rem); right: 1rem; left: auto; bottom: 5rem; }
   }
 </style>
 
