@@ -1280,14 +1280,16 @@
   #julie-toggle {
     position: fixed; bottom: 1.8rem; right: 1.5rem; left: auto; z-index: 600;
     width: 52px; height: 52px; border-radius: 50%;
-    background: linear-gradient(135deg, #1a3c2e 0%, #2d6a4f 100%);
-    box-shadow: 0 4px 20px rgba(26,60,46,.4);
+    background: conic-gradient(#ff0000, #ff7700, #ffdd00, #00cc44, #0088ff, #8800ff, #ff0099, #ff0000);
+    box-shadow: 0 4px 20px rgba(0,0,0,.3);
     border: 2.5px solid white;
     outline: 2px solid #52b788;
     cursor: pointer; display: flex; align-items: center; justify-content: center;
-    transition: transform .2s, box-shadow .2s;
+    transition: transform .25s, box-shadow .25s;
+    animation: rainbow-spin 6s linear infinite;
   }
-  #julie-toggle:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(26,60,46,.55); }
+  #julie-toggle:hover { transform: scale(1.12); box-shadow: 0 8px 28px rgba(0,0,0,.4); animation-play-state: paused; }
+  @keyframes rainbow-spin { to { filter: hue-rotate(360deg); } }
   .julie-toggle-icon {
     width: 100%; height: 100%; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
@@ -1425,18 +1427,8 @@
 <!-- Toggle button -->
 <button id="julie-toggle" aria-label="Chat with Julie" onclick="toggleJulie()">
   <div class="julie-toggle-icon">
-    <!-- salad bowl icon -->
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <!-- bowl base -->
-      <path d="M4 11 C4 17 8 20 12 20 C16 20 20 17 20 11 Z" fill="rgba(255,255,255,0.15)" stroke="white"/>
-      <!-- rim line -->
-      <line x1="3" y1="11" x2="21" y2="11"/>
-      <!-- salad leaves -->
-      <path d="M8 11 C7 8 9 6 11 8" stroke="white" stroke-width="1.5"/>
-      <path d="M12 11 C11 7 14 5 15 8" stroke="white" stroke-width="1.5"/>
-      <path d="M15 11 C15 8 17 7 17 9" stroke="white" stroke-width="1.5"/>
-      <!-- fork -->
-      <line x1="12" y1="2" x2="12" y2="6" stroke="rgba(255,255,255,0.7)" stroke-width="1.2"/>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
     </svg>
   </div>
   <div id="julie-badge">1</div>
