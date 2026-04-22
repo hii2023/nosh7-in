@@ -127,7 +127,7 @@
       position: absolute; bottom: 0; left: 0; right: 0;
       width: 100%; height: 100%;
       pointer-events: none; z-index: 0;
-      opacity: 0.18;
+      opacity: 0.14;
       object-fit: cover;
       object-position: center 40%;
       filter: hue-rotate(-78deg) saturate(0.8) brightness(0.95);
@@ -1382,19 +1382,46 @@ To avail any offer, WhatsApp us at <a href="https://wa.me/919712989498?text=Hi+N
       quick: ['How to Order','26-Day Plan','60-Day Plan','Contact Us']
     },
     {
-      keys: ['trial','5 day','5-day','5days','test','try','sample','starter'],
-      reply: () => `Our <strong>5-Day Trial</strong> is ₹999 (₹199/day). It's the best way to experience NOSH7 before committing to a longer plan.<br><br>✅ Full refund if you're not happy<br>✅ No questions asked`,
-      quick: ['How to Order','26-Day Plan','60-Day Plan']
+      keys: ['trial','5 day','5-day','5days','test','try','sample','starter','trial pack'],
+      reply: () => `🟡 <strong>5-Day Trial Pack — ₹999</strong><br>
+<em>₹199/day · Save 16% vs single meal price</em><br><br>
+✅ 5 fresh salad meals (1 per day)<br>
+✅ Certified Paneer in every bowl<br>
+✅ Home delivery across Ahmedabad<br>
+✅ No commitment, no auto-renewal<br>
+✅ Full refund if not satisfied<br><br>
+🛒 <a href="https://www.nosh7.com/order" target="_blank" rel="noopener" style="color:#2d6a4f;font-weight:700;">Order at nosh7.com/order →</a>`,
+      quick: ['How to Order','Offers','Contact Us']
     },
     {
       keys: ['26 day','26-day','26day','monthly','one month','1 month'],
-      reply: () => `The <strong>26-Day Plan</strong> is ₹4,914 — works out to just ₹189/day.<br><br>This is our most popular plan. You save 5% vs the trial, and most customers see real results within 3–4 weeks.`,
-      quick: ['How to Order','60-Day Plan','Health Goals']
+      reply: () => `🟢 <strong>26-Day Plan — ₹4,914</strong><br>
+<em>₹189/day · 21% off · Save ₹1,300</em><br><br>
+✅ 26 fresh salad meals (1 per day)<br>
+✅ Certified Paneer in every bowl<br>
+✅ 1 week free health drink (worth ₹499)<br>
+✅ Weekly superfood seeds included<br>
+✅ Free nutrition consultation<br>
+✅ Pause anytime, no penalty<br>
+✅ Jain option available<br>
+✅ Home delivery across Ahmedabad<br><br>
+🛒 <a href="https://www.nosh7.com/order" target="_blank" rel="noopener" style="color:#2d6a4f;font-weight:700;">Order at nosh7.com/order →</a>`,
+      quick: ['How to Order','Offers','Contact Us']
     },
     {
       keys: ['60 day','60-day','60day','two month','2 month','best value','long term'],
-      reply: () => `The <strong>60-Day Plan</strong> is ₹10,740 — ₹179/day, our best value.<br><br>Customers on the 60-day plan regularly report losing 4–7 kg and see the biggest improvements in energy and health markers.`,
-      quick: ['How to Order','Health Goals','Delivery Areas']
+      reply: () => `🔵 <strong>60-Day Plan — ₹10,740</strong><br>
+<em>₹179/day · 25% off · Save ₹3,600</em><br><br>
+✅ 60 fresh salad meals (1 per day)<br>
+✅ Certified Paneer in every bowl<br>
+✅ 2 weeks free health drink (worth ₹999)<br>
+✅ Superfood seeds with every meal<br>
+✅ 2 nutritionist consultations included<br>
+✅ Priority WhatsApp support<br>
+✅ Jain option available<br>
+✅ Home delivery across Ahmedabad<br><br>
+🛒 <a href="https://www.nosh7.com/order" target="_blank" rel="noopener" style="color:#2d6a4f;font-weight:700;">Order at nosh7.com/order →</a>`,
+      quick: ['How to Order','Offers','Contact Us']
     },
     {
       keys: ['order','how to order','buy','subscribe','start','book','sign up','register','enroll'],
