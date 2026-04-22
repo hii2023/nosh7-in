@@ -126,7 +126,7 @@
       position: absolute; bottom: 0; left: 0; right: 0;
       width: 100%; height: 220px;
       pointer-events: none; z-index: 0;
-      opacity: 0.11;
+      opacity: 0.28;
     }
     .hero-content { position: relative; z-index: 1; }
     .hero-badge-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--saffron-lt); color: var(--green-deep); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: var(--radius-pill); margin-bottom: 1.3rem; }
@@ -1523,14 +1523,8 @@
 
 <!-- Toggle button -->
 <button id="julie-toggle" aria-label="Chat with Julie" onclick="toggleJulie()">
-  <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="22" cy="22" r="22" fill="#1c1c1c"/>
-    <circle cx="22" cy="22" r="18" fill="#2d6a4f"/>
-    <circle cx="22" cy="22" r="14" fill="#38bdf8"/>
-    <circle cx="22" cy="22" r="10" fill="#f4a61d"/>
-    <circle cx="22" cy="22" r="6"  fill="#ff6b9d"/>
-    <circle cx="22" cy="22" r="3"  fill="white"/>
-  </svg>
+  <img src="/assets/julie.png" alt="Chat with Julie"
+       style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:72% 18%;display:block;" />
   <div id="julie-badge">1</div>
 </button>
 
