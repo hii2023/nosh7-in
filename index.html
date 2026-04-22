@@ -41,6 +41,30 @@
       --radius-md:    1rem;
       --radius-pill:  100px;
     }
+    /* ── RATING CROWN BAR ── */
+    #rating-bar {
+      background: linear-gradient(90deg, #0d2318 0%, #1a3c2e 40%, #0d2318 100%);
+      padding: 0.5rem 1rem; text-align: center; position: relative; z-index: 300;
+      border-bottom: 1px solid rgba(82,183,136,.25);
+    }
+    .rating-bar-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.7rem; flex-wrap: wrap; max-width: 900px; margin: 0 auto;
+    }
+    .rating-crown-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #f4a61d; white-space: nowrap;
+    }
+    .rating-divider { color: rgba(255,255,255,.2); font-size: 0.8rem; }
+    .rating-item { display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
+    .rating-stars { font-size: 0.72rem; letter-spacing: 1px; }
+    .swiggy-stars { color: #FC8019; }
+    .google-stars { color: #4285F4; }
+    .zomato-stars { color: #CB202D; }
+    .rating-platform { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,.75); }
+    .rating-score { font-size: 0.72rem; font-weight: 900; color: white; background: rgba(255,255,255,.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+    @media (max-width: 600px) { .rating-crown-label:last-child { display: none; } }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
     body { font-family: 'Karla', -apple-system, sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; line-height: 1.6; }
@@ -429,6 +453,33 @@
 </head>
 <body>
 
+<!-- ── RATING CROWN BAR ── -->
+<div id="rating-bar">
+  <div class="rating-bar-inner">
+    <span class="rating-crown-label">⭑ Rated Best Healthy Meal in Ahmedabad</span>
+    <span class="rating-divider">|</span>
+    <span class="rating-item">
+      <span class="rating-stars swiggy-stars">★★★★★</span>
+      <span class="rating-platform">Swiggy</span>
+      <span class="rating-score">4.8</span>
+    </span>
+    <span class="rating-divider">·</span>
+    <span class="rating-item">
+      <span class="rating-stars google-stars">★★★★★</span>
+      <span class="rating-platform">Google</span>
+      <span class="rating-score">4.6</span>
+    </span>
+    <span class="rating-divider">·</span>
+    <span class="rating-item">
+      <span class="rating-stars zomato-stars">★★★★</span>
+      <span class="rating-platform">Zomato</span>
+      <span class="rating-score">4.4</span>
+    </span>
+    <span class="rating-divider">|</span>
+    <span class="rating-crown-label">⭑ 2000+ Happy Customers</span>
+  </div>
+</div>
+
 <!-- ── NAV ── -->
 <nav id="mainNav">
   <a class="nav-logo" href="/" aria-label="NOSH7 home">
@@ -590,12 +641,12 @@
 </div>
 
 <!-- ── STATS ── -->
-<div class="stats-bar">
-  <div class="stat"><span class="stat-num">2000+</span><div class="stat-label">Happy Customers in Ahmedabad</div></div>
-  <div class="stat"><span class="stat-num">₹179</span><div class="stat-label">Per Day on Best Plan</div></div>
-  <div class="stat"><span class="stat-num">25%</span><div class="stat-label">Max Savings vs Single Meal</div></div>
-  <div class="stat"><span class="stat-num">0</span><div class="stat-label">Preservatives. Ever.</div></div>
-  <div class="stat"><span class="stat-num">25+</span><div class="stat-label">Salad Varieties, Rotated Weekly</div></div>
+<div class="stats-bar" id="statsBar">
+  <div class="stat"><span class="stat-num" data-target="2000" data-prefix="" data-suffix="+" data-dir="up">0</span><div class="stat-label">Happy Customers in Ahmedabad</div></div>
+  <div class="stat"><span class="stat-num" data-target="179" data-prefix="₹" data-suffix="" data-dir="down" data-from="1000">₹1000</span><div class="stat-label">Per Day on Best Plan</div></div>
+  <div class="stat"><span class="stat-num" data-target="25" data-prefix="" data-suffix="%" data-dir="up">0%</span><div class="stat-label">Max Savings vs Single Meal</div></div>
+  <div class="stat"><span class="stat-num" data-target="0" data-prefix="" data-suffix="" data-dir="up">0</span><div class="stat-label">Preservatives. Ever.</div></div>
+  <div class="stat"><span class="stat-num" data-target="25" data-prefix="" data-suffix="+" data-dir="up">0</span><div class="stat-label">Salad Varieties, Rotated Weekly</div></div>
 </div>
 
 <!-- ── PLANS ── -->
@@ -1257,6 +1308,42 @@
       ham.setAttribute('aria-expanded', false);
     }
   });
+
+  // ── STAT COUNTER ANIMATION ──
+  const statEls = document.querySelectorAll('.stat-num[data-target]');
+  let statsAnimated = false;
+
+  function animateStats() {
+    if (statsAnimated) return;
+    statsAnimated = true;
+    statEls.forEach(el => {
+      const target  = +el.dataset.target;
+      const dir     = el.dataset.dir;
+      const prefix  = el.dataset.prefix  || '';
+      const suffix  = el.dataset.suffix  || '';
+      const from    = el.dataset.from ? +el.dataset.from : (dir === 'down' ? target * 5 : 0);
+      const duration = 1800;
+      const steps   = 60;
+      const interval = duration / steps;
+      let current = from;
+      const step = (target - from) / steps;
+
+      if (target === 0) { el.textContent = prefix + '0' + suffix; return; }
+
+      const timer = setInterval(() => {
+        current += step;
+        const done = dir === 'down' ? current <= target : current >= target;
+        if (done) { clearInterval(timer); el.textContent = prefix + target + suffix; return; }
+        el.textContent = prefix + Math.round(current) + suffix;
+      }, interval);
+    });
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) animateStats(); });
+  }, { threshold: 0.3 });
+  const statsBar = document.getElementById('statsBar');
+  if (statsBar) observer.observe(statsBar);
 
   // Mobile nav accordion
   function toggleMobGroup(id) {
