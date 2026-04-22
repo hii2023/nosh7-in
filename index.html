@@ -194,17 +194,17 @@
     .pbar-call { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.22); }
 
     /* ── STATS ── */
-    .stats-bar { background: var(--green-mid); padding: 1.8rem 2rem; display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .stats-bar { background: var(--green-mid); padding: 1rem 2rem; display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
     @media (max-width: 600px) { .stats-bar { grid-template-columns: repeat(2,1fr); gap: 0; } }
     .stat { text-align: center; }
-    .stat { text-align: center; padding: 1.2rem 0.5rem; border-right: 1px solid rgba(255,255,255,.1); }
+    .stat { text-align: center; padding: 0.75rem 0.5rem; border-right: 1px solid rgba(255,255,255,.1); }
     .stat:last-child { border-right: none; }
-    @media (max-width: 600px) { .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 1rem 0.5rem; } .stat:last-child,.stat:nth-child(2) { border-bottom: none; } }
-    .stat-num { font-family: 'Playfair Display SC', serif; font-size: 2.8rem; font-weight: 700; color: var(--saffron); display: block; line-height: 1; }
-    .stat-label { font-size: 0.88rem; color: var(--green-light); margin-top: 0.6rem; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 600; }
+    @media (max-width: 600px) { .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 0.75rem 0.5rem; } .stat:last-child,.stat:nth-child(2) { border-bottom: none; } }
+    .stat-num { font-family: 'Playfair Display SC', serif; font-size: 1.8rem; font-weight: 700; color: var(--saffron); display: block; line-height: 1; }
+    .stat-label { font-size: 0.75rem; color: var(--green-light); margin-top: 0.35rem; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 600; }
 
     /* ── HOW IT WORKS ── */
-    .how-section { padding: 5rem 4rem; background: var(--white); }
+    .how-section { padding: 3rem 4rem; background: var(--white); }
     .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
     .how-step { text-align: center; padding: 2.5rem 2rem; border-radius: var(--radius-lg); background: var(--cream); border: 1px solid var(--cream-dark); position: relative; }
     .how-step::after { content: ''; position: absolute; top: 50%; right: -1rem; transform: translateY(-50%); width: 2rem; height: 2px; background: var(--green-light); }
@@ -215,7 +215,7 @@
     .how-step p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
 
     /* ── PLANS ── */
-    .plans-section { padding: 5rem 4rem; background: var(--cream-dark); }
+    .plans-section { padding: 3rem 4rem; background: var(--cream-dark); }
     .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
     .plan-card { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; border: 2px solid transparent; position: relative; transition: all .3s; }
     .plan-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.08); }
@@ -243,7 +243,7 @@
     .plan-check { color: var(--green-fresh); flex-shrink: 0; }
 
     /* ── WHY ── */
-    .why-section { padding: 5rem 4rem; background: var(--cream); }
+    .why-section { padding: 3rem 4rem; background: var(--cream); }
     .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
     .why-card { background: var(--white); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid var(--cream-dark); transition: all .3s; position: relative; overflow: hidden; cursor: default; }
     .why-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--green-fresh), var(--saffron)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
@@ -254,7 +254,7 @@
     .why-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
 
     /* ── MENU ── */
-    .menu-section { padding: 5rem 4rem; background: var(--green-deep); color: var(--cream); }
+    .menu-section { padding: 3rem 4rem; background: var(--green-deep); color: var(--cream); }
     .menu-section .section-title { color: var(--cream); }
     .menu-section .section-tag { color: var(--saffron); }
     .menu-section .section-sub { color: var(--green-light); }
@@ -290,7 +290,7 @@
     @media (max-width:768px) { .menu-cols { grid-template-columns:1fr; } .menu-month-badge { font-size:1.5rem; } }
 
     /* ── HEALTH PLANS ── */
-    .health-section { padding: 5rem 4rem; background: var(--cream-dark); }
+    .health-section { padding: 3rem 4rem; background: var(--cream-dark); }
     .health-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
     .health-card { background: var(--white); border-radius: var(--radius-lg); padding: 1.5rem; border: 2px solid var(--cream-dark); display: flex; align-items: center; gap: 1rem; text-decoration: none; transition: all .3s; cursor: pointer; }
     .health-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.09); }
@@ -299,7 +299,7 @@
     .health-card p { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
 
     /* ── DELIVERY + FAQ ── */
-    .df-section { padding: 5rem 4rem; background: var(--cream); }
+    .df-section { padding: 3rem 4rem; background: var(--cream); }
     .df-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; max-width: 1100px; margin: 0 auto; }
     .slot-card { background: var(--white); border: 1px solid var(--green-light); border-radius: var(--radius-md); padding: 1rem 1.2rem; display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
     .slot-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
@@ -313,7 +313,7 @@
     details p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; padding-bottom: 0.9rem; }
 
     /* ── TESTIMONIALS ── */
-    .testi-section { padding: 5rem 4rem; background: var(--white); }
+    .testi-section { padding: 3rem 4rem; background: var(--white); }
     .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
     .testi-card { background: var(--cream); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid var(--cream-dark); }
     .testi-stars { display: flex; gap: 3px; margin-bottom: 1rem; }
@@ -345,7 +345,7 @@
     }
 
     /* ── SEO ARTICLE ── */
-    .seo-section { padding: 5rem 4rem; background: var(--cream-dark); }
+    .seo-section { padding: 3rem 4rem; background: var(--cream-dark); }
     .seo-inner { max-width: 860px; margin: 0 auto; }
     .seo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2.5rem; }
     .seo-cta-bar { background: var(--white); border-radius: var(--radius-lg); padding: 1.5rem 2rem; margin-top: 2.5rem; border-left: 4px solid var(--green-fresh); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
@@ -355,7 +355,7 @@
     }
 
     /* ── CTA ── */
-    .cta-section { background: linear-gradient(135deg, #0d2b1e 0%, var(--green-deep) 50%, var(--green-mid) 100%); padding: 5rem 2rem; text-align: center; color: var(--cream); position: relative; overflow: hidden; }
+    .cta-section { background: linear-gradient(135deg, #0d2b1e 0%, var(--green-deep) 50%, var(--green-mid) 100%); padding: 3rem 2rem; text-align: center; color: var(--cream); position: relative; overflow: hidden; }
     .cta-section::before { content: ''; position: absolute; top: -50%; left: -20%; width: 140%; height: 200%; background: radial-gradient(ellipse at center, rgba(82,183,136,.12) 0%, transparent 60%); pointer-events: none; }
     .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; position: relative; }
     .cta-section p { font-size: 1.05rem; color: var(--green-light); margin-bottom: 2.5rem; line-height: 1.7; position: relative; }
@@ -427,7 +427,7 @@
     }
     @media (max-width: 768px) {
       nav { padding: 0.6rem 1.2rem; }
-      .how-section, .plans-section, .why-section, .menu-section, .health-section, .df-section, .testi-section { padding: 3rem 1.5rem; }
+      .how-section, .plans-section, .why-section, .menu-section, .health-section, .df-section, .testi-section, .seo-section, .cta-section { padding: 2rem 1.5rem; }
       .stats-bar { padding: 1rem; }
       footer { padding: 2.5rem 1.5rem 0; }
       .footer-inner { gap: 2rem; }
@@ -732,7 +732,6 @@
     </div>
 
   </div>
-  <p style="text-align:center; margin-top:1.5rem; font-size:0.83rem; color:var(--muted);">Free delivery across Ahmedabad · All orders at <a href="https://www.nosh7.com/order" style="color:var(--green-mid); font-weight:700;">nosh7.com/order</a></p>
 </section>
 
 <!-- ── HOW IT WORKS ── -->
