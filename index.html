@@ -1278,28 +1278,23 @@
   /* Widget toggle button */
   #julie-toggle {
     position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 600;
-    width: 58px; height: 58px; border-radius: 50%;
-    background: var(--green-deep);
-    box-shadow: 0 4px 24px rgba(26,60,46,.45);
+    width: 62px; height: 62px; border-radius: 50%;
+    background: linear-gradient(135deg, #1a3c2e 0%, #2d6a4f 60%, #52b788 100%);
+    box-shadow: 0 6px 28px rgba(26,60,46,.5);
     border: none; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    transition: transform .2s, box-shadow .2s;
+    transition: transform .25s, box-shadow .25s;
   }
-  #julie-toggle:hover { transform: scale(1.08); box-shadow: 0 8px 32px rgba(26,60,46,.5); }
-  #julie-toggle .julie-avatar-sm {
-    width: 58px; height: 58px; border-radius: 50%;
-    background: linear-gradient(135deg, #2d6a4f, #52b788);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display SC', serif; font-size: 1.3rem;
-    font-weight: 700; color: white; letter-spacing: 0;
-  }
+  #julie-toggle:hover { transform: scale(1.1) rotate(-6deg); box-shadow: 0 10px 36px rgba(26,60,46,.6); }
   #julie-badge {
-    position: absolute; top: -3px; right: -3px;
-    width: 18px; height: 18px; border-radius: 50%;
-    background: var(--saffron); border: 2px solid var(--cream);
+    position: absolute; top: -2px; right: -2px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--saffron); border: 2.5px solid var(--cream);
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.6rem; font-weight: 700; color: var(--green-deep);
+    font-size: 0.62rem; font-weight: 700; color: var(--green-deep);
+    animation: badge-pulse 2s ease-in-out infinite;
   }
+  @keyframes badge-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(244,166,29,.6);} 50%{box-shadow:0 0 0 5px rgba(244,166,29,0);} }
 
   /* Chat window */
   #julie-window {
@@ -1425,7 +1420,12 @@
 
 <!-- Toggle button -->
 <button id="julie-toggle" aria-label="Chat with Julie" onclick="toggleJulie()">
-  <div class="julie-avatar-sm">J</div>
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6 6 2 10 2 12s4 10 10 10 10-6 10-10S18 6 12 2z" stroke="rgba(183,228,199,.5)" stroke-width="1" fill="rgba(82,183,136,.15)"/>
+    <path d="M12 2c-2 5-2 10 0 14 2-4 2-9 0-14z" fill="rgba(183,228,199,.7)"/>
+    <path d="M12 2C8 5 6 9 7 13c1.5-2 3-3.5 5-5-1.5 2-2.5 4-2 7 2-3 4-5 5-8 0 3-1 6-3 9 3-1 6-4 6-8 0-3-2-6-6-13z" fill="white" opacity=".9"/>
+    <circle cx="12" cy="19" r="1.5" fill="rgba(244,166,29,.9)"/>
+  </svg>
   <div id="julie-badge">1</div>
 </button>
 
@@ -1463,7 +1463,7 @@
   const KB = [
     {
       keys: ['hi','hello','hey','namaste','hii','helo','good morning','good evening','good afternoon','sup','yo'],
-      reply: () => `Namaste! 🌿 I'm <strong>Julie</strong>, NOSH7's virtual assistant.<br><br>How can I help you today?`,
+      reply: () => `Namaste! 🌿 I'm <strong>Julie</strong>.<br><br>Let's figure out the best healthy meal plan for your journey. What are you looking to achieve?`,
       quick: ['Plans & Pricing','How to Order','Delivery Areas','Menu','Health Goals','Trial Pack']
     },
     {
@@ -1755,7 +1755,7 @@ For subscriptions and best pricing, use our website: <a href="https://www.nosh7.
         showTyping();
         setTimeout(() => {
           removeTyping();
-          addMsg(`Namaste! 🌿 I'm <strong>Julie</strong>, NOSH7's virtual assistant.<br><br>I can help with plans, pricing, delivery, menu, health goals, and more. What would you like to know?`, 'bot');
+          addMsg(`Namaste! 🌿 I'm <strong>Julie</strong>.<br><br>Let's find the right healthy meal plan for your journey — whether it's weight loss, high protein, diabetes, or just eating cleaner. What's your goal?`, 'bot');
           setQuick(['Plans & Pricing','How to Order','Delivery Areas','Menu','Health Goals','Trial Pack']);
         }, 900);
       }, 300);
