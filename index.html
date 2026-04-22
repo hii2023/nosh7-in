@@ -41,29 +41,6 @@
       --radius-md:    1rem;
       --radius-pill:  100px;
     }
-    /* ── RATING CROWN BAR ── */
-    #rating-bar {
-      background: linear-gradient(90deg, #0d2318 0%, #1a3c2e 40%, #0d2318 100%);
-      padding: 0.5rem 1rem; text-align: center; position: relative; z-index: 300;
-      border-bottom: 1px solid rgba(82,183,136,.25);
-    }
-    .rating-bar-inner {
-      display: flex; align-items: center; justify-content: center;
-      gap: 0.7rem; flex-wrap: wrap; max-width: 900px; margin: 0 auto;
-    }
-    .rating-crown-label {
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: #f4a61d; white-space: nowrap;
-    }
-    .rating-divider { color: rgba(255,255,255,.2); font-size: 0.8rem; }
-    .rating-item { display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
-    .rating-stars { font-size: 0.72rem; letter-spacing: 1px; }
-    .swiggy-stars { color: #FC8019; }
-    .google-stars { color: #4285F4; }
-    .zomato-stars { color: #CB202D; }
-    .rating-platform { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,.75); }
-    .rating-score { font-size: 0.72rem; font-weight: 900; color: white; background: rgba(255,255,255,.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-    @media (max-width: 600px) { .rating-crown-label:last-child { display: none; } }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -201,10 +178,14 @@
     .pbar-call { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.2); }
 
     /* ── STATS ── */
-    .stats-bar { background: var(--green-mid); padding: 2.5rem 4rem; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; }
+    .stats-bar { background: var(--green-mid); padding: 1.8rem 2rem; display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    @media (max-width: 600px) { .stats-bar { grid-template-columns: repeat(2,1fr); gap: 0; } }
     .stat { text-align: center; }
-    .stat-num { font-family: 'Playfair Display SC', serif; font-size: 2.4rem; font-weight: 700; color: var(--saffron); display: block; }
-    .stat-label { font-size: 0.82rem; color: var(--green-light); margin-top: 0.2rem; letter-spacing: 0.04em; }
+    .stat { text-align: center; padding: 1.2rem 0.5rem; border-right: 1px solid rgba(255,255,255,.1); }
+    .stat:last-child { border-right: none; }
+    @media (max-width: 600px) { .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 1rem 0.5rem; } .stat:last-child,.stat:nth-child(2) { border-bottom: none; } }
+    .stat-num { font-family: 'Playfair Display SC', serif; font-size: 2rem; font-weight: 700; color: var(--saffron); display: block; line-height: 1; }
+    .stat-label { font-size: 0.72rem; color: var(--green-light); margin-top: 0.4rem; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 600; }
 
     /* ── HOW IT WORKS ── */
     .how-section { padding: 5rem 4rem; background: var(--white); }
@@ -431,7 +412,7 @@
     @media (max-width: 768px) {
       nav { padding: 0.6rem 1.2rem; }
       .how-section, .plans-section, .why-section, .menu-section, .health-section, .df-section, .testi-section { padding: 3rem 1.5rem; }
-      .stats-bar { padding: 1.5rem 1rem; gap: 1rem; }
+      .stats-bar { padding: 1rem; }
       footer { padding: 2.5rem 1.5rem 0; }
       .footer-inner { gap: 2rem; }
       .why-grid { grid-template-columns: 1fr 1fr; }
@@ -445,40 +426,12 @@
       .why-grid { grid-template-columns: 1fr; }
       .menu-grid { grid-template-columns: 1fr; }
       .testi-grid { grid-template-columns: 1fr; }
-      .stats-bar { flex-direction: column; align-items: center; }
       .platform-bar { gap: 0.5rem; }
       .cta-btns { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
-
-<!-- ── RATING CROWN BAR ── -->
-<div id="rating-bar">
-  <div class="rating-bar-inner">
-    <span class="rating-crown-label">⭑ Rated Best Healthy Meal in Ahmedabad</span>
-    <span class="rating-divider">|</span>
-    <span class="rating-item">
-      <span class="rating-stars swiggy-stars">★★★★★</span>
-      <span class="rating-platform">Swiggy</span>
-      <span class="rating-score">4.8</span>
-    </span>
-    <span class="rating-divider">·</span>
-    <span class="rating-item">
-      <span class="rating-stars google-stars">★★★★★</span>
-      <span class="rating-platform">Google</span>
-      <span class="rating-score">4.6</span>
-    </span>
-    <span class="rating-divider">·</span>
-    <span class="rating-item">
-      <span class="rating-stars zomato-stars">★★★★</span>
-      <span class="rating-platform">Zomato</span>
-      <span class="rating-score">4.4</span>
-    </span>
-    <span class="rating-divider">|</span>
-    <span class="rating-crown-label">⭑ 2000+ Happy Customers</span>
-  </div>
-</div>
 
 <!-- ── NAV ── -->
 <nav id="mainNav">
@@ -642,11 +595,10 @@
 
 <!-- ── STATS ── -->
 <div class="stats-bar" id="statsBar">
-  <div class="stat"><span class="stat-num" data-target="2000" data-prefix="" data-suffix="+" data-dir="up">0</span><div class="stat-label">Happy Customers in Ahmedabad</div></div>
-  <div class="stat"><span class="stat-num" data-target="179" data-prefix="₹" data-suffix="" data-dir="down" data-from="1000">₹1000</span><div class="stat-label">Per Day on Best Plan</div></div>
-  <div class="stat"><span class="stat-num" data-target="25" data-prefix="" data-suffix="%" data-dir="up">0%</span><div class="stat-label">Max Savings vs Single Meal</div></div>
-  <div class="stat"><span class="stat-num" data-target="0" data-prefix="" data-suffix="" data-dir="up">0</span><div class="stat-label">Preservatives. Ever.</div></div>
-  <div class="stat"><span class="stat-num" data-target="25" data-prefix="" data-suffix="+" data-dir="up">0</span><div class="stat-label">Salad Varieties, Rotated Weekly</div></div>
+  <div class="stat"><span class="stat-num" data-target="2000" data-prefix="" data-suffix="+" data-dir="up">0</span><div class="stat-label">Happy Customers</div></div>
+  <div class="stat"><span class="stat-num" data-target="179" data-prefix="₹" data-suffix="" data-dir="down" data-from="1000">₹1000</span><div class="stat-label">Per Day</div></div>
+  <div class="stat"><span class="stat-num" data-target="0" data-prefix="" data-suffix="" data-dir="up">0</span><div class="stat-label">Preservatives</div></div>
+  <div class="stat"><span class="stat-num" data-target="25" data-prefix="" data-suffix="+" data-dir="up">0</span><div class="stat-label">Salad Varieties</div></div>
 </div>
 
 <!-- ── PLANS ── -->
@@ -1366,7 +1318,7 @@
   /* Toggle launcher — round, matches WA/call size */
   #julie-toggle {
     position: fixed; bottom: 1.8rem; right: 1.5rem; left: auto; z-index: 600;
-    width: 52px; height: 52px; border-radius: 50%;
+    width: 44px; height: 44px; border-radius: 50%;
     background: none; border: none; padding: 0;
     box-shadow: 0 4px 20px rgba(26,60,46,.45);
     cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -1511,12 +1463,13 @@
 
 <!-- Toggle button -->
 <button id="julie-toggle" aria-label="Chat with Julie" onclick="toggleJulie()">
-  <svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="26" cy="26" r="26" fill="#1c1c1c"/>
-    <circle cx="26" cy="26" r="21" fill="#2d6a4f"/>
-    <circle cx="26" cy="26" r="16" fill="#f4a61d"/>
-    <circle cx="26" cy="26" r="11" fill="#ff6b9d"/>
-    <circle cx="26" cy="26" r="6"  fill="white"/>
+  <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="22" cy="22" r="22" fill="#1c1c1c"/>
+    <circle cx="22" cy="22" r="18" fill="#2d6a4f"/>
+    <circle cx="22" cy="22" r="14" fill="#38bdf8"/>
+    <circle cx="22" cy="22" r="10" fill="#f4a61d"/>
+    <circle cx="22" cy="22" r="6"  fill="#ff6b9d"/>
+    <circle cx="22" cy="22" r="3"  fill="white"/>
   </svg>
   <div id="julie-badge">1</div>
 </button>
