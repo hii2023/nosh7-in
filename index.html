@@ -1290,6 +1290,9 @@
   .julie-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
   .julie-close { background: none; border: none; cursor: pointer; color: var(--green-light); padding: 0.2rem; border-radius: 50%; transition: color .2s; }
   .julie-close:hover { color: white; }
+  .julie-lang { display: flex; gap: 0.3rem; margin-left: auto; margin-right: 0.5rem; }
+  .lang-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 100px; cursor: pointer; transition: all .2s; font-family: 'Karla', sans-serif; }
+  .lang-btn.active, .lang-btn:hover { background: rgba(255,255,255,0.9); color: var(--green-deep); }
 
   /* Messages */
   .julie-messages {
@@ -1395,6 +1398,11 @@
       <div class="julie-name">Julie</div>
       <div class="julie-status"><span class="julie-dot"></span> NOSH7 Assistant · Online</div>
     </div>
+    <div class="julie-lang">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="hi">हिं</button>
+      <button class="lang-btn" data-lang="gu">ગુ</button>
+    </div>
     <button class="julie-close" onclick="toggleJulie()" aria-label="Close chat">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
@@ -1414,263 +1422,90 @@
 
 <script>
 (function() {
+  const GEMINI_KEY = 'AIzaSyBa_bUApInzsxxtT0jXZPNWuQTGAzii8Qs';
+  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
   const WA = 'https://wa.me/919712989498';
   const WA_TEXT = t => WA + '?text=' + encodeURIComponent(t);
 
-  // ── KNOWLEDGE BASE ──
-  const KB = [
-    {
-      keys: ['hi','hello','hey','namaste','hii','helo','good morning','good evening','good afternoon','sup','yo'],
-      reply: () => `Namaste! 🌿 I'm <strong>Julie</strong>.<br><br>Let's figure out the best healthy meal plan for your journey. What are you looking to achieve?`,
-      quick: ['Plans & Pricing','How to Order','Delivery Areas','Menu','Health Goals','Trial Pack']
-    },
-    {
-      keys: ['plan','price','pricing','cost','kitna','subscription','how much','rate','charges','fees','tariff','package'],
-      reply: () => `NOSH7 has <strong>3 subscription plans</strong>:<br><br>
-🟡 <strong>5-Day Trial</strong> — ₹999 (₹199/day)<br>
-🌿 <strong>26-Day Plan</strong> — ₹4,914 (₹189/day) <em>Most Popular</em><br>
-💚 <strong>60-Day Plan</strong> — ₹10,740 (₹179/day) <em>Best Value</em><br><br>
-All plans include <strong>fresh salad meals</strong> delivered daily. Health drinks are chargeable at ₹29/day — but 26-Day plan gets <strong>1 week free</strong> and 60-Day plan gets <strong>2 weeks free</strong> 🎁`,
-      quick: ['How to Order','Trial Pack','Delivery Areas','Jain Options']
-    },
-    {
-      keys: ['offer','offers','discount','deal','coupon','promo','saving','save','benefit','free','freebie','bonus','gift','cashback','scheme','active offer'],
-      reply: () => `🎁 <strong>Active Offers — NOSH7</strong><br><br>
-🥤 <strong>1. Free Healthy Drink</strong><br>
-&nbsp;&nbsp;• 26-Day Plan: 1 week free drink worth <strong>₹499</strong><br>
-&nbsp;&nbsp;• 60-Day Plan: 2 weeks free drink worth <strong>₹999</strong><br><br>
-👫 <strong>2. Double Subscription Cashback</strong><br>
-&nbsp;&nbsp;Buy 2 subscriptions together → <strong>5% cashback</strong> on each<br><br>
-👨‍👩‍👧 <strong>3. Family &amp; Office Group</strong><br>
-&nbsp;&nbsp;3+ people subscribe together → up to <strong>10% cashback</strong><br><br>
-🤝 <strong>4. Refer a Friend</strong><br>
-&nbsp;&nbsp;Refer someone → <strong>both get 2 extra meals</strong> added to your plan<br><br>
-🏆 <strong>5. Loyalty Reward</strong><br>
-&nbsp;&nbsp;3 consecutive months → <strong>3 meals free</strong> on next monthly plan<br><br>
-To activate any offer, WhatsApp us at <a href="https://wa.me/919712989498?text=Hi+NOSH7,+I+want+to+activate+an+offer" style="color:#2d6a4f;font-weight:700;">9712989498 →</a>`,
-      quick: ['How to Order','26-Day Plan','60-Day Plan','Contact Us']
-    },
-    {
-      keys: ['trial','5 day','5-day','5days','test','try','sample','starter','trial pack'],
-      reply: () => `🟡 <strong>5-Day Trial Pack — ₹999</strong><br>
-<em>₹199/day · Save 16% vs single meal price</em><br><br>
-✅ 5 fresh salad meals (1 per day)<br>
-✅ Home delivery across Ahmedabad<br>
-✅ No commitment, no auto-renewal<br>
-✅ Full refund if not satisfied<br><br>
-🛒 <a href="https://www.nosh7.com/order" target="_blank" rel="noopener" style="color:#2d6a4f;font-weight:700;">Order at nosh7.com/order →</a>`,
-      quick: ['How to Order','Offers','Contact Us']
-    },
-    {
-      keys: ['26 day','26-day','26day','monthly','one month','1 month'],
-      reply: () => `🟢 <strong>26-Day Plan — ₹4,914</strong><br>
-<em>₹189/day · 21% off · Save ₹1,300</em><br><br>
-✅ 26 fresh salad meals (1 per day)<br>
-✅ 1 week free health drink (worth ₹499)<br>
-✅ Weekly superfood seeds included<br>
-✅ Free nutrition consultation<br>
-✅ Pause anytime, no penalty<br>
-✅ Jain option available<br>
-✅ Home delivery across Ahmedabad<br><br>
-🛒 <a href="https://www.nosh7.com/order" target="_blank" rel="noopener" style="color:#2d6a4f;font-weight:700;">Order at nosh7.com/order →</a>`,
-      quick: ['How to Order','Offers','Contact Us']
-    },
-    {
-      keys: ['60 day','60-day','60day','two month','2 month','best value','long term'],
-      reply: () => `🔵 <strong>60-Day Plan — ₹10,740</strong><br>
-<em>₹179/day · 25% off · Save ₹3,600</em><br><br>
-✅ 60 fresh salad meals (1 per day)<br>
-✅ 2 weeks free health drink (worth ₹999)<br>
-✅ Superfood seeds with every meal<br>
-✅ 2 nutritionist consultations included<br>
-✅ Priority WhatsApp support<br>
-✅ Jain option available<br>
-✅ Home delivery across Ahmedabad<br><br>
-🛒 <a href="https://www.nosh7.com/order" target="_blank" rel="noopener" style="color:#2d6a4f;font-weight:700;">Order at nosh7.com/order →</a>`,
-      quick: ['How to Order','Offers','Contact Us']
-    },
-    {
-      keys: ['order','how to order','buy','subscribe','start','book','sign up','register','enroll'],
-      reply: () => `3 ways to order NOSH7:<br><br>
-1️⃣ <strong>Website</strong> — <a href="https://www.nosh7.com/order" target="_blank" rel="noopener" style="color:#2d6a4f;font-weight:700;">nosh7.com/order</a><br>
-2️⃣ <strong>Zomato</strong> — <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" target="_blank" rel="noopener" style="color:#CB202D;font-weight:700;">Order on Zomato →</a><br>
-3️⃣ <strong>Swiggy</strong> — <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457" target="_blank" rel="noopener" style="color:#FC8019;font-weight:700;">Order on Swiggy →</a><br><br>
-For subscriptions, the website gives you the best price.`,
-      quick: ['Plans & Pricing','Delivery Areas','Trial Pack']
-    },
-    {
-      keys: ['deliver','delivery','area','location','where','zone','satellite','prahlad','bodakdev','vastrapur','thaltej','anandnagar','sg highway','ambli','sindhu','cover'],
-      reply: () => `We deliver across <strong>West Ahmedabad</strong>:<br><br>
-📍 Satellite · Prahlad Nagar · Bodakdev<br>
-📍 Vastrapur · Thaltej · Anandnagar<br>
-📍 SG Highway · Ambli · Sindhu Bhavan Road<br><br>
-Not sure if we cover your area? WhatsApp us and we'll confirm within minutes.`,
-      quick: ['Delivery Timings','How to Order','Contact Us']
-    },
-    {
-      keys: ['time','timing','when','slot','batch','morning','evening','afternoon','schedule','what time','delivery time'],
-      reply: () => `We run <strong>4 delivery batches daily</strong>:<br><br>
-🌅 Batch 1: 9:30 AM – 11:30 AM<br>
-☀️ Batch 2: 11:30 AM – 1:30 PM<br>
-🌤 Batch 3: 4:30 PM – 6:30 PM<br>
-🌇 Batch 4: 6:30 PM – 8:30 PM<br><br>
-Each batch is prepared fresh 1 hour before delivery. No frozen, no pre-made.`,
-      quick: ['Delivery Areas','How to Order']
-    },
-    {
-      keys: ['custom','customise','customize','customized','customised','personalised','personalized','specific','special','my plan','own plan','tailor','tailored','according to me','as per','my requirement','my need','my goal','my diet'],
-      reply: () => `We'd love to build a <strong>customised meal plan</strong> just for you! 🌿<br><br>
-Our team will understand your health goals, dietary needs, and preferences — and design a plan around them.<br><br>
-<a href="https://wa.me/919712989498?text=Hi+NOSH7!+I+am+looking+for+a+customised+meal+plan." target="_blank" rel="noopener" class="julie-wa-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp for Custom Plan</a>`,
-      quick: ['Contact Us','Plans & Pricing','Health Goals']
-    },
-    {
-      keys: ['menu','what do you serve','food','salad','bowl','dish','what is included','ingredients','item','eat','meal'],
-      reply: () => `NOSH7 serves <strong>fresh salad bowls</strong> with seasonal ingredients — never the same two days in a row.<br><br>
-🥗 Protein-packed bases: chickpeas, paneer, edamame, rajma<br>
-🌿 Seasonal greens: spinach, rocket, cucumber, cherry tomatoes<br>
-🌰 Seeds: pumpkin, sunflower, flax<br>
-🥤 Health drinks included<br><br>
-<strong>No preservatives. No refined flour. No added sugar.</strong> Fresh daily from our Satellite kitchen.`,
-      quick: ['Jain Options','Health Goals','Plans & Pricing']
-    },
-    {
-      keys: ['jain','no onion','no garlic','without onion','without garlic','jain friendly','pure jain'],
-      reply: () => `Yes! We offer <strong>Jain-friendly options</strong> on all plans.<br><br>
-✅ No onion, no garlic<br>
-✅ Jain Dairy paneer used<br>
-✅ All bowls are 100% pure vegetarian<br><br>
-Just mention "Jain" when ordering via WhatsApp or in the order notes.`,
-      quick: ['How to Order','Menu','Plans & Pricing']
-    },
-    {
-      keys: ['health','goal','weight loss','lose weight','slim','fat','obesity','reduce','fitness'],
-      reply: () => `NOSH7 has condition-specific plans:<br><br>
-⚖️ <strong>Weight Loss</strong> — high fibre, calorie-counted<br>
-🩸 <strong>Diabetes</strong> — low glycaemic index<br>
-🌸 <strong>PCOD/PCOS</strong> — anti-inflammatory<br>
-🦋 <strong>Thyroid</strong> — thyroid-safe ingredients<br>
-💪 <strong>High Protein</strong> — 18–24g protein per bowl<br><br>
-WhatsApp us to get matched to the right plan for you.`,
-      quick: ['Weight Loss','High Protein','PCOD Plan','Contact Us']
-    },
-    {
-      keys: ['weight loss','lose weight','slim','fat','reduce weight','weightloss'],
-      reply: () => `Our <strong>Weight Loss Plan</strong> is high-fibre, low-calorie, and portion-controlled.<br><br>
-📊 ~350–420 kcal per bowl<br>
-🔥 Creates a ~350 kcal daily deficit<br>
-📉 Customers report 3–7 kg loss over 60 days<br><br>
-Consistency is key — and we make that easy with daily delivery.`,
-      quick: ['Plans & Pricing','How to Order','Contact Us']
-    },
-    {
-      keys: ['protein','high protein','muscle','gym','workout','bodybuilding','muscle gain','gains','protein rich'],
-      reply: () => `Our <strong>High Protein Plan</strong> is built for gym-goers and active people.<br><br>
-💪 18–24g protein per bowl (pure veg!)<br>
-🫘 Sources: edamame, paneer, chickpeas, pumpkin seeds<br>
-🥗 Calorie-tracked for muscle gain without excess fat<br><br>
-No eggs, no non-veg — and still hits your protein goals.`,
-      quick: ['Plans & Pricing','How to Order','Contact Us']
-    },
-    {
-      keys: ['pcod','pcos','hormonal','hormone','period','irregular'],
-      reply: () => `Our <strong>PCOD/PCOS Plan</strong> is designed to help with hormonal balance:<br><br>
-🌿 Anti-inflammatory ingredients<br>
-📉 Low glycaemic index to manage insulin<br>
-🚫 No refined carbs or added sugar<br><br>
-Many of our customers with PCOD have seen improved cycle regularity within 4–6 weeks.`,
-      quick: ['Plans & Pricing','How to Order','Contact Us']
-    },
-    {
-      keys: ['diabetes','diabetic','sugar','blood sugar','glycaemic','glucose'],
-      reply: () => `Our <strong>Diabetes Plan</strong> is designed for stable blood sugar:<br><br>
-📊 Low glycaemic index foods<br>
-🥗 High fibre to slow glucose absorption<br>
-🚫 Zero added sugar in savoury bowls<br>
-✅ Safe for Type 2 diabetes management<br><br>
-Please consult your doctor alongside any dietary change.`,
-      quick: ['Plans & Pricing','How to Order','Contact Us']
-    },
-    {
-      keys: ['thyroid','thyroid plan','hypothyroid','hyperthyroid'],
-      reply: () => `Our <strong>Thyroid-Friendly Plan</strong> avoids goitrogenic foods in excess and focuses on:<br><br>
-🌿 Selenium-rich seeds<br>
-🥗 Anti-inflammatory greens<br>
-🚫 No soy (available on request)<br><br>
-We customise based on your thyroid condition — just let us know via WhatsApp.`,
-      quick: ['Plans & Pricing','How to Order','Contact Us']
-    },
-    {
-      keys: ['refund','cancel','money back','return','dissatisfied','not happy','guarantee'],
-      reply: () => `NOSH7 offers a <strong>full refund</strong> if you're not happy after your 5-day trial. No questions asked.<br><br>
-For longer plans, cancellations are handled case by case — WhatsApp us and we'll sort it out fairly.`,
-      quick: ['Contact Us','Plans & Pricing']
-    },
-    {
-      keys: ['preservative','fresh','organic','natural','chemical','artificial','additive'],
-      reply: () => `NOSH7 uses <strong>zero preservatives</strong> and zero artificial additives.<br><br>
-✅ Ingredients sourced fresh every morning<br>
-✅ Seasonal and locally sourced where possible<br>
-✅ No refined flour, no added sugar in savoury bowls<br>
-✅ Cold-pressed oil dressings only`,
-      quick: ['Menu','Health Goals','Plans & Pricing']
-    },
-    {
-      keys: ['contact','call','phone','number','reach','speak','talk','whatsapp'],
-      reply: () => `You can reach the NOSH7 team at:<br><br>
-📱 <strong>WhatsApp:</strong> <a href="${WA}" target="_blank" style="color:#2d6a4f;font-weight:700;">9712989498</a><br>
-📞 <strong>Call:</strong> <a href="tel:+919712989498" style="color:#2d6a4f;font-weight:700;">+91 97129 89498</a><br>
-📧 <strong>Email:</strong> contact@nosh7.in<br><br>
-We usually respond within 30 minutes on WhatsApp.`,
-      quick: ['How to Order','Plans & Pricing']
-    },
-    {
-      keys: ['zomato','swiggy','app','online'],
-      reply: () => `Yes! You can order NOSH7 on:<br><br>
-🔴 <strong>Zomato</strong> — Search "NOSH7" in Ahmedabad<br>
-🟠 <strong>Swiggy</strong> — Search "NOSH 7 Vastrapur"<br><br>
-For subscriptions and best pricing, use our website: <a href="https://www.nosh7.com/order" target="_blank" style="color:#2d6a4f;font-weight:700;">nosh7.com/order</a>`,
-      quick: ['Plans & Pricing','Delivery Areas']
-    },
-    {
-      keys: ['instagram','social','follow','ig','insta'],
-      reply: () => `Follow us for daily health tips and menu previews! 🌿<br><br>
-📸 Instagram: <a href="https://www.instagram.com/nosh7salad" target="_blank" style="color:#2d6a4f;font-weight:700;">@nosh7salad</a>`,
-      quick: ['Plans & Pricing','How to Order']
-    },
-    {
-      keys: ['thank','thanks','thankyou','thank you','great','awesome','perfect','nice','helpful','good'],
-      reply: () => `You're welcome! 😊 Happy to help. Is there anything else you'd like to know about NOSH7?`,
-      quick: ['Plans & Pricing','How to Order','Contact Us']
-    }
-  ];
+  let lang = 'en';
+  let history = [];
 
-  // Quick reply label → trigger text map
-  const QR_MAP = {
-    'Plans & Pricing': 'plans and pricing',
-    'How to Order': 'how to order',
-    'Delivery Areas': 'delivery areas',
-    'Delivery Timings': 'delivery timings',
-    'Menu': 'menu',
-    'Health Goals': 'health goals',
-    'Trial Pack': 'trial',
-    '26-Day Plan': '26 day',
-    '60-Day Plan': '60 day',
-    'Jain Options': 'jain options',
-    'Weight Loss': 'weight loss plan',
-    'High Protein': 'high protein plan',
-    'PCOD Plan': 'pcod plan',
-    'Contact Us': 'contact'
+  const SYSTEM_PROMPT = `You are Julie, the friendly AI assistant for NOSH7 — Ahmedabad's pure veg salad cloud kitchen. Be warm, concise, and helpful. Never make up information. Keep replies under 120 words unless the customer asks for full plan details.
+
+ABOUT NOSH7:
+- Pure vegetarian salad cloud kitchen, Ahmedabad
+- Fresh daily-prepared salad meals delivered to your door
+- Jain options available on all plans
+- Contact: WhatsApp 9712989498 | Order: nosh7.com/order
+
+PLANS & PRICING:
+1. Trial Pack — ₹999 / 5 days (₹199/day, 16% off)
+   Includes: 5 salad meals, home delivery, no commitment, full refund guarantee
+2. 26-Day Plan — ₹4,914 / 26 days (₹189/day, 21% off, save ₹1,300) [MOST POPULAR]
+   Includes: 26 salad meals, 1 week free health drink (₹499), superfood seeds weekly, free nutrition consultation, pause anytime, Jain option
+3. 60-Day Plan — ₹10,740 / 60 days (₹179/day, 25% off, save ₹3,600) [BEST VALUE]
+   Includes: 60 salad meals, 2 weeks free health drink (₹999), superfood seeds every meal, 2 nutritionist consultations, priority WhatsApp support, Jain option
+
+HEALTH DRINKS: Chargeable at ₹29/day (free weeks included in 26 & 60-day plans as above)
+
+ACTIVE OFFERS:
+1. Free Healthy Drink — included in 26-day & 60-day plans (see above)
+2. Double Cashback — buy 2 subscriptions together, get 5% cashback each
+3. Group Offer — 3+ people from family/office subscribe together, up to 10% cashback
+4. Refer a Friend — both get 2 extra meals added to subscription
+5. Loyalty Reward — 3 consecutive months = 3 free meals on next plan
+
+HEALTH GOALS:
+- Weight Loss: ~350–420 kcal/bowl, ~350 kcal daily deficit, customers report 3–7 kg loss in 60 days
+- High Protein (pure veg): 18–24g protein/bowl from edamame, chickpeas, pumpkin seeds
+- PCOD/PCOS: Anti-inflammatory, low glycaemic, no refined carbs or added sugar
+- Diabetes: Low GI, high fibre, zero added sugar in savoury bowls
+- Thyroid: Selenium-rich seeds, anti-inflammatory greens
+
+ORDERING:
+- Website: nosh7.com/order (best price)
+- Also on Zomato & Swiggy
+- WhatsApp: 9712989498
+
+DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Anandnagar, SG Highway, Ambli, Sindhu Bhavan Road. 4 daily delivery batches.
+
+For anything not covered above, ask the customer to WhatsApp 9712989498.`;
+
+  const LANG_PROMPT = {
+    en: 'Reply in English only.',
+    hi: 'Reply in Hindi (Devanagari script) only. Keep it natural and conversational.',
+    gu: 'Reply in Gujarati only. Keep it natural and conversational.'
   };
 
-  const WA_FALLBACK = `I'm not sure about that one! Let me connect you with our team — they'll answer in minutes. 💬`;
+  const QUICK_DEFAULTS = ['Plans & Pricing','Trial Pack','Active Offers','Delivery Areas','Health Goals','How to Order'];
 
-  function match(text) {
-    const t = text.toLowerCase().trim();
-    for (const item of KB) {
-      if (item.keys.some(k => t.includes(k))) return item;
-    }
-    return null;
+  function mdToHtml(text) {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\n\n/g, '<br><br>')
+      .replace(/\n/g, '<br>');
+  }
+
+  async function askGemini(userText) {
+    const contents = history.map(h => ({ role: h.role, parts: [{ text: h.text }] }));
+    contents.push({ role: 'user', parts: [{ text: userText }] });
+    const res = await fetch(GEMINI_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: SYSTEM_PROMPT + '\n\n' + LANG_PROMPT[lang] }] },
+        contents,
+        generationConfig: { temperature: 0.7, maxOutputTokens: 350 }
+      })
+    });
+    if (!res.ok) throw new Error('API error ' + res.status);
+    const data = await res.json();
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+    history.push({ role: 'user', text: userText });
+    history.push({ role: 'model', text: reply });
+    if (history.length > 20) history = history.slice(-20);
+    return reply;
   }
 
   // ── DOM helpers ──
@@ -1687,7 +1522,6 @@ For subscriptions and best pricing, use our website: <a href="https://www.nosh7.
     }
     msgs().appendChild(wrap);
     msgs().scrollTop = msgs().scrollHeight;
-    return wrap;
   }
 
   function setQuick(labels) {
@@ -1697,7 +1531,7 @@ For subscriptions and best pricing, use our website: <a href="https://www.nosh7.
       const b = document.createElement('button');
       b.className = 'qr-btn';
       b.textContent = label;
-      b.onclick = () => handleInput(QR_MAP[label] || label);
+      b.onclick = () => handleInput(label);
       q.appendChild(b);
     });
   }
@@ -1716,30 +1550,31 @@ For subscriptions and best pricing, use our website: <a href="https://www.nosh7.
     if (t) t.remove();
   }
 
-  function handleInput(text) {
+  async function handleInput(text) {
     if (!text.trim()) return;
     addMsg(text, 'user');
     document.getElementById('julie-input').value = '';
     quick().innerHTML = '';
     showTyping();
-
-    setTimeout(() => {
+    try {
+      const reply = await askGemini(text);
       removeTyping();
-      const item = match(text);
-      if (item) {
-        addMsg(item.reply(), 'bot');
-        setQuick(item.quick);
-      } else {
-        const fallbackHtml = `${WA_FALLBACK}<br><br>
-          <a href="${WA_TEXT('Hi Julie! I have a question: ' + text)}" target="_blank" rel="noopener" class="julie-wa-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Chat on WhatsApp
-          </a>`;
-        addMsg(fallbackHtml, 'bot');
-        setQuick(['Plans & Pricing','How to Order','Contact Us']);
-      }
-    }, 800);
+      addMsg(mdToHtml(reply), 'bot');
+    } catch (e) {
+      removeTyping();
+      addMsg(`Sorry, I had a hiccup! Please try again or <a href="${WA_TEXT('Hi NOSH7, I need help!')}" target="_blank" rel="noopener" class="julie-wa-btn" style="display:inline-flex;margin-top:0.4rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp us</a>`, 'bot');
+    }
+    setQuick(QUICK_DEFAULTS);
   }
+
+  // ── Language selector ──
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      lang = btn.dataset.lang;
+    });
+  });
 
   // ── Toggle ──
   let isOpen = false;
@@ -1754,9 +1589,9 @@ For subscriptions and best pricing, use our website: <a href="https://www.nosh7.
         showTyping();
         setTimeout(() => {
           removeTyping();
-          addMsg(`Namaste! 🌿 I'm <strong>Julie</strong>.<br><br>Let's find the right healthy meal plan for your journey — whether it's weight loss, high protein, diabetes, or just eating cleaner. What's your goal?`, 'bot');
-          setQuick(['Plans & Pricing','How to Order','Delivery Areas','Menu','Health Goals','Trial Pack']);
-        }, 900);
+          addMsg(`Namaste! 🌿 I'm <strong>Julie</strong>, your NOSH7 health assistant.<br><br>Ask me anything — plans, delivery, offers, or your health goals. I'm here to help!`, 'bot');
+          setQuick(QUICK_DEFAULTS);
+        }, 700);
       }, 300);
     }
   };
