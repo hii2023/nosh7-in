@@ -20,6 +20,10 @@
   {"@context":"https://schema.org","@graph":[{"@type":["FoodEstablishment","LocalBusiness"],"@id":"https://nosh7.in/#business","name":"NOSH7","description":"Ahmedabad ka pure veg salad cloud kitchen. Fresh salad subscriptions, health drinks, healthy seeds.","url":"https://nosh7.in","sameAs":["https://www.nosh7.com","https://www.instagram.com/nosh7salad"],"telephone":"+91-9712989498","logo":"https://nosh7.in/assets/logo.png","address":{"@type":"PostalAddress","streetAddress":"5A, Akshat Avenue, Opposite Revtri Tower, Ramdevnagar Road, Satellite","addressLocality":"Ahmedabad","addressRegion":"Gujarat","postalCode":"380015","addressCountry":"IN"},"servesCuisine":"Pure Vegetarian, Salads","suitableForDiet":"VegetarianDiet","priceRange":"₹₹","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"20:00"}}]}
   </script>
 
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@700;900&family=Karla:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
@@ -1491,6 +1495,39 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
       .replace(/\n/g, '<br>');
   }
 
+  function keywordFallback(text) {
+    const t = text.toLowerCase();
+    if (/\bhi\b|hello|namaste|hey|\bstart\b/.test(t))
+      return `Hi! I'm Julie from NOSH7 🌿 We deliver fresh pure veg salad bowls in Ahmedabad — **₹179–199/day**. What brings you here? Weight loss, high protein, or clean eating?`;
+    if (/trial|5.?day|\btry\b|sample/.test(t))
+      return `Our **Trial Pack** is **₹999 for 5 days** (₹199/day, 16% off). No commitment — full refund if not happy. Best way to try us! Order at **nosh7.com/order** or WhatsApp **9712989498**.`;
+    if (/26.?day|month|popular/.test(t))
+      return `The **26-Day Plan** is **₹4,914** (₹189/day, save **₹1,300**). Includes 1 week free health drink + superfood seeds + nutrition consultation. Our most popular! Ready to start?`;
+    if (/60.?day|2.?month|best.?value/.test(t))
+      return `The **60-Day Plan** is **₹10,740** (₹179/day, save **₹3,600**). Best value — 2 weeks free drink, seeds every meal, 2 consultations. WhatsApp **9712989498** to grab it!`;
+    if (/plan|pric|cost|rate|how.?much|kitna/.test(t))
+      return `3 plans: **Trial ₹999/5 days** | **26-Day ₹4,914** (most popular) | **60-Day ₹10,740** (best value). All fresh daily salad bowls. Which one suits you?`;
+    if (/offer|discount|cashback|deal|promo/.test(t))
+      return `**Active Offers:** Free health drink with 26 & 60-day plans · Double Cashback (2 subs = 5% each) · Group Offer (3+ people = 10%) · Refer a Friend = 2 free meals each. WhatsApp **9712989498** to avail!`;
+    if (/deliver|area|zone|location|where|satellite|prahlad|bodakdev|vastrapur/.test(t))
+      return `We cover West Ahmedabad — **Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Anandnagar, SG Highway, Ambli, Sindhu Bhavan Road**. 4 daily batches. WhatsApp **9712989498** to confirm your area.`;
+    if (/weight|loss|slim|fat|calorie|diet/.test(t))
+      return `Our bowls are **350–420 kcal**, high fibre, zero junk. Customers lose **3–7 kg in 60 days**. The **26-Day Plan** is the best place to start — want to try it?`;
+    if (/protein|muscle|gym|fitness/.test(t))
+      return `Every bowl has **18–24g protein** from edamame, chickpeas & pumpkin seeds — 100% pure veg. Perfect for gym-goers. The **26-Day Plan** is ideal — want to go for it?`;
+    if (/pcod|pcos|hormonal|thyroid/.test(t))
+      return `Our meals are anti-inflammatory, low-glycaemic, no refined carbs — great for **PCOD & thyroid** health. WhatsApp **9712989498** and we'll design the right plan for you.`;
+    if (/diabet|sugar|glyc/.test(t))
+      return `Our bowls are **low GI, high fibre, zero added sugar** — ideal for diabetics. WhatsApp **9712989498** and our nutritionist will guide you.`;
+    if (/order|buy|\bstart\b|subscri|book/.test(t))
+      return `Easiest way: **nosh7.com/order** for best price, or WhatsApp **9712989498**. Also on Zomato & Swiggy. Start with the **Trial Pack (₹999)** — no risk!`;
+    if (/customis|custom|change|dish|menu|jain/.test(t))
+      return `Monthly fixed menu that rotates. Customise any dish for just **₹49/meal** extra — WhatsApp **9712989498** before the delivery day. Jain options on all plans!`;
+    if (/drink|juice/.test(t))
+      return `Health drinks are **₹29/day**. **26-Day Plan** includes 1 week free (worth ₹499), **60-Day Plan** gets 2 weeks free (worth ₹999). Great add-on!`;
+    return `WhatsApp us at **9712989498** for instant help — we're very responsive! Or pick a question below 👇`;
+  }
+
   async function askGemini(userText) {
     const messages = [
       { role: 'system', content: SYSTEM_PROMPT + '\n\n' + LANG_PROMPT[lang] },
@@ -1565,7 +1602,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
       addMsg(mdToHtml(reply), 'bot');
     } catch (e) {
       removeTyping();
-      addMsg(`Sorry, something went wrong! Please try again or <a href="${WA_TEXT('Hi NOSH7, I need help!')}" target="_blank" rel="noopener" class="julie-wa-btn" style="display:inline-flex;margin-top:0.4rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp us</a>`, 'bot');
+      addMsg(mdToHtml(keywordFallback(text)), 'bot');
     }
     setQuick(QUICK_DEFAULTS);
   }
