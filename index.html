@@ -1484,6 +1484,15 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
 
   const QUICK_DEFAULTS = ['Plans & Pricing','Trial Pack','Active Offers','Delivery Areas','Health Goals','How to Order'];
 
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;');
+  }
+
   function mdToHtml(text) {
     return text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -1498,12 +1507,22 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
       ...history.map(h => ({ role: h.role === 'model' ? 'assistant' : h.role, content: h.text })),
       { role: 'user', content: userText }
     ];
-    const res = await fetch(GROQ_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'llama-3.1-8b-instant', messages, temperature: 0.7, max_tokens: 350 })
-    });
-    if (!res.ok) throw new Error('API error ' + res.status);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    let res;
+    try {
+      res = await fetch(GROQ_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model: 'llama-3.1-8b-instant', messages, temperature: 0.7, max_tokens: 350 }),
+        signal: controller.signal
+      });
+      clearTimeout(timer);
+      if (!res.ok) throw new Error('API error ' + res.status);
+    } catch (err) {
+      clearTimeout(timer);
+      throw err;
+    }
     const data = await res.json();
     const reply = data.choices?.[0]?.message?.content?.trim() || '';
     history.push({ role: 'user', text: userText });
@@ -1556,7 +1575,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
 
   async function handleInput(text) {
     if (!text.trim()) return;
-    addMsg(text, 'user');
+    addMsg(escapeHtml(text), 'user');
     document.getElementById('julie-input').value = '';
     quick().innerHTML = '';
     showTyping();
