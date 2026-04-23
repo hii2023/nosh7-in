@@ -1,0 +1,48 @@
+=== INDEXNOW REGISTRATION STEPS ===
+
+Key generated:  nosh7in2026bing32charkey00000001
+Key file name:  nosh7in2026bing32charkey00000001.txt
+Key file URL:   https://nosh7.in/nosh7in2026bing32charkey00000001.txt
+
+--------------------------------------------------
+STEP 1 — Push the key file to GitHub
+--------------------------------------------------
+The file "nosh7in2026bing32charkey00000001.txt" is already in your folder.
+Open Terminal on your Mac and run:
+
+  cd /Users/altafsimavatwala/Downloads/nosh7new
+  git add nosh7in2026bing32charkey00000001.txt
+  git commit -m "Add IndexNow key file for Bing"
+  git push
+
+Once pushed, the file will be live at:
+  https://nosh7.in/nosh7in2026bing32charkey00000001.txt
+
+--------------------------------------------------
+STEP 2 — Submit to Bing IndexNow
+--------------------------------------------------
+Go to: https://www.bing.com/indexnow
+
+Fill in:
+  URL of a page:     https://nosh7.in/
+  Key:               nosh7in2026bing32charkey00000001
+  Key location URL:  https://nosh7.in/nosh7in2026bing32charkey00000001.txt
+
+Click Submit. Bing will verify your key file is live, then index your site faster.
+
+--------------------------------------------------
+STEP 3 — Add IndexNow key to robots.txt
+--------------------------------------------------
+Open the robots.txt file in your folder and add this line at the very bottom:
+
+  IndexNow-Key: nosh7in2026bing32charkey00000001
+
+Then push again:
+  git add robots.txt
+  git commit -m "Add IndexNow key to robots.txt"
+  git push
+
+--------------------------------------------------
+DONE! Your site is now registered with IndexNow.
+New pages and updates will be discovered by Bing much faster.
+--------------------------------------------------

@@ -8,6 +8,9 @@
   <meta name="keywords" content="healthy meal in Ahmedabad, diet food in Ahmedabad, protein rich food in Ahmedabad, high protein food in Ahmedabad, high protein vegetarian food Ahmedabad, salad delivery Ahmedabad, healthy meal subscription Ahmedabad, cloud kitchen Ahmedabad, pure veg salad Gujarat, NOSH7, सलाद डिलीवरी अहमदाबाद, healthy tiffin Ahmedabad, weight loss meal Ahmedabad, Jain friendly salad" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nosh7.in/" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nosh7.in/" />
@@ -786,9 +789,9 @@
       <div class="offer-icon">🤝</div>
       <div class="offer-content">
         <h3>Refer a Friend</h3>
-        <p>Refer someone to NOSH7 — <strong>both of you get 2 extra meals</strong> added to your subscription</p>
+        <p>Refer someone to NOSH7 — <strong>both of you get 1 bowl free</strong></p>
       </div>
-      <span class="offer-badge">+2 Free Meals</span>
+      <span class="offer-badge">1 Free Bowl</span>
     </div>
 
     <div class="offer-card">
@@ -1465,7 +1468,7 @@ ACTIVE OFFERS:
 1. Free Healthy Drink — with 26-day & 60-day plans (see above)
 2. Double Cashback — buy 2 subscriptions = **5% cashback** each
 3. Group Offer — 3+ people = up to **10% cashback**
-4. Refer a Friend — both get **2 extra meals** free
+4. Refer a Friend — both get **1 bowl** free
 5. Loyalty Reward — 3 months in a row = **3 free meals** on next plan
 
 HEALTH GOALS:
@@ -1486,6 +1489,15 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
   };
 
   const QUICK_DEFAULTS = ['Plans & Pricing','Trial Pack','Active Offers','Delivery Areas','Health Goals','How to Order'];
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;');
+  }
 
   function mdToHtml(text) {
     return text
@@ -1534,12 +1546,22 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
       ...history.map(h => ({ role: h.role === 'model' ? 'assistant' : h.role, content: h.text })),
       { role: 'user', content: userText }
     ];
-    const res = await fetch(GROQ_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'llama-3.1-8b-instant', messages, temperature: 0.7, max_tokens: 350 })
-    });
-    if (!res.ok) throw new Error('API error ' + res.status);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    let res;
+    try {
+      res = await fetch(GROQ_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model: 'llama-3.1-8b-instant', messages, temperature: 0.7, max_tokens: 350 }),
+        signal: controller.signal
+      });
+      clearTimeout(timer);
+      if (!res.ok) throw new Error('API error ' + res.status);
+    } catch (err) {
+      clearTimeout(timer);
+      throw err;
+    }
     const data = await res.json();
     const reply = data.choices?.[0]?.message?.content?.trim() || '';
     history.push({ role: 'user', text: userText });
@@ -1592,7 +1614,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
 
   async function handleInput(text) {
     if (!text.trim()) return;
-    addMsg(text, 'user');
+    addMsg(escapeHtml(text), 'user');
     document.getElementById('julie-input').value = '';
     quick().innerHTML = '';
     showTyping();

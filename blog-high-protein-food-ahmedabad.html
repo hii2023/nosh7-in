@@ -8,8 +8,9 @@
   <meta name="keywords" content="high protein food in Ahmedabad, protein rich food in Ahmedabad, high protein vegetarian food Ahmedabad, protein meal delivery Ahmedabad, veg protein food Ahmedabad, muscle gain food Ahmedabad, NOSH7 protein plan" />
   <link rel="canonical" href="https://nosh7.in/blog-high-protein-food-ahmedabad.html" />
   <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-  <link rel="icon" href="/assets/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="/assets/logo.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
 
   <script type="application/ld+json">
   {
@@ -28,69 +29,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/blog.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Karla', sans-serif; background: #faf7f0; color: #1c1c1c; line-height: 1.7; }
-    a { text-decoration: none; }
-
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,240,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid #b7e4c7; padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: #1a3c2e; }
-    .nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: #2d6a4f; font-weight: 700; font-size: 0.9rem; }
-    .nav-back:hover { color: #52b788; }
-
-    .hero { padding: 7rem 2rem 3.5rem; text-align: center; background: linear-gradient(135deg, #14532d, #16a34a); color: white; }
-    .hero-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #86efac; margin-bottom: 0.75rem; display: block; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem; max-width: 720px; margin-left: auto; margin-right: auto; }
-    .hero-meta { font-size: 0.82rem; color: #86efac; margin-top: 0.5rem; }
-
-    .article-wrap { max-width: 780px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
-
-    .intro { font-size: 1.08rem; color: #2d6a4f; font-weight: 600; line-height: 1.75; background: #f0faf5; border-left: 4px solid #52b788; border-radius: 0 0.75rem 0.75rem 0; padding: 1rem 1.2rem; margin-bottom: 2.5rem; }
-
-    h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #1a3c2e; margin: 2.5rem 0 0.8rem; line-height: 1.3; }
-    h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #2d6a4f; margin: 1.8rem 0 0.6rem; }
-    p { font-size: 0.97rem; color: #3a4a42; line-height: 1.8; margin-bottom: 1rem; }
-    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; }
-    li { font-size: 0.95rem; color: #3a4a42; line-height: 1.8; margin-bottom: 0.3rem; }
-    strong { color: #1a3c2e; }
+    .hero { background: linear-gradient(135deg, #14532d, #16a34a); }
+    .hero-tag { color: #86efac; }
+    .hero-meta { color: #86efac; }
 
     .protein-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
-    .protein-card { background: white; border: 1px solid #e0ebe0; border-radius: 1rem; padding: 1.2rem; text-align: center; }
-    .protein-food { font-weight: 700; color: #1a3c2e; font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .protein-card { background: white; border: 1px solid #e0ebe0; border-radius: var(--radius-md); padding: 1.2rem; text-align: center; }
+    .protein-food { font-weight: 700; color: var(--green-deep); font-size: 0.95rem; margin-bottom: 0.3rem; }
     .protein-amount { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: #16a34a; }
-    .protein-unit { font-size: 0.75rem; color: #5a6b62; }
-    .protein-serving { font-size: 0.75rem; color: #5a6b62; margin-top: 0.2rem; }
+    .protein-unit { font-size: 0.75rem; color: var(--muted); }
+    .protein-serving { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
 
-    .daily-target { background: #1a3c2e; color: white; border-radius: 1rem; padding: 1.8rem 2rem; margin: 2rem 0; }
-    .daily-target h3 { color: #f4a61d; font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem; }
+    .daily-target { background: var(--green-deep); color: white; border-radius: var(--radius-md); padding: 1.8rem 2rem; margin: 2rem 0; }
+    .daily-target h3 { color: var(--saffron); font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem; }
     .target-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 0.88rem; }
     .target-row:last-child { border-bottom: none; }
-    .target-label { color: #b7e4c7; }
-    .target-val { color: #f4a61d; font-weight: 700; }
+    .target-label { color: var(--green-light); }
+    .target-val { color: var(--saffron); font-weight: 700; }
 
-    .tip-box { background: #e8f8f0; border: 1px solid #b7e4c7; border-radius: 1rem; padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
-    .tip-box strong { color: #1a3c2e; display: block; margin-bottom: 0.4rem; }
-
-    .myth-box { background: #fff5f5; border: 1px solid #fca5a5; border-radius: 1rem; padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
+    .myth-box { background: #fff5f5; border: 1px solid #fca5a5; border-radius: var(--radius-md); padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
     .myth-box .myth-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #dc2626; margin-bottom: 0.4rem; display: block; }
-    .myth-box p { color: #3a4a42; font-size: 0.92rem; }
+    .myth-box p { color: var(--body-text); font-size: 0.92rem; }
 
-    .cta-block { background: linear-gradient(135deg, #1a3c2e, #2d6a4f); border-radius: 1.5rem; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; color: white; }
-    .cta-block h3 { color: #f4a61d; font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.8rem; }
-    .cta-block p { color: #b7e4c7; font-size: 0.92rem; margin-bottom: 1.5rem; }
-    .cta-btn { display: inline-block; background: #f4a61d; color: #1a3c2e; font-weight: 700; padding: 0.85rem 2rem; border-radius: 100px; font-size: 0.95rem; transition: opacity .2s; }
-    .cta-btn:hover { opacity: 0.85; }
-
-    .related { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid #e0ebe0; }
-    .related h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #1a3c2e; margin-bottom: 1rem; }
-    .related-links { display: flex; flex-direction: column; gap: 0.6rem; }
-    .related-links a { color: #2d6a4f; font-weight: 600; font-size: 0.92rem; padding: 0.6rem 1rem; background: white; border-radius: 0.75rem; border: 1px solid #e0ebe0; transition: border-color .2s; }
-    .related-links a:hover { border-color: #52b788; }
-
-    footer { background: #1c1c1c; color: rgba(255,255,255,.45); padding: 2rem; text-align: center; font-size: 0.82rem; }
-    footer a { color: #52b788; }
-
-    @media (max-width: 600px) { .article-wrap { padding: 2.5rem 1.2rem 4rem; } .daily-target { padding: 1.2rem; } }
+    @media (max-width: 600px) { .daily-target { padding: 1.2rem; } }
   </style>
 </head>
 <body>

@@ -8,8 +8,9 @@
   <meta name="keywords" content="healthy living Ahmedabad, healthy lifestyle Ahmedabad, healthy food Ahmedabad, wellness Ahmedabad, NOSH7 healthy meal delivery" />
   <link rel="canonical" href="https://nosh7.in/blog-healthy-living-ahmedabad.html" />
   <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-  <link rel="icon" href="/assets/logo.png" type="image/png">
-  <link rel="apple-touch-icon" href="/assets/logo.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
 
   <script type="application/ld+json">
   {
@@ -28,56 +29,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/blog.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Karla', sans-serif; background: #faf7f0; color: #1c1c1c; line-height: 1.7; }
-    a { text-decoration: none; }
-
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,240,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid #b7e4c7; padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: #1a3c2e; }
-    .nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: #2d6a4f; font-weight: 700; font-size: 0.9rem; }
-    .nav-back:hover { color: #52b788; }
-
-    .hero { padding: 7rem 2rem 3.5rem; text-align: center; background: linear-gradient(135deg, #0d2b1e, #1a3c2e); color: white; }
-    .hero-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #b7e4c7; margin-bottom: 0.75rem; display: block; }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem; max-width: 720px; margin-left: auto; margin-right: auto; }
-    .hero-meta { font-size: 0.82rem; color: #b7e4c7; margin-top: 0.5rem; }
-
-    .article-wrap { max-width: 780px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
-
-    .intro { font-size: 1.08rem; color: #2d6a4f; font-weight: 600; line-height: 1.75; border-left: 4px solid #52b788; padding: 1rem 1.2rem; margin-bottom: 2.5rem; background: #f0faf5; border-radius: 0 0.75rem 0.75rem 0; }
-
-    h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #1a3c2e; margin: 2.5rem 0 0.8rem; line-height: 1.3; }
-    h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #2d6a4f; margin: 1.8rem 0 0.6rem; }
-    p { font-size: 0.97rem; color: #3a4a42; line-height: 1.8; margin-bottom: 1rem; }
-    ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; }
-    li { font-size: 0.95rem; color: #3a4a42; line-height: 1.8; margin-bottom: 0.3rem; }
-    strong { color: #1a3c2e; }
-
-    .tip-box { background: #e8f8f0; border: 1px solid #b7e4c7; border-radius: 1rem; padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
-    .tip-box strong { color: #1a3c2e; display: block; margin-bottom: 0.4rem; }
+    .hero { background: linear-gradient(135deg, #0d2b1e, var(--green-deep)); }
+    .hero-tag { color: var(--green-light); }
+    .hero-meta { color: var(--green-light); }
 
     .stat-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; }
-    .stat-box { flex: 1; min-width: 140px; background: #1a3c2e; color: white; border-radius: 1rem; padding: 1.2rem 1.5rem; text-align: center; }
-    .stat-box .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: #f4a61d; display: block; line-height: 1; }
-    .stat-box .lbl { font-size: 0.78rem; color: #b7e4c7; margin-top: 0.3rem; }
+    .stat-box { flex: 1; min-width: 140px; background: var(--green-deep); color: white; border-radius: var(--radius-md); padding: 1.2rem 1.5rem; text-align: center; }
+    .stat-box .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--saffron); display: block; line-height: 1; }
+    .stat-box .lbl { font-size: 0.78rem; color: var(--green-light); margin-top: 0.3rem; }
 
-    .cta-block { background: linear-gradient(135deg, #1a3c2e, #2d6a4f); border-radius: 1.5rem; padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; color: white; }
-    .cta-block h3 { color: #f4a61d; font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.8rem; }
-    .cta-block p { color: #b7e4c7; font-size: 0.92rem; margin-bottom: 1.5rem; }
-    .cta-btn { display: inline-block; background: #f4a61d; color: #1a3c2e; font-weight: 700; padding: 0.85rem 2rem; border-radius: 100px; font-size: 0.95rem; transition: opacity .2s; }
-    .cta-btn:hover { opacity: 0.85; }
-
-    .related { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid #e0ebe0; }
-    .related h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #1a3c2e; margin-bottom: 1rem; }
-    .related-links { display: flex; flex-direction: column; gap: 0.6rem; }
-    .related-links a { color: #2d6a4f; font-weight: 600; font-size: 0.92rem; padding: 0.6rem 1rem; background: white; border-radius: 0.75rem; border: 1px solid #e0ebe0; transition: border-color .2s; }
-    .related-links a:hover { border-color: #52b788; }
-
-    footer { background: #1c1c1c; color: rgba(255,255,255,.45); padding: 2rem; text-align: center; font-size: 0.82rem; }
-    footer a { color: #52b788; }
-
-    @media (max-width: 600px) { .article-wrap { padding: 2.5rem 1.2rem 4rem; } .stat-row { flex-direction: column; } }
+    @media (max-width: 600px) { .stat-row { flex-direction: column; } }
   </style>
 </head>
 <body>
