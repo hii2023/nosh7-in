@@ -1,26 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /adminkapower.html
 
-# AI crawlers — allowed for brand citation in AI search
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-# ByteDance crawler — blocked (no search value)
-User-agent: Bytespider
-Disallow: /
-
-# Sitemap
 Sitemap: https://nosh7.in/sitemap.xml
-
-Crawl-delay: 1
-IndexNow-Key: nosh7in2026bing32charkey00000001

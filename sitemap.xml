@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
     <loc>https://nosh7.in/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://nosh7.in/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nosh7.com/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nosh7.com/"/>
-    <image:image>
-      <image:loc>https://nosh7.in/assets/logo.png</image:loc>
-      <image:title>NOSH7 – Pure Veg Salad Subscription Ahmedabad</image:title>
-      <image:caption>NOSH7 Eat Healthy Feel Great – Pure Veg Cloud Kitchen Ahmedabad</image:caption>
-    </image:image>
-  </url>
-
-  <url>
-    <loc>https://nosh7.in/ahmedabad.html</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://nosh7.in/ahmedabad.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nosh7.com/ahmedabad"/>
-  </url>
-
-  <url>
-    <loc>https://nosh7.in/subscription.html</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://nosh7.in/subscription.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nosh7.com/plans"/>
   </url>
 
   <url>
     <loc>https://nosh7.in/blog.html</loc>
-    <lastmod>2026-04-23</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="hi-IN" href="https://nosh7.in/blog.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nosh7.com/blog"/>
+  </url>
+
+  <url>
+    <loc>https://nosh7.in/blog-healthy-meal-ahmedabad.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://nosh7.in/blog-diet-food-ahmedabad.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://nosh7.in/blog-high-protein-food-ahmedabad.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://nosh7.in/blog-healthy-living-ahmedabad.html</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
 </urlset>

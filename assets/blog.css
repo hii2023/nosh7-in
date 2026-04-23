@@ -1,0 +1,67 @@
+/* ── NOSH7 Blog — Shared Stylesheet ── */
+
+:root {
+  --green-deep:  #1a3c2e;
+  --green-mid:   #2d6a4f;
+  --green-fresh: #52b788;
+  --green-light: #b7e4c7;
+  --cream:       #faf7f0;
+  --cream-dark:  #f0ebe0;
+  --saffron:     #f4a61d;
+  --charcoal:    #1c1c1c;
+  --muted:       #5a6b62;
+  --body-text:   #3a4a42;
+  --white:       #ffffff;
+  --radius-lg:   1.5rem;
+  --radius-md:   1rem;
+  --radius-pill: 100px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Karla', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.7; }
+a { text-decoration: none; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,240,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--green-light); padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--green-deep); }
+.nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--green-mid); font-weight: 700; font-size: 0.9rem; }
+.nav-back:hover { color: var(--green-fresh); }
+
+/* ── HERO (layout only — background & accent colours are page-specific) ── */
+.hero { padding: 7rem 2rem 3.5rem; text-align: center; color: white; }
+.hero-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem; max-width: 720px; margin-left: auto; margin-right: auto; }
+.hero-meta { font-size: 0.82rem; margin-top: 0.5rem; }
+
+/* ── ARTICLE ── */
+.article-wrap { max-width: 780px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+.intro { font-size: 1.08rem; color: var(--green-mid); font-weight: 600; line-height: 1.75; background: #f0faf5; border-left: 4px solid var(--green-fresh); border-radius: 0 0.75rem 0.75rem 0; padding: 1rem 1.2rem; margin-bottom: 2.5rem; }
+h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green-deep); margin: 2.5rem 0 0.8rem; line-height: 1.3; }
+h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--green-mid); margin: 1.8rem 0 0.6rem; }
+p { font-size: 0.97rem; color: var(--body-text); line-height: 1.8; margin-bottom: 1rem; }
+ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; }
+li { font-size: 0.95rem; color: var(--body-text); line-height: 1.8; margin-bottom: 0.3rem; }
+strong { color: var(--green-deep); }
+
+/* ── COMPONENTS ── */
+.tip-box { background: #e8f8f0; border: 1px solid var(--green-light); border-radius: var(--radius-md); padding: 1.2rem 1.5rem; margin: 1.5rem 0; }
+.tip-box strong { color: var(--green-deep); display: block; margin-bottom: 0.4rem; }
+
+.cta-block { background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; color: white; }
+.cta-block h3 { color: var(--saffron); font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.8rem; }
+.cta-block p { color: var(--green-light); font-size: 0.92rem; margin-bottom: 1.5rem; }
+.cta-btn { display: inline-block; background: var(--saffron); color: var(--green-deep); font-weight: 700; padding: 0.85rem 2rem; border-radius: var(--radius-pill); font-size: 0.95rem; transition: opacity .2s; }
+.cta-btn:hover { opacity: 0.85; }
+
+.related { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid #e0ebe0; }
+.related h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--green-deep); margin-bottom: 1rem; }
+.related-links { display: flex; flex-direction: column; gap: 0.6rem; }
+.related-links a { color: var(--green-mid); font-weight: 600; font-size: 0.92rem; padding: 0.6rem 1rem; background: white; border-radius: 0.75rem; border: 1px solid #e0ebe0; transition: border-color .2s; }
+.related-links a:hover { border-color: var(--green-fresh); }
+
+/* ── FOOTER ── */
+footer { background: var(--charcoal); color: rgba(255,255,255,.45); padding: 2rem; text-align: center; font-size: 0.82rem; }
+footer a { color: var(--green-fresh); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) { .article-wrap { padding: 2.5rem 1.2rem 4rem; } }
