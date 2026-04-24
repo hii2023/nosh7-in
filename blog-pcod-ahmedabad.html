@@ -31,9 +31,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/blog.css" />
   <style>
-    .hero { background: linear-gradient(135deg, #86198f, #c026d3); }
-    .hero-tag { color: #f0abfc; }
-    .hero-meta { color: #f0abfc; }
+    .hero { background: linear-gradient(135deg, #1a3c2e, #52b788); }
+    .hero-tag { color: var(--green-light); }
+    .hero-meta { color: var(--green-light); }
 
     .food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0; }
     .food-col { border-radius: var(--radius-md); padding: 1.2rem 1.5rem; }
@@ -59,7 +59,10 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="/">NOSH7</a>
+  <a class="nav-logo" href="/">
+    <img src="/assets/logo.png" alt="NOSH7 logo" />
+    <div class="nav-logo-text">NOSH7<span>Pure Veg · Ahmedabad</span></div>
+  </a>
   <a class="nav-back" href="/blog.html">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
     All Articles
