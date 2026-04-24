@@ -34,6 +34,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -106,7 +107,12 @@
     .footer-links a { color: rgba(255,255,255,.5); font-size: 0.8rem; }
     .footer-links a:hover { color: var(--green-fresh); }
 
-    @media (max-width: 480px) { .articles { padding: 2rem 1rem; } }
+    @media (max-width: 768px) {
+      nav { padding: 0.6rem 1rem; }
+      .hero { padding: 5.5rem 1.2rem 2.5rem; }
+      .articles { padding: 2rem 1.2rem; grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) { .articles { padding: 1.5rem 1rem; } }
   </style>
 </head>
 <body>

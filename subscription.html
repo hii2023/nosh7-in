@@ -52,6 +52,7 @@
   <style>
     :root{--gd:#1a3c2e;--gm:#2d6a4f;--gf:#52b788;--gl:#b7e4c7;--cr:#faf7f0;--cd:#f0ebe0;--sf:#f4a61d;--sl:#fde68a;--ch:#1c1c1c;--tm:#5a6b62;--wh:#ffffff;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{overflow-x:hidden;}
     body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cr);color:var(--ch);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
     h1,h2,h3,h4{font-family:'Inter',-apple-system,sans-serif;font-weight:700;letter-spacing:-0.02em;line-height:1.2;}
 
@@ -198,48 +199,48 @@
 
     footer{background:#1c1c1c;color:rgba(255,255,255,.5);padding:2rem 4rem;text-align:center;font-size:.85rem;}
     footer a{color:var(--gf);text-decoration:none;}
+    footer p{word-break:break-word;line-height:1.8;}
 
+    /* ── CONSOLIDATED RESPONSIVE ── */
+    @media(max-width:900px){
+      .plans-grid{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto;}
+      .ngrid{grid-template-columns:1fr 1fr;}
+      .diet-grid{grid-template-columns:1fr;}
+    }
     @media(max-width:768px){
-      .plans-section,.nutrition-section,.diet-section,.menu-section,.compare-section,.contact-strip,.order-bar{padding-left:1.5rem;padding-right:1.5rem;}
-      .page-hero{padding:6rem 1.5rem 2rem;}
       nav{padding:.6rem 1rem;}
       .nav-back{display:none;}
-      .value-bar{gap:1.5rem;padding:1rem 1.5rem;}
-      footer{padding:2rem 1.5rem;}
-    }
-
-    @media (max-width:900px){
-      .plans-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}
-      .ngrid{grid-template-columns:1fr 1fr;}
-      .diet-grid{grid-template-columns:1fr;}
-    }
-    @media (max-width:768px){
-      nav{padding:.6rem 1rem;}
-      .page-hero{padding:6rem 1.5rem 2rem;}
-      section{padding:3rem 1.5rem !important;}
-      .order-bar,.contact-strip,.val-bar{padding:1rem;}
-      .plans-grid{grid-template-columns:1fr;max-width:100%;}
+      .page-hero{padding:6rem 1.2rem 2rem;}
+      section{padding:2.5rem 1.2rem !important;}
+      .plans-section,.nutrition-section,.diet-section,.menu-section,.compare-section{padding-left:1.2rem !important;padding-right:1.2rem !important;}
+      .contact-strip,.order-bar{padding:1rem 1.2rem;}
+      .value-bar{gap:1rem;padding:1rem 1.2rem;}
+      .plans-grid{max-width:100%;}
+      .plan-card{padding:2rem 1.4rem;}
       .ctable{font-size:.75rem;}
-      .ctable th,.ctable td{padding:.6rem .7rem;}
+      .ctable th,.ctable td{padding:.6rem .65rem;}
       .diet-grid{grid-template-columns:1fr;}
       .ngrid{grid-template-columns:1fr 1fr;}
-      footer{padding:2rem 1rem;}
-      .val-bar{gap:1rem;}
+      footer{padding:2rem 1.2rem;}
       .vi .big{font-size:1.3rem;}
+      .compare-section h2{font-size:1.4rem;}
+      /* Scroll the compare table on mobile */
+      .ctable-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:1rem;}
     }
-    @media (max-width:480px){
-      .page-hero h1{font-size:1.8rem;}
-      .plan-card{padding:1.8rem 1.5rem;}
-      .pmain{font-size:2rem;}
+    @media(max-width:480px){
+      .page-hero h1{font-size:1.75rem;}
+      .page-hero p{font-size:.93rem;}
+      .plan-card{padding:1.8rem 1.2rem;}
+      .total-price{font-size:2rem;}
       .ngrid{grid-template-columns:1fr;}
-      .order-bar{gap:.4rem;}
-      .pb{padding:.42rem .8rem;font-size:.75rem;}
+      .order-bar{gap:.5rem;flex-wrap:wrap;}
+      .ob-label{width:100%;text-align:center;}
+      .platform-btn{padding:.55rem 1rem;font-size:.82rem;flex:1 1 auto;text-align:center;justify-content:center;}
       nav{padding:.5rem .8rem;}
+      .hero-trust{gap:.5rem;}
+      .tc{font-size:.73rem;padding:.28rem .65rem;}
+      .vi{flex:1 1 45%;}
     }
-
-    @media(max-width:900px){.plans-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto;}.ngrid{grid-template-columns:1fr 1fr;}.diet-grid{grid-template-columns:1fr;}}
-    @media(max-width:768px){nav{padding:.6rem 1rem;}.page-hero{padding:6rem 1.5rem 2rem;}section{padding:3rem 1.5rem !important;}.order-bar,.contact-strip,.val-bar{padding:1rem;}.plans-grid{max-width:100%;}.ctable{font-size:.76rem;}.ctable th,.ctable td{padding:.55rem .6rem;}.diet-grid{grid-template-columns:1fr;}.ngrid{grid-template-columns:1fr 1fr;}footer{padding:2rem 1rem;}}
-    @media(max-width:480px){.page-hero h1{font-size:1.8rem;}.plan-card{padding:1.8rem 1.5rem;}.pmain{font-size:2rem;}.ngrid{grid-template-columns:1fr;}.order-bar{gap:.4rem;}.pb{padding:.42rem .8rem;font-size:.75rem;}nav{padding:.5rem .8rem;}}
   </style>
 </head>
 <body>
@@ -605,6 +606,7 @@
 
 <section class="compare-section" aria-labelledby="cmp-h">
   <h2 id="cmp-h">Plans Side by Side</h2>
+  <div class="ctable-wrap">
   <table class="ctable" aria-label="NOSH7 plan comparison">
     <thead><tr><th>Feature</th><th>Trial (₹999)</th><th>26-Day (₹4,914)</th><th>60-Day (₹10,740)</th></tr></thead>
     <tbody>
@@ -627,6 +629,7 @@
       <tr><td>Delivery</td><td>Free &lt;5 KM · paid beyond</td><td>Free &lt;5 KM · paid beyond</td><td class="yes">Free up to 10 KM</td></tr>
     </tbody>
   </table>
+  </div>
 </section>
 
 <section class="cta-section">
@@ -666,7 +669,16 @@
   </div>
 </section>
 <footer>
-  <p>© 2025 NOSH7 – Eat Healthy, Feel Great | <a href="/">nosh7.in</a> | <a href="https://www.nosh7.com/order">nosh7.com/order</a> | <a href="mailto:hello@nosh7.in">hello@nosh7.in</a> | <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener">📍 Satellite, Ahmedabad</a> | <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7">WhatsApp: 9712989498</a> | <a href="tel:+919712989498">Call</a> | <a href="https://www.instagram.com/nosh7salad" target="_blank" rel="noopener">📸 Instagram: @nosh7salad</a> | Ahmedabad</p>
+  <p>© 2025 NOSH7 – Eat Healthy, Feel Great</p>
+  <p style="margin-top:.5rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .8rem;font-size:.82rem;">
+    <a href="/">nosh7.in</a>
+    <a href="https://www.nosh7.com/order">nosh7.com/order</a>
+    <a href="mailto:hello@nosh7.in">hello@nosh7.in</a>
+    <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener">📍 Satellite, Ahmedabad</a>
+    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7">WhatsApp: 9712989498</a>
+    <a href="tel:+919712989498">Call</a>
+    <a href="https://www.instagram.com/nosh7salad" target="_blank" rel="noopener">📸 @nosh7salad</a>
+  </p>
 </footer>
 
 <script>

@@ -50,7 +50,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
     body { font-family: 'Karla', -apple-system, sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; line-height: 1.6; }
 
     @media (prefers-reduced-motion: reduce) {
@@ -448,10 +448,10 @@
     @media (max-width: 1024px) {
       .how-grid { grid-template-columns: 1fr; }
       .how-step::after { display: none; }
-      .plans-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
     }
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding: 7rem 2rem 3rem; gap: 2rem; text-align: center; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2rem; text-align: center; }
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-btns { justify-content: center; }
       .hero-trust { justify-content: center; flex-wrap: wrap; }
@@ -460,32 +460,81 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .df-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      /* Prevent featured card from scaling out of the viewport on mobile */
+      .plan-card.featured { transform: none; box-shadow: 0 8px 32px rgba(0,0,0,.18); }
+      .plan-card.featured:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.25); }
+      .plans-grid { max-width: 100%; }
     }
     @media (max-width: 768px) {
       nav { padding: 0.6rem 1.2rem; }
-      .how-section, .plans-section, .why-section, .menu-section, .health-section, .df-section, .testi-section, .seo-section, .cta-section, .offers-section { padding: 2rem 1.5rem; }
+      .how-section, .plans-section, .why-section, .menu-section, .health-section, .df-section, .testi-section, .seo-section, .cta-section, .offers-section { padding: 2rem 1.2rem; }
+      .blog-section { padding: 2.5rem 1.2rem; }
       .offer-badge { position: static; display: inline-block; margin-top: 0.5rem; }
-      .stats-bar { padding: 1rem; }
-      footer { padding: 2.5rem 1.5rem 0; }
-      .footer-inner { gap: 2rem; }
+      .stats-bar { padding: 0.75rem 0.5rem; }
+      footer { padding: 2.5rem 1.2rem 0; }
+      .footer-inner { gap: 1.5rem; }
+      .footer-brand { max-width: 100%; }
       .why-grid { grid-template-columns: 1fr 1fr; }
       .menu-grid { grid-template-columns: repeat(2, 1fr); }
       .health-grid { grid-template-columns: 1fr; }
+      .health-card { padding: 1.2rem; }
+      /* Sticky mobile order bar spacing */
+      body { padding-bottom: 74px; }
+      .floating-btns { bottom: 5.2rem; }
+      /* Sticky mobile order bar */
+      .mob-order-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 490;
+        background: var(--green-deep);
+        padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+        border-top: 2px solid rgba(82,183,136,.35);
+        box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+      }
     }
     @media (max-width: 480px) {
-      .hero { padding: 6rem 1rem 2.5rem; }
-      .hero h1 { font-size: 2rem; }
+      .hero { padding: 5.5rem 1rem 2.5rem; }
+      .hero h1 { font-size: 1.9rem; }
+      .hero-sub { font-size: 0.93rem; }
       .hero-img-wrap { width: 190px; height: 190px; }
+      .hero-btns { gap: 0.7rem; }
+      .hero-btns .btn { padding: 0.8rem 1.4rem; font-size: 0.9rem; }
       .why-grid { grid-template-columns: 1fr; }
       .menu-grid { grid-template-columns: 1fr; }
       .testi-grid { grid-template-columns: 1fr; }
-      .platform-bar { gap: 0.4rem; padding: 0.75rem 1rem; flex-wrap: nowrap; }
-      .pbar-label { font-size: 0.72rem; padding-right: 0.6rem; }
-      .pbar-btn { padding: 0.42rem 0.7rem; font-size: 0.75rem; gap: 0.3rem; }
-      .pbar-btn svg { width: 14px; height: 14px; }
+      .platform-bar { gap: 0.4rem; padding: 0.65rem 0.75rem; flex-wrap: wrap; }
+      .pbar-label { font-size: 0.72rem; padding-right: 0.6rem; border-right: none; width: 100%; padding-bottom: 0.4rem; }
+      .pbar-btn { padding: 0.5rem 0.9rem; font-size: 0.8rem; gap: 0.3rem; flex: 1 1 auto; justify-content: center; }
+      .pbar-btn svg { width: 15px; height: 15px; }
+      .plans-grid { max-width: 100%; }
+      .plan-card { padding: 2rem 1.4rem; }
       .sk-ww-google-reviews { width: 100% !important; min-height: 200px; }
       .cta-btns { flex-direction: column; align-items: center; }
+      .cta-btns .btn { width: 100%; max-width: 320px; justify-content: center; }
+      .offer-card { flex-direction: column; }
+      .section-sub { max-width: 100%; }
+      .offers-grid { grid-template-columns: 1fr; }
+      .stats-bar { flex-wrap: wrap; }
+      .stat { border-right: none; width: 33.33%; }
     }
+
+    /* ── STICKY MOBILE ORDER BAR ── */
+    .mob-order-bar { display: none; }
+    .mob-ob-btn {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.4rem;
+      padding: 0.7rem;
+      border-radius: var(--radius-pill);
+      font-family: 'Karla', sans-serif;
+      font-weight: 700; font-size: 0.88rem;
+      text-decoration: none;
+      min-height: 44px;
+    }
+    .mob-ob-order { background: var(--saffron); color: var(--green-deep); }
+    .mob-ob-wa { background: #25D366; color: white; }
 
     /* ── SITE LANGUAGE TOGGLE ── */
     #site-lang-btn { background: rgba(45,106,79,.12); border: 1.5px solid var(--green-light); color: var(--green-deep); font-family: 'Karla', sans-serif; font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: var(--radius-pill); cursor: pointer; transition: all .2s; letter-spacing: 0.04em; }
@@ -1064,7 +1113,7 @@
         </div>
       </a>
 
-    </div>
+
       <a href="/blog-diabetes-ahmedabad.html" class="blog-card">
         <div class="blog-card-img" style="background:linear-gradient(135deg,#003d80,#0066cc); height:120px;">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.5"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M12 12v4M12 16l-2 2M12 16l2 2"/></svg>
@@ -1284,6 +1333,18 @@
     © 2026 NOSH7 · Eat Healthy, Feel Great · 100% Pure Veg · No Eggs · Made with love in Ahmedabad, India
   </div>
 </footer>
+
+<!-- ── STICKY MOBILE ORDER BAR ── -->
+<div class="mob-order-bar" aria-label="Quick order">
+  <a href="https://www.nosh7.com/order" class="mob-ob-btn mob-ob-order" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    Order Now
+  </a>
+  <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" class="mob-ob-btn mob-ob-wa" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
 
 <!-- ── FLOATING BUTTONS ── -->
 <div class="floating-btns" role="complementary" aria-label="Quick contact">

@@ -116,6 +116,7 @@
       --saffron:#f4a61d; --charcoal:#1c1c1c; --text-muted:#5a6b62; --white:#ffffff;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; }
     body { font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background:var(--cream); color:var(--charcoal); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; }
     h1, h2, h3, h4 { font-family:'Inter', -apple-system, sans-serif; font-weight:700; letter-spacing:-0.02em; line-height:1.2; }
 
@@ -174,21 +175,32 @@
 
     footer { background:var(--charcoal); color:rgba(255,255,255,0.5); padding:2rem 4rem; text-align:center; font-size:0.85rem; }
     footer a { color:var(--green-fresh); text-decoration:none; }
+    .footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:.4rem .9rem; }
+    .hero-order-btns { display:flex; gap:.8rem; flex-wrap:wrap; justify-content:center; }
+    .hero-order-btns .btn-primary { min-height:44px; }
 
     @media(max-width:768px) {
-      .page-hero, section { padding:6rem 1.5rem 3rem; }
-      nav { padding:1rem; }
+      nav { padding:.75rem 1.2rem; }
+      .page-hero { padding:6rem 1.2rem 2.5rem; }
+      section { padding:2.5rem 1.2rem !important; }
+      .cta-section { padding:3rem 1.2rem !important; }
+      footer { padding:2rem 1.2rem; }
     }
 
     @media(max-width:480px){
       nav{padding:.5rem .8rem;}
       .page-hero{padding:5rem 1rem 2.5rem;}
       .page-hero h1{font-size:1.8rem;}
-      section{padding:2.5rem 1rem;}
+      .page-hero p{font-size:.93rem;}
+      section{padding:2rem 1rem !important;}
+      .cta-section{padding:2.5rem 1rem !important;}
       .zones-grid{grid-template-columns:repeat(2,1fr);}
-      .hero-btns{flex-direction:column;align-items:center;}
-      .cta-btns{flex-direction:column;align-items:center;}
+      .hero-order-btns{flex-direction:column;align-items:stretch;}
+      .hero-order-btns .btn-primary{text-align:center;padding:.9rem 1.5rem;}
+      .cta-btns{flex-direction:column;align-items:stretch;}
+      .cta-section .btn-primary{text-align:center;padding:.9rem 1.5rem;}
       .blog-grid{grid-template-columns:1fr;}
+      footer{padding:1.5rem 1rem;}
     }
   </style>
 </head>
@@ -203,7 +215,7 @@
     <p class="breadcrumb"><a href="/">Home</a> › Ahmedabad Delivery</p>
     <h1>Salad Delivery in<br/><span>Ahmedabad</span> 🥗</h1>
     <p>NOSH7 ka fresh salad subscription ab aapke neighbourhood mein deliver ho raha hai. <strong>25+ tasty varieties</strong>, seasonal menu refresh — ek proper meal jo genuinely swadisht bhi ho. Satellite se Bodakdev, Navrangpura se Vastrapur — Ahmedabad ke health lovers ke liye.</p>
-    <div style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;">
+    <div class="hero-order-btns">
     <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" class="btn-primary" style="background:#CB202D;" target="_blank" rel="noopener">🔴 Zomato pe Order</a>
     <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true" class="btn-primary" style="background:#FC8019;" target="_blank" rel="noopener">🟠 Swiggy pe Order</a>
     <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" class="btn-primary" style="background:#25D366;" target="_blank" rel="noopener">💬 WhatsApp Order</a>
@@ -277,7 +289,7 @@
   <section class="cta-section">
     <h2>Ahmedabad, Start Your<br/>Health Journey Today 🌿</h2>
     <p>Fresh salads. Real results. Delivered to your door.</p>
-    <div style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;">
+    <div class="hero-order-btns cta-btns" style="margin-top:1.5rem;">
   <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" class="btn-primary" style="background:#CB202D;" target="_blank" rel="noopener">🔴 Zomato</a>
   <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true" class="btn-primary" style="background:#FC8019;" target="_blank" rel="noopener">🟠 Swiggy</a>
   <a href="https://www.nosh7.com/order" class="btn-primary" target="_blank" rel="noopener">🥗 nosh7.com</a>
@@ -299,7 +311,17 @@
   </div>
 </section>
   <footer>
-    <p>© 2025 NOSH7 | <a href="/">nosh7.in</a> | <a href="https://www.nosh7.com">nosh7.com</a> | <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" target="_blank" rel="noopener" style="color:#ff9494;">Zomato</a> | <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true" target="_blank" rel="noopener" style="color:#ffa96e;">Swiggy</a> | <a href="tel:+919712989498">+91 97129 89498</a> | <a href="mailto:hello@nosh7.in">hello@nosh7.in</a> | <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener">📍 Satellite, Ahmedabad</a> | <a href="https://www.instagram.com/nosh7salad" target="_blank" rel="noopener">📸 @nosh7salad</a></p>
+    <p>© 2025 NOSH7 | Satellite, Ahmedabad, Gujarat</p>
+    <div class="footer-links" style="margin-top:.5rem;">
+      <a href="/">nosh7.in</a>
+      <a href="https://www.nosh7.com">nosh7.com</a>
+      <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" target="_blank" rel="noopener" style="color:#ff9494;">Zomato</a>
+      <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true" target="_blank" rel="noopener" style="color:#ffa96e;">Swiggy</a>
+      <a href="tel:+919712989498">+91 97129 89498</a>
+      <a href="mailto:hello@nosh7.in">hello@nosh7.in</a>
+      <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener">📍 Satellite, Ahmedabad</a>
+      <a href="https://www.instagram.com/nosh7salad" target="_blank" rel="noopener">📸 @nosh7salad</a>
+    </div>
   </footer>
 </body>
 </html>
