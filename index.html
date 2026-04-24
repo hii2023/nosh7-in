@@ -1761,7 +1761,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
       res = await fetch(GROQ_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model: 'llama-3.1-8b-instant', messages, temperature: 0.7, max_tokens: 350 }),
+        body: JSON.stringify({ model: 'llama-3.1-8b-instant', messages, temperature: 0.7, max_tokens: 180 }),
         signal: controller.signal
       });
       clearTimeout(timer);
@@ -1782,6 +1782,13 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
   const msgs  = () => document.getElementById('julie-msgs');
   const quick = () => document.getElementById('julie-quick');
 
+  function scrollToBottom() {
+    requestAnimationFrame(() => {
+      const m = msgs();
+      m.scrollTop = m.scrollHeight;
+    });
+  }
+
   function addMsg(html, role) {
     const wrap = document.createElement('div');
     wrap.className = 'msg ' + role;
@@ -1791,7 +1798,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
       wrap.innerHTML = `<div class="msg-bubble">${html}</div>`;
     }
     msgs().appendChild(wrap);
-    msgs().scrollTop = msgs().scrollHeight;
+    scrollToBottom();
   }
 
   function setQuick(labels) {
@@ -1804,6 +1811,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
       b.onclick = () => handleInput(label);
       q.appendChild(b);
     });
+    scrollToBottom();
   }
 
   function showTyping() {
@@ -1812,7 +1820,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
     wrap.id = 'julie-typing';
     wrap.innerHTML = `<div class="msg-avatar-sm"><img src="/assets/julie-face.png?v=1" alt="Julie"></div><div class="msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
     msgs().appendChild(wrap);
-    msgs().scrollTop = msgs().scrollHeight;
+    scrollToBottom();
   }
 
   function removeTyping() {
