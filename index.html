@@ -398,7 +398,7 @@
     .footer-bottom a { color: var(--green-fresh); text-decoration: none; }
 
     /* ── FLOATING BTNS ── */
-    .floating-btns { position: fixed; bottom: 7rem; right: 1.5rem; z-index: 500; display: flex; flex-direction: column; gap: 0.6rem; }
+    .floating-btns { position: fixed; bottom: 10rem; right: 1.5rem; z-index: 500; display: flex; flex-direction: column; gap: 0.6rem; }
     .float-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(0,0,0,.2); }
     .float-btn:hover { transform: scale(1.1); }
     .float-wa { background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,.4); }
@@ -1444,25 +1444,32 @@
   /* Widget toggle button */
   /* Toggle launcher — round, matches WA/call size */
   #julie-toggle {
-    position: fixed; bottom: 1.8rem; right: 1.5rem; left: auto; z-index: 600;
+    position: fixed; bottom: 4.5rem; right: 1.5rem; left: auto; z-index: 600;
     width: 44px; height: 44px; border-radius: 50%;
     background: none; border: none; padding: 0;
     box-shadow: 0 4px 20px rgba(26,60,46,.45);
     cursor: pointer; display: flex; align-items: center; justify-content: center;
     transition: transform .2s, box-shadow .2s;
-    outline: 2.5px solid #52b788;
-    outline-offset: 1.5px;
   }
   #julie-toggle:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(26,60,46,.55); }
-  #julie-toggle::before, #julie-toggle::after {
-    content: ''; position: absolute; width: 100%; height: 100%;
-    border-radius: 50%; background: rgba(82,183,136,0.45);
-    animation: alexa-pulse 2.4s ease-out infinite; z-index: -1;
+  #julie-toggle::before {
+    content: ''; position: absolute;
+    inset: -5px; border-radius: 50%;
+    background: conic-gradient(from 0deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #c77dff, #ff6b6b);
+    animation: siri-spin 3s linear infinite;
+    z-index: -1;
   }
-  #julie-toggle::after { animation-delay: 1.2s; }
-  @keyframes alexa-pulse {
-    0%   { transform: scale(1);   opacity: 0.55; }
-    100% { transform: scale(2.4); opacity: 0; }
+  #julie-toggle::after {
+    content: ''; position: absolute;
+    inset: -1px; border-radius: 50%;
+    background: conic-gradient(from 0deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #c77dff, #ff6b6b);
+    animation: siri-spin 3s linear infinite;
+    filter: blur(6px); opacity: 0.6;
+    z-index: -2;
+  }
+  @keyframes siri-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
   }
   .julie-toggle-icon {
     width: 100%; height: 100%; border-radius: 50%;
@@ -1478,7 +1485,7 @@
 
   /* Chat window */
   #julie-window {
-    position: fixed; bottom: 6rem; right: 1.5rem; left: auto; z-index: 600;
+    position: fixed; bottom: 9rem; right: 1.5rem; left: auto; z-index: 600;
     width: 340px; max-height: 520px;
     background: var(--cream); border-radius: 1.5rem;
     box-shadow: 0 20px 60px rgba(0,0,0,.18);
@@ -1599,7 +1606,7 @@
   @keyframes typing-bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
 
   @media (max-width: 400px) {
-    #julie-window { width: calc(100vw - 2rem); right: 1rem; left: auto; bottom: 5rem; }
+    #julie-window { width: calc(100vw - 2rem); right: 1rem; left: auto; bottom: 8rem; }
   }
 </style>
 
