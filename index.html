@@ -231,12 +231,19 @@
     .how-step p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
 
     /* ── PLANS ── */
-    .plans-section { padding: 3rem 4rem; background: var(--cream-dark); }
-    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-    .plan-card { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; border: 2px solid transparent; position: relative; transition: all .3s; }
-    .plan-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.08); }
-    .plan-card.featured { background: var(--green-deep); border-color: var(--green-fresh); }
-    .plan-hot { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--saffron); color: var(--white); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.28rem 1rem; border-radius: var(--radius-pill); white-space: nowrap; }
+    .plans-section { padding: 4rem 4rem; background: linear-gradient(160deg, #0d1f17 0%, #1a3c2e 55%, #0d2b1e 100%); }
+    .plans-section .section-tag { color: var(--saffron); }
+    .plans-section .section-title { color: var(--cream); }
+    .plans-section .section-sub { color: var(--green-light); }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; align-items: start; }
+    .plan-card { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; border: 2px solid transparent; border-top: 4px solid var(--green-light); position: relative; transition: all .3s; }
+    .plan-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.25); }
+    .plan-card.featured { background: linear-gradient(145deg, #1a3c2e, #0d2b1e); border: 2px solid rgba(82,183,136,.25); border-top: 4px solid var(--saffron); transform: scale(1.03); box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+    .plan-card.featured:hover { transform: scale(1.03) translateY(-6px); }
+    .plan-card.value-card { border-top: 4px solid #27ae60; }
+    .plan-hot { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 1.1rem; border-radius: var(--radius-pill); white-space: nowrap; }
+    .plan-hot-popular { background: var(--saffron); color: #3a2000; }
+    .plan-hot-value { background: #27ae60; color: white; }
     .plan-title { font-family: 'Playfair Display SC', serif; font-size: 1.3rem; color: var(--green-deep); margin-bottom: 0.2rem; }
     .plan-card.featured .plan-title { color: var(--cream); }
     .plan-hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.2rem; }
@@ -248,11 +255,11 @@
     .plan-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0 1.4rem; }
     .pill { font-size: 0.72rem; font-weight: 700; padding: 0.22rem 0.7rem; border-radius: var(--radius-pill); }
     .pill-day { background: var(--green-light); color: var(--green-deep); }
-    .pill-off { background: var(--saffron-lt); color: #7a4a00; }
+    .pill-off { background: #fff3cd; color: #7a4a00; }
     .pill-save { background: #fff0f0; color: #c0392b; }
     .plan-card.featured .pill-day { background: rgba(183,228,199,.18); color: var(--green-light); }
-    .plan-card.featured .pill-off { background: var(--saffron); color: var(--white); }
-    .plan-card.featured .pill-save { background: rgba(255,255,255,.1); color: #ffc8c8; }
+    .plan-card.featured .pill-off { background: var(--saffron); color: var(--green-deep); font-weight: 800; }
+    .plan-card.featured .pill-save { background: rgba(255,255,255,.12); color: #ffc8c8; }
     .plan-features { list-style: none; margin-bottom: 1.8rem; }
     .plan-feature { display: flex; align-items: center; gap: 0.6rem; font-size: 0.87rem; color: var(--muted); padding: 0.45rem 0; border-bottom: 1px solid var(--cream-dark); }
     .plan-card.featured .plan-feature { color: var(--green-light); border-color: rgba(255,255,255,.08); }
@@ -635,6 +642,8 @@
 <!-- ── PLANS ── -->
 <section class="plans-section" id="plans" aria-labelledby="plans-title">
   <span class="section-tag">Subscription Plans</span>
+  <h2 class="section-title" id="plans-title">Choose Your Plan</h2>
+  <p class="section-sub">Fresh salads delivered daily — pick the plan that fits your health goal</p>
   <div class="plans-grid">
 
     <!-- Trial -->
@@ -674,7 +683,7 @@
 
     <!-- 26-day -->
     <div class="plan-card featured">
-      <div class="plan-hot">Most Popular</div>
+      <div class="plan-hot plan-hot-popular">Most Popular</div>
       <div class="plan-title">26-Day Plan</div>
       <div class="plan-hint">Best for working professionals</div>
       <div class="plan-price">₹4,914 <span class="plan-period">/ 26 days</span></div>
@@ -713,8 +722,8 @@
     </div>
 
     <!-- 60-day -->
-    <div class="plan-card">
-      <div class="plan-hot" style="background:var(--green-mid);">Best Value</div>
+    <div class="plan-card value-card">
+      <div class="plan-hot plan-hot-value">Best Value</div>
       <div class="plan-title">60-Day Plan</div>
       <div class="plan-hint">Maximum results, maximum savings</div>
       <div class="plan-price">₹10,740 <span class="plan-period">/ 60 days</span></div>
