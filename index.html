@@ -495,7 +495,7 @@
     <a href="/blog.html" data-i18n="nav.blog">Blog</a>
     <a href="https://www.nosh7.com/order" class="nav-cta" target="_blank" rel="noopener" data-i18n="nav.order">Order Now</a>
   </div>
-  <button id="site-lang-btn" onclick="toggleSiteLang()" aria-label="Switch to Gujarati">ગુ</button>
+  <button id="site-lang-btn" onclick="toggleSiteLang()" aria-label="Switch to Gujarati">Gujarati</button>
   <button class="hamburger" id="ham" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -1346,7 +1346,7 @@
       btn.textContent = 'EN'; btn.classList.add('gu-active');
       btn.setAttribute('aria-label', 'Switch to English');
     } else {
-      btn.textContent = 'ગુ'; btn.classList.remove('gu-active');
+      btn.textContent = 'Gujarati'; btn.classList.remove('gu-active');
       btn.setAttribute('aria-label', 'Switch to Gujarati');
     }
     localStorage.setItem('nosh7-lang', lang);
