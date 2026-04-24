@@ -469,6 +469,15 @@
       .platform-bar { gap: 0.5rem; }
       .cta-btns { flex-direction: column; align-items: center; }
     }
+
+    /* ── SITE LANGUAGE TOGGLE ── */
+    #site-lang-btn { background: rgba(45,106,79,.12); border: 1.5px solid var(--green-light); color: var(--green-deep); font-family: 'Karla', sans-serif; font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: var(--radius-pill); cursor: pointer; transition: all .2s; letter-spacing: 0.04em; }
+    #site-lang-btn:hover { background: var(--green-light); }
+    #site-lang-btn.gu-active { background: var(--green-deep); color: var(--cream); border-color: var(--green-deep); }
+
+    /* ── ORDER FLOW WhatsApp button ── */
+    .qr-wa { background: #25D366 !important; color: white !important; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+    .qr-wa:hover { opacity: 0.88; }
   </style>
 </head>
 <body>
@@ -480,12 +489,13 @@
     <div class="nav-logo-text"><span>Eat Healthy, Feel Great</span></div>
   </a>
   <div class="nav-links">
-    <a href="#plans">Plans</a>
-    <a href="#menu">Menu</a>
-    <a href="#health">Health Goals</a>
-    <a href="/blog.html">Blog</a>
-    <a href="https://www.nosh7.com/order" class="nav-cta" target="_blank" rel="noopener">Order Now</a>
+    <a href="#plans" data-i18n="nav.plans">Plans</a>
+    <a href="#menu" data-i18n="nav.menu">Menu</a>
+    <a href="#health" data-i18n="nav.health">Health Goals</a>
+    <a href="/blog.html" data-i18n="nav.blog">Blog</a>
+    <a href="https://www.nosh7.com/order" class="nav-cta" target="_blank" rel="noopener" data-i18n="nav.order">Order Now</a>
   </div>
+  <button id="site-lang-btn" onclick="toggleSiteLang()" aria-label="Switch to Gujarati">ગુ</button>
   <button class="hamburger" id="ham" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -577,21 +587,21 @@
   <div class="hero-content">
     <div class="hero-badge-pill">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      Ahmedabad's #1 Pure Veg Salad Cloud Kitchen
+      <span data-i18n="hero.badge">Ahmedabad's #1 Pure Veg Salad Cloud Kitchen</span>
     </div>
     <h1>
-      Healthy Eating,
-      <span class="hindi accent">अब बिल्कुल आसान है।</span>
+      <span data-i18n="hero.h1.line1">Healthy Eating,</span>
+      <span class="hindi accent" data-i18n="hero.h1.line2">अब बिल्कुल आसान है।</span>
     </h1>
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n-html="hero.sub">
       Fresh Salads, Health Drinks &amp; Seeds — Crafted With Seasonal Ingredients, Certified Paneer, And High-Protein, High-Fibre Recipes. Start Your <strong>5-Day Trial</strong> From Just <strong>₹179/Day</strong>.
     </p>
     <div class="hero-btns">
       <a href="https://www.nosh7.com/order" class="btn btn-saffron" target="_blank" rel="noopener">
-        Start Subscription
+        <span data-i18n="hero.btn.primary">Start Subscription</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <a href="#plans" class="btn btn-outline">Meal Plans</a>
+      <a href="#plans" class="btn btn-outline" data-i18n="hero.btn.secondary">Meal Plans</a>
     </div>
     <div class="hero-trust">
       <div class="trust-item">
@@ -641,15 +651,15 @@
 
 <!-- ── PLANS ── -->
 <section class="plans-section" id="plans" aria-labelledby="plans-title">
-  <span class="section-tag">Subscription Plans</span>
-  <h2 class="section-title" id="plans-title">Choose Your Plan</h2>
-  <p class="section-sub">Fresh salads delivered daily — pick the plan that fits your health goal</p>
+  <span class="section-tag" data-i18n="plans.tag">Subscription Plans</span>
+  <h2 class="section-title" id="plans-title" data-i18n="plans.title">Choose Your Plan</h2>
+  <p class="section-sub" data-i18n="plans.sub">Fresh salads delivered daily — pick the plan that fits your health goal</p>
   <div class="plans-grid">
 
     <!-- Trial -->
     <div class="plan-card">
-      <div class="plan-title">Trial Pack</div>
-      <div class="plan-hint">Try first, decide later</div>
+      <div class="plan-title" data-i18n="trial.name">Trial Pack</div>
+      <div class="plan-hint" data-i18n="trial.hint">Try first, decide later</div>
       <div class="plan-price">₹999 <span class="plan-period">/ 5 days</span></div>
       <div class="plan-pills">
         <span class="pill pill-day">₹200 / day</span>
@@ -659,33 +669,33 @@
       <ul class="plan-features">
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          5 fresh salads (1 per day)
+          <span data-i18n="trial.f1">5 fresh salads (1 per day)</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Certified Paneer
+          <span data-i18n="trial.f2">Certified Paneer</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Ahmedabad home delivery
+          <span data-i18n="trial.f3">Ahmedabad home delivery</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          No commitment, no auto-renewal
+          <span data-i18n="trial.f4">No commitment, no auto-renewal</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Full refund if not satisfied
+          <span data-i18n="trial.f5">Full refund if not satisfied</span>
         </li>
       </ul>
-      <a href="https://www.nosh7.com/order" class="btn btn-primary btn-block" target="_blank" rel="noopener">Start Trial &rarr;</a>
+      <a href="https://www.nosh7.com/order" class="btn btn-primary btn-block" target="_blank" rel="noopener" data-i18n="trial.btn">Start Trial →</a>
     </div>
 
     <!-- 26-day -->
     <div class="plan-card featured">
       <div class="plan-hot plan-hot-popular">Most Popular</div>
-      <div class="plan-title">26-Day Plan</div>
-      <div class="plan-hint">Best for working professionals</div>
+      <div class="plan-title" data-i18n="p26.name">26-Day Plan</div>
+      <div class="plan-hint" data-i18n="p26.hint">Best for working professionals</div>
       <div class="plan-price">₹4,914 <span class="plan-period">/ 26 days</span></div>
       <div class="plan-pills">
         <span class="pill pill-day">₹189 / day</span>
@@ -695,37 +705,37 @@
       <ul class="plan-features">
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          26 fresh salads (daily delivery)
+          <span data-i18n="p26.f1">26 fresh salads — different salad every day</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Health drink FREE for first week, then ₹29/day
+          <span data-i18n="p26.f2">Health drink FREE for first week, then ₹29/day</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Seeds pack every week
+          <span data-i18n="p26.f3">Seeds pack every week</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Health goal consultation included
+          <span data-i18n="p26.f4">Health goal consultation included</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Pause anytime
+          <span data-i18n="p26.f5">Pause anytime</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Jain option available
+          <span data-i18n="p26.f6">Jain option available</span>
         </li>
       </ul>
-      <a href="https://www.nosh7.com/order" class="btn btn-saffron btn-block" target="_blank" rel="noopener">Get 26-Day Plan &rarr;</a>
+      <a href="https://www.nosh7.com/order" class="btn btn-saffron btn-block" target="_blank" rel="noopener" data-i18n="p26.btn">Get 26-Day Plan →</a>
     </div>
 
     <!-- 60-day -->
     <div class="plan-card value-card">
       <div class="plan-hot plan-hot-value">Best Value</div>
-      <div class="plan-title">60-Day Plan</div>
-      <div class="plan-hint">Maximum results, maximum savings</div>
+      <div class="plan-title" data-i18n="p60.name">60-Day Plan</div>
+      <div class="plan-hint" data-i18n="p60.hint">Maximum results, maximum savings</div>
       <div class="plan-price">₹10,740 <span class="plan-period">/ 60 days</span></div>
       <div class="plan-pills">
         <span class="pill pill-day">₹179 / day</span>
@@ -735,26 +745,26 @@
       <ul class="plan-features">
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          60 fresh salads (daily delivery)
+          <span data-i18n="p60.f1">60 fresh salads — 15 different varieties rotated</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Health drink FREE for first 2 weeks, then ₹29/day
+          <span data-i18n="p60.f2">Health drink FREE for first 2 weeks, then ₹29/day</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Seeds in every single meal
+          <span data-i18n="p60.f3">Seeds in every single meal</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          2 nutritionist consultations
+          <span data-i18n="p60.f4">2 nutritionist consultations</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Priority WhatsApp support
+          <span data-i18n="p60.f5">Priority WhatsApp support</span>
         </li>
       </ul>
-      <a href="https://www.nosh7.com/order" class="btn btn-primary btn-block" target="_blank" rel="noopener">Get 60-Day Plan &rarr;</a>
+      <a href="https://www.nosh7.com/order" class="btn btn-primary btn-block" target="_blank" rel="noopener" data-i18n="p60.btn">Get 60-Day Plan →</a>
     </div>
 
   </div>
@@ -1212,7 +1222,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="/assets/logo.png?v=2" alt="NOSH7 logo" style="height:80px;width:80px;border-radius:50%;object-fit:cover;margin-bottom:1rem;display:block;" />
-      <p>Ahmedabad ka pure veg salad subscription. No eggs. Daily fresh delivery. Real results.</p>
+      <p data-i18n="footer.tagline">Ahmedabad ka pure veg salad subscription. No eggs. Daily fresh delivery. Real results.</p>
     </div>
     <div class="footer-col">
       <h4>Quick Links</h4>
@@ -1250,8 +1260,8 @@
       </a>
     </div>
   </div>
-  <div class="footer-bottom">
-    &copy; 2026 NOSH7 · Eat Healthy, Feel Great · 100% Pure Veg · No Eggs · Made with love in Ahmedabad, India
+  <div class="footer-bottom" data-i18n="footer.copy">
+    © 2026 NOSH7 · Eat Healthy, Feel Great · 100% Pure Veg · No Eggs · Made with love in Ahmedabad, India
   </div>
 </footer>
 
@@ -1266,6 +1276,87 @@
 </div>
 
 <script>
+  // ── SITE LANGUAGE (EN / GU) ──
+  const SITE_I18N = {
+    en: {
+      'nav.plans':'Plans','nav.menu':'Menu','nav.health':'Health Goals','nav.blog':'Blog','nav.order':'Order Now',
+      'hero.badge':"Ahmedabad's #1 Pure Veg Salad Cloud Kitchen",
+      'hero.h1.line1':'Healthy Eating,','hero.h1.line2':'अब बिल्कुल आसान है।',
+      'hero.sub':'Fresh Salads, Health Drinks &amp; Seeds — Crafted With Seasonal Ingredients, Certified Paneer, And High-Protein, High-Fibre Recipes. Start Your <strong>5-Day Trial</strong> From Just <strong>₹179/Day</strong>.',
+      'hero.btn.primary':'Start Subscription','hero.btn.secondary':'Meal Plans',
+      'plans.tag':'Subscription Plans','plans.title':'Choose Your Plan',
+      'plans.sub':'Fresh salads delivered daily — pick the plan that fits your health goal',
+      'trial.name':'Trial Pack','trial.hint':'Try first, decide later',
+      'trial.f1':'5 fresh salads (1 per day)','trial.f2':'Certified Paneer',
+      'trial.f3':'Ahmedabad home delivery','trial.f4':'No commitment, no auto-renewal',
+      'trial.f5':'Full refund if not satisfied','trial.btn':'Start Trial →',
+      'p26.name':'26-Day Plan','p26.hint':'Best for working professionals',
+      'p26.f1':'26 fresh salads — different salad every day',
+      'p26.f2':'Health drink FREE for first week, then ₹29/day',
+      'p26.f3':'Seeds pack every week','p26.f4':'Health goal consultation included',
+      'p26.f5':'Pause anytime','p26.f6':'Jain option available','p26.btn':'Get 26-Day Plan →',
+      'p60.name':'60-Day Plan','p60.hint':'Maximum results, maximum savings',
+      'p60.f1':'60 fresh salads — 15 different varieties rotated',
+      'p60.f2':'Health drink FREE for first 2 weeks, then ₹29/day',
+      'p60.f3':'Seeds in every single meal','p60.f4':'2 nutritionist consultations',
+      'p60.f5':'Priority WhatsApp support','p60.btn':'Get 60-Day Plan →',
+      'footer.tagline':'Ahmedabad ka pure veg salad subscription. No eggs. Daily fresh delivery. Real results.',
+      'footer.copy':'© 2026 NOSH7 · Eat Healthy, Feel Great · 100% Pure Veg · No Eggs · Made with love in Ahmedabad, India'
+    },
+    gu: {
+      'nav.plans':'પ્લાન્સ','nav.menu':'મેનૂ','nav.health':'સ્વાસ્થ્ય લક્ષ્ય','nav.blog':'બ્લૉગ','nav.order':'ઓર્ડર કરો',
+      'hero.badge':'અમદાવાદનું #1 પ્યોર વેજ સલાડ ક્લાઉડ કિચન',
+      'hero.h1.line1':'Healthy Eating,','hero.h1.line2':'હવે બિલ્કુલ સહેલું છે.',
+      'hero.sub':'તાજા સલાડ, હેલ્થ ડ્રિન્ક્સ અને બીજ — સિઝનલ સામગ્રી, સર્ટિફાઇડ પનીર, અને હાઈ-પ્રોટીન રેસિપી સાથે. <strong>5-દિવસ ટ્રાયલ</strong> ફક્ત <strong>₹179/દિવસ</strong>થી શરૂ કરો.',
+      'hero.btn.primary':'સબ્સ્ક્રિપ્શન શરૂ કરો','hero.btn.secondary':'ભોજન યોજના',
+      'plans.tag':'સબ્સ્ક્રિપ્શન પ્લાન્સ','plans.title':'તમારો પ્લાન પસંદ કરો',
+      'plans.sub':'દરરોજ તાજા સલાડ ડિલિવરી — તમારા સ્વાસ્થ્ય લક્ષ્ય માટે સૌથી યોગ્ય પ્લાન',
+      'trial.name':'ટ્રાયલ પૅક','trial.hint':'પહેલા ટ્રાય કરો, પછી નક્કી કરો',
+      'trial.f1':'5 તાજા સલાડ (દરરોજ 1)','trial.f2':'સર્ટિફાઇડ પનીર',
+      'trial.f3':'અમદાવાદ હોમ ડિલિવરી','trial.f4':'કોઈ બાંધછોડ નહીં, ઓટો-રિન્યૂ નહીં',
+      'trial.f5':'સંતોષ ન થાય તો સંપૂર્ણ રિફંડ','trial.btn':'ટ્રાયલ શરૂ કરો →',
+      'p26.name':'26-દિવસ પ્લાન','p26.hint':'કામ કરતા લોકો માટે સૌથી ઉત્તમ',
+      'p26.f1':'26 તાજા સલાડ — દરરોજ અલગ સલાડ',
+      'p26.f2':'પ્રથમ અઠવાડિયે હેલ્થ ડ્રિન્ક મફત, પછી ₹29/દિવસ',
+      'p26.f3':'દર અઠવાડિયે સીડ્સ પૅક','p26.f4':'સ્વાસ્થ્ય લક્ષ્ય કન્સલ્ટેશન સામેલ',
+      'p26.f5':'ગમે ત્યારે પૉઝ કરો','p26.f6':'જૈન ઑપ્શન ઉપલબ્ધ','p26.btn':'26-દિવસ પ્લાન મેળવો →',
+      'p60.name':'60-દિવસ પ્લાન','p60.hint':'સૌથી વધુ ફાયદો, સૌથી વધુ બચત',
+      'p60.f1':'60 તાજા સલાડ — 15 અલગ-અલગ વેરાઇટી',
+      'p60.f2':'પ્રથમ 2 અઠવાડિયા હેલ્થ ડ્રિન્ક મફત, પછી ₹29/દિવસ',
+      'p60.f3':'દરેક ભોજનમાં બીજ','p60.f4':'2 ન્યૂટ્રિશનિસ્ટ કન્સલ્ટેશન',
+      'p60.f5':'પ્રાઇઓરિટી WhatsApp સપોર્ટ','p60.btn':'60-દિવસ પ્લાન મેળવો →',
+      'footer.tagline':'અમદાવાદનું પ્યોર વેજ સલાડ સબ્સ્ક્રિપ્શન. ઈંડા નહીં. દરરોજ તાજી ડિલિવરી. સાચા પરિણામ.',
+      'footer.copy':'© 2026 NOSH7 · Eat Healthy, Feel Great · 100% Pure Veg · No Eggs · અમદાવાદ, ભારતમાં પ્રેમ સાથે બનાવેલ'
+    }
+  };
+
+  let siteLang = 'en';
+
+  function setPageLang(lang) {
+    siteLang = lang;
+    const t = SITE_I18N[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      if (t[el.dataset.i18n] !== undefined) el.textContent = t[el.dataset.i18n];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      if (t[el.dataset.i18nHtml] !== undefined) el.innerHTML = t[el.dataset.i18nHtml];
+    });
+    const btn = document.getElementById('site-lang-btn');
+    if (lang === 'gu') {
+      btn.textContent = 'EN'; btn.classList.add('gu-active');
+      btn.setAttribute('aria-label', 'Switch to English');
+    } else {
+      btn.textContent = 'ગુ'; btn.classList.remove('gu-active');
+      btn.setAttribute('aria-label', 'Switch to Gujarati');
+    }
+    localStorage.setItem('nosh7-lang', lang);
+  }
+
+  window.toggleSiteLang = function() { setPageLang(siteLang === 'en' ? 'gu' : 'en'); };
+
+  const _savedLang = localStorage.getItem('nosh7-lang');
+  if (_savedLang && _savedLang !== 'en') setPageLang(_savedLang);
+
   // Nav scroll shadow
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
@@ -1596,7 +1687,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
     gu: 'Reply in Gujarati only. Keep it natural and conversational.'
   };
 
-  const QUICK_DEFAULTS = ['Plans & Pricing','Trial Pack','Active Offers','Delivery Areas','Health Goals','How to Order'];
+  const QUICK_DEFAULTS = ['Plans & Pricing','Trial Pack','Place an Order','Delivery Areas','Health Goals','Active Offers'];
 
   function escapeHtml(str) {
     return str
@@ -1720,11 +1811,68 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
     if (t) t.remove();
   }
 
+  // ── ORDER FLOW ──
+  let orderState = null;
+
+  function startOrderFlow() {
+    orderState = { step: 'plan', plan: null, slot: null, name: null, area: null };
+    addMsg('Sure! Let me help you place your order in 4 quick steps 🌿<br><br><strong>Step 1:</strong> Which plan would you like?', 'bot');
+    setQuick(['Trial Pack — ₹999 (5 days)', '26-Day Plan — ₹4,914', '60-Day Plan — ₹10,740']);
+  }
+
+  function handleOrderStep(text) {
+    const t = text.toLowerCase();
+    if (orderState.step === 'plan') {
+      if (/trial|999|5.?day/.test(t)) orderState.plan = 'Trial Pack (5 days) — ₹999';
+      else if (/26|4.?914/.test(t)) orderState.plan = '26-Day Plan — ₹4,914';
+      else if (/60|10.?740/.test(t)) orderState.plan = '60-Day Plan — ₹10,740';
+      else { addMsg('Please pick one of the plans below 👇', 'bot'); setQuick(['Trial Pack — ₹999 (5 days)', '26-Day Plan — ₹4,914', '60-Day Plan — ₹10,740']); return; }
+      orderState.step = 'slot';
+      addMsg('Great choice! 🎉<br><br><strong>Step 2:</strong> Which delivery slot do you prefer?', 'bot');
+      setQuick(['Morning — 7am to 9am', 'Evening — 6pm to 8pm']);
+      return;
+    }
+    if (orderState.step === 'slot') {
+      if (/morning|7am/.test(t)) orderState.slot = 'Morning (7–9am)';
+      else if (/evening|6pm/.test(t)) orderState.slot = 'Evening (6–8pm)';
+      else { addMsg('Please pick a delivery slot below 👇', 'bot'); setQuick(['Morning — 7am to 9am', 'Evening — 6pm to 8pm']); return; }
+      orderState.step = 'name';
+      addMsg('Perfect! 😊<br><br><strong>Step 3:</strong> What\'s your name?', 'bot');
+      setQuick([]);
+      return;
+    }
+    if (orderState.step === 'name') {
+      orderState.name = text.trim();
+      orderState.step = 'area';
+      addMsg(`Hi <strong>${escapeHtml(orderState.name)}</strong>! 👋<br><br><strong>Step 4:</strong> Which area or locality are you in?<br><span style="font-size:0.8em;color:#5a6b62;">e.g. Satellite, Prahlad Nagar, Bodakdev, Vastrapur…</span>`, 'bot');
+      setQuick([]);
+      return;
+    }
+    if (orderState.step === 'area') {
+      orderState.area = text.trim();
+      const waMsg = `Hi Team NOSH7! 🌿\n\nI'd like to place an order:\n\n📦 Plan: ${orderState.plan}\n🕐 Slot: ${orderState.slot}\n👤 Name: ${orderState.name}\n📍 Area: ${orderState.area}\n\nPlease confirm availability and next steps!`;
+      const waUrl = `https://wa.me/919712989498?text=${encodeURIComponent(waMsg)}`;
+      addMsg(`🎉 <strong>Order Summary</strong><br><br>📦 ${orderState.plan}<br>🕐 ${orderState.slot}<br>👤 ${orderState.name}<br>📍 ${orderState.area}<br><br>Tap below to send this to our team on WhatsApp — we'll confirm and get you started! 🚀`, 'bot');
+      const q = quick();
+      q.innerHTML = '';
+      const waBtn = document.createElement('a');
+      waBtn.href = waUrl; waBtn.target = '_blank'; waBtn.rel = 'noopener';
+      waBtn.className = 'qr-btn qr-wa';
+      waBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Send Order on WhatsApp`;
+      q.appendChild(waBtn);
+      orderState = null;
+      setTimeout(() => setQuick(QUICK_DEFAULTS), 10000);
+      return;
+    }
+  }
+
   async function handleInput(text) {
     if (!text.trim()) return;
     addMsg(escapeHtml(text), 'user');
     document.getElementById('julie-input').value = '';
     quick().innerHTML = '';
+    if (orderState !== null) { handleOrderStep(text); return; }
+    if (/\bplace.?an?.?order\b|\border now\b|\bplace order\b|\bstart.?plan\b|\bsubscribe now\b/i.test(text) || text === 'Place an Order') { startOrderFlow(); return; }
     showTyping();
     try {
       const reply = await askGemini(text);
