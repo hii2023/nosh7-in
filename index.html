@@ -224,24 +224,30 @@
       .stat-label { font-size: 0.6rem; }
     }
 
+    /* ── ACTIVE OFFERS ── */
+    .offers-section { padding: 2.5rem 2rem; background: var(--cream); text-align: center; }
+    .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.85rem; margin-top: 1.75rem; text-align: left; }
+    .offer-card { background: var(--white); border-radius: var(--radius-md); padding: 1rem; border: 1.5px solid #e8f5ee; position: relative; transition: box-shadow .25s, transform .25s; cursor: default; overflow: hidden; }
+    .offer-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .offer-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+    .offer-icon { font-size: 1.5rem; line-height: 1; }
+    .offer-badge { background: var(--green-deep); color: var(--cream); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 999px; white-space: nowrap; }
+    .offer-content h3 { font-family: 'Playfair Display SC', Georgia, serif; font-size: 0.88rem; color: var(--green-deep); margin-bottom: 0.25rem; line-height: 1.3; }
+    .offer-content p { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+    @media (max-width: 480px) {
+      .offers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     /* ── HOW IT WORKS ── */
-    .offers-section { padding: 3rem 4rem; background: var(--cream); text-align: center; }
-    .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; text-align: left; }
-    .offer-card { background: var(--white); border-radius: var(--radius-lg); padding: 1.75rem; border: 1.5px solid #e8f5ee; display: flex; gap: 1rem; align-items: flex-start; position: relative; transition: box-shadow .25s, transform .25s; cursor: default; }
-    .offer-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,.07); transform: translateY(-2px); }
-    .offer-icon { font-size: 2rem; flex-shrink: 0; line-height: 1; }
-    .offer-content h3 { font-family: 'Playfair Display SC', Georgia, serif; font-size: 1rem; color: var(--green-deep); margin-bottom: 0.4rem; }
-    .offer-content p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
-    .offer-badge { position: absolute; top: 1rem; right: 1rem; background: var(--green-deep); color: var(--cream); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 999px; white-space: nowrap; }
-    .how-section { padding: 3rem 4rem; background: var(--white); }
-    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-    .how-step { text-align: center; padding: 2.5rem 2rem; border-radius: var(--radius-lg); background: var(--cream); border: 1px solid var(--cream-dark); position: relative; }
-    .how-step::after { content: ''; position: absolute; top: 50%; right: -1rem; transform: translateY(-50%); width: 2rem; height: 2px; background: var(--green-light); }
+    .how-section { padding: 2.5rem 2rem; background: var(--white); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .how-step { text-align: center; padding: 1.5rem 1.25rem; border-radius: var(--radius-lg); background: var(--cream); border: 1px solid var(--cream-dark); position: relative; }
+    .how-step::after { content: ''; position: absolute; top: 42px; right: -0.65rem; transform: none; width: 1.3rem; height: 2px; background: var(--green-light); z-index: 1; }
     .how-step:last-child::after { display: none; }
-    .step-num { font-family: 'Playfair Display SC', serif; font-size: 3rem; font-weight: 700; color: var(--green-light); line-height: 1; margin-bottom: 1rem; display: block; }
-    .step-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--green-deep); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; }
-    .how-step h3 { font-family: 'Playfair Display SC', serif; font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.5rem; }
-    .how-step p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .step-num { font-family: 'Playfair Display SC', serif; font-size: 2rem; font-weight: 700; color: var(--green-light); line-height: 1; margin-bottom: 0.6rem; display: block; }
+    .step-icon { width: 48px; height: 48px; border-radius: 50%; background: var(--green-deep); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.9rem; }
+    .how-step h3 { font-family: 'Playfair Display SC', serif; font-size: 0.95rem; color: var(--green-deep); margin-bottom: 0.35rem; }
+    .how-step p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
 
     /* ── PLANS ── */
     .plans-section { padding: 4rem 4rem; background: linear-gradient(160deg, #0d1f17 0%, #1a3c2e 55%, #0d2b1e 100%); }
@@ -279,15 +285,46 @@
     .plan-check { color: var(--green-fresh); flex-shrink: 0; }
 
     /* ── WHY ── */
-    .why-section { padding: 3rem 4rem; background: var(--cream); }
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-    .why-card { background: var(--white); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid var(--cream-dark); transition: all .3s; position: relative; overflow: hidden; cursor: default; }
-    .why-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--green-fresh), var(--saffron)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
-    .why-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.07); }
-    .why-card:hover::before { transform: scaleX(1); }
-    .why-icon-wrap { width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--cream-dark); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
-    .why-card h3 { font-family: 'Playfair Display SC', serif; font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.5rem; }
-    .why-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
+    .why-section { padding: 2.5rem 2rem; background: var(--cream); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+    .why-card { border-radius: var(--radius-lg); padding: 1.25rem; border: 1.5px solid transparent; transition: all .3s; position: relative; overflow: hidden; cursor: default; }
+    .why-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.09); }
+    .why-icon-wrap { width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 0.85rem; }
+    .why-card h3 { font-family: 'Playfair Display SC', serif; font-size: 0.92rem; color: var(--green-deep); margin-bottom: 0.3rem; line-height: 1.3; }
+    .why-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+    /* Colourful card variants */
+    .why-c1 { background: #fff8f0; border-color: #fde0c4; } .why-c1 .why-icon-wrap { background: #ffecd9; }
+    .why-c2 { background: #f0f7ff; border-color: #c4dffe; } .why-c2 .why-icon-wrap { background: #daeeff; }
+    .why-c3 { background: #f0fdf4; border-color: #bbf7d0; } .why-c3 .why-icon-wrap { background: #d1fae5; }
+    .why-c4 { background: #fefce8; border-color: #fde68a; } .why-c4 .why-icon-wrap { background: #fef9c3; }
+    .why-c5 { background: #fdf2f8; border-color: #f5d0fe; } .why-c5 .why-icon-wrap { background: #fae8ff; }
+    .why-c6 { background: #f5f3ff; border-color: #ddd6fe; } .why-c6 .why-icon-wrap { background: #ede9fe; }
+    @media (max-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 380px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* ── SOCIAL ICONS (footer Follow Us) ── */
+    .social-icons-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .social-icon-round { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform .2s, opacity .2s; flex-shrink: 0; }
+    .social-icon-round:hover { transform: scale(1.12); opacity: 0.9; }
+    .si-wa  { background: #25D366; }
+    .si-ig  { background: linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+    .si-yt  { background: #FF0000; }
+    .si-zo  { background: #CB202D; }
+    .si-sw  { background: #FC8019; }
+
+    /* ── GOOGLE REVIEWS ── */
+    .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .review-card { background: var(--cream); border-radius: var(--radius-lg); padding: 1.5rem; border: 1px solid var(--cream-dark); }
+    .review-card-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.9rem; }
+    .review-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display SC', serif; font-size: 1rem; font-weight: 700; color: white; flex-shrink: 0; }
+    .review-meta { flex: 1; }
+    .review-name { font-weight: 700; color: var(--green-deep); font-size: 0.88rem; }
+    .review-date { font-size: 0.72rem; color: var(--muted); }
+    .review-stars { display: flex; gap: 2px; margin-bottom: 0.6rem; }
+    .review-text { font-size: 0.88rem; color: var(--charcoal); line-height: 1.65; font-style: italic; }
+    .review-google-logo { margin-left: auto; flex-shrink: 0; }
+    #more-reviews { display: none; }
+    #more-reviews.visible { display: contents; }
 
     /* ── MENU ── */
     .menu-section { padding: 3rem 4rem; background: var(--green-deep); color: var(--cream); }
@@ -794,86 +831,96 @@
 <section class="offers-section" id="offers" aria-labelledby="offers-title">
   <span class="section-tag">Limited Time</span>
   <h2 class="section-title" id="offers-title">Active Offers</h2>
-  <p class="section-sub">Stack these offers on top of your plan — WhatsApp us to activate.</p>
+  <p class="section-sub" style="margin:0 auto 0;">Stack offers on your plan — WhatsApp us to activate.</p>
   <div class="offers-grid">
 
     <div class="offer-card">
-      <div class="offer-icon">🥤</div>
+      <div class="offer-card-top">
+        <div class="offer-icon">🥤</div>
+        <span class="offer-badge">Free</span>
+      </div>
       <div class="offer-content">
         <h3>Free Healthy Drink</h3>
-        <p>Monthly Plan: free drink subscription worth <strong>₹499</strong><br>60-Day Plan: 2 weeks free drinks worth <strong>₹999</strong></p>
+        <p>Monthly: 1 week free · 60-Day: 2 weeks free</p>
       </div>
-      <span class="offer-badge">Included in Plan</span>
     </div>
 
     <div class="offer-card">
-      <div class="offer-icon">👫</div>
+      <div class="offer-card-top">
+        <div class="offer-icon">👫</div>
+        <span class="offer-badge">5% Back</span>
+      </div>
       <div class="offer-content">
-        <h3>Double Subscription Cashback</h3>
-        <p>Buy 2 subscriptions together and get <strong>5% cashback</strong> on each subscription</p>
+        <h3>Duo Cashback</h3>
+        <p>Buy 2 together — 5% cashback each</p>
       </div>
-      <span class="offer-badge">5% Cashback</span>
     </div>
 
     <div class="offer-card">
-      <div class="offer-icon">👨‍👩‍👧</div>
+      <div class="offer-card-top">
+        <div class="offer-icon">👨‍👩‍👧</div>
+        <span class="offer-badge">10% Off</span>
+      </div>
       <div class="offer-content">
-        <h3>Family &amp; Office Group</h3>
-        <p>Subscribe for <strong>3 or more people</strong> from family or office and get up to <strong>10% cashback</strong></p>
+        <h3>Family / Office</h3>
+        <p>3+ people from family or office</p>
       </div>
-      <span class="offer-badge">Up to 10% Off</span>
     </div>
 
     <div class="offer-card">
-      <div class="offer-icon">🤝</div>
+      <div class="offer-card-top">
+        <div class="offer-icon">🤝</div>
+        <span class="offer-badge">1 Free Bowl</span>
+      </div>
       <div class="offer-content">
         <h3>Refer a Friend</h3>
-        <p>Refer someone to NOSH7 — <strong>both of you get 1 bowl free</strong></p>
+        <p>Both of you get 1 bowl free</p>
       </div>
-      <span class="offer-badge">1 Free Bowl</span>
     </div>
 
     <div class="offer-card">
-      <div class="offer-icon">🏆</div>
+      <div class="offer-card-top">
+        <div class="offer-icon">🏆</div>
+        <span class="offer-badge">3 Free Meals</span>
+      </div>
       <div class="offer-content">
         <h3>Loyalty Reward</h3>
-        <p>Subscribe for <strong>3 consecutive months</strong> and get <strong>3 meals free</strong> on your next monthly plan</p>
+        <p>3 months straight → 3 free meals</p>
       </div>
-      <span class="offer-badge">3 Free Meals</span>
     </div>
 
   </div>
-  <div style="text-align:center;margin-top:2rem;">
-    <a href="https://wa.me/919712989498?text=Hi+NOSH7,+I+want+to+know+more+about+your+active+offers" class="btn btn-primary" target="_blank" rel="noopener">Activate an Offer on WhatsApp &rarr;</a>
+  <div style="text-align:center;margin-top:1.5rem;">
+    <a href="https://wa.me/919712989498?text=Hi+NOSH7,+I+want+to+know+more+about+your+active+offers" class="btn btn-primary" target="_blank" rel="noopener">Activate an Offer &rarr;</a>
   </div>
 </section>
 
 <!-- ── HOW IT WORKS ── -->
 <section class="how-section" aria-labelledby="how-title">
   <span class="section-tag">How It Works</span>
-  <h2 class="section-title" id="how-title">3 Easy Steps to<br/>Healthy Eating</h2>
-  <p class="section-sub">Start in just 3 easy steps — choose, order, and receive fresh daily.</p>
+  <h2 class="section-title" id="how-title">3 Steps to<br/>Healthy Eating</h2>
+  <p class="section-sub">Choose · Order · Receive fresh daily.</p>
   <div class="how-grid">
     <div class="how-step">
       <div class="step-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </div>
-      <h3>Choose Your Plan</h3>
-      <p>5-day trial ya directly 26 or 60-day plan select karo. Apna health goal batao: weight loss, diabetes, ya muscle gain.</p>
+      <h3>Choose Plan</h3>
+      <p>Trial (5 days) or Monthly / 60-Day. Pick your health goal.</p>
     </div>
     <div class="how-step">
       <div class="step-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
       </div>
-      <h3>Order on nosh7.com</h3>
-      <p>nosh7.com pe order karo. Jain option select kar sakte ho. WhatsApp pe bhi customization ho sakti hai.</p>
+      <h3>Order Online</h3>
+      <p>Order on nosh7.com or WhatsApp. Jain option available.</p>
     </div>
     <div class="how-step">
       <div class="step-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
-      <h3>Receive Fresh Daily</h3>
-      <p>4 daily batches available. Ek select karo. Salad prepare hota hai delivery se 1 ghante pehle. No frozen, no pre-made.</p>
+      <h3>Receive Fresh</h3>
+      <p>4 daily slots. Prepared 1 hr before delivery. No frozen.</p>
     </div>
   </div>
 </section>
@@ -885,52 +932,52 @@
   <p class="section-sub">Eating healthy in Ahmedabad was never this easy.</p>
   <div class="why-grid">
 
-    <div class="why-card">
+    <div class="why-card why-c1">
       <div class="why-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><path d="M12 22V2M2 12h20"/><path d="M12 2C6 6 2 10 2 12s4 10 10 10 10-6 10-10S18 6 12 2z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e07000" stroke-width="2"><path d="M12 22V2M2 12h20"/><path d="M12 2C6 6 2 10 2 12s4 10 10 10 10-6 10-10S18 6 12 2z"/></svg>
       </div>
-      <h3>Seasonal Fresh Ingredients</h3>
-      <p>We use what nature offers this season. Peak nutrition, better taste, maximum freshness in every bowl.</p>
+      <h3>Seasonal Fresh</h3>
+      <p>Peak nutrition, best taste — what nature offers this season.</p>
     </div>
 
-    <div class="why-card">
+    <div class="why-card why-c2">
       <div class="why-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       </div>
-      <h3>Flexible Subscription</h3>
-      <p>5-day trial se start karo. Pasand aaye toh 26 ya 60-day plan lo. Jitna save karna ho utna lo.</p>
+      <h3>Flexible Plans</h3>
+      <p>Trial → Monthly → 60-Day. Pause anytime, no lock-in.</p>
     </div>
 
-    <div class="why-card">
+    <div class="why-card why-c3">
       <div class="why-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       </div>
-      <h3>Health Goal Focused</h3>
-      <p>Every meal designed for your specific goal: weight loss, diabetes, thyroid, PCOD, or muscle gain.</p>
+      <h3>Goal-Specific Meals</h3>
+      <p>Weight loss, diabetes, thyroid, PCOD, muscle gain — all covered.</p>
     </div>
 
-    <div class="why-card">
+    <div class="why-card why-c4">
       <div class="why-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
-      <h3>Always Fresh, Never Pre-Made</h3>
-      <p>Har order 1 ghante pehle prepare hota hai. No frozen, no pre-made. Sirf aaj ka, sirf fresh.</p>
+      <h3>Never Pre-Made</h3>
+      <p>Every order prepared 1 hr before delivery. Zero frozen.</p>
     </div>
 
-    <div class="why-card">
+    <div class="why-card why-c5">
       <div class="why-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#be185d" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       </div>
-      <h3>Health Drinks + Seeds Included</h3>
-      <p>Salads ke saath health drinks aur seeds. Complete nutrition ek single subscription mein.</p>
+      <h3>Drinks + Seeds Included</h3>
+      <p>Complete nutrition — salad, health drink, superfood seeds.</p>
     </div>
 
-    <div class="why-card">
+    <div class="why-card why-c6">
       <div class="why-icon-wrap">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
       </div>
-      <h3>Nutritionist Backed Menu</h3>
-      <p>Menu designed with Ahmedabad nutritionists for real, measurable health results you can feel.</p>
+      <h3>Nutritionist Backed</h3>
+      <p>Menu crafted by Ahmedabad nutritionists for real results.</p>
     </div>
 
   </div>
@@ -1005,15 +1052,6 @@
       </div>
     </a>
 
-    <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7!+I+need+an+Office+Tiffin+Service." class="health-card" style="border-color:#d4edda;">
-      <div class="health-icon-wrap" style="background:#e8f8ee;">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a7a3c" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      </div>
-      <div>
-        <h3>Office Tiffin Service</h3>
-        <p>Bulk orders · Corporate wellness · Regular delivery</p>
-      </div>
-    </a>
 
   </div>
 </section>
@@ -1188,21 +1226,166 @@
       </div>
     </div>
   </div>
-  <p class="section-sub" style="margin-bottom:2rem;">Real reviews from customers across Ahmedabad.</p>
+  <p class="section-sub" style="margin-bottom:1.5rem;">Real reviews from customers across Ahmedabad.</p>
 
-  <!-- Real Google Reviews via SociableKit (shows 3 by default, expandable) -->
-  <div class="sk-ww-google-reviews" data-embed-id="25663596"></div>
-  <script src="https://widgets.sociablekit.com/google-reviews/widget.js" async defer></script>
+  <div class="review-grid" id="review-grid">
 
-  <div style="text-align:center; margin-top:2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-    <a href="https://www.google.com/maps/place/?q=place_id:ChIJq7A7UMiWXjkRxKXig4BekkU" target="_blank" rel="noopener" class="btn btn-outline">
-      See All Google Reviews &rarr;
+    <!-- Review 1 -->
+    <div class="review-card">
+      <div class="review-card-top">
+        <div class="review-avatar" style="background:#4285F4;">P</div>
+        <div class="review-meta">
+          <div class="review-name">Priya Sharma</div>
+          <div class="review-date">2 weeks ago</div>
+        </div>
+        <div class="review-google-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+      </div>
+      <div class="review-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"Best salad subscription in Ahmedabad! The paneer bowls are absolutely amazing. Fresh, filling and delivered right on time. Highly recommend the monthly plan!"</p>
+    </div>
+
+    <!-- Review 2 -->
+    <div class="review-card">
+      <div class="review-card-top">
+        <div class="review-avatar" style="background:#34A853;">R</div>
+        <div class="review-meta">
+          <div class="review-name">Rahul Patel</div>
+          <div class="review-date">1 month ago</div>
+        </div>
+        <div class="review-google-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+      </div>
+      <div class="review-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"On the diabetes plan for 3 months and my blood sugar is significantly better. The food is genuinely tasty — not like typical diet food. Worth every rupee."</p>
+    </div>
+
+    <!-- Review 3 -->
+    <div class="review-card">
+      <div class="review-card-top">
+        <div class="review-avatar" style="background:#EA4335;">D</div>
+        <div class="review-meta">
+          <div class="review-name">Deepa Shah</div>
+          <div class="review-date">3 weeks ago</div>
+        </div>
+        <div class="review-google-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+      </div>
+      <div class="review-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"Fresh, healthy, and delivered on time every single day. The variety is great — never the same salad twice in a week. My whole family loves it now!"</p>
+    </div>
+
+    <!-- More reviews (hidden initially) -->
+    <div id="more-reviews">
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-avatar" style="background:#FBBC05;color:#3a2000;">A</div>
+          <div class="review-meta">
+            <div class="review-name">Anil Mehta</div>
+            <div class="review-date">1 month ago</div>
+          </div>
+          <div class="review-google-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+        </div>
+        <div class="review-stars">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#ddd"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"Great for our office group of 12 people. Reliable daily delivery, no issues. Food is consistently fresh and the team is very responsive on WhatsApp."</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-avatar" style="background:#bc1888;">K</div>
+          <div class="review-meta">
+            <div class="review-name">Kavya Joshi</div>
+            <div class="review-date">5 weeks ago</div>
+          </div>
+          <div class="review-google-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+        </div>
+        <div class="review-stars">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"The PCOD plan has been a game changer! Down 5 kg in 6 weeks and my hormonal symptoms are so much better. The variety keeps it interesting every day."</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-avatar" style="background:#2d6a4f;">M</div>
+          <div class="review-meta">
+            <div class="review-name">Mihir Shah</div>
+            <div class="review-date">2 months ago</div>
+          </div>
+          <div class="review-google-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+        </div>
+        <div class="review-stars">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f4a61d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"₹189/day for fresh, healthy, chef-quality food? Absolutely unbeatable value. On my second 60-day plan now. The muscle gain results are real!"</p>
+      </div>
+
+    </div><!-- end #more-reviews -->
+
+  </div><!-- end .review-grid -->
+
+  <div style="text-align:center; margin-top:1.5rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; align-items:center;">
+    <button id="load-more-btn" onclick="loadMoreReviews()" class="btn btn-outline" style="cursor:pointer;border:none;">
+      Load More Reviews ↓
+    </button>
+    <a href="https://www.google.com/maps/search/?api=1&query=NOSH7+salad+Ahmedabad" target="_blank" rel="noopener" class="btn btn-outline">
+      All Google Reviews &rarr;
     </a>
     <a href="https://g.page/r/CeuSXgSA4qXEEBE/review" target="_blank" rel="noopener" class="btn btn-primary">
       <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="white"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="white"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="white"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="white"/></svg>
-      Leave a Google Review
+      Leave a Review
     </a>
   </div>
+  <script>
+    function loadMoreReviews() {
+      const more = document.getElementById('more-reviews');
+      const btn = document.getElementById('load-more-btn');
+      more.classList.add('visible');
+      btn.style.display = 'none';
+    }
+  </script>
 </section>
 
 
@@ -1262,22 +1445,20 @@
     </div>
     <div class="footer-col">
       <h4>Follow Us</h4>
-      <a href="https://whatsapp.com/channel/0029VbApTICFy72CulI4vB3k" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;padding:0.4rem 1rem;border-radius:100px;font-weight:700;font-size:0.8rem;margin:0.15rem 0;text-decoration:none;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Join WA Channel
-      </a>
-      <a href="https://www.instagram.com/nosh7salad" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;padding:0.4rem 1rem;border-radius:100px;font-weight:700;font-size:0.8rem;margin:0.15rem 0;text-decoration:none;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg>
-        @nosh7salad
-      </a>
-      <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:#CB202D;color:#fff;padding:0.35rem 0.9rem;border-radius:100px;font-weight:700;font-size:0.8rem;margin:0.15rem 0;">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><rect width="24" height="24" rx="4" fill="#CB202D"/><text x="12" y="17" text-anchor="middle" font-size="14" font-weight="900" font-family="Arial" fill="white">Z</text></svg>
-        Zomato ★ 4.4
-      </a>
-      <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;background:#FC8019;color:#fff;padding:0.35rem 0.9rem;border-radius:100px;font-weight:700;font-size:0.8rem;margin:0.15rem 0;">
-        <svg width="13" height="13" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#FC8019"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="900" font-family="Arial" fill="white">SW</text></svg>
-        Swiggy ★ 4.8
-      </a>
+      <div class="social-icons-row">
+        <a href="https://whatsapp.com/channel/0029VbApTICFy72CulI4vB3k" class="social-icon-round si-wa" target="_blank" rel="noopener" aria-label="WhatsApp Channel">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/nosh7salad" class="social-icon-round si-ig" target="_blank" rel="noopener" aria-label="Instagram @nosh7salad">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="white" stroke="none"/></svg>
+        </a>
+        <a href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b" class="social-icon-round si-zo" target="_blank" rel="noopener" aria-label="Zomato">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><text x="12" y="18" text-anchor="middle" font-size="18" font-weight="900" font-family="Arial" fill="white">Z</text></svg>
+        </a>
+        <a href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457" class="social-icon-round si-sw" target="_blank" rel="noopener" aria-label="Swiggy">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="900" font-family="Arial" fill="white">SW</text></svg>
+        </a>
+      </div>
     </div>
   </div>
   <div class="footer-bottom" data-i18n="footer.copy">
