@@ -1,30 +1,36 @@
-# NOSH7 Website
+# NOSH7.in — India Local SEO Site
 
-The main marketing website for **NOSH7 Cloud Kitchen** — Ahmedabad's healthy salad and meal subscription service. Combines local SEO content with subscription onboarding and a built-in admin panel.
+The India-focused SEO landing site for **NOSH7 Cloud Kitchen**, Ahmedabad's salad and healthy meal subscription service. All order CTAs redirect to `nosh7.com/order`.
 
 ## What It Does
 
-Drives organic traffic from Indian health-focused search queries and converts visitors into NOSH7 subscribers through a blend of Hindi/Hinglish homepage content, SEO blog articles, and a subscription planning page.
+Targets local Indian search traffic — especially Ahmedabad users searching for healthy meals, diet food, and PCOD-friendly options — with Hindi/Hinglish content and location-specific landing pages.
 
 ## Key Features
 
-- **Hindi / Hinglish homepage** — local language content for Indian search intent
-- **Ahmedabad local SEO page** — city-specific landing with delivery info
-- **Subscription/plans page** — guides visitors toward choosing a plan
-- **6 SEO blog articles** — diabetes diet, PCOD food, healthy living, high-protein meals, diet food in Ahmedabad, healthy eating tips
-- **Admin panel** — internal tool for content updates
-- **IndexNow protocol** — instant indexing when content changes
-- **Cloudflare configuration** — caching, redirect rules, and security headers
-- **sitemap.xml & robots.txt** — full SEO hygiene
-- **GitHub Pages hosted** with Cloudflare CDN
+- **Hindi / Hinglish homepage** — designed for Indian search intent
+- **Ahmedabad local SEO page** — location-specific content and keywords
+- **Subscription/plans page** — redirects to nosh7.com/order for conversion
+- **6 SEO blog articles** covering: diabetes diet, healthy living, meal plans, high-protein food, PCOD diet, and healthy food in Ahmedabad
+- **Corporate/professional diet page** — targets office-goers
+- **Admin panel** (`adminkapower.html`) — internal content management
+- **IndexNow protocol** — instant search engine indexing on updates
+- **Hreflang tags** — proper multi-language/region SEO signals
+- **Cloudflare headers & redirect rules** — performance and security
+- **sitemap.xml & robots.txt** — complete SEO hygiene
+- **Custom 404 page**
 
 ## Tech Stack
 
 - Static HTML / CSS
 - Cloudflare (wrangler.jsonc, `_headers`)
-- IndexNow
-- GitHub Pages
+- IndexNow protocol
+- GitHub Pages hosting
+
+## Live Site
+
+[https://nosh7.in](https://nosh7.in)
 
 ## Audience
 
-Indian users searching for healthy meal delivery in Ahmedabad; NOSH7 ops team for site management.
+Indian users (especially Ahmedabad) searching for healthy meal subscriptions; NOSH7 ops team for content management.
