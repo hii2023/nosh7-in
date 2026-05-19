@@ -1,0 +1,90 @@
+/* ── NOSH7 Neighbourhood Pages — Shared Stylesheet ── */
+:root {
+  --green-deep:  #1a3c2e;
+  --green-mid:   #2d6a4f;
+  --green-fresh: #52b788;
+  --green-light: #b7e4c7;
+  --cream:       #faf7f0;
+  --cream-dark:  #f0ebe0;
+  --saffron:     #f4a61d;
+  --charcoal:    #1c1c1c;
+  --muted:       #5a6b62;
+  --radius-lg:   1.5rem;
+  --radius-md:   1rem;
+  --radius-pill: 100px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Karla', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.7; }
+a { text-decoration: none; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,240,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--green-light); padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+.nav-logo img { height: 40px; width: 40px; object-fit: contain; mix-blend-mode: multiply; }
+.nav-logo-text { font-family: 'Playfair Display SC', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-deep); line-height: 1; }
+.nav-logo-text span { display: block; font-family: 'Karla', sans-serif; font-size: 0.55rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+.nav-cta { background: var(--green-mid); color: white; padding: 0.5rem 1.2rem; border-radius: var(--radius-pill); font-weight: 700; font-size: 0.85rem; }
+
+/* HERO */
+.hero { padding: 7rem 2rem 4rem; text-align: center; color: white; }
+.hero-badge { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 100px; padding: 0.3rem 1rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; opacity: 0.9; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.2; margin-bottom: 1rem; max-width: 680px; margin-left: auto; margin-right: auto; }
+.hero p { font-size: 1rem; opacity: 0.85; max-width: 500px; margin: 0 auto 2rem; }
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-primary { background: var(--saffron); color: var(--green-deep); font-weight: 700; padding: 0.85rem 2rem; border-radius: var(--radius-pill); font-size: 0.95rem; }
+.btn-secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,.4); font-weight: 600; padding: 0.8rem 1.8rem; border-radius: var(--radius-pill); font-size: 0.9rem; }
+.hero-ratings { display: flex; gap: 1.2rem; justify-content: center; margin-top: 1.8rem; flex-wrap: wrap; }
+.rating-pill { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,.12); border-radius: 100px; padding: 0.3rem 0.85rem; font-size: 0.78rem; font-weight: 600; opacity: 0.9; }
+
+/* CONTENT */
+.section { max-width: 820px; margin: 0 auto; padding: 3.5rem 2rem 4rem; }
+h2 { font-family: 'Playfair Display', serif; font-size: 1.55rem; color: var(--green-deep); margin: 2rem 0 0.8rem; line-height: 1.25; }
+h2:first-child { margin-top: 0; }
+h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--green-mid); margin: 1.5rem 0 0.5rem; }
+p { font-size: 0.97rem; color: #3a4a42; line-height: 1.8; margin-bottom: 1rem; }
+ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+li { font-size: 0.95rem; color: #3a4a42; line-height: 1.8; margin-bottom: 0.3rem; }
+strong { color: var(--green-deep); }
+
+/* AREAS GRID */
+.areas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.65rem; margin: 1.2rem 0 2rem; }
+.area-chip { background: white; border: 1px solid var(--green-light); border-radius: 0.75rem; padding: 0.65rem 0.9rem; font-size: 0.85rem; font-weight: 600; color: var(--green-mid); text-align: center; }
+
+/* PLANS */
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.1rem; margin: 1.2rem 0 2rem; }
+.plan-card { background: white; border: 1px solid var(--cream-dark); border-radius: var(--radius-lg); padding: 1.4rem; text-align: center; }
+.plan-card.featured { border-color: var(--green-fresh); background: #f0faf5; }
+.plan-name { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+.plan-price { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--green-deep); font-weight: 900; }
+.plan-price span { font-size: 0.82rem; color: var(--muted); font-family: 'Karla', sans-serif; font-weight: 400; }
+.plan-desc { font-size: 0.8rem; color: var(--muted); margin: 0.4rem 0 1rem; }
+.plan-btn { display: block; background: var(--green-mid); color: white; font-weight: 700; padding: 0.6rem 1rem; border-radius: var(--radius-pill); font-size: 0.83rem; }
+.plan-card.featured .plan-btn { background: var(--saffron); color: var(--green-deep); }
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid var(--cream-dark); padding: 1.1rem 0; }
+.faq-q { font-weight: 700; color: var(--green-deep); font-size: 0.96rem; margin-bottom: 0.45rem; }
+.faq-a { font-size: 0.91rem; color: #3a4a42; line-height: 1.75; }
+
+/* CTA */
+.cta-section { background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); border-radius: var(--radius-lg); padding: 2.8rem 2rem; text-align: center; margin: 2.5rem 0 1.5rem; color: white; }
+.cta-section h2 { color: var(--saffron); margin: 0 0 0.8rem; }
+.cta-section p { color: var(--green-light); font-size: 0.93rem; margin-bottom: 1.4rem; }
+.cta-section a { display: inline-block; background: var(--saffron); color: var(--green-deep); font-weight: 700; padding: 0.85rem 2rem; border-radius: var(--radius-pill); font-size: 0.93rem; }
+
+/* AREA LINKS */
+.area-links { text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 1rem; }
+.area-links a { color: var(--green-mid); font-weight: 600; }
+.area-links a:hover { color: var(--green-fresh); }
+
+/* FOOTER */
+footer { background: var(--charcoal); color: rgba(255,255,255,.45); padding: 2rem; text-align: center; font-size: 0.82rem; line-height: 2; }
+footer a { color: var(--green-fresh); }
+.footer-links { display: flex; justify-content: center; gap: 1.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+
+@media (max-width: 600px) {
+  nav { padding: 0.6rem 1rem; }
+  .hero { padding: 6rem 1.2rem 3rem; }
+  .section { padding: 2.5rem 1.2rem 3rem; }
+  .hero-btns { flex-direction: column; align-items: center; }
+}
