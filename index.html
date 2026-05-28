@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NOSH7 | Healthy Meal in Ahmedabad | Diet Food &amp; High Protein Food Delivery</title>
-  <meta name="description" content="NOSH7 — Ahmedabad's #1 healthy meal delivery. Diet food, protein rich food &amp; high protein vegetarian meals delivered fresh daily. weekly trial ₹1,100. Satellite, Prahlad Nagar, Bodakdev, Vastrapur." />
+  <meta name="description" content="NOSH7 — Ahmedabad's #1 healthy meal delivery. Diet food, protein rich food &amp; high protein vegetarian meals delivered fresh daily. Weekly trial ₹1,100. Satellite, Prahlad Nagar, Bodakdev, Vastrapur." />
   <meta name="keywords" content="healthy meal in Ahmedabad, diet food in Ahmedabad, protein rich food in Ahmedabad, high protein food in Ahmedabad, high protein vegetarian food Ahmedabad, salad delivery Ahmedabad, healthy meal subscription Ahmedabad, cloud kitchen Ahmedabad, pure veg salad Gujarat, NOSH7, सलाद डिलीवरी अहमदाबाद, healthy tiffin Ahmedabad, weight loss meal Ahmedabad, Jain friendly salad" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nosh7.in/" />
@@ -711,7 +711,7 @@
 <!-- ── STATS ── -->
 <div class="stats-bar" id="statsBar">
   <div class="stat"><span class="stat-num" data-target="2000" data-prefix="" data-suffix="+" data-dir="up">0</span><div class="stat-label">Happy Customers</div></div>
-  <div class="stat"><span class="stat-num" data-target="200" data-prefix="₹" data-suffix="" data-dir="down" data-from="1000">₹1000</span><div class="stat-label">Per Unit</div></div>
+  <div class="stat"><span class="stat-num" data-target="200" data-prefix="₹" data-suffix="" data-dir="down" data-from="1000">₹1000</span><div class="stat-label">Per Day</div></div>
   <div class="stat"><span class="stat-num" data-target="25" data-prefix="" data-suffix="+" data-dir="up">0</span><div class="stat-label">Salad Varieties</div></div>
 </div>
 
@@ -726,7 +726,7 @@
     <div class="plan-card">
       <div class="plan-title" data-i18n="trial.name">Weekly Trial Pack</div>
       <div class="plan-hint" data-i18n="trial.hint">Try first, decide later</div>
-      <div class="plan-price">₹1,100 <span class="plan-period">/ weekly trial</span></div>
+      <div class="plan-price">₹1,100 <span class="plan-period">/ 5 days</span></div>
       <div class="plan-pills">
         <span class="pill pill-day">₹220 / unit</span>
         <span class="pill pill-off">8% OFF</span>
@@ -1172,7 +1172,7 @@
         <p>Yes! Original Milk Paneer (verified) used. Root vegetables, onion, and garlic can be excluded. Select Jain option at time of purchase.</p>
       </details>
       <details>
-        <summary>What is included in the 5-day trial? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+        <summary>What is included in the weekly trial? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
         <p>₹1,100 for 5 fresh salads (one per day). No auto-renewal, no commitment. Full refund if not satisfied.</p>
       </details>
       <details>
@@ -1300,7 +1300,7 @@
 <!-- ── CTA ── -->
 <section class="cta-section" aria-labelledby="cta-title">
   <h2 id="cta-title">Take The First Step<br/>Towards A Healthier Life</h2>
-  <p>weekly trial at ₹1,100. Cancel anytime. Always fresh. Always NOSH7.</p>
+  <p>Weekly trial at ₹1,100. Cancel anytime. Always fresh. Always NOSH7.</p>
   <div class="cta-btns">
     <a href="https://www.nosh7.com/order" class="btn btn-saffron" target="_blank" rel="noopener">
       Subscribe Now
@@ -1831,8 +1831,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
       return `Our **Weekly Trial Pack** is **₹1,100 for a week** (₹220/unit, 8% off). No commitment — full refund if not happy. Best way to try us! Order at **nosh7.com/order** or WhatsApp **9712989498**.`;
     if (/26.?day|month|popular/.test(t))
       return `The **Monthly Plan** is **₹5,200** (₹200/unit, save **₹1,014**). Includes 1 week free health drink + superfood seeds + nutrition consultation. Our most popular! Ready to start?`;
-    if (/60.?day|2.?month|best.?value/.test(t))
-          if (/plan|pric|cost|rate|how.?much|kitna/.test(t))
+    if (/plan|pric|cost|rate|how.?much|kitna/.test(t))
       return `2 plans: **Weekly Trial ₹1,100** | **Monthly ₹5,200** (most popular). All fresh daily salad bowls. Which one suits you?`;
     if (/offer|discount|cashback|deal|promo/.test(t))
       return `**Active Offers:** Free health drink with monthly plan · Double Cashback (2 subs = 5% each) · Group Offer (3+ people = 10%) · Refer a Friend = 2 free meals each. WhatsApp **9712989498** to avail!`;
@@ -1947,9 +1946,9 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
   function handleOrderStep(text) {
     const t = text.toLowerCase();
     if (orderState.step === 'plan') {
-      if (/trial|999|5.?day/.test(t)) orderState.plan = 'Trial Pack (weekly) — ₹1,100';
-      else if (/26|4.?914/.test(t)) orderState.plan = 'Monthly Plan — ₹5,200';
-            else { addMsg('Please pick one of the plans below 👇', 'bot'); setQuick(['Trial Pack — ₹1,100 (weekly)', 'Monthly Plan — ₹5,200']); return; }
+      if (/trial|1100|1,100|5.?day|week/.test(t)) orderState.plan = 'Trial Pack (weekly) — ₹1,100';
+      else if (/26|5.?200|month/.test(t)) orderState.plan = 'Monthly Plan — ₹5,200';
+      else { addMsg('Please pick one of the plans below 👇', 'bot'); setQuick(['Trial Pack — ₹1,100 (weekly)', 'Monthly Plan — ₹5,200']); return; }
       orderState.step = 'slot';
       addMsg('Great choice! 🎉<br><br><strong>Step 2:</strong> Which delivery slot do you prefer? We have 4 daily batches:', 'bot');
       setQuick(['Morning — 9:30 to 11:30 AM', 'Lunch — 11:30 AM to 1:30 PM', 'Evening — 4:30 to 6:30 PM', 'Dinner — 6:30 to 8:30 PM']);
