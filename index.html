@@ -728,7 +728,7 @@
       <div class="plan-hint" data-i18n="trial.hint">Try first, decide later</div>
       <div class="plan-price">₹1,100 <span class="plan-period">/ 5 days</span></div>
       <div class="plan-pills">
-        <span class="pill pill-day">₹220 / unit</span>
+        <span class="pill pill-day">₹220 / bowl</span>
         <span class="pill pill-off">8% OFF</span>
         <span class="pill pill-save">Save ₹95</span>
       </div>
@@ -764,7 +764,7 @@
       <div class="plan-hint" data-i18n="p26.hint">26 Units · 16 Different Salads</div>
       <div class="plan-price">₹5,200 <span class="plan-period">/ 26 days</span></div>
       <div class="plan-pills">
-        <span class="pill pill-day">₹200 / unit</span>
+        <span class="pill pill-day">₹200 / bowl</span>
         <span class="pill pill-off">16% OFF</span>
         <span class="pill pill-save">Save ₹1,014</span>
       </div>
@@ -1759,7 +1759,7 @@
 RESPONSE RULES:
 - Keep replies to 2-3 sentences max. Never write essays.
 - Sound human and natural, not like a chatbot.
-- Use **bold** for prices, days, protein values, savings, and key facts (e.g. **₹200/day**, **26 days**, **18-24g protein**).
+- Use **bold** for prices, days, protein values, savings, and key facts (e.g. **₹200/bowl**, **26 days**, **18-24g protein**).
 - Always end with a soft push towards ordering or next step (e.g. "Want to start with the trial?" or "Grab it at nosh7.com/order").
 - Never make up information. If unsure, say "WhatsApp us at **9712989498** and we'll sort it out!"
 - Think like a salesperson — understand what the customer needs and give them the one best answer, not a list of options.
@@ -1770,8 +1770,8 @@ ABOUT NOSH7:
 - Contact: WhatsApp **9712989498** | Order: nosh7.com/order
 
 PLANS & PRICING:
-1. Weekly Trial Pack — **₹1,100 / weekly trial** (**₹220/unit**, 8% off, save ₹95). No commitment, full refund if not happy.
-2. Monthly Plan — **₹5,200 / 26 days** (**₹200/unit**, 16% off, save **₹1,014**). Includes 1 week free health drink (worth ₹499), superfood seeds weekly, free nutrition consultation, pause anytime. [MOST POPULAR]
+1. Weekly Trial Pack — **₹1,100 / weekly trial** (**₹220/bowl**, 8% off, save ₹95). No commitment, full refund if not happy.
+2. Monthly Plan — **₹5,200 / 26 days** (**₹200/bowl**, 16% off, save **₹1,014**). Includes 1 week free health drink (worth ₹499), superfood seeds weekly, free nutrition consultation, pause anytime. [MOST POPULAR]
 
 MENU & CUSTOMISATION:
 - We have a monthly fixed menu that changes every month.
@@ -1826,11 +1826,11 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
   function keywordFallback(text) {
     const t = text.toLowerCase();
     if (/\bhi\b|hello|namaste|hey|\bstart\b/.test(t))
-      return `Hi! I'm Julie from NOSH7 🌿 We deliver fresh pure veg salad bowls in Ahmedabad — **₹200–220/unit**. What brings you here? Weight loss, high protein, or clean eating?`;
+      return `Hi! I'm Julie from NOSH7 🌿 We deliver fresh pure veg salad bowls in Ahmedabad — **₹200–220/bowl**. What brings you here? Weight loss, high protein, or clean eating?`;
     if (/trial|5.?day|\btry\b|sample/.test(t))
-      return `Our **Weekly Trial Pack** is **₹1,100 for a week** (₹220/unit, 8% off). No commitment — full refund if not happy. Best way to try us! Order at **nosh7.com/order** or WhatsApp **9712989498**.`;
+      return `Our **Weekly Trial Pack** is **₹1,100 for a week** (₹220/bowl, 8% off). No commitment — full refund if not happy. Best way to try us! Order at **nosh7.com/order** or WhatsApp **9712989498**.`;
     if (/26.?day|month|popular/.test(t))
-      return `The **Monthly Plan** is **₹5,200** (₹200/unit, save **₹1,014**). Includes 1 week free health drink + superfood seeds + nutrition consultation. Our most popular! Ready to start?`;
+      return `The **Monthly Plan** is **₹5,200** (₹200/bowl, save **₹1,014**). Includes 1 week free health drink + superfood seeds + nutrition consultation. Our most popular! Ready to start?`;
     if (/plan|pric|cost|rate|how.?much|kitna/.test(t))
       return `2 plans: **Weekly Trial ₹1,100** | **Monthly ₹5,200** (most popular). All fresh daily salad bowls. Which one suits you?`;
     if (/offer|discount|cashback|deal|promo/.test(t))
