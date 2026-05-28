@@ -250,27 +250,37 @@
     @media (max-width: 480px) { .how-arrow { display: none; } .how-steps-row { gap: 0.75rem; } }
 
     /* ── PLANS ── */
-    .plans-section { padding: 4rem 4rem; background: linear-gradient(160deg, #0d1f17 0%, #1a3c2e 55%, #0d2b1e 100%); }
+    .plans-section { padding: 5rem 4rem; background: linear-gradient(160deg, #0d1f17 0%, #1a3c2e 55%, #0d2b1e 100%); }
     .plans-section .section-tag { color: var(--saffron); }
     .plans-section .section-title { color: var(--cream); }
-    .plans-section .section-sub { color: var(--green-light); }
-    .plans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; align-items: start; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .plans-section .section-sub { color: var(--green-light); max-width: 620px; }
+
+    /* Journey strip */
+    .plans-journey { display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin: 2rem auto 0; max-width: 640px; background: rgba(255,255,255,.06); border: 1px solid rgba(82,183,136,.25); border-radius: var(--radius-pill); padding: 0.7rem 1.5rem; }
+    .pj-step { font-family: 'Karla', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--green-light); }
+    .pj-step.highlight { color: var(--saffron); font-weight: 800; }
+    .pj-arrow { color: rgba(82,183,136,.5); font-size: 0.85rem; }
+
+    .plans-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 2rem; margin-top: 2.5rem; align-items: start; max-width: 960px; margin-left: auto; margin-right: auto; }
     .plan-card { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; border-top: 5px solid var(--green-light); border-right: 1px solid rgba(0,0,0,.07); border-bottom: 1px solid rgba(0,0,0,.07); border-left: 1px solid rgba(0,0,0,.07); position: relative; transition: all .3s; }
     .plan-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.25); }
-    .plan-card.featured { background: linear-gradient(145deg, #1a3c2e, #0d2b1e); border-top: 5px solid var(--saffron); border-right: 1px solid rgba(82,183,136,.2); border-bottom: 1px solid rgba(82,183,136,.2); border-left: 1px solid rgba(82,183,136,.2); transform: scale(1.03); box-shadow: 0 28px 70px rgba(0,0,0,.5); }
-    .plan-card.featured:hover { transform: scale(1.03) translateY(-6px); }
-    .plan-card.value-card { border-top-color: #27ae60; border-top-width: 5px; }
+    .plan-card.featured { background: linear-gradient(145deg, #1a3c2e, #0d2b1e); border-top: 5px solid var(--saffron); border-right: 1px solid rgba(82,183,136,.25); border-bottom: 1px solid rgba(82,183,136,.25); border-left: 1px solid rgba(82,183,136,.25); box-shadow: 0 32px 80px rgba(0,0,0,.55); }
+    .plan-card.featured:hover { transform: translateY(-6px); }
     .plan-hot { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 1.1rem; border-radius: var(--radius-pill); white-space: nowrap; }
     .plan-hot-popular { background: var(--saffron); color: #3a2000; }
-    .plan-hot-value { background: #27ae60; color: white; }
-    .plan-title { font-family: 'Playfair Display SC', serif; font-size: 1.3rem; color: var(--green-deep); margin-bottom: 0.2rem; }
+
+    .plan-top-badge { display: inline-flex; align-items: center; gap: 0.35rem; font-family: 'Karla', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-mid); background: #e8f5ee; border: 1px solid #b7e4c7; padding: 0.22rem 0.75rem; border-radius: var(--radius-pill); margin-bottom: 1rem; }
+    .plan-title { font-family: 'Playfair Display SC', serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 0.2rem; }
     .plan-card.featured .plan-title { color: var(--cream); }
-    .plan-hint { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.2rem; }
-    .plan-card.featured .plan-hint { color: var(--green-light); }
-    .plan-price { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: var(--green-deep); line-height: 1; }
+    .plan-who { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.2rem; font-style: italic; }
+    .plan-card.featured .plan-who { color: rgba(183,228,199,.7); }
+    .plan-price { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--green-deep); line-height: 1; }
     .plan-card.featured .plan-price { color: var(--saffron); }
     .plan-period { font-family: 'Karla', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--muted); }
     .plan-card.featured .plan-period { color: var(--green-light); }
+    .plan-value-compare { font-family: 'Karla', sans-serif; font-size: 0.78rem; color: var(--green-mid); background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-pill); padding: 0.25rem 0.8rem; display: inline-block; margin: 0.6rem 0 0; }
+    .plan-card.featured .plan-value-compare { background: rgba(82,183,136,.12); border-color: rgba(82,183,136,.3); color: var(--green-light); }
+
     .plan-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0 1.4rem; }
     .pill { font-size: 0.72rem; font-weight: 700; padding: 0.22rem 0.7rem; border-radius: var(--radius-pill); }
     .pill-day { background: var(--green-light); color: var(--green-deep); }
@@ -279,10 +289,15 @@
     .plan-card.featured .pill-day { background: rgba(183,228,199,.18); color: var(--green-light); }
     .plan-card.featured .pill-off { background: var(--saffron); color: var(--green-deep); font-weight: 800; }
     .plan-card.featured .pill-save { background: rgba(255,255,255,.12); color: #ffc8c8; }
+
+    .plan-drink-banner { display: flex; align-items: center; gap: 0.6rem; background: rgba(244,166,29,.1); border: 1px solid rgba(244,166,29,.35); border-radius: var(--radius-md); padding: 0.6rem 0.9rem; margin-bottom: 1.2rem; font-size: 0.8rem; color: var(--saffron); font-weight: 700; }
+
     .plan-features { list-style: none; margin-bottom: 1.8rem; }
     .plan-feature { display: flex; align-items: center; gap: 0.6rem; font-size: 0.87rem; color: var(--muted); padding: 0.45rem 0; border-bottom: 1px solid var(--cream-dark); }
     .plan-card.featured .plan-feature { color: var(--green-light); border-color: rgba(255,255,255,.08); }
     .plan-check { color: var(--green-fresh); flex-shrink: 0; }
+
+    .plans-proof { text-align: center; margin-top: 2rem; font-family: 'Karla', sans-serif; font-size: 0.82rem; color: rgba(183,228,199,.6); letter-spacing: 0.03em; }
 
     /* ── WHY ── */
     .why-section { padding: 2.5rem 2rem; background: var(--cream); }
@@ -718,21 +733,32 @@
 <!-- ── PLANS ── -->
 <section class="plans-section" id="plans" aria-labelledby="plans-title">
   <span class="section-tag" data-i18n="plans.tag">Subscription Plans</span>
-  <h2 class="section-title" id="plans-title" data-i18n="plans.title">Choose Your Plan</h2>
-  <p class="section-sub" data-i18n="plans.sub">Fresh salads delivered daily — pick the plan that fits your health goal</p>
+  <h2 class="section-title" id="plans-title">Two Plans. Zero Confusion.</h2>
+  <p class="section-sub">Start small, fall in love, then go all-in — your health journey, your pace.</p>
+
+  <!-- Customer journey strip -->
+  <div class="plans-journey" role="presentation" aria-hidden="true">
+    <span class="pj-step">🌱 New to healthy eating?</span>
+    <span class="pj-arrow">→</span>
+    <span class="pj-step highlight">Trial Pack</span>
+    <span class="pj-arrow">→</span>
+    <span class="pj-step">Love it?</span>
+    <span class="pj-arrow">→</span>
+    <span class="pj-step highlight">Monthly Plan</span>
+    <span class="pj-arrow">→</span>
+    <span class="pj-step">🎯 Real results in 26 days</span>
+  </div>
+
   <div class="plans-grid">
 
-    <!-- Trial -->
+    <!-- Trial Pack -->
     <div class="plan-card">
+      <div class="plan-top-badge">🌱 First Step</div>
       <div class="plan-title" data-i18n="trial.name">Trial Pack</div>
-      <div class="plan-hint" data-i18n="trial.hint">Try first, decide later</div>
+      <div class="plan-who">Perfect if you want to taste before committing</div>
       <div class="plan-price">₹1,100 <span class="plan-period">/ 5 days</span></div>
-      <div class="plan-pills">
-        <span class="pill pill-day">₹220 / meal</span>
-        <span class="pill pill-off">26% OFF</span>
-        <span class="pill pill-save">Save ₹395</span>
-      </div>
-      <ul class="plan-features">
+      <div class="plan-value-compare">₹220/meal · 26% off base price · Save ₹395</div>
+      <ul class="plan-features" style="margin-top:1.2rem;">
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           <span data-i18n="trial.f1">5 fresh salads (1 per day)</span>
@@ -757,16 +783,15 @@
       <a href="https://www.nosh7.com/order" class="btn btn-primary btn-block" target="_blank" rel="noopener" data-i18n="trial.btn">Start Trial →</a>
     </div>
 
-    <!-- 26-day -->
+    <!-- Monthly Plan -->
     <div class="plan-card featured">
-      <div class="plan-hot plan-hot-popular">Most Popular</div>
+      <div class="plan-top-badge" style="color:#b45309;background:rgba(244,166,29,.12);border-color:rgba(244,166,29,.45);">⭐ Most Popular</div>
       <div class="plan-title" data-i18n="p26.name">Monthly Plan</div>
-      <div class="plan-hint" data-i18n="p26.hint">26 Units · 16 Different Salads</div>
+      <div class="plan-who">For real, lasting results — commit to the change</div>
       <div class="plan-price">₹5,200 <span class="plan-period">/ 26 days</span></div>
-      <div class="plan-pills">
-        <span class="pill pill-day">₹200 / day</span>
-        <span class="pill pill-off">33% OFF</span>
-        <span class="pill pill-save">Save ₹2,574</span>
+      <div class="plan-value-compare" style="color:#2d6a4f;background:#f0fdf4;border-color:#bbf7d0;">₹200/day · Less than your morning chai ☕ · Save ₹2,574</div>
+      <div class="plan-drink-banner">
+        🥤 1 Week Health Drink <strong>FREE</strong> — then only ₹29/day
       </div>
       <ul class="plan-features">
         <li class="plan-feature">
@@ -776,10 +801,6 @@
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           <span data-i18n="p26.f1b">16 Different Varieties</span> <span style="display:inline-flex;align-items:center;gap:2px;background:rgba(244,166,29,.15);color:#7a4a00;font-size:0.62rem;font-weight:800;padding:1px 6px;border-radius:100px;border:1px solid rgba(244,166,29,.4);vertical-align:middle;white-space:nowrap;">Never Repeats</span>
-        </li>
-        <li class="plan-feature">
-          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span data-i18n="p26.f2">Health drink FREE for first week, then ₹29/day</span>
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -802,6 +823,8 @@
     </div>
 
   </div>
+
+  <p class="plans-proof">⭐ 1,300+ subscribers in Ahmedabad &nbsp;·&nbsp; Rated 4.8 / 5 &nbsp;·&nbsp; Trusted by working professionals since 2023</p>
 </section>
 
 <!-- ── ACTIVE OFFERS ── -->

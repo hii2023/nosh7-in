@@ -46,24 +46,24 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet"/></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@700;900&family=Karla:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@700;900&family=Karla:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet"/></noscript>
   <style>
     :root{--gd:#1a3c2e;--gm:#2d6a4f;--gf:#52b788;--gl:#b7e4c7;--cr:#faf7f0;--cd:#f0ebe0;--sf:#f4a61d;--sl:#fde68a;--ch:#1c1c1c;--tm:#5a6b62;--wh:#ffffff;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cr);color:var(--ch);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
-    h1,h2,h3,h4{font-family:'Inter',-apple-system,sans-serif;font-weight:700;letter-spacing:-0.02em;line-height:1.2;}
+    body{font-family:'Karla',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cr);color:var(--ch);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
+    h1,h2,h3,h4{font-family:'Playfair Display SC',serif;font-weight:700;letter-spacing:0em;line-height:1.2;}
 
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:.6rem 2rem;background:rgba(250,247,240,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gl);}
     .nl{display:flex;align-items:center;gap:.6rem;text-decoration:none;}
     .nl img{height:48px;width:48px;border-radius:50%;object-fit:cover;}
-    .nl-t{font-family:'Inter',-apple-system,sans-serif;font-size:1.2rem;font-weight:900;color:var(--gd);line-height:1.1;}
-    .nl-t span{display:block;font-size:.6rem;font-family:'Inter',sans-serif;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);}
+    .nl-t{font-family:'Playfair Display SC',serif;font-size:1.2rem;font-weight:700;color:var(--gd);line-height:1.1;}
+    .nl-t span{display:block;font-size:.6rem;font-family:'Karla',sans-serif;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);}
     .nav-back{color:var(--gm);text-decoration:none;font-size:.9rem;font-weight:500;}
 
     .page-hero{padding:7rem 4rem 3rem;background:var(--cd);text-align:center;}
     .tag{display:inline-block;background:var(--sl);color:var(--gd);font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .9rem;border-radius:100px;margin-bottom:1rem;}
-    .page-hero h1{font-family:'Inter',-apple-system,sans-serif;font-size:clamp(2rem,4vw,3rem);color:var(--gd);margin-bottom:.8rem;}
+    .page-hero h1{font-family:'Playfair Display SC',serif;font-size:clamp(2rem,4vw,3rem);color:var(--gd);margin-bottom:.8rem;}
     .page-hero p{font-size:1rem;color:var(--tm);max-width:580px;margin:0 auto 1.2rem;line-height:1.7;}
     .hero-trust{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1rem;}
     .tc{display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:var(--gm);font-weight:500;background:var(--wh);border:1px solid var(--gl);padding:.35rem .9rem;border-radius:100px;}
@@ -83,7 +83,7 @@
     /* VALUE BAR */
     .value-bar{background:linear-gradient(90deg,#1a3c2e,#2d6a4f);padding:1rem 4rem;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;}
     .vi{text-align:center;}
-    .vi .big{font-family:'Inter',-apple-system,sans-serif;font-size:1.6rem;font-weight:900;color:var(--sf);}
+    .vi .big{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--sf);}
     .vi .sm{font-size:.72rem;color:var(--gl);margin-top:.1rem;}
 
     /* PLANS */
@@ -96,13 +96,13 @@
     .pbadge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.3rem 1rem;border-radius:100px;white-space:nowrap;color:var(--wh);}
     .bg-sf{background:var(--sf);}
     .bg-gm{background:var(--gm);}
-    .plan-name{font-family:'Inter',-apple-system,sans-serif;font-size:1.5rem;color:var(--gd);margin-bottom:.2rem;}
+    .plan-name{font-family:'Playfair Display SC',serif;font-size:1.5rem;color:var(--gd);margin-bottom:.2rem;}
     .plan-card.feat .plan-name{color:var(--cr);}
     .plan-dur{font-size:.82rem;color:var(--tm);margin-bottom:1rem;}
     .plan-card.feat .plan-dur{color:var(--gl);}
     .price-block{background:var(--cd);border-radius:1rem;padding:1.1rem 1.2rem;margin-bottom:1rem;}
     .plan-card.feat .price-block{background:rgba(255,255,255,.08);}
-    .total-price{font-family:'Inter',-apple-system,sans-serif;font-size:2.4rem;font-weight:900;color:var(--gd);line-height:1;}
+    .total-price{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--gd);line-height:1;}
     .plan-card.feat .total-price{color:var(--sf);}
     .ppills{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.7rem;}
     .pill{font-size:.73rem;font-weight:600;padding:.22rem .65rem;border-radius:100px;}
@@ -129,7 +129,7 @@
     /* WHAT'S IN EVERY MEAL */
     .nutrition-section{padding:4rem;background:var(--cd);}
     .section-tag{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gf);display:block;margin-bottom:.8rem;}
-    .section-title{font-family:'Inter',-apple-system,sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--gd);margin-bottom:.5rem;}
+    .section-title{font-family:'Playfair Display SC',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--gd);margin-bottom:.5rem;}
     .section-sub{font-size:.95rem;color:var(--tm);margin-bottom:2rem;max-width:580px;line-height:1.7;}
     .ngrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;}
     .nc{background:var(--wh);border-radius:1.2rem;padding:1.6rem;border:1px solid var(--cd);transition:all .25s;}
@@ -145,7 +145,7 @@
     .diet-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1);}
     .diet-header{padding:1.5rem;display:flex;align-items:center;gap:1rem;}
     .diet-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
-    .diet-header h3{font-family:'Inter',-apple-system,sans-serif;font-size:1.1rem;color:var(--gd);}
+    .diet-header h3{font-family:'Playfair Display SC',serif;font-size:1.1rem;color:var(--gd);}
     .diet-header .diet-sub{font-size:.78rem;color:var(--tm);margin-top:.2rem;}
     .diet-body{padding:0 1.5rem 1.5rem;}
     .diet-body p{font-size:.85rem;color:var(--tm);line-height:1.6;margin-bottom:1rem;}
@@ -166,7 +166,7 @@
     .menu-box{background:var(--wh);border-radius:1.5rem;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08);}
     .menu-box img{width:100%;display:block;max-height:600px;object-fit:contain;}
     .menu-box-body{padding:1.5rem;text-align:center;}
-    .menu-box-title{font-family:'Inter',-apple-system,sans-serif;font-size:1.3rem;color:var(--gd);margin-bottom:.4rem;}
+    .menu-box-title{font-family:'Playfair Display SC',serif;font-size:1.3rem;color:var(--gd);margin-bottom:.4rem;}
     .menu-box-sub{font-size:.85rem;color:var(--tm);margin-bottom:1rem;}
     .menu-size{display:inline-block;font-size:.75rem;background:var(--cd);color:var(--tm);padding:.2rem .7rem;border-radius:100px;margin-bottom:1rem;}
     .menu-loading{text-align:center;padding:3rem;color:var(--tm);}
@@ -181,7 +181,7 @@
 
     /* COMPARE */
     .compare-section{padding:4rem;background:var(--wh);}
-    .compare-section h2{font-family:'Inter',-apple-system,sans-serif;font-size:1.8rem;color:var(--gd);margin-bottom:1.5rem;}
+    .compare-section h2{font-family:'Playfair Display SC',serif;font-size:1.8rem;color:var(--gd);margin-bottom:1.5rem;}
     .ctable{width:100%;border-collapse:collapse;font-size:.86rem;background:var(--wh);border-radius:1rem;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.04);}
     .ctable th{background:var(--gd);color:var(--cr);padding:1rem 1.1rem;text-align:left;}
     .ctable td{padding:.85rem 1.1rem;border-bottom:1px solid var(--cd);}
@@ -191,7 +191,7 @@
     .hl{background:rgba(82,183,136,.07);font-weight:600;}
 
     .cta-section{background:linear-gradient(135deg,var(--gd) 0%,var(--gm) 100%);color:var(--cr);text-align:center;padding:4rem 2rem;}
-    .cta-section h2{font-family:'Inter',-apple-system,sans-serif;font-size:2rem;margin-bottom:.8rem;}
+    .cta-section h2{font-family:'Playfair Display SC',serif;font-size:2rem;margin-bottom:.8rem;}
     .cta-section p{color:var(--gl);margin-bottom:2rem;font-size:.95rem;line-height:1.7;}
     .btn-cta{display:inline-block;background:var(--sf);color:var(--gd);padding:1rem 2.5rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:1.05rem;}
 
@@ -308,21 +308,32 @@
 <!-- PLANS -->
 <section class="plans-section" aria-labelledby="plans-h">
   <span class="section-tag">Subscription Plans</span>
-  <h2 id="plans-h" class="section-title">2 Plans — Har Goal Ke Liye</h2>
-  <p class="section-sub">Single meal ₹299 | Monthly plan = more savings + complimentary health drink</p>
+  <h2 id="plans-h" class="section-title">Two Plans. Zero Confusion.</h2>
+  <p class="section-sub">Start small, taste the difference, then go all-in. Your health journey, your pace — without any lock-in.</p>
+
+  <!-- Journey strip -->
+  <div style="display:flex;align-items:center;justify-content:center;gap:.6rem;flex-wrap:wrap;margin:1.5rem auto 0;max-width:640px;background:rgba(82,183,136,.08);border:1px solid rgba(82,183,136,.25);border-radius:100px;padding:.7rem 1.5rem;">
+    <span style="font-family:'Karla',sans-serif;font-size:.8rem;font-weight:600;color:var(--gm);">🌱 New to healthy eating?</span>
+    <span style="color:var(--gf);font-size:.85rem;">→</span>
+    <span style="font-family:'Karla',sans-serif;font-size:.8rem;font-weight:800;color:var(--gd);">Trial Pack</span>
+    <span style="color:var(--gf);font-size:.85rem;">→</span>
+    <span style="font-family:'Karla',sans-serif;font-size:.8rem;font-weight:600;color:var(--gm);">Love it?</span>
+    <span style="color:var(--gf);font-size:.85rem;">→</span>
+    <span style="font-family:'Karla',sans-serif;font-size:.8rem;font-weight:800;color:var(--gd);">Monthly Plan</span>
+    <span style="color:var(--gf);font-size:.85rem;">→</span>
+    <span style="font-family:'Karla',sans-serif;font-size:.8rem;font-weight:600;color:var(--gm);">🎯 Real results in 26 days</span>
+  </div>
+
   <div class="plans-grid">
 
     <!-- TRIAL -->
     <div class="plan-card">
+      <div style="display:inline-flex;align-items:center;gap:.35rem;font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gm);background:#e8f5ee;border:1px solid var(--gl);padding:.22rem .75rem;border-radius:100px;margin-bottom:1rem;">🌱 First Step</div>
       <div class="plan-name">Trial Pack</div>
-      <div class="plan-dur">5 days · Try before you commit</div>
+      <div class="plan-dur" style="font-family:'Karla',sans-serif;font-style:italic;">Perfect if you want to taste before committing</div>
       <div class="price-block">
         <div class="total-price">₹1,100</div>
-        <div class="ppills">
-          <span class="pill p-day">₹220/day</span>
-          <span class="pill p-off">26% OFF</span>
-          <span class="pill p-save">Save ₹395</span>
-        </div>
+        <div style="font-family:'Karla',sans-serif;font-size:.78rem;color:var(--gm);margin-top:.5rem;">₹220/meal · 26% off base price · Save ₹395</div>
       </div>
       <ul class="plan-features">
         <li class="pf">1 fresh salad delivery per day · 5 days</li>
@@ -331,50 +342,46 @@
         <li class="pf">Jain Dairy original paneer</li>
         <li class="pf">Seasonal fresh ingredients, menu refreshed each season</li>
         <li class="pf">Free delivery within 5 KM · chargeable beyond</li>
-        <li class="pf">⏸ Pause & resume anytime, unlimited times</li>
-        <li class="pf">✋ Cancel free up to 2 hrs before batch — same-day flexibility</li>
+        <li class="pf">⏸ Pause &amp; resume anytime, unlimited times</li>
         <li class="pf">No auto-renewal, no commitment</li>
         <li class="pf">Full refund if not satisfied</li>
       </ul>
-      <a href="https://www.nosh7.com/order" class="btn-order btn-dark">Trial Start Karo (₹1,100 / 5 days) →</a>
+      <a href="https://www.nosh7.com/order" class="btn-order btn-dark" target="_blank" rel="noopener">Start Trial — ₹1,100 / 5 days →</a>
     </div>
 
-    <!-- 26-DAY -->
+    <!-- 26-DAY MONTHLY -->
     <div class="plan-card feat">
-      <div class="pbadge bg-sf">Most Popular 🌟</div>
-      <div class="plan-name">26-Day Plan</div>
-      <div class="plan-dur">26 days · Best for monthly results</div>
+      <div class="pbadge bg-sf">⭐ Most Popular</div>
+      <div style="display:inline-flex;align-items:center;gap:.35rem;font-family:'Karla',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#b45309;background:rgba(244,166,29,.12);border:1px solid rgba(244,166,29,.45);padding:.22rem .75rem;border-radius:100px;margin-bottom:1rem;margin-top:.3rem;">⭐ Best Value</div>
+      <div class="plan-name">Monthly Plan</div>
+      <div class="plan-dur" style="font-family:'Karla',sans-serif;font-style:italic;color:var(--gl);">For real, lasting results — commit to the change</div>
       <div class="price-block">
         <div class="total-price">₹5,200</div>
-        <div class="ppills">
-          <span class="pill p-day">₹200/day</span>
-          <span class="pill p-off">33% OFF</span>
-          <span class="pill p-save">Save ₹2,574</span>
-        </div>
+        <div style="font-family:'Karla',sans-serif;font-size:.78rem;color:var(--gl);margin-top:.5rem;">₹200/day · Less than your morning chai ☕ · Save ₹2,574</div>
       </div>
       <div class="drink-banner">
         <span style="font-size:1.3rem">🥤</span>
-        <span><strong>1 Week Health Drink Complimentary</strong></span>
+        <span><strong>1 Week Health Drink FREE</strong> — then only ₹29/day</span>
       </div>
       <ul class="plan-features">
         <li class="pf">1 fresh salad delivery per day · 26 days</li>
-        <li class="pf">25+ varieties — genuinely tasty, proper meals</li>
+        <li class="pf">25+ varieties — 16 different, never repeats</li>
         <li class="pf">Seeds in every meal</li>
         <li class="pf">Jain Dairy original paneer</li>
         <li class="pf">Seasonal ingredients, menu refreshed each season</li>
-        <li class="pf">1 week health drink free 🥤</li>
-        <li class="pf">Health goal consultation</li>
+        <li class="pf">Health goal consultation included</li>
         <li class="pf">Monthly menu shared in advance</li>
         <li class="pf">Jain option — select at time of purchase</li>
         <li class="pf">Free delivery within 5 KM · chargeable beyond</li>
-        <li class="pf">⏸ Pause & resume anytime, unlimited times</li>
-        <li class="pf">✋ Cancel free up to 2 hrs before batch — same-day flexibility</li>
+        <li class="pf">⏸ Pause &amp; resume anytime, unlimited times</li>
+        <li class="pf">✋ Cancel free up to 2 hrs before batch</li>
       </ul>
-      <a href="https://www.nosh7.com/order" class="btn-order btn-saffron">26-Day Plan Lo (₹5,200) →</a>
+      <a href="https://www.nosh7.com/order" class="btn-order btn-saffron" target="_blank" rel="noopener">Get Monthly Plan — ₹5,200 / 26 days →</a>
     </div>
 
-
   </div>
+
+  <p style="text-align:center;margin-top:1.8rem;font-family:'Karla',sans-serif;font-size:.82rem;color:var(--tm);letter-spacing:.03em;">⭐ 1,300+ subscribers in Ahmedabad &nbsp;·&nbsp; Rated 4.8 / 5 &nbsp;·&nbsp; Trusted by working professionals since 2023</p>
   <p class="order-note">🔗 Orders at <a href="https://www.nosh7.com/order">nosh7.com/order</a> · <a id="z-link" href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b">Zomato</a> · <a id="s-link" href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true">Swiggy</a> · <a href="mailto:hello@nosh7.in">hello@nosh7.in</a> | <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener">📍 Satellite, Ahmedabad</a> | <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7">WhatsApp: 9712989498</a></p>
 </section>
 
@@ -541,7 +548,7 @@
 <section style="padding:4rem 2rem;background:var(--pale);">
   <div class="container">
     <span class="section-tag">🚗 Delivery Batches</span>
-    <h2 style="font-family:'Inter',-apple-system,sans-serif;font-size:1.8rem;color:var(--deep);margin-bottom:.5rem;">4 Daily Delivery Slots</h2>
+    <h2 style="font-family:'Playfair Display SC',serif;font-size:1.8rem;color:var(--deep);margin-bottom:.5rem;">4 Daily Delivery Slots</h2>
     <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;">Salads prepared 1 hour before each batch. Fresh like home-made. Delivered within 2 hours.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
       <div style="background:var(--wh);border:1px solid var(--light);border-left:4px solid var(--mint);border-radius:.8rem;padding:1.2rem;"><div style="font-size:1.3rem;margin-bottom:.3rem;">🌅</div><div style="font-weight:700;color:var(--deep);font-size:.92rem;">9:30 – 11:30 AM</div><div style="font-size:.76rem;color:var(--muted);">Prep starts 8:30 AM</div></div>
@@ -555,7 +562,7 @@
 <section style="padding:4rem 2rem;background:var(--cream);">
   <div class="container">
     <span class="section-tag">❓ FAQ</span>
-    <h2 style="font-family:'Inter',-apple-system,sans-serif;font-size:1.8rem;color:var(--deep);margin-bottom:1.2rem;">Frequently Asked Questions</h2>
+    <h2 style="font-family:'Playfair Display SC',serif;font-size:1.8rem;color:var(--deep);margin-bottom:1.2rem;">Frequently Asked Questions</h2>
     <div style="max-width:700px;">
       <details style="border-bottom:1px solid var(--light);padding:.85rem 0;"><summary style="font-weight:600;color:var(--deep);cursor:pointer;font-size:.9rem;">Is it a 5-day trial or 3-day trial?</summary><p style="font-size:.85rem;color:var(--muted);line-height:1.65;margin-top:.5rem;">5-day trial at ₹1,100 (₹220/day). You get 5 fresh salads — one daily for 5 days. No auto-renewal. Full refund if not satisfied.</p></details>
       <details style="border-bottom:1px solid var(--light);padding:.85rem 0;"><summary style="font-weight:600;color:var(--deep);cursor:pointer;font-size:.9rem;">Do you have Jain options?</summary><p style="font-size:.85rem;color:var(--muted);line-height:1.65;margin-top:.5rem;">Yes! Jain option is available and can be selected at the time of purchasing the plan. We use Jain Dairy original paneer. Onion, garlic and root vegetables can be excluded on request.</p></details>
@@ -600,7 +607,7 @@
 
 <!-- Google Reviews Widget -->
 <section style="padding:3rem 2rem;background:var(--cream);text-align:center;">
-  <h2 style="font-family:'Inter',-apple-system,sans-serif;font-size:1.6rem;color:var(--gd);margin-bottom:.5rem;">⭐ Ahmedabad Ko Pasand Hai NOSH7</h2>
+  <h2 style="font-family:'Playfair Display SC',serif;font-size:1.6rem;color:var(--gd);margin-bottom:.5rem;">⭐ Ahmedabad Ko Pasand Hai NOSH7</h2>
   <div style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;">
     <div style="background:#fff;border:2px solid #ffd3d3;border-radius:1rem;padding:.8rem 1.4rem;text-align:center;">
       <div style="font-weight:800;font-size:1.6rem;color:#CB202D;">4.3</div>
