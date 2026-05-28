@@ -29,7 +29,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@700;900&family=Karla:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -51,7 +51,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: 'Karla', -apple-system, sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; line-height: 1.6; }
+    body { font-family: 'DM Sans', -apple-system, sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; line-height: 1.6; }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -62,7 +62,7 @@
     .plans-section .section-tag { font-size: 1rem; letter-spacing: 0.08em; }
     .section-title { font-family: 'Playfair Display SC', Georgia, serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--green-deep); line-height: 1.2; margin-bottom: 0.9rem; }
     .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 560px; }
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: var(--radius-pill); font-family: 'Karla', sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: var(--radius-pill); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: all 0.2s; border: none; }
     .btn-primary { background: var(--green-deep); color: var(--cream); box-shadow: 0 4px 20px rgba(26,60,46,.25); }
     .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,60,46,.3); }
     .btn-saffron { background: var(--saffron); color: var(--green-deep); box-shadow: 0 4px 20px rgba(244,166,29,.35); }
@@ -85,7 +85,7 @@
     .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
     .nav-logo img { height: 56px; width: 56px; object-fit: contain; display: block; mix-blend-mode: multiply; }
     .nav-logo-text { font-family: 'Playfair Display SC', serif; font-size: 1.25rem; font-weight: 700; color: var(--green-deep); line-height: 1; }
-    .nav-logo-text span { display: block; font-family: 'Karla', sans-serif; font-size: 0.58rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .nav-logo-text span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.58rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
     .nav-links { display: flex; align-items: center; gap: 1.5rem; }
     .nav-links a { color: var(--green-deep); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--green-fresh); }
@@ -169,7 +169,7 @@
       width: 96px; height: 96px; border-radius: 50%;
       background: var(--saffron);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Karla', sans-serif; font-size: 0.7rem; font-weight: 700;
+      font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 700;
       color: var(--white); text-align: center; line-height: 1.3;
       box-shadow: 0 8px 24px rgba(244,166,29,.45);
     }
@@ -193,7 +193,7 @@
       white-space: nowrap;
     }
     .pbar-label svg { flex-shrink: 0; }
-    .pbar-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.52rem 1.15rem; border-radius: var(--radius-pill); font-family: 'Karla', sans-serif; font-weight: 700; font-size: 0.88rem; text-decoration: none; transition: transform .18s, opacity .18s; }
+    .pbar-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.52rem 1.15rem; border-radius: var(--radius-pill); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.88rem; text-decoration: none; transition: transform .18s, opacity .18s; }
     .pbar-btn:hover { opacity: 0.88; transform: translateY(-1px); }
     .pbar-zomato { background: #CB202D; color: #fff; }
     .pbar-swiggy { background: #FC8019; color: #fff; }
@@ -257,7 +257,7 @@
 
     /* Journey strip */
     .plans-journey { display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin: 2rem auto 0; max-width: 640px; background: rgba(255,255,255,.06); border: 1px solid rgba(82,183,136,.25); border-radius: var(--radius-pill); padding: 0.7rem 1.5rem; }
-    .pj-step { font-family: 'Karla', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--green-light); }
+    .pj-step { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--green-light); }
     .pj-step.highlight { color: var(--saffron); font-weight: 800; }
     .pj-arrow { color: rgba(82,183,136,.5); font-size: 0.85rem; }
 
@@ -269,16 +269,16 @@
     .plan-hot { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 1.1rem; border-radius: var(--radius-pill); white-space: nowrap; }
     .plan-hot-popular { background: var(--saffron); color: #3a2000; }
 
-    .plan-top-badge { display: inline-flex; align-items: center; gap: 0.35rem; font-family: 'Karla', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-mid); background: #e8f5ee; border: 1px solid #b7e4c7; padding: 0.22rem 0.75rem; border-radius: var(--radius-pill); margin-bottom: 1rem; }
+    .plan-top-badge { display: inline-flex; align-items: center; gap: 0.35rem; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-mid); background: #e8f5ee; border: 1px solid #b7e4c7; padding: 0.22rem 0.75rem; border-radius: var(--radius-pill); margin-bottom: 1rem; }
     .plan-title { font-family: 'Playfair Display SC', serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 0.2rem; }
     .plan-card.featured .plan-title { color: var(--cream); }
     .plan-who { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.2rem; font-style: italic; }
     .plan-card.featured .plan-who { color: rgba(183,228,199,.7); }
     .plan-price { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--green-deep); line-height: 1; }
     .plan-card.featured .plan-price { color: var(--saffron); }
-    .plan-period { font-family: 'Karla', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--muted); }
+    .plan-period { font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--muted); }
     .plan-card.featured .plan-period { color: var(--green-light); }
-    .plan-value-compare { font-family: 'Karla', sans-serif; font-size: 0.78rem; color: var(--green-mid); background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-pill); padding: 0.25rem 0.8rem; display: inline-block; margin: 0.6rem 0 0; }
+    .plan-value-compare { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--green-mid); background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-pill); padding: 0.25rem 0.8rem; display: inline-block; margin: 0.6rem 0 0; }
     .plan-card.featured .plan-value-compare { background: rgba(82,183,136,.12); border-color: rgba(82,183,136,.3); color: var(--green-light); }
 
     .plan-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0 1.4rem; }
@@ -297,7 +297,7 @@
     .plan-card.featured .plan-feature { color: var(--green-light); border-color: rgba(255,255,255,.08); }
     .plan-check { color: var(--green-fresh); flex-shrink: 0; }
 
-    .plans-proof { text-align: center; margin-top: 2rem; font-family: 'Karla', sans-serif; font-size: 0.82rem; color: rgba(183,228,199,.6); letter-spacing: 0.03em; }
+    .plans-proof { text-align: center; margin-top: 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; color: rgba(183,228,199,.6); letter-spacing: 0.03em; }
 
     /* ── WHY ── */
     .why-section { padding: 2.5rem 2rem; background: var(--cream); }
@@ -557,7 +557,7 @@
     }
 
     /* ── SITE LANGUAGE TOGGLE ── */
-    #site-lang-btn { background: rgba(45,106,79,.12); border: 1.5px solid var(--green-light); color: var(--green-deep); font-family: 'Karla', sans-serif; font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: var(--radius-pill); cursor: pointer; transition: all .2s; letter-spacing: 0.04em; }
+    #site-lang-btn { background: rgba(45,106,79,.12); border: 1.5px solid var(--green-light); color: var(--green-deep); font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: var(--radius-pill); cursor: pointer; transition: all .2s; letter-spacing: 0.04em; }
     #site-lang-btn:hover { background: var(--green-light); }
     #site-lang-btn.gu-active { background: var(--green-deep); color: var(--cream); border-color: var(--green-deep); }
 
@@ -789,7 +789,7 @@
       <div class="plan-title" data-i18n="p26.name">Monthly Plan</div>
       <div class="plan-who">For real, lasting results — commit to the change</div>
       <div class="plan-price">₹5,200 <span class="plan-period">/ 26 days</span></div>
-      <div class="plan-value-compare" style="color:#2d6a4f;background:#f0fdf4;border-color:#bbf7d0;">₹200/day · Less than your morning chai ☕ · Save ₹2,574</div>
+      <div class="plan-value-compare" style="color:#2d6a4f;background:#f0fdf4;border-color:#bbf7d0;">₹200/day · 33% off base price · Save ₹2,574</div>
       <div class="plan-drink-banner">
         🥤 1 Week Health Drink <strong>FREE</strong> — then only ₹29/day
       </div>
@@ -892,42 +892,6 @@
   </div>
   <div style="text-align:center;margin-top:1.5rem;">
     <a href="https://wa.me/919712989498?text=Hi+NOSH7,+I+want+to+know+more+about+your+active+offers" class="btn btn-primary" target="_blank" rel="noopener">Activate an Offer &rarr;</a>
-  </div>
-</section>
-
-<!-- ── HOW IT WORKS ── -->
-<section class="how-section" aria-labelledby="how-title">
-  <div style="text-align:center;">
-    <span class="section-tag">How It Works</span>
-    <h2 class="section-title" id="how-title">3 Steps to Healthy Eating</h2>
-  </div>
-  <div class="how-steps-row">
-    <div class="how-step-chip">
-      <div class="how-step-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        <span class="how-step-num">1</span>
-      </div>
-      <h3>Choose Plan</h3>
-      <p>Trial or Monthly. Tell us your health goal.</p>
-    </div>
-    <div class="how-arrow">→</div>
-    <div class="how-step-chip">
-      <div class="how-step-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span class="how-step-num">2</span>
-      </div>
-      <h3>Order Online</h3>
-      <p>nosh7.com or WhatsApp. Jain option available.</p>
-    </div>
-    <div class="how-arrow">→</div>
-    <div class="how-step-chip">
-      <div class="how-step-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <span class="how-step-num">3</span>
-      </div>
-      <h3>Receive Fresh</h3>
-      <p>4 daily slots. Prepared 1 hr before. Never frozen.</p>
-    </div>
   </div>
 </section>
 
@@ -1343,7 +1307,7 @@
     </div>
     <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:#fff;margin-bottom:0.75rem;line-height:1.3;">Never Miss a Deal or Menu Update</h2>
     <p style="font-size:0.97rem;color:#b7e4c7;margin-bottom:1.75rem;line-height:1.75;">Join our WhatsApp Channel for exclusive offers, this week's menu drops, health tips, and subscriber-only discounts — straight to your phone, no spam.</p>
-    <a href="https://whatsapp.com/channel/0029VbApTICFy72CulI4vB3k" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.7rem;background:#25D366;color:#fff;font-family:'Karla',sans-serif;font-weight:700;font-size:1rem;padding:0.9rem 2rem;border-radius:100px;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.35);transition:opacity .2s;">
+    <a href="https://whatsapp.com/channel/0029VbApTICFy72CulI4vB3k" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.7rem;background:#25D366;color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:1rem;padding:0.9rem 2rem;border-radius:100px;text-decoration:none;box-shadow:0 8px 24px rgba(37,211,102,.35);transition:opacity .2s;">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Join NOSH7 Channel — It's Free
     </a>
@@ -1660,7 +1624,7 @@
   .julie-close { background: none; border: none; cursor: pointer; color: var(--green-light); padding: 0.2rem; border-radius: 50%; transition: color .2s; }
   .julie-close:hover { color: white; }
   .julie-lang { display: flex; gap: 0.3rem; margin-left: auto; margin-right: 0.5rem; }
-  .lang-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 100px; cursor: pointer; transition: all .2s; font-family: 'Karla', sans-serif; }
+  .lang-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 100px; cursor: pointer; transition: all .2s; font-family: 'DM Sans', sans-serif; }
   .lang-btn.active, .lang-btn:hover { background: rgba(255,255,255,0.9); color: var(--green-deep); }
 
   /* Messages */
@@ -1700,7 +1664,7 @@
   .julie-quick { padding: 0.5rem 1rem 0.75rem; display: flex; flex-wrap: wrap; gap: 0.4rem; flex-shrink: 0; }
   .qr-btn {
     background: white; border: 1.5px solid var(--green-light);
-    color: var(--green-deep); font-family: 'Karla', sans-serif;
+    color: var(--green-deep); font-family: 'DM Sans', sans-serif;
     font-size: 0.76rem; font-weight: 700; padding: 0.35rem 0.75rem;
     border-radius: 100px; cursor: pointer; transition: all .2s;
     white-space: nowrap;
@@ -1714,7 +1678,7 @@
   }
   #julie-input {
     flex: 1; border: 1.5px solid var(--green-light); border-radius: 100px;
-    padding: 0.5rem 1rem; font-family: 'Karla', sans-serif; font-size: 0.86rem;
+    padding: 0.5rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.86rem;
     outline: none; background: var(--cream); color: var(--charcoal);
     transition: border-color .2s;
   }
