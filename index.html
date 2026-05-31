@@ -799,9 +799,6 @@
       <div class="plan-who">For real, lasting results — commit to the change</div>
       <div class="plan-price">₹4,999 <span class="plan-period">/ 25 days</span></div>
       <div class="plan-value-compare" style="color:#2d6a4f;background:#f0fdf4;border-color:#bbf7d0;">₹200/day · 33% off base price · Save ₹2,476</div>
-      <div class="plan-drink-banner">
-        🥤 1 Week Health Drink <strong>FREE</strong> — then only ₹29/day
-      </div>
       <ul class="plan-features">
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -842,17 +839,6 @@
   <h2 class="section-title" id="offers-title">Active Offers</h2>
   <p class="section-sub" style="margin:0 auto 0;">Stack offers on your plan — WhatsApp us to activate.</p>
   <div class="offers-grid">
-
-    <div class="offer-card">
-      <div class="offer-card-top">
-        <div class="offer-icon">🥤</div>
-        <span class="offer-badge">Free</span>
-      </div>
-      <div class="offer-content">
-        <h3>Free Healthy Drink</h3>
-        <p>Monthly plan: 1 week free health drink</p>
-      </div>
-    </div>
 
     <div class="offer-card">
       <div class="offer-card-top">
@@ -1410,12 +1396,10 @@
       'trial.f5':'Full refund if not satisfied','trial.btn':'Start Trial →',
       'p26.name':'Monthly Plan','p26.hint':'25 Units · 16 Different Salads',
       'p26.f1':'25 fresh salads — different salad every day',
-      'p26.f2':'Health drink FREE for first week, then ₹29/day',
       'p26.f1b':'16 Different Varieties','p26.f3':'Seeds added in every meal','p26.f4':'Health goal consultation included',
       'p26.f5':'Pause anytime','p26.f6':'Jain option available','p26.btn':'Get Monthly Plan →',
       'p60.name':'60-Day Plan','p60.hint':'Maximum results, maximum savings',
       'p60.f1':'60 fresh salads — 15 different varieties rotated',
-      'p60.f2':'Health drink FREE for first 2 weeks, then ₹29/day',
       'p60.f3':'Seeds in every single meal','p60.f4':'2 nutritionist consultations',
       'p60.f5':'Priority WhatsApp support','p60.btn':'Get 60-Day Plan →',
       'footer.tagline':'Ahmedabad ka pure veg salad subscription. No eggs. Daily fresh delivery. Real results.',
@@ -1777,21 +1761,20 @@ ABOUT NOSH7:
 
 PLANS & PRICING:
 1. Trial Pack — **₹1,250 / 5 days** (**₹250/day**). Use code **TRAIL** at checkout for ₹150 off → pay only **₹1,100**. One-time offer. No commitment, full refund if not happy.
-2. Monthly Plan — **₹4,999 / 25 days** (**₹200/day**, 33% off, save **₹2,476**). Includes 1 week free health drink, superfood seeds weekly, free nutrition consultation, pause anytime. [MOST POPULAR]
+2. Monthly Plan — **₹4,999 / 25 days** (**₹200/day**, 33% off, save **₹2,476**). Includes superfood seeds weekly, free nutrition consultation, pause anytime. [MOST POPULAR]
 
 MENU & CUSTOMISATION:
 - We have a monthly fixed menu that changes every month.
 - Customers can customise any dish for just **₹49/meal** extra.
 - To customise, WhatsApp us at **9712989498** before the delivery day.
 
-HEALTH DRINKS: Chargeable at **₹29/day**. Free weeks included: Monthly (25-Day) plan gets **1 week free**.
+HEALTH DRINKS: Chargeable at **₹29/day** add-on. No free weeks included.
 
 ACTIVE OFFERS:
-1. Free Healthy Drink — with 25-day (Monthly) plan (see above)
-2. Double Cashback — buy 2 subscriptions = **5% cashback** each
-3. Group Offer — 3+ people = up to **10% cashback**
-4. Refer a Friend — both get **1 bowl** free
-5. Loyalty Reward — 3 months in a row = **3 free meals** on next plan
+1. Double Cashback — buy 2 subscriptions = **5% cashback** each
+2. Group Offer — 3+ people = up to **10% cashback**
+3. Refer a Friend — both get **1 bowl** free
+4. Loyalty Reward — 3 months in a row = **3 free meals** on next plan
 
 HEALTH GOALS:
 - Weight Loss: ~**350–420 kcal/bowl**, customers lose **3–7 kg** in 60 days
@@ -1836,11 +1819,11 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
     if (/trial|5.?day|\btry\b|sample/.test(t))
       return `Our **Trial Pack** is **₹1,250 for 5 days** (₹250/day). Use code **TRAIL** at checkout for ₹150 off — pay only **₹1,100**! One-time offer. No commitment, full refund if not happy. Order at **nosh7.com/order** or WhatsApp **9712989498**.`;
     if (/26.?day|month|popular/.test(t))
-      return `The **Monthly Plan** is **₹4,999 for 25 days** (₹200/day, 33% off, save **₹2,476**). Includes 1 week free health drink + superfood seeds + nutrition consultation. Our most popular! Ready to start?`;
+      return `The **Monthly Plan** is **₹4,999 for 25 days** (₹200/day, 33% off, save **₹2,476**). Includes superfood seeds + nutrition consultation. Our most popular! Ready to start?`;
     if (/plan|pric|cost|rate|how.?much|kitna/.test(t))
       return `2 plans: **Trial ₹1,250/5 days** (code TRAIL = ₹1,100) | **Monthly ₹4,999/25 days** (most popular, ₹200/day). All fresh daily salad bowls. Which one suits you?`;
     if (/offer|discount|cashback|deal|promo/.test(t))
-      return `**Active Offers:** Free health drink with Monthly plan · Double Cashback (2 subs = 5% each) · Group Offer (3+ people = 10%) · Refer a Friend = 2 free meals each. WhatsApp **9712989498** to avail!`;
+      return `**Active Offers:** Double Cashback (2 subs = 5% each) · Group Offer (3+ people = 10%) · Refer a Friend = 1 bowl each · Loyalty (3 months = 3 free meals). WhatsApp **9712989498** to avail!`;
     if (/deliver|area|zone|location|where|satellite|prahlad|bodakdev|vastrapur/.test(t))
       return `We cover West Ahmedabad — **Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Anandnagar, SG Highway, Ambli, Sindhu Bhavan Road**. 4 daily batches. WhatsApp **9712989498** to confirm your area.`;
     if (/weight|loss|slim|fat|calorie|diet/.test(t))
