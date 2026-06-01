@@ -1197,7 +1197,10 @@
 
   <!-- Real Google Reviews via SociableKit -->
   <div class="sk-ww-google-reviews" data-embed-id="25663596"></div>
-  <script src="https://widgets.sociablekit.com/google-reviews/widget.js" defer></script>
+  <script>
+  /* Lazy-load Google Reviews widget when it nears the viewport (defers third-party images + JS off initial load) */
+  (function(){var loaded=false;function load(){if(loaded)return;loaded=true;var s=document.createElement('script');s.src='https://widgets.sociablekit.com/google-reviews/widget.js';s.defer=true;document.body.appendChild(s);}var el=document.querySelector('.sk-ww-google-reviews');if('IntersectionObserver'in window&&el){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load();io.disconnect();}});},{rootMargin:'600px'});io.observe(el);}else{load();}})();
+  </script>
 
   <div style="text-align:center;margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
     <a href="https://www.google.com/maps/search/?api=1&query=NOSH7+salad+Ahmedabad" target="_blank" rel="noopener" class="btn btn-outline">
