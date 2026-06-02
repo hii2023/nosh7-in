@@ -48,7 +48,12 @@ HEALTH GOALS:
 
 ORDERING: nosh7.com/order (best price) | Zomato | Swiggy | WhatsApp **9712989498**
 
-DELIVERY: West Ahmedabad - Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Anandnagar, SG Highway, Ambli, Sindhu Bhavan Road. 4 daily batches.`;
+DELIVERY: We deliver across west, central and north-west Ahmedabad. Covered areas include:
+- West / SG Highway: Satellite, Prahlad Nagar, Jodhpur, Anandnagar, Bodakdev, Vastrapur, Thaltej, Sola, Shilaj, Bopal, Ambli, Science City, SG Highway, Sindhu Bhavan Road
+- Central: Navrangpura, Ashram Road, Usmanpura, Naranpura, Stadium, Gujarat University, Vadaj, Paldi
+- North-west: Gota, Ranip, Chandlodiya, New Ranip, Nirnaynagar, Sabarmati / Gandhi Ashram
+- South: Vejalpur, Makarba, Juhapura, Sarkhej, Shela
+Yes, we DO deliver to Ashram Road and Sabarmati Ashram area. Roughly bounded by Gota/Santej (north), Sarkhej/Shela (south), Bopal/SG Highway (west) and the Sabarmati river / Ashram Road (east). Areas like Chandkheda, Maninagar, Naroda, Nirma University and Lapkaman are currently outside the zone. 4 daily delivery batches. If unsure, ask the customer to WhatsApp 9712989498 to confirm their exact address.`;
 
   const LANG_PROMPT = {
     en: 'Reply in English only.',
@@ -87,8 +92,8 @@ DELIVERY: West Ahmedabad - Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thalte
       return `2 plans: **Trial ₹1,250/5 days** (code TRIAL = ₹1,100) | **Monthly ₹4,999/25 days** (most popular, ₹200/day). All fresh daily salad bowls. Which one suits you?`;
     if (/offer|discount|cashback|deal|promo/.test(t))
       return `**Active Offers:** Double Cashback (2 subs = 5% each) · Group Offer (3+ people = 10%) · Refer a Friend = 1 bowl each · Loyalty (3 months = 3 free meals). WhatsApp **9712989498** to avail!`;
-    if (/deliver|area|zone|location|where|satellite|prahlad|bodakdev|vastrapur/.test(t))
-      return `We cover West Ahmedabad - **Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Anandnagar, SG Highway, Ambli, Sindhu Bhavan Road**. 4 daily batches. WhatsApp **9712989498** to confirm your area.`;
+    if (/deliver|area|zone|location|where|cover|pincode|satellite|prahlad|jodhpur|anandnagar|bodakdev|vastrapur|thaltej|sola|shilaj|bopal|ambli|science.?city|sg.?highway|sindhu|navrangpura|ashram|usmanpura|naranpura|stadium|gujarat.?univ|vadaj|paldi|gota|ranip|chandlodiya|nirnaynagar|sabarmati|vejalpur|makarba|juhapura|sarkhej|shela/.test(t))
+      return `We deliver across **west, central & north-west Ahmedabad** - including **Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Sola, Bopal, SG Highway, Navrangpura, Ashram Road, Usmanpura, Naranpura, Gujarat University, Paldi, Gota, Ranip, Chandlodiya, Sabarmati, Vejalpur, Juhapura & Sarkhej**. Yes, **Ashram Road is covered**! 4 daily batches. Not sure about your area? WhatsApp **9712989498** and we'll confirm in seconds.`;
     if (/weight|loss|slim|fat|calorie|diet/.test(t))
       return `Our bowls are **350–420 kcal**, high fibre, zero junk. Customers lose **3–7 kg in 60 days**. The **Monthly Plan** is the best place to start - want to try it?`;
     if (/protein|muscle|gym|fitness/.test(t))
