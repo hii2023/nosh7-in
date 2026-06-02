@@ -1,4 +1,4 @@
-/* ── NOSH7 Blog — Shared Stylesheet ── */
+/* ── NOSH7 Blog - Shared Stylesheet ── */
 
 :root {
   --green-deep:  #1a3c2e;
@@ -34,7 +34,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--green-mid); font-weight: 700; font-size: 0.9rem; cursor: pointer; }
 .nav-back:hover { color: var(--green-fresh); }
 
-/* ── HERO (layout only — background & accent colours are page-specific) ── */
+/* ── HERO (layout only - background & accent colours are page-specific) ── */
 .hero { padding: 7rem 2rem 3.5rem; text-align: center; color: white; }
 .hero-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
 .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem; max-width: 720px; margin-left: auto; margin-right: auto; }

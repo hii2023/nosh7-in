@@ -130,7 +130,7 @@
   <div class="login-box">
     <img decoding="async" src="/assets/logo.webp" alt="NOSH7"/>
     <h1>Admin Panel</h1>
-    <p>NOSH7 Control Center — Authorized Access Only</p>
+    <p>NOSH7 Control Center - Authorized Access Only</p>
     <input type="password" id="pwInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')login()"/>
     <button class="login-btn" onclick="login()">Sign In →</button>
     <div class="login-err" id="loginErr">⚠️ Incorrect password. Try again.</div>
@@ -176,8 +176,8 @@
         <div class="page-title">Good Morning, NOSH7 👋</div>
         <div class="page-sub">Here's your site overview.</div>
         <div class="stat-row" id="dashStats">
-          <div class="stat-card"><div class="val" id="ds-posts">—</div><div class="lbl">Blog Posts Live</div></div>
-          <div class="stat-card"><div class="val" id="ds-menu">—</div><div class="lbl">Menus Uploaded</div></div>
+          <div class="stat-card"><div class="val" id="ds-posts">-</div><div class="lbl">Blog Posts Live</div></div>
+          <div class="stat-card"><div class="val" id="ds-menu">-</div><div class="lbl">Menus Uploaded</div></div>
           <div class="stat-card"><div class="val">2000+</div><div class="lbl">Happy Customers</div></div>
           <div class="stat-card"><div class="val">3</div><div class="lbl">Active Plans</div></div>
         </div>
@@ -229,14 +229,14 @@
           </div>
           <div class="form-group">
             <label>Title (include SEO keyword)</label>
-            <input type="text" id="b-title" placeholder="e.g. Achhe Se Chabaana — Ek Habit Jo Sab Kuch Badal Deti Hai"/>
+            <input type="text" id="b-title" placeholder="e.g. Achhe Se Chabaana - Ek Habit Jo Sab Kuch Badal Deti Hai"/>
           </div>
           <div class="form-group">
             <label>Excerpt (2-3 sentences, include keyword naturally)</label>
             <textarea id="b-excerpt" placeholder="Write a compelling 2-3 sentence summary..."></textarea>
           </div>
           <div class="form-group">
-            <label>Key Insight (1 science fact — shown as callout)</label>
+            <label>Key Insight (1 science fact - shown as callout)</label>
             <input type="text" id="b-insight" placeholder="e.g. Chewing 20-30 times per bite can reduce calorie intake by 12%"/>
           </div>
           <div class="form-group">
@@ -298,7 +298,7 @@
               <strong style="color:var(--gf);">📁 For PDF or any file type:</strong><br/>
               1. Upload PDF / image to Google Drive<br/>
               2. Right click → Share → Anyone with link → Copy link<br/>
-              3. Paste the full link here — we'll embed it automatically<br/>
+              3. Paste the full link here - we'll embed it automatically<br/>
               <strong style="color:var(--sf);">Works with PDF, JPG, PNG. Recommended max: 10MB</strong>
             </div>
           </div>
@@ -372,13 +372,13 @@
       <!-- PLANS EDITOR -->
       <div class="panel" id="panel-plans">
         <div class="page-title">Plans & Pricing 💳</div>
-        <div class="page-sub">View current plan structure. Prices are set — contact your developer to change core pricing logic.</div>
+        <div class="page-sub">View current plan structure. Prices are set - contact your developer to change core pricing logic.</div>
         <div class="card">
           <h3>📊 Current Plans</h3>
           <table>
             <thead><tr><th>Plan</th><th>Price</th><th>Days</th><th>Per Day</th><th>Discount</th><th>Health Drink</th></tr></thead>
             <tbody>
-              <tr><td>Trial Pack</td><td>₹1,250</td><td>5</td><td>₹220</td><td><span class="badge badge-gold">26% OFF</span></td><td>—</td></tr>
+              <tr><td>Trial Pack</td><td>₹1,250</td><td>5</td><td>₹220</td><td><span class="badge badge-gold">26% OFF</span></td><td>-</td></tr>
               <tr><td>25-Day Plan</td><td>₹4,999</td><td>26</td><td>₹200</td><td><span class="badge badge-gold">33% OFF</span></td><td><span class="badge badge-green">1 week free</span></td></tr>
             </tbody>
           </table>
@@ -427,17 +427,17 @@
           <div class="review-card">
             <div class="rv-stars">★★★★★</div>
             <div class="rv-text">"NOSH7 ne meri life change kar di. Monthly plan liya aur 4 kilo gaya. Taste bhi bahut aacha hai!"</div>
-            <div class="rv-author">— Priya Shah, Satellite Ahmedabad</div>
+            <div class="rv-author">- Priya Shah, Satellite Ahmedabad</div>
           </div>
           <div class="review-card">
             <div class="rv-stars">★★★★★</div>
             <div class="rv-text">"Office lunch ke liye perfect. Trial pack se shuru kiya, ab 25-day plan pe hoon. Fresh aur tasty!"</div>
-            <div class="rv-author">— Rohan Patel, Navrangpura</div>
+            <div class="rv-author">- Rohan Patel, Navrangpura</div>
           </div>
           <div class="review-card">
             <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">"₹200/day mein itna fresh khana — Gujarat ka best deal! Jain Dairy paneer is the best quality."</div>
-            <div class="rv-author">— Meera Desai, Bodakdev</div>
+            <div class="rv-text">"₹200/day mein itna fresh khana - Gujarat ka best deal! Jain Dairy paneer is the best quality."</div>
+            <div class="rv-author">- Meera Desai, Bodakdev</div>
           </div>
         </div>
       </div>
@@ -610,7 +610,7 @@ function showPanel(id, el) {
 // ── DASHBOARD ─────────────────────────────────────────────
 async function loadDashboard() {
   const posts = await sbGet('blog_posts', '?select=id,title,tag,date_label,published&order=created_at.desc&limit=5');
-  document.getElementById('ds-posts').textContent = Array.isArray(posts) ? posts.filter(p=>p.published).length : '—';
+  document.getElementById('ds-posts').textContent = Array.isArray(posts) ? posts.filter(p=>p.published).length : '-';
   const menus = await sbGet('monthly_menu', '?select=id');
   document.getElementById('ds-menu').textContent = Array.isArray(menus) ? menus.length : 0;
   if (Array.isArray(posts) && posts.length) {
@@ -757,7 +757,7 @@ async function loadSettingsTable() {
   const el = document.getElementById('settings-table');
   if (!Array.isArray(settings)) { el.innerHTML = '<p>Loading...</p>'; return; }
   el.innerHTML = '<table><thead><tr><th>Key</th><th>Value</th><th>Updated</th></tr></thead><tbody>' +
-    settings.map(s => `<tr><td style="font-family:monospace;font-size:.78rem;color:var(--gf);">${s.key}</td><td style="font-size:.82rem">${s.key==='admin_password'?'••••••':s.value}</td><td style="font-size:.75rem;color:rgba(255,255,255,.3)">${s.updated_at ? new Date(s.updated_at).toLocaleDateString('en-IN') : '—'}</td></tr>`).join('') +
+    settings.map(s => `<tr><td style="font-family:monospace;font-size:.78rem;color:var(--gf);">${s.key}</td><td style="font-size:.82rem">${s.key==='admin_password'?'••••••':s.value}</td><td style="font-size:.75rem;color:rgba(255,255,255,.3)">${s.updated_at ? new Date(s.updated_at).toLocaleDateString('en-IN') : '-'}</td></tr>`).join('') +
     '</tbody></table>';
 }
 

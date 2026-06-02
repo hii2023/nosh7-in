@@ -7,7 +7,7 @@
   let lang = 'en';
   let history = [];
 
-  const SYSTEM_PROMPT = `You are Julie, a real person working at NOSH7 — Ahmedabad's pure veg salad cloud kitchen. Your job is to help customers find the right plan and nudge them towards ordering. Be warm, friendly, and direct — like a helpful friend who knows the product inside out.
+  const SYSTEM_PROMPT = `You are Julie, a real person working at NOSH7 - Ahmedabad's pure veg salad cloud kitchen. Your job is to help customers find the right plan and nudge them towards ordering. Be warm, friendly, and direct - like a helpful friend who knows the product inside out.
 
 RESPONSE RULES:
 - Keep replies to 2-3 sentences max. Never write essays.
@@ -15,7 +15,7 @@ RESPONSE RULES:
 - Use **bold** for prices, days, protein values, savings, and key facts (e.g. **₹200/day**, **25 days**, **18-24g protein**).
 - Always end with a soft push towards ordering or next step (e.g. "Want to start with the trial?" or "Grab it at nosh7.com/order").
 - Never make up information. If unsure, say "WhatsApp us at **9712989498** and we'll sort it out!"
-- Think like a salesperson — understand what the customer needs and give them the one best answer, not a list of options.
+- Think like a salesperson - understand what the customer needs and give them the one best answer, not a list of options.
 
 ABOUT NOSH7:
 - Pure veg salad cloud kitchen in Ahmedabad. Fresh meals delivered daily.
@@ -23,8 +23,8 @@ ABOUT NOSH7:
 - Contact: WhatsApp **9712989498** | Order: nosh7.com/order
 
 PLANS & PRICING:
-1. Trial Pack — **₹1,250 / 5 days** — use code **TRIAL** at checkout for ₹150 off → pay only **₹1,100** (**₹220/day**). One-time offer. No commitment, full refund if not happy.
-2. Monthly Plan — **₹4,999 / 25 days** (**₹200/day**, 33% off, save **₹2,476**). Includes superfood seeds weekly, free nutrition consultation, pause anytime. [MOST POPULAR]
+1. Trial Pack - **₹1,250 / 5 days** - use code **TRIAL** at checkout for ₹150 off → pay only **₹1,100** (**₹220/day**). One-time offer. No commitment, full refund if not happy.
+2. Monthly Plan - **₹4,999 / 25 days** (**₹200/day**, 33% off, save **₹2,476**). Includes superfood seeds weekly, free nutrition consultation, pause anytime. [MOST POPULAR]
 
 MENU & CUSTOMISATION:
 - We have a monthly fixed menu that changes every month.
@@ -34,10 +34,10 @@ MENU & CUSTOMISATION:
 HEALTH DRINKS: Chargeable at **₹29/day** add-on. No free weeks included.
 
 ACTIVE OFFERS:
-1. Double Cashback — buy 2 subscriptions = **5% cashback** each
-2. Group Offer — 3+ people = up to **10% cashback**
-3. Refer a Friend — both get **1 bowl** free
-4. Loyalty Reward — 3 months in a row = **3 free meals** on next plan
+1. Double Cashback - buy 2 subscriptions = **5% cashback** each
+2. Group Offer - 3+ people = up to **10% cashback**
+3. Refer a Friend - both get **1 bowl** free
+4. Loyalty Reward - 3 months in a row = **3 free meals** on next plan
 
 HEALTH GOALS:
 - Weight Loss: ~**350–420 kcal/bowl**, customers lose **3–7 kg** in 60 days
@@ -48,7 +48,7 @@ HEALTH GOALS:
 
 ORDERING: nosh7.com/order (best price) | Zomato | Swiggy | WhatsApp **9712989498**
 
-DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Anandnagar, SG Highway, Ambli, Sindhu Bhavan Road. 4 daily batches.`;
+DELIVERY: West Ahmedabad - Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Anandnagar, SG Highway, Ambli, Sindhu Bhavan Road. 4 daily batches.`;
 
   const LANG_PROMPT = {
     en: 'Reply in English only.',
@@ -78,7 +78,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
   function keywordFallback(text) {
     const t = text.toLowerCase();
     if (/\bhi\b|hello|namaste|hey|\bstart\b/.test(t))
-      return `Hi! I'm Julie from NOSH7 🌿 We deliver fresh pure veg salad bowls in Ahmedabad — from **₹220/day** (trial, with code TRIAL) or **₹200/day** (monthly). What brings you here? Weight loss, high protein, or clean eating?`;
+      return `Hi! I'm Julie from NOSH7 🌿 We deliver fresh pure veg salad bowls in Ahmedabad - from **₹220/day** (trial, with code TRIAL) or **₹200/day** (monthly). What brings you here? Weight loss, high protein, or clean eating?`;
     if (/trial|5.?day|\btry\b|sample/.test(t))
       return `Our **Trial Pack** is **₹1,250 for 5 days**. Use code **TRIAL** at checkout → pay only **₹1,100** (**₹220/day**, 26% off). One-time offer. No commitment, full refund if not happy. Order at **nosh7.com/order** or WhatsApp **9712989498**.`;
     if (/26.?day|month|popular/.test(t))
@@ -88,22 +88,22 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
     if (/offer|discount|cashback|deal|promo/.test(t))
       return `**Active Offers:** Double Cashback (2 subs = 5% each) · Group Offer (3+ people = 10%) · Refer a Friend = 1 bowl each · Loyalty (3 months = 3 free meals). WhatsApp **9712989498** to avail!`;
     if (/deliver|area|zone|location|where|satellite|prahlad|bodakdev|vastrapur/.test(t))
-      return `We cover West Ahmedabad — **Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Anandnagar, SG Highway, Ambli, Sindhu Bhavan Road**. 4 daily batches. WhatsApp **9712989498** to confirm your area.`;
+      return `We cover West Ahmedabad - **Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Anandnagar, SG Highway, Ambli, Sindhu Bhavan Road**. 4 daily batches. WhatsApp **9712989498** to confirm your area.`;
     if (/weight|loss|slim|fat|calorie|diet/.test(t))
-      return `Our bowls are **350–420 kcal**, high fibre, zero junk. Customers lose **3–7 kg in 60 days**. The **Monthly Plan** is the best place to start — want to try it?`;
+      return `Our bowls are **350–420 kcal**, high fibre, zero junk. Customers lose **3–7 kg in 60 days**. The **Monthly Plan** is the best place to start - want to try it?`;
     if (/protein|muscle|gym|fitness/.test(t))
-      return `Every bowl has **18–24g protein** from edamame, chickpeas & pumpkin seeds — 100% pure veg. Perfect for gym-goers. The **Monthly Plan** is ideal — want to go for it?`;
+      return `Every bowl has **18–24g protein** from edamame, chickpeas & pumpkin seeds - 100% pure veg. Perfect for gym-goers. The **Monthly Plan** is ideal - want to go for it?`;
     if (/pcod|pcos|hormonal|thyroid/.test(t))
-      return `Our meals are anti-inflammatory, low-glycaemic, no refined carbs — great for **PCOD & thyroid** health. WhatsApp **9712989498** and we'll design the right plan for you.`;
+      return `Our meals are anti-inflammatory, low-glycaemic, no refined carbs - great for **PCOD & thyroid** health. WhatsApp **9712989498** and we'll design the right plan for you.`;
     if (/diabet|sugar|glyc/.test(t))
-      return `Our bowls are **low GI, high fibre, zero added sugar** — ideal for diabetics. WhatsApp **9712989498** and our nutritionist will guide you.`;
+      return `Our bowls are **low GI, high fibre, zero added sugar** - ideal for diabetics. WhatsApp **9712989498** and our nutritionist will guide you.`;
     if (/order|buy|\bstart\b|subscri|book/.test(t))
-      return `Easiest way: **nosh7.com/order** for best price, or WhatsApp **9712989498**. Also on Zomato & Swiggy. Start with the **Trial Pack (₹1,250 — use code TRIAL for ₹150 off)** — no risk!`;
+      return `Easiest way: **nosh7.com/order** for best price, or WhatsApp **9712989498**. Also on Zomato & Swiggy. Start with the **Trial Pack (₹1,250 - use code TRIAL for ₹150 off)** - no risk!`;
     if (/customis|custom|change|dish|menu|jain/.test(t))
-      return `Monthly fixed menu that rotates. Customise any dish for just **₹49/meal** extra — WhatsApp **9712989498** before the delivery day. Jain options on all plans!`;
+      return `Monthly fixed menu that rotates. Customise any dish for just **₹49/meal** extra - WhatsApp **9712989498** before the delivery day. Jain options on all plans!`;
     if (/drink|juice/.test(t))
       return `Health drinks are **₹29/day**. **Monthly Plan** includes 1 week free (worth ₹499). Great add-on!`;
-    return `WhatsApp us at **9712989498** for instant help — we're very responsive! Or pick a question below 👇`;
+    return `WhatsApp us at **9712989498** for instant help - we're very responsive! Or pick a question below 👇`;
   }
 
   async function askGemini(userText) {
@@ -192,26 +192,26 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
   function startOrderFlow() {
     orderState = { step: 'plan', plan: null, slot: null, name: null, address: null };
     addMsg('Sure! Let me help you place your order in 4 quick steps 🌿<br><br><strong>Step 1:</strong> Which plan would you like?', 'bot');
-    setQuick(['Trial Pack — ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan — ₹4,999 (25 days)']);
+    setQuick(['Trial Pack - ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']);
   }
 
   function handleOrderStep(text) {
     const t = text.toLowerCase();
     if (orderState.step === 'plan') {
-      if (/trial|1.?250|1.?100|5.?day/.test(t)) orderState.plan = 'Trial Pack (5 days) — ₹1,250 (code TRIAL = ₹1,100)';
-      else if (/25|4.?999|month/.test(t)) orderState.plan = 'Monthly Plan — ₹4,999 (25 days)';
-      else { addMsg('Please pick one of the plans below 👇', 'bot'); setQuick(['Trial Pack — ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan — ₹4,999 (25 days)']); return; }
+      if (/trial|1.?250|1.?100|5.?day/.test(t)) orderState.plan = 'Trial Pack (5 days) - ₹1,250 (code TRIAL = ₹1,100)';
+      else if (/25|4.?999|month/.test(t)) orderState.plan = 'Monthly Plan - ₹4,999 (25 days)';
+      else { addMsg('Please pick one of the plans below 👇', 'bot'); setQuick(['Trial Pack - ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']); return; }
       orderState.step = 'slot';
       addMsg('Great choice! 🎉<br><br><strong>Step 2:</strong> Which delivery slot do you prefer? We have 4 daily batches:', 'bot');
-      setQuick(['Morning — 9:30 to 11:30 AM', 'Lunch — 11:30 AM to 1:30 PM', 'Evening — 4:30 to 6:30 PM', 'Dinner — 6:30 to 8:30 PM']);
+      setQuick(['Morning - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Evening - 4:30 to 6:30 PM', 'Dinner - 6:30 to 8:30 PM']);
       return;
     }
     if (orderState.step === 'slot') {
-      if (/9.?30|11.?30|morning/i.test(t)) orderState.slot = 'Morning — 9:30 AM to 11:30 AM';
-      else if (/11.?30|1.?30|lunch/i.test(t)) orderState.slot = 'Lunch — 11:30 AM to 1:30 PM';
-      else if (/4.?30|6.?30|evening/i.test(t)) orderState.slot = 'Evening — 4:30 PM to 6:30 PM';
-      else if (/6.?30|8.?30|dinner/i.test(t)) orderState.slot = 'Dinner — 6:30 PM to 8:30 PM';
-      else { addMsg('Please pick one of the 4 delivery slots below 👇', 'bot'); setQuick(['Morning — 9:30 to 11:30 AM', 'Lunch — 11:30 AM to 1:30 PM', 'Evening — 4:30 to 6:30 PM', 'Dinner — 6:30 to 8:30 PM']); return; }
+      if (/9.?30|11.?30|morning/i.test(t)) orderState.slot = 'Morning - 9:30 AM to 11:30 AM';
+      else if (/11.?30|1.?30|lunch/i.test(t)) orderState.slot = 'Lunch - 11:30 AM to 1:30 PM';
+      else if (/4.?30|6.?30|evening/i.test(t)) orderState.slot = 'Evening - 4:30 PM to 6:30 PM';
+      else if (/6.?30|8.?30|dinner/i.test(t)) orderState.slot = 'Dinner - 6:30 PM to 8:30 PM';
+      else { addMsg('Please pick one of the 4 delivery slots below 👇', 'bot'); setQuick(['Morning - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Evening - 4:30 to 6:30 PM', 'Dinner - 6:30 to 8:30 PM']); return; }
       orderState.step = 'name';
       addMsg('Perfect! 😊<br><br><strong>Step 3:</strong> What\'s your name?', 'bot');
       setQuick([]);
@@ -228,7 +228,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
       orderState.address = text.trim();
       const waMsg = `Hi Team NOSH7! 🌿\n\nI'd like to place an order:\n\n📦 Plan: ${orderState.plan}\n🕐 Slot: ${orderState.slot}\n👤 Name: ${orderState.name}\n📍 Address: ${orderState.address}\n\nPlease confirm availability and next steps!`;
       const waUrl = `https://wa.me/919712989498?text=${encodeURIComponent(waMsg)}`;
-      addMsg(`🎉 <strong>Order Summary</strong><br><br>📦 ${orderState.plan}<br>🕐 ${orderState.slot}<br>👤 ${orderState.name}<br>📍 ${orderState.address}<br><br>Tap below to send this to our team on WhatsApp — we'll confirm and get you started! 🚀`, 'bot');
+      addMsg(`🎉 <strong>Order Summary</strong><br><br>📦 ${orderState.plan}<br>🕐 ${orderState.slot}<br>👤 ${orderState.name}<br>📍 ${orderState.address}<br><br>Tap below to send this to our team on WhatsApp - we'll confirm and get you started! 🚀`, 'bot');
       const q = quick();
       q.innerHTML = '';
       const waBtn = document.createElement('a');
@@ -284,7 +284,7 @@ DELIVERY: West Ahmedabad — Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thal
         showTyping();
         setTimeout(() => {
           removeTyping();
-          addMsg(`Namaste! 🌿 I'm <strong>Julie</strong>, your NOSH7 health assistant.<br><br>Ask me anything — plans, delivery, offers, or your health goals. I'm here to help!`, 'bot');
+          addMsg(`Namaste! 🌿 I'm <strong>Julie</strong>, your NOSH7 health assistant.<br><br>Ask me anything - plans, delivery, offers, or your health goals. I'm here to help!`, 'bot');
           setQuick(QUICK_DEFAULTS);
         }, 700);
       }, 300);
