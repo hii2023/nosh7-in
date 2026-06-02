@@ -78,7 +78,7 @@ DELIVERY: West Ahmedabad - Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thalte
   function keywordFallback(text) {
     const t = text.toLowerCase();
     if (/\bhi\b|hello|namaste|hey|\bstart\b/.test(t))
-      return `Hi! I'm Julie from NOSH7 🌿 We deliver fresh pure veg salad bowls in Ahmedabad - from **₹220/day** (trial, with code TRIAL) or **₹200/day** (monthly). What brings you here? Weight loss, high protein, or clean eating?`;
+      return `Hi! I'm Julie from NOSH7 We deliver fresh pure veg salad bowls in Ahmedabad - from **₹220/day** (trial, with code TRIAL) or **₹200/day** (monthly). What brings you here? Weight loss, high protein, or clean eating?`;
     if (/trial|5.?day|\btry\b|sample/.test(t))
       return `Our **Trial Pack** is **₹1,250 for 5 days**. Use code **TRIAL** at checkout → pay only **₹1,100** (**₹220/day**, 26% off). One-time offer. No commitment, full refund if not happy. Order at **nosh7.com/order** or WhatsApp **9712989498**.`;
     if (/26.?day|month|popular/.test(t))
@@ -103,7 +103,7 @@ DELIVERY: West Ahmedabad - Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thalte
       return `Monthly fixed menu that rotates. Customise any dish for just **₹49/meal** extra - WhatsApp **9712989498** before the delivery day. Jain options on all plans!`;
     if (/drink|juice/.test(t))
       return `Health drinks are **₹29/day**. **Monthly Plan** includes 1 week free (worth ₹499). Great add-on!`;
-    return `WhatsApp us at **9712989498** for instant help - we're very responsive! Or pick a question below 👇`;
+    return `WhatsApp us at **9712989498** for instant help - we're very responsive! Or pick a question below`;
   }
 
   async function askGemini(userText) {
@@ -191,7 +191,7 @@ DELIVERY: West Ahmedabad - Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thalte
 
   function startOrderFlow() {
     orderState = { step: 'plan', plan: null, slot: null, name: null, address: null };
-    addMsg('Sure! Let me help you place your order in 4 quick steps 🌿<br><br><strong>Step 1:</strong> Which plan would you like?', 'bot');
+    addMsg('Sure! Let me help you place your order in 4 quick steps<br><br><strong>Step 1:</strong> Which plan would you like?', 'bot');
     setQuick(['Trial Pack - ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']);
   }
 
@@ -200,9 +200,9 @@ DELIVERY: West Ahmedabad - Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thalte
     if (orderState.step === 'plan') {
       if (/trial|1.?250|1.?100|5.?day/.test(t)) orderState.plan = 'Trial Pack (5 days) - ₹1,250 (code TRIAL = ₹1,100)';
       else if (/25|4.?999|month/.test(t)) orderState.plan = 'Monthly Plan - ₹4,999 (25 days)';
-      else { addMsg('Please pick one of the plans below 👇', 'bot'); setQuick(['Trial Pack - ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']); return; }
+      else { addMsg('Please pick one of the plans below', 'bot'); setQuick(['Trial Pack - ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']); return; }
       orderState.step = 'slot';
-      addMsg('Great choice! 🎉<br><br><strong>Step 2:</strong> Which delivery slot do you prefer? We have 4 daily batches:', 'bot');
+      addMsg('Great choice!<br><br><strong>Step 2:</strong> Which delivery slot do you prefer? We have 4 daily batches:', 'bot');
       setQuick(['Morning - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Evening - 4:30 to 6:30 PM', 'Dinner - 6:30 to 8:30 PM']);
       return;
     }
@@ -211,24 +211,24 @@ DELIVERY: West Ahmedabad - Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thalte
       else if (/11.?30|1.?30|lunch/i.test(t)) orderState.slot = 'Lunch - 11:30 AM to 1:30 PM';
       else if (/4.?30|6.?30|evening/i.test(t)) orderState.slot = 'Evening - 4:30 PM to 6:30 PM';
       else if (/6.?30|8.?30|dinner/i.test(t)) orderState.slot = 'Dinner - 6:30 PM to 8:30 PM';
-      else { addMsg('Please pick one of the 4 delivery slots below 👇', 'bot'); setQuick(['Morning - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Evening - 4:30 to 6:30 PM', 'Dinner - 6:30 to 8:30 PM']); return; }
+      else { addMsg('Please pick one of the 4 delivery slots below', 'bot'); setQuick(['Morning - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Evening - 4:30 to 6:30 PM', 'Dinner - 6:30 to 8:30 PM']); return; }
       orderState.step = 'name';
-      addMsg('Perfect! 😊<br><br><strong>Step 3:</strong> What\'s your name?', 'bot');
+      addMsg('Perfect!<br><br><strong>Step 3:</strong> What\'s your name?', 'bot');
       setQuick([]);
       return;
     }
     if (orderState.step === 'name') {
       orderState.name = text.trim();
       orderState.step = 'address';
-      addMsg(`Hi <strong>${escapeHtml(orderState.name)}</strong>! 👋<br><br><strong>Step 4:</strong> Please share your full delivery address.<br><span style="font-size:0.8em;color:#5a6b62;">Include flat/house no., building name, street, area, and landmark if any.</span>`, 'bot');
+      addMsg(`Hi <strong>${escapeHtml(orderState.name)}</strong>!<br><br><strong>Step 4:</strong> Please share your full delivery address.<br><span style="font-size:0.8em;color:#5a6b62;">Include flat/house no., building name, street, area, and landmark if any.</span>`, 'bot');
       setQuick([]);
       return;
     }
     if (orderState.step === 'address') {
       orderState.address = text.trim();
-      const waMsg = `Hi Team NOSH7! 🌿\n\nI'd like to place an order:\n\n📦 Plan: ${orderState.plan}\n🕐 Slot: ${orderState.slot}\n👤 Name: ${orderState.name}\n📍 Address: ${orderState.address}\n\nPlease confirm availability and next steps!`;
+      const waMsg = `Hi Team NOSH7!\n\nI'd like to place an order:\n\nPlan: ${orderState.plan}\nSlot: ${orderState.slot}\nName: ${orderState.name}\nAddress: ${orderState.address}\n\nPlease confirm availability and next steps!`;
       const waUrl = `https://wa.me/919712989498?text=${encodeURIComponent(waMsg)}`;
-      addMsg(`🎉 <strong>Order Summary</strong><br><br>📦 ${orderState.plan}<br>🕐 ${orderState.slot}<br>👤 ${orderState.name}<br>📍 ${orderState.address}<br><br>Tap below to send this to our team on WhatsApp - we'll confirm and get you started! 🚀`, 'bot');
+      addMsg(`<strong>Order Summary</strong><br><br><strong>Plan:</strong> ${orderState.plan}<br><strong>Slot:</strong> ${orderState.slot}<br><strong>Name:</strong> ${orderState.name}<br><strong>Address:</strong> ${orderState.address}<br><br>Tap below to send this to our team on WhatsApp - we'll confirm and get you started!`, 'bot');
       const q = quick();
       q.innerHTML = '';
       const waBtn = document.createElement('a');
@@ -284,7 +284,7 @@ DELIVERY: West Ahmedabad - Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thalte
         showTyping();
         setTimeout(() => {
           removeTyping();
-          addMsg(`Namaste! 🌿 I'm <strong>Julie</strong>, your NOSH7 health assistant.<br><br>Ask me anything - plans, delivery, offers, or your health goals. I'm here to help!`, 'bot');
+          addMsg(`Namaste! I'm <strong>Julie</strong>, your NOSH7 health assistant.<br><br>Ask me anything - plans, delivery, offers, or your health goals. I'm here to help!`, 'bot');
           setQuick(QUICK_DEFAULTS);
         }, 700);
       }, 300);
