@@ -227,7 +227,7 @@
 
     /* ── ACTIVE OFFERS ── */
     .offers-section { padding: 2.5rem 2rem; background: var(--cream); text-align: center; }
-    .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.85rem; margin-top: 1.75rem; text-align: left; }
+    .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.85rem; margin-top: 1.75rem; text-align: left; }
     .offer-card { background: var(--white); border-radius: var(--radius-md); padding: 1rem; border: 1.5px solid #e8f5ee; position: relative; transition: box-shadow .25s, transform .25s; cursor: default; overflow: hidden; }
     .offer-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); transform: translateY(-2px); }
     .offer-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
@@ -239,6 +239,9 @@
     .offer-content p { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
     @media (max-width: 480px) {
       .offers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 768px) {
+      .offers-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
     /* ── HOW IT WORKS ── */
