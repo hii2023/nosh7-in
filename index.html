@@ -1609,7 +1609,20 @@
   </div>
 </div>
 
-<script src="/assets/chatbot.js?v=2026-06" defer></script>
+<script>
+/* Lazy-load Julie chatbot only on first click — keeps 16.5KB off initial load */
+(function(){
+  var loaded=false;
+  window.toggleJulie=function(){
+    if(loaded) return;
+    loaded=true;
+    var s=document.createElement('script');
+    s.src='/assets/chatbot.js?v=2026-06';
+    s.onload=function(){ if(typeof window.toggleJulie==='function') window.toggleJulie(); };
+    document.body.appendChild(s);
+  };
+})();
+</script>
 
 <!-- 100% privacy-first analytics -->
 <script>
