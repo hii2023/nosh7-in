@@ -18,7 +18,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Karla', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.7; }
+body { font-family: 'Inter','Noto Sans Devanagari','Noto Sans Gujarati',sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.7; }
 a { text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -29,22 +29,22 @@ a { text-decoration: none; }
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,240,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--green-light); padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; }
 .nav-logo img { height: 40px; width: 40px; object-fit: contain; display: block; mix-blend-mode: multiply; }
-.nav-logo-text { font-family: 'Playfair Display SC', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-deep); line-height: 1; }
-.nav-logo-text span { display: block; font-family: 'Karla', sans-serif; font-size: 0.55rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+.nav-logo-text { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-deep); line-height: 1; }
+.nav-logo-text span { display: block; font-family: 'Inter', sans-serif; font-size: 0.55rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
 .nav-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--green-mid); font-weight: 700; font-size: 0.9rem; cursor: pointer; }
 .nav-back:hover { color: var(--green-fresh); }
 
 /* ── HERO (layout only - background & accent colours are page-specific) ── */
 .hero { padding: 7rem 2rem 3.5rem; text-align: center; color: white; }
 .hero-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem; max-width: 720px; margin-left: auto; margin-right: auto; }
+.hero h1 { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem; max-width: 720px; margin-left: auto; margin-right: auto; }
 .hero-meta { font-size: 0.82rem; margin-top: 0.5rem; }
 
 /* ── ARTICLE ── */
 .article-wrap { max-width: 780px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
 .intro { font-size: 1.08rem; color: var(--green-mid); font-weight: 600; line-height: 1.75; background: #f0faf5; border-left: 4px solid var(--green-fresh); border-radius: 0 0.75rem 0.75rem 0; padding: 1rem 1.2rem; margin-bottom: 2.5rem; }
-h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green-deep); margin: 2.5rem 0 0.8rem; line-height: 1.3; }
-h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--green-mid); margin: 1.8rem 0 0.6rem; }
+h2 { font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--green-deep); margin: 2.5rem 0 0.8rem; line-height: 1.3; }
+h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; color: var(--green-mid); margin: 1.8rem 0 0.6rem; }
 p { font-size: 0.97rem; color: var(--body-text); line-height: 1.8; margin-bottom: 1rem; }
 ul, ol { padding-left: 1.4rem; margin-bottom: 1rem; }
 li { font-size: 0.95rem; color: var(--body-text); line-height: 1.8; margin-bottom: 0.3rem; }
@@ -55,13 +55,13 @@ strong { color: var(--green-deep); }
 .tip-box strong { color: var(--green-deep); display: block; margin-bottom: 0.4rem; }
 
 .cta-block { background: linear-gradient(135deg, var(--green-deep), var(--green-mid)); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; margin: 3rem 0; color: white; }
-.cta-block h3 { color: var(--saffron); font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.8rem; }
+.cta-block h3 { color: var(--saffron); font-family: 'Fraunces', serif; font-size: 1.4rem; margin-bottom: 0.8rem; }
 .cta-block p { color: var(--green-light); font-size: 0.92rem; margin-bottom: 1.5rem; }
 .cta-btn { display: inline-block; background: var(--saffron); color: var(--green-deep); font-weight: 700; padding: 0.85rem 2rem; border-radius: var(--radius-pill); font-size: 0.95rem; transition: opacity .2s; }
 .cta-btn:hover { opacity: 0.85; }
 
 .related { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid #e0ebe0; }
-.related h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--green-deep); margin-bottom: 1rem; }
+.related h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--green-deep); margin-bottom: 1rem; }
 .related-links { display: flex; flex-direction: column; gap: 0.6rem; }
 .related-links a { color: var(--green-mid); font-weight: 600; font-size: 0.92rem; padding: 0.6rem 1rem; background: white; border-radius: 0.75rem; border: 1px solid #e0ebe0; transition: border-color .2s; }
 .related-links a:hover { border-color: var(--green-fresh); }
@@ -69,7 +69,7 @@ strong { color: var(--green-deep); }
 /* ── WHATSAPP CHANNEL ── */
 .wa-channel-block { background: linear-gradient(135deg, #0d2b1e, #1a3c2e); border-radius: var(--radius-lg); padding: 2rem 1.5rem; text-align: center; margin: 3rem 0 0; }
 .wa-channel-block .wa-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(37,211,102,.15); border: 1px solid rgba(37,211,102,.3); border-radius: 100px; padding: 0.25rem 0.9rem; margin-bottom: 0.9rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #25D366; }
-.wa-channel-block h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: white; margin-bottom: 0.5rem; }
+.wa-channel-block h3 { font-family: 'Fraunces', serif; font-size: 1.25rem; color: white; margin-bottom: 0.5rem; }
 .wa-channel-block p { font-size: 0.9rem; color: var(--green-light); margin-bottom: 1.25rem; line-height: 1.7; }
 .wa-channel-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: #25D366; color: white; font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 100px; font-size: 0.92rem; transition: opacity .2s; }
 .wa-channel-btn:hover { opacity: 0.88; }
