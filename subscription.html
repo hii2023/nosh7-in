@@ -49,6 +49,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print" onload="this.media='all'"/>
   <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"/></noscript>
   <style>
+.ico{width:1em;height:1em;display:inline-block;vertical-align:-.14em;flex:none}
     :root{--gd:#1a3c2e;--gm:#2d6a4f;--gf:#52b788;--gl:#b7e4c7;--cr:#faf7f0;--cd:#f0ebe0;--sf:#f4a61d;--sl:#fde68a;--ch:#1c1c1c;--tm:#5a6b62;--wh:#ffffff;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cr);color:var(--ch);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
@@ -134,7 +135,7 @@
     .ngrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;}
     .nc{background:var(--wh);border-radius:1.2rem;padding:1.6rem;border:1px solid var(--cd);transition:all .25s;}
     .nc:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);}
-    .ni{font-size:2rem;margin-bottom:.7rem;}
+    .ni{font-size:1.9rem;margin-bottom:.7rem;color:var(--gm);}
     .nc h3{font-size:.95rem;font-weight:600;color:var(--gd);margin-bottom:.3rem;}
     .nc p{font-size:.82rem;color:var(--tm);line-height:1.5;}
 
@@ -159,6 +160,7 @@
     .d-th .diet-header{background:#fff0f8;}.d-th .diet-icon{background:#ffd6f0;}.d-th .dt{background:#ffd6f0;color:#8b005d;}
     .d-pc .diet-header{background:#f8f0ff;}.d-pc .diet-icon{background:#e8ccff;}.d-pc .dt{background:#e8ccff;color:#5a008b;}
     .d-hp .diet-header{background:#f0fff5;}.d-hp .diet-icon{background:#b7e4c7;}.d-hp .dt{background:#b7e4c7;color:#1a3c2e;}
+    .d-wl .diet-icon{color:#b84a00;}.d-db .diet-icon{color:#0055a4;}.d-th .diet-icon{color:#8b005d;}.d-pc .diet-icon{color:#5a008b;}.d-hp .diet-icon{color:#1a3c2e;}
 
     /* MONTHLY MENU */
     .menu-section{padding:4rem;background:var(--cd);}
@@ -253,17 +255,17 @@
 
 <!-- HERO -->
 <div class="page-hero">
-  <span class="tag">💳 Subscription Plans</span>
+  <span class="tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Subscription Plans</span>
   <h1>Tasty Salads, Complete Nutrition.<br/>Har Meal, Har Din.</h1>
   <p>NOSH7 salads are <strong>proper full meals</strong> - filling, flavourful, and genuinely tasty. 25+ varieties with a menu that refreshes every season. Protein, fibre, healthy fats, vitamins - all in one fresh bowl, delivered to your door daily.</p>
   <div class="hero-trust">
-    <span class="tc">😋 25+ Tasty Varieties</span>
-    <span class="tc">🍂 Seasonal Menu Refresh</span>
-    <span class="tc">🫙 In-House Dressings</span>
-    <span class="tc">🧀 Jain Dairy Paneer</span>
-    <span class="tc">🌱 Seeds Every Meal</span>
-    <span class="tc">👥 2000+ Customers</span>
-    <span class="tc">🌱 100% Pure Veg · No Eggs</span>
+    <span class="tc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg> 25+ Tasty Varieties</span>
+    <span class="tc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> Seasonal Menu Refresh</span>
+    <span class="tc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="3.5" rx="1"/><path d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/></svg> In-House Dressings</span>
+    <span class="tc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg> Jain Dairy Paneer</span>
+    <span class="tc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> Seeds Every Meal</span>
+    <span class="tc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 2000+ Customers</span>
+    <span class="tc"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> 100% Pure Veg · No Eggs</span>
   </div>
   <!-- Ratings badges -->
   <div style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:1rem;">
@@ -291,10 +293,10 @@
     Swiggy
   </a>
   <a href="https://www.nosh7.com/order" class="platform-btn btn-nosh" target="_blank">
-    🥗 nosh7.com
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-2.77 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7"/><path d="m13 12 4-4"/><path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/></svg> nosh7.com
   </a>
   <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" class="platform-btn" style="background:#25D366;color:#fff;" target="_blank">
-    💬 WhatsApp Order
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> WhatsApp Order
   </a>
 </div>
 
@@ -313,16 +315,16 @@
 
   <!-- Journey strip -->
   <div style="display:flex;align-items:center;justify-content:center;gap:.6rem;flex-wrap:wrap;margin:1.5rem auto 0;max-width:640px;background:rgba(82,183,136,.08);border:1px solid rgba(82,183,136,.25);border-radius:100px;padding:.7rem 1.5rem;">
-    <span style="font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:var(--gm);">🌱 Eat fresh, daily</span>
+    <span style="font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:var(--gm);"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> Eat fresh, daily</span>
     <span style="color:var(--gf);font-size:.85rem;">→</span>
-    <span style="font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:800;color:var(--gd);">🎯 Real results in 25 days</span>
+    <span style="font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:800;color:var(--gd);"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Real results in 25 days</span>
   </div>
 
   <div class="plans-grid">
 
     <!-- TRIAL -->
     <div class="plan-card">
-      <div style="display:inline-flex;align-items:center;gap:.35rem;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gm);background:#e8f5ee;border:1px solid var(--gl);padding:.22rem .75rem;border-radius:100px;margin-bottom:1rem;">🌱 First Step</div>
+      <div style="display:inline-flex;align-items:center;gap:.35rem;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gm);background:#e8f5ee;border:1px solid var(--gl);padding:.22rem .75rem;border-radius:100px;margin-bottom:1rem;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg> First Step</div>
       <div class="plan-name">Trial Pack</div>
       <div class="plan-dur" style="font-family:'DM Sans',sans-serif;font-style:italic;">Perfect if you want to taste before committing</div>
       <div class="price-block">
@@ -331,7 +333,7 @@
       </div>
       <!-- Promo code banner -->
       <div style="display:flex;align-items:center;gap:.6rem;background:linear-gradient(90deg,rgba(244,166,29,.15),rgba(244,166,29,.08));border:1.5px dashed rgba(244,166,29,.7);border-radius:.75rem;padding:.65rem 1rem;margin:.8rem 0 .4rem;">
-        <span style="font-size:1.2rem;">🎫</span>
+        <span style="font-size:1.2rem;"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></span>
         <div style="line-height:1.4;">
           <div style="font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;color:#b45309;">ONE-TIME OFFER - Use code at checkout:</div>
           <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:#1a3c2e;letter-spacing:.08em;">TRIAL</div>
@@ -354,8 +356,8 @@
 
     <!-- 26-DAY MONTHLY -->
     <div class="plan-card feat">
-      <div class="pbadge bg-sf">⭐ Most Popular</div>
-      <div style="display:inline-flex;align-items:center;gap:.35rem;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#b45309;background:rgba(244,166,29,.12);border:1px solid rgba(244,166,29,.45);padding:.22rem .75rem;border-radius:100px;margin-bottom:1rem;margin-top:.3rem;">⭐ Best Value</div>
+      <div class="pbadge bg-sf"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg> Most Popular</div>
+      <div style="display:inline-flex;align-items:center;gap:.35rem;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#b45309;background:rgba(244,166,29,.12);border:1px solid rgba(244,166,29,.45);padding:.22rem .75rem;border-radius:100px;margin-bottom:1rem;margin-top:.3rem;"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg> Best Value</div>
       <div class="plan-name">Monthly Plan</div>
       <div class="plan-dur" style="font-family:'DM Sans',sans-serif;font-style:italic;color:var(--gl);">For real, lasting results - commit to the change</div>
       <div class="price-block">
@@ -373,15 +375,15 @@
         <li class="pf">Jain option - select at time of purchase</li>
         <li class="pf">Free delivery within 5 KM · chargeable beyond</li>
         <li class="pf">⏸ Pause &amp; resume anytime, unlimited times</li>
-        <li class="pf">✋ Cancel free up to 2 hrs before batch</li>
+        <li class="pf">Cancel free up to 2 hrs before batch</li>
       </ul>
       <a href="https://www.nosh7.com/order" class="btn-order btn-saffron" target="_blank" rel="noopener">Get Monthly Plan - ₹4,999 / 25 days →</a>
     </div>
 
   </div>
 
-  <p style="text-align:center;margin-top:1.8rem;font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--tm);letter-spacing:.03em;">⭐ Rated 4.8 / 5 &nbsp;·&nbsp; Trusted by working professionals since 2023</p>
-  <p class="order-note">🔗 Orders at <a href="https://www.nosh7.com/order">nosh7.com/order</a> · <a id="z-link" href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b">Zomato</a> · <a id="s-link" href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true">Swiggy</a> · <a href="mailto:hello@nosh7.in">hello@nosh7.in</a> | <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener">📍 Satellite, Ahmedabad</a> | <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7">WhatsApp: 9712989498</a></p>
+  <p style="text-align:center;margin-top:1.8rem;font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--tm);letter-spacing:.03em;"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg> Rated 4.8 / 5 &nbsp;·&nbsp; Trusted by working professionals since 2023</p>
+  <p class="order-note"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> Orders at <a href="https://www.nosh7.com/order">nosh7.com/order</a> · <a id="z-link" href="https://link.zomato.com/xqzv/rshare?id=4824355730563e1b">Zomato</a> · <a id="s-link" href="https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457?utm_source=GooglePlaceOrder&utm_campaign=GoogleMap&is_retargeting=true">Swiggy</a> · <a href="mailto:hello@nosh7.in">hello@nosh7.in</a> | <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Satellite, Ahmedabad</a> | <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7">WhatsApp: 9712989498</a></p>
 </section>
 
 <!-- WHAT'S IN EVERY MEAL -->
@@ -390,13 +392,13 @@
   <h2 id="nut-h" class="section-title">Har Meal Mein Kya Hota Hai?</h2>
   <p class="section-sub">NOSH7 ka main goal: ek bowl mein complete balanced meal - saari zaroorat ki nutrition covered. Aur saari dressings in-house fresh banayi jaati hain - koi pre-stored, packaged dressing nahi.</p>
   <div class="ngrid">
-    <div class="nc"><div class="ni">💪</div><h3>Complete Protein</h3><p>Jain Dairy original paneer + seeds + legumes - all essential amino acids in every bowl.</p></div>
-    <div class="nc"><div class="ni">🌾</div><h3>High Fibre</h3><p>Seasonal vegetables + seeds - better digestion, more energy, natural weight management.</p></div>
-    <div class="nc"><div class="ni">🫀</div><h3>Healthy Fats</h3><p>Seeds add omega-3 and omega-6 - heart health, brain function, hormone balance.</p></div>
-    <div class="nc"><div class="ni">🌈</div><h3>Vitamins & Minerals</h3><p>Seasonal variety ensures iron, calcium, vitamin C, B vitamins - full spectrum coverage.</p></div>
-    <div class="nc"><div class="ni">🌿</div><h3>Seasonal Freshness</h3><p>We use what nature provides this season - maximum nutrition, minimum processing.</p></div>
-    <div class="nc"><div class="ni">🧀</div><h3>Jain Dairy Paneer</h3><p>Original Jain Dairy paneer - trusted quality, no compromise. Jain-friendly always available.</p></div>
-    <div class="nc"><div class="ni">🫙</div><h3>In-House Fresh Dressings</h3><p>Every dressing and seasoning is prepared fresh in our kitchen daily. <strong>Zero pre-stored or packaged dressings</strong> - ever. Taste kaafi zaroorat hai!</p></div>
+    <div class="nc"><div class="ni"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/><path d="m21.5 21.5-1.4-1.4"/><path d="M3.9 3.9 2.5 2.5"/><path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"/></svg></div><h3>Complete Protein</h3><p>Jain Dairy original paneer + seeds + legumes - all essential amino acids in every bowl.</p></div>
+    <div class="nc"><div class="ni"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-3.2 2.5-.5 3.9-.1 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></div><h3>High Fibre</h3><p>Seasonal vegetables + seeds - better digestion, more energy, natural weight management.</p></div>
+    <div class="nc"><div class="ni"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></div><h3>Healthy Fats</h3><p>Seeds add omega-3 and omega-6 - heart health, brain function, hormone balance.</p></div>
+    <div class="nc"><div class="ni"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a10 10 0 0 0-20 0"/><path d="M16 17a6 6 0 0 0-12 0"/><path d="M10 17a2 2 0 0 1 4 0"/></svg></div><h3>Vitamins & Minerals</h3><p>Seasonal variety ensures iron, calcium, vitamin C, B vitamins - full spectrum coverage.</p></div>
+    <div class="nc"><div class="ni"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div><h3>Seasonal Freshness</h3><p>We use what nature provides this season - maximum nutrition, minimum processing.</p></div>
+    <div class="nc"><div class="ni"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg></div><h3>Jain Dairy Paneer</h3><p>Original Jain Dairy paneer - trusted quality, no compromise. Jain-friendly always available.</p></div>
+    <div class="nc"><div class="ni"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="3.5" rx="1"/><path d="M6 7h12v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/></svg></div><h3>In-House Fresh Dressings</h3><p>Every dressing and seasoning is prepared fresh in our kitchen daily. <strong>Zero pre-stored or packaged dressings</strong> - ever. Taste kaafi zaroorat hai!</p></div>
   </div>
 </section>
 
@@ -409,7 +411,7 @@
 
     <div class="diet-card d-wl">
       <div class="diet-header">
-        <div class="diet-icon">⚖️</div>
+        <div class="diet-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="m2 16 3-8 3 8c-2 1.5-4 1.5-6 0"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div>
         <div><h3>Weight Loss</h3><div class="diet-sub">Fat loss · Calorie controlled</div></div>
       </div>
       <div class="diet-body">
@@ -426,7 +428,7 @@
 
     <div class="diet-card d-db">
       <div class="diet-header">
-        <div class="diet-icon">🩸</div>
+        <div class="diet-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5S5 13 5 15a7 7 0 0 0 7 7z"/></svg></div>
         <div><h3>Diabetes</h3><div class="diet-sub">Blood sugar management</div></div>
       </div>
       <div class="diet-body">
@@ -443,7 +445,7 @@
 
     <div class="diet-card d-th">
       <div class="diet-header">
-        <div class="diet-icon">🦋</div>
+        <div class="diet-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v13"/><path d="M12 8c-1.6-3-4.6-3.8-6.2-2.6C4 6.7 4 9.5 5.3 11 4 11.8 3.5 14.6 5 16c1.6 1.5 5 .4 7-3"/><path d="M12 8c1.6-3 4.6-3.8 6.2-2.6C20 6.7 20 9.5 18.7 11c1.3.8 1.8 3.6.3 5-1.6 1.5-5 .4-7-3"/></svg></div>
         <div><h3>Thyroid</h3><div class="diet-sub">Hypothyroid · Hyperthyroid</div></div>
       </div>
       <div class="diet-body">
@@ -459,7 +461,7 @@
 
     <div class="diet-card d-pc">
       <div class="diet-header">
-        <div class="diet-icon">🌸</div>
+        <div class="diet-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><circle cx="12" cy="19" r="3"/><circle cx="5" cy="12" r="3"/><circle cx="19" cy="12" r="3"/><circle cx="12" cy="12" r="3"/></svg></div>
         <div><h3>PCOD / PCOS</h3><div class="diet-sub">Hormonal balance support</div></div>
       </div>
       <div class="diet-body">
@@ -476,7 +478,7 @@
 
     <div class="diet-card d-hp">
       <div class="diet-header">
-        <div class="diet-icon">💪</div>
+        <div class="diet-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/><path d="m21.5 21.5-1.4-1.4"/><path d="M3.9 3.9 2.5 2.5"/><path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"/></svg></div>
         <div><h3>High Protein / Muscle Gain</h3><div class="diet-sub">Strength · Recovery</div></div>
       </div>
       <div class="diet-body">
@@ -501,7 +503,7 @@
 <!-- THIS MONTH'S MENU -->
 <section class="menu-section" aria-labelledby="menu-h">
   <span class="section-tag">Monthly Menu - June 2026</span>
-  <h2 id="menu-h" class="section-title">This Month's Salad Menu 📋</h2>
+  <h2 id="menu-h" class="section-title">This Month's Salad Menu <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></h2>
   <p class="section-sub">We share the complete monthly menu in advance - know what's fresh and coming your way.</p>
   <div class="menu-display">
     <div class="menu-box">
@@ -515,7 +517,7 @@
         <div class="menu-box-sub">Tap image to view full size · <strong>100% Pure Veg · No Eggs</strong></div>
         <a href="/assets/nosh7-menu-june2026.webp" target="_blank"
            style="display:inline-block;background:var(--gd);color:var(--cr);padding:.65rem 1.8rem;border-radius:100px;text-decoration:none;font-weight:600;font-size:.88rem;margin-top:.8rem;">
-          📋 Open Full Menu ↗
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg> Open Full Menu ↗
         </a>
       </div>
     </div>
@@ -530,28 +532,28 @@
     WhatsApp Us
   </a>
   <a href="tel:+919712989498" class="contact-btn btn-call">
-    📞 Call: +91 97129 89498
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call: +91 97129 89498
   </a>
 </div>
 
 <!-- COMPARE -->
 <section style="padding:4rem 2rem;background:var(--pale);">
   <div class="container">
-    <span class="section-tag">🚗 Delivery Batches</span>
+    <span class="section-tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg> Delivery Batches</span>
     <h2 style="font-family:'Playfair Display SC',serif;font-size:1.8rem;color:var(--deep);margin-bottom:.5rem;">4 Daily Delivery Slots</h2>
     <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;">Salads prepared 1 hour before each batch. Fresh like home-made. Delivered within 2 hours.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
-      <div style="background:var(--wh);border:1px solid var(--light);border-left:4px solid var(--mint);border-radius:.8rem;padding:1.2rem;"><div style="font-size:1.3rem;margin-bottom:.3rem;">🌅</div><div style="font-weight:700;color:var(--deep);font-size:.92rem;">9:30 – 11:30 AM</div><div style="font-size:.76rem;color:var(--muted);">Prep starts 8:30 AM</div></div>
-      <div style="background:var(--wh);border:1px solid var(--light);border-left:4px solid var(--sf);border-radius:.8rem;padding:1.2rem;"><div style="font-size:1.3rem;margin-bottom:.3rem;">☀️</div><div style="font-weight:700;color:var(--deep);font-size:.92rem;">11:30 AM – 1:30 PM</div><div style="font-size:.76rem;color:var(--muted);">Prep starts 10:30 AM</div></div>
-      <div style="background:var(--wh);border:1px solid var(--light);border-left:4px solid var(--mid);border-radius:.8rem;padding:1.2rem;"><div style="font-size:1.3rem;margin-bottom:.3rem;">🌤️</div><div style="font-weight:700;color:var(--deep);font-size:.92rem;">4:30 – 6:30 PM</div><div style="font-size:.76rem;color:var(--muted);">Prep starts 3:30 PM</div></div>
-      <div style="background:var(--wh);border:1px solid var(--light);border-left:4px solid var(--deep);border-radius:.8rem;padding:1.2rem;"><div style="font-size:1.3rem;margin-bottom:.3rem;">🌙</div><div style="font-weight:700;color:var(--deep);font-size:.92rem;">6:30 – 8:30 PM</div><div style="font-size:.76rem;color:var(--muted);">Prep starts 5:30 PM</div></div>
+      <div style="background:var(--wh);border:1px solid var(--light);border-left:4px solid var(--mint);border-radius:.8rem;padding:1.2rem;"><div style="font-size:1.3rem;margin-bottom:.3rem;color:var(--mint)"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg></div><div style="font-weight:700;color:var(--deep);font-size:.92rem;">9:30 – 11:30 AM</div><div style="font-size:.76rem;color:var(--muted);">Prep starts 8:30 AM</div></div>
+      <div style="background:var(--wh);border:1px solid var(--light);border-left:4px solid var(--sf);border-radius:.8rem;padding:1.2rem;"><div style="font-size:1.3rem;margin-bottom:.3rem;color:var(--sf)"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div><div style="font-weight:700;color:var(--deep);font-size:.92rem;">11:30 AM – 1:30 PM</div><div style="font-size:.76rem;color:var(--muted);">Prep starts 10:30 AM</div></div>
+      <div style="background:var(--wh);border:1px solid var(--light);border-left:4px solid var(--mid);border-radius:.8rem;padding:1.2rem;"><div style="font-size:1.3rem;margin-bottom:.3rem;color:var(--mid)"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="M20 12h2"/><path d="m19.07 4.93-1.41 1.41"/><path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"/><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"/></svg></div><div style="font-weight:700;color:var(--deep);font-size:.92rem;">4:30 – 6:30 PM</div><div style="font-size:.76rem;color:var(--muted);">Prep starts 3:30 PM</div></div>
+      <div style="background:var(--wh);border:1px solid var(--light);border-left:4px solid var(--deep);border-radius:.8rem;padding:1.2rem;"><div style="font-size:1.3rem;margin-bottom:.3rem;color:var(--deep)"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div><div style="font-weight:700;color:var(--deep);font-size:.92rem;">6:30 – 8:30 PM</div><div style="font-size:.76rem;color:var(--muted);">Prep starts 5:30 PM</div></div>
     </div>
   </div>
 </section>
 
 <section style="padding:4rem 2rem;background:var(--cream);">
   <div class="container">
-    <span class="section-tag">❓ FAQ</span>
+    <span class="section-tag"><svg class="ico" style="margin-right:.3em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>FAQ</span>
     <h2 style="font-family:'Playfair Display SC',serif;font-size:1.8rem;color:var(--deep);margin-bottom:1.2rem;">Frequently Asked Questions</h2>
     <div style="max-width:700px;">
       <details style="border-bottom:1px solid var(--light);padding:.85rem 0;"><summary style="font-weight:600;color:var(--deep);cursor:pointer;font-size:.9rem;">Is it a 5-day trial or 3-day trial?</summary><p style="font-size:.85rem;color:var(--muted);line-height:1.65;margin-top:.5rem;">5-day trial at ₹1,250 (₹220/meal with code TRIAL → ₹1,100). You get 5 fresh salads - one daily for 5 days. No auto-renewal. Full refund if not satisfied.</p></details>
@@ -589,7 +591,7 @@
 </section>
 
 <section class="cta-section">
-  <h2>Start with ₹1,250 - 5 Days, Zero Risk 🌿</h2>
+  <h2>Start with ₹1,250 - 5 Days, Zero Risk <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></h2>
   <p>1 fresh tasty salad, every day for 5 days. 25+ varieties that actually taste great. Seasonal ingredients. Jain Dairy paneer. Pause, resume, or cancel anytime.<br/>Order at nosh7.com.</p>
   <a href="https://www.nosh7.com/order" class="btn-cta">Order on nosh7.com →</a>
 </section>
@@ -597,7 +599,7 @@
 
 <!-- Google Reviews Widget -->
 <section style="padding:3rem 2rem;background:var(--cream);text-align:center;">
-  <h2 style="font-family:'Playfair Display SC',serif;font-size:1.6rem;color:var(--gd);margin-bottom:.5rem;">⭐ Ahmedabad Ko Pasand Hai NOSH7</h2>
+  <h2 style="font-family:'Playfair Display SC',serif;font-size:1.6rem;color:var(--gd);margin-bottom:.5rem;"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg> Ahmedabad Ko Pasand Hai NOSH7</h2>
   <div style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;">
     <div style="background:#fff;border:2px solid #ffd3d3;border-radius:1rem;padding:.8rem 1.4rem;text-align:center;">
       <div style="font-weight:800;font-size:1.6rem;color:#CB202D;">4.3</div>
@@ -636,12 +638,12 @@
   <div style="margin-top:1.5rem;">
     <a href="https://g.page/r/CeuSXgSA4qXEEBE/review" target="_blank" rel="noopener"
        style="display:inline-flex;align-items:center;gap:.5rem;border:2px solid var(--light);border-radius:100px;padding:.65rem 1.5rem;color:var(--deep);font-weight:600;font-size:.88rem;text-decoration:none;">
-      ⭐ Leave us a Google Review
+      <svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg> Leave us a Google Review
     </a>
   </div>
 </section>
 <footer>
-  <p>© 2025 NOSH7 – Eat Healthy, Feel Great | <a href="/">nosh7.in</a> | <a href="https://www.nosh7.com/order">nosh7.com/order</a> | <a href="mailto:hello@nosh7.in">hello@nosh7.in</a> | <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener">📍 Satellite, Ahmedabad</a> | <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7">WhatsApp: 9712989498</a> | <a href="tel:+919712989498">Call</a> | <a href="https://www.instagram.com/nosh7salad" target="_blank" rel="noopener">📸 Instagram: @nosh7salad</a> | Ahmedabad</p>
+  <p>© 2025 NOSH7 – Eat Healthy, Feel Great | <a href="/">nosh7.in</a> | <a href="https://www.nosh7.com/order">nosh7.com/order</a> | <a href="mailto:hello@nosh7.in">hello@nosh7.in</a> | <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Satellite, Ahmedabad</a> | <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7">WhatsApp: 9712989498</a> | <a href="tel:+919712989498">Call</a> | <a href="https://www.instagram.com/nosh7salad" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg> Instagram: @nosh7salad</a> | Ahmedabad</p>
 </footer>
 
 <script>
