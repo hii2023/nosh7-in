@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>NOSH7 Brand Content Manager (internal)</title>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --green-deep:#1a3c2e; --green-mid:#2d6a4f; --green-fresh:#52b788; --green-light:#b7e4c7;
+      --cream:#faf7f0; --cream-dark:#f0ebe0; --saffron:#f4a61d; --charcoal:#1c1c1c; --muted:#5a6b62;
+      --white:#fff; --line:#e7e2d6;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'IBM Plex Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.5}
+    .wrap{max-width:1000px;margin:0 auto;padding:0 1.25rem}
+    a{color:var(--green-mid)}
+
+    header{background:var(--green-deep);color:#fff;padding:1.2rem 0;position:sticky;top:0;z-index:30;box-shadow:0 2px 14px rgba(0,0,0,.12)}
+    header .wrap{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between}
+    .h-title{font-size:1.12rem;font-weight:700}
+    .h-title span{display:block;font-size:.7rem;font-weight:500;color:var(--green-light);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+    .h-actions{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+    .hbtn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font:inherit;font-size:.78rem;font-weight:600;padding:.45rem .85rem;border-radius:999px;cursor:pointer}
+    .hbtn:hover{background:rgba(255,255,255,.22)}
+    .saved{font-size:.74rem;color:var(--green-light);opacity:0;transition:opacity .3s}
+    .saved.show{opacity:1}
+
+    .intro{background:#eef6f0;border:1px solid var(--green-light);border-left:4px solid var(--green-fresh);border-radius:.7rem;padding:.95rem 1.1rem;margin:1.4rem 0;font-size:.9rem}
+
+    nav.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin:1.2rem 0 .4rem;position:sticky;top:72px;background:var(--cream);padding:.4rem 0;z-index:10}
+    .tab{font:inherit;font-size:.82rem;font-weight:600;padding:.45rem .85rem;border-radius:999px;border:1px solid var(--line);background:var(--white);color:var(--muted);cursor:pointer}
+    .tab.active{background:var(--green-mid);border-color:var(--green-mid);color:#fff}
+
+    section.panel{display:none;margin-bottom:2rem}
+    section.panel.active{display:block}
+    h2.pt{font-size:1.2rem;color:var(--green-deep);margin:.6rem 0 .15rem;font-weight:700}
+    .pt-sub{font-size:.86rem;color:var(--muted);margin-bottom:1rem}
+
+    .field{background:var(--white);border:1px solid var(--line);border-radius:.7rem;padding:.8rem .9rem;margin-bottom:.7rem}
+    .field-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.4rem}
+    .field label{font-size:.84rem;font-weight:600;color:var(--green-deep)}
+    .field .where{font-size:.72rem;color:var(--muted);font-weight:500}
+    .copy{font:inherit;font-size:.7rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--green-mid);background:#e8f5ee;border:1px solid var(--green-light);border-radius:999px;padding:.25rem .6rem;cursor:pointer;white-space:nowrap}
+    .copy:hover{background:var(--green-light)}
+    .copy.ok{background:var(--green-mid);color:#fff;border-color:var(--green-mid)}
+    input.f,textarea.f{width:100%;font:inherit;font-size:.9rem;color:var(--charcoal);background:var(--cream);border:1px solid var(--line);border-radius:.5rem;padding:.55rem .65rem;resize:vertical}
+    input.f:focus,textarea.f:focus{outline:none;border-color:var(--green-fresh);background:#fff}
+    textarea.f{min-height:3.2rem;line-height:1.5}
+    .hint{font-size:.74rem;color:var(--muted);margin-top:.35rem}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+    .pagecard{background:var(--white);border:1px solid var(--line);border-radius:.8rem;padding:1rem;margin-bottom:1rem}
+    .pagecard h3{font-size:1rem;color:var(--green-deep);margin-bottom:.7rem}
+    footer{padding:2rem 0 3rem;text-align:center;color:var(--muted);font-size:.78rem}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="h-title">NOSH7 Brand Content Manager<span>Internal &middot; single source of truth</span></div>
+      <div class="h-actions">
+        <span class="saved" id="saved">Saved</span>
+        <button class="hbtn" id="export">Export</button>
+        <button class="hbtn" id="import">Import</button>
+        <button class="hbtn" id="reset">Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="intro">
+      Edit anything below and it saves automatically in this browser. Use the <strong>Copy</strong> button on any block to grab the text, then paste it into the relevant page. <strong>Export</strong> backs everything up to a file, <strong>Import</strong> restores it (use it to move between devices). Pre-filled with your current brand content.
+    </div>
+
+    <nav class="tabs" id="tabs"></nav>
+    <div id="panels"></div>
+
+    <footer>Internal brand hub &middot; not indexed &middot; saves to this browser only. Export regularly to back up.</footer>
+  </main>
+
+  <input type="file" id="fileinput" accept="application/json" style="display:none">
+
+  <script>
+  // ---- Content model. Each field: {id,label,where,type:'text'|'area',v:default,hint} ----
+  const MODEL = [
+    { tab:'Basics', title:'Brand basics', sub:'Your single source of truth. Keep these identical everywhere online (site, GBP, Zomato, Swiggy, JustDial).',
+      fields:[
+        {id:'b_name',label:'Business name',where:'everywhere',type:'text',v:'NOSH7'},
+        {id:'b_tagline',label:'Tagline',where:'logo, footer, social',type:'text',v:'Eat Healthy, Feel Great'},
+        {id:'b_phone',label:'Phone / WhatsApp',where:'contact, GBP, listings',type:'text',v:'+91 97129 89498'},
+        {id:'b_email',label:'Email',where:'contact, schema',type:'text',v:''},
+        {id:'b_address',label:'Address',where:'GBP, schema, footer, listings',type:'text',v:'5A Akshat Avenue, Ramdevnagar Road, Satellite, Ahmedabad, Gujarat 380015'},
+        {id:'b_hours',label:'Hours',where:'GBP, schema',type:'text',v:'Mon to Sun, 8:00 AM to 8:00 PM'},
+        {id:'b_founded',label:'Founded',where:'About, schema',type:'text',v:'2023'},
+        {id:'b_order',label:'Order URL',where:'all CTAs',type:'text',v:'https://www.nosh7.com/order'},
+        {id:'b_areas',label:'Delivery areas',where:'GBP service area, area pages',type:'area',v:'Satellite, Prahlad Nagar, Jodhpur, Anandnagar, Bodakdev, Vastrapur, Thaltej, Sola, Shilaj, Bopal, Ambli, Science City, SG Highway, Sindhu Bhavan Road, Navrangpura, Ashram Road, Usmanpura, Naranpura, Gujarat University, Vadaj, Paldi, Gota, Ranip, Chandlodiya, Sabarmati, Vejalpur, Makarba, Juhapura, Sarkhej, Shela'},
+        {id:'b_price',label:'Pricing (keep identical on all listings)',where:'site, Zomato, Swiggy, GBP',type:'area',v:'Trial: 5 days ₹1,250 (code TRIAL = ₹150 off, pay ₹1,100, ₹220/day). Monthly: ₹4,999 / 25 days (₹200/day).'},
+      ]},
+
+    { tab:'Voice', title:'Brand voice & rules', sub:'How NOSH7 sounds, and the hard rules. Read before writing anything.',
+      fields:[
+        {id:'v_voice',label:'Voice',where:'all copy',type:'area',v:'Warm, friendly, health-forward, and conversational. Confident but never preachy. On Hindi pages, natural Hinglish is fine. Keep it human and encouraging.'},
+        {id:'v_rules',label:'Hard rules',where:'all copy',type:'area',v:'1. Never use the em dash. Use a comma, colon, or hyphen.\n2. Design and copy must feel clean, minimalist, classic. No funky fonts or hype.\n3. 100% pure veg, no eggs. Jain options use Original Milk paneer, no onion, no garlic, no root vegetables.\n4. No specific subscriber counts. No unverified rating claims.\n5. All order CTAs point to nosh7.com/order.'},
+        {id:'v_usp',label:'Core value props',where:'home, about, plans, social',type:'area',v:'Fresh, never frozen (made about 1 hour before delivery).\nNutritionist-designed plans for weight loss, diabetes, thyroid, PCOD/PCOS, high protein, office lunch.\n100% pure veg, no eggs, Jain-friendly.\nSeasonal vegetables, high protein, high fibre, superfood seeds in every meal.\nFlexible: pause, switch, or cancel anytime, no lock-in.'},
+      ]},
+
+    { tab:'Copy bank', title:'Reusable copy blocks', sub:'Grab-and-paste blocks. Copy a block, paste it where it is needed.',
+      fields:[
+        {id:'c_tag1',label:'Tagline option 1',where:'hero, social',type:'text',v:'Eat healthy. Feel great. Every single day.'},
+        {id:'c_tag2',label:'Tagline option 2',where:'hero, social',type:'text',v:'Healthy eating in Ahmedabad, finally made easy.'},
+        {id:'c_about_short',label:'About (short)',where:'meta, social bio, footer',type:'area',v:"NOSH7 is Ahmedabad's pure-veg healthy meal and salad subscription, serving fresh, nutritionist-designed bowls since 2023. High protein, high fibre, Jain-friendly, never frozen. Plans for weight loss, diabetes, thyroid, PCOD and more. Eat healthy, feel great."},
+        {id:'c_about_long',label:'About (long)',where:'/about page',type:'area',v:"NOSH7 began in 2023 with one simple belief: eating healthy in Ahmedabad should be easy, genuinely tasty, and something you actually look forward to. Not boring. Not bland.\n\nWe are a pure-veg salad and healthy-meal cloud kitchen, built for the people who keep this city moving: working professionals, busy parents, students, and anyone who wants to feel lighter and stronger without spending hours in the kitchen.\n\nMost of us already know what we should be eating. The hard part is doing it, day after day. NOSH7 takes that struggle off your plate: fresh, nutritionist-designed bowls arrive at your door, built around your goal, so the healthy choice finally becomes the easy choice.\n\nClean ingredients. Honest nutrition. Food that tastes like you want to eat it again tomorrow. More than 10,000 customers across Ahmedabad have trusted NOSH7 since 2023, and we work to earn that trust with every bowl."},
+        {id:'c_ig',label:'Instagram bio',where:'Instagram',type:'area',v:'NOSH7 | Healthy meals, Ahmedabad\nFresh pure-veg salad bowls, made daily\nWeight loss | Diabetes | Thyroid | PCOD | High protein\n5-day trial below'},
+        {id:'c_gbp',label:'Google Business Profile description',where:'GBP',type:'area',v:"NOSH7 is a pure-veg healthy meal and salad cloud kitchen in Ahmedabad, serving fresh, nutritionist-designed bowls daily since 2023. We deliver high-protein, high-fibre, Jain-friendly meals across Ahmedabad, with plans for weight loss, diabetes, thyroid, PCOD/PCOS, high protein and office lunch. Fresh, never frozen. Start with a 5-day trial."},
+        {id:'c_cta1',label:'Primary CTA',where:'buttons',type:'text',v:'Start your 5-day trial'},
+        {id:'c_cta2',label:'Secondary CTA',where:'buttons',type:'text',v:'See plans'},
+        {id:'c_faq_area',label:'FAQ answer: delivery areas',where:'FAQ, chatbot',type:'area',v:'We deliver across west, central and north-west Ahmedabad, including Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Sola, Bopal, Navrangpura, Ashram Road, Gota, Ranip, Chandlodiya, Vejalpur, Juhapura and Sarkhej. Not sure about your area? WhatsApp us and we will confirm in seconds.'},
+        {id:'c_faq_trial',label:'FAQ answer: trial',where:'FAQ, chatbot',type:'area',v:'Our 5-day trial is ₹1,250. Use code TRIAL at checkout to pay ₹1,100 (₹220 per meal). One-time offer, no commitment, full refund if you are not happy.'},
+      ]},
+
+    { tab:'Page content', title:'Per-page content', sub:'Fill the title tag, meta description, H1 and intro for each page, then copy into that page. Title 55 to 60 chars, meta 150 to 160 chars.',
+      pages:[
+        {name:'Homepage', fields:[
+          {id:'p_home_title',label:'Title tag',type:'text',v:'Healthy Meal Delivery in Ahmedabad | Diet & Protein | NOSH7'},
+          {id:'p_home_meta',label:'Meta description',type:'area',v:"Ahmedabad's healthy meal delivery: diet food and high-protein pure veg meals, fresh daily. 5-day trial ₹1,250 (₹150 off, code TRIAL). Satellite, Prahlad Nagar."},
+          {id:'p_home_h1',label:'H1',type:'text',v:'Healthy Eating, made easy in Ahmedabad'},
+          {id:'p_home_sub',label:'Intro / subhead',type:'area',v:'Fresh salads, health drinks and seeds, crafted with seasonal ingredients and original milk paneer. Start your 5-day trial from just ₹220 per meal.'},
+        ]},
+        {name:'About page', fields:[
+          {id:'p_about_title',label:'Title tag',type:'text',v:'About NOSH7 | Healthy Pure-Veg Meals in Ahmedabad Since 2023'},
+          {id:'p_about_meta',label:'Meta description',type:'area',v:"NOSH7 is Ahmedabad's pure-veg healthy meal subscription since 2023. Fresh, nutritionist-designed bowls, high protein, Jain-friendly, never frozen. Learn our story."},
+          {id:'p_about_h1',label:'H1',type:'text',v:'About NOSH7'},
+          {id:'p_about_intro',label:'Intro',type:'area',v:'Eat healthy. Feel great. Every single day. NOSH7 began in 2023 to make healthy eating in Ahmedabad easy, tasty, and something you look forward to.'},
+        ]},
+        {name:'Plans / Subscription', fields:[
+          {id:'p_plans_title',label:'Title tag',type:'text',v:'Healthy Meal Subscription Plans in Ahmedabad | NOSH7'},
+          {id:'p_plans_meta',label:'Meta description',type:'area',v:'Choose a NOSH7 plan: 5-day trial ₹1,250 or monthly ₹4,999 (25 days). Nutritionist-designed pure-veg bowls, delivered fresh daily across Ahmedabad. No lock-in.'},
+          {id:'p_plans_h1',label:'H1',type:'text',v:'Subscription Plans'},
+          {id:'p_plans_sub',label:'Intro / subhead',type:'area',v:'Your health journey, your pace. Flexible plans, no lock-in.'},
+        ]},
+        {name:'Neighbourhood page template', fields:[
+          {id:'p_area_title',label:'Title tag template',type:'text',v:'Salad & Healthy Meal Delivery in [Area] Ahmedabad | NOSH7'},
+          {id:'p_area_meta',label:'Meta description template',type:'area',v:'Fresh salad and healthy meal delivery in [Area], Ahmedabad. NOSH7 delivers nutritionist-designed pure-veg bowls daily. Subscription from ₹200/day. Trial ₹1,250.'},
+          {id:'p_area_h1',label:'H1 template',type:'text',v:'Healthy Meal & Salad Delivery in [Area], Ahmedabad'},
+          {id:'p_area_intro',label:'Intro template',type:'area',v:'NOSH7 delivers fresh, nutritionist-designed salad bowls across [Area] every day. Mention a real landmark, society, office park or gym in [Area] here, plus the local roads we cover, so the page reads as genuinely local.'},
+        ]},
+      ]},
+  ];
+
+  const KEY='nosh7-brand';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}};
+  let data=load();
+  const save=()=>{localStorage.setItem(KEY,JSON.stringify(data));flashSaved();};
+  let st;function flashSaved(){const s=document.getElementById('saved');s.classList.add('show');clearTimeout(st);st=setTimeout(()=>s.classList.remove('show'),1200);}
+  const val=(id,def)=>id in data?data[id]:def;
+
+  const tabsEl=document.getElementById('tabs');
+  const panelsEl=document.getElementById('panels');
+
+  function fieldHTML(f){
+    const v=val(f.id,f.v||'');
+    const ctrl=f.type==='area'
+      ? '<textarea class="f" data-id="'+f.id+'" rows="3">'+escapeHtml(v)+'</textarea>'
+      : '<input class="f" type="text" data-id="'+f.id+'" value="'+escapeAttr(v)+'">';
+    return '<div class="field"><div class="field-top"><label>'+f.label+'</label>'+
+      (f.where?'<span class="where">use: '+f.where+'</span>':'')+
+      '<button class="copy" data-copy="'+f.id+'">Copy</button></div>'+ctrl+
+      (f.hint?'<div class="hint">'+f.hint+'</div>':'')+'</div>';
+  }
+  function escapeHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function escapeAttr(s){return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+  MODEL.forEach((sec,idx)=>{
+    const tab=document.createElement('button');
+    tab.className='tab'+(idx===0?' active':'');tab.textContent=sec.tab;tab.dataset.idx=idx;
+    tabsEl.appendChild(tab);
+    const panel=document.createElement('section');
+    panel.className='panel'+(idx===0?' active':'');panel.dataset.idx=idx;
+    let html='<h2 class="pt">'+sec.title+'</h2><p class="pt-sub">'+sec.sub+'</p>';
+    if(sec.fields) html+=sec.fields.map(fieldHTML).join('');
+    if(sec.pages) html+=sec.pages.map(pg=>'<div class="pagecard"><h3>'+pg.name+'</h3>'+pg.fields.map(fieldHTML).join('')+'</div>').join('');
+    panel.innerHTML=html;
+    panelsEl.appendChild(panel);
+  });
+
+  // tab switching
+  tabsEl.addEventListener('click',e=>{
+    const t=e.target.closest('.tab');if(!t)return;
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelector('.panel[data-idx="'+t.dataset.idx+'"]').classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  // auto-save on edit
+  panelsEl.addEventListener('input',e=>{
+    const el=e.target;if(!el.dataset.id)return;
+    data[el.dataset.id]=el.value;save();
+  });
+
+  // copy buttons
+  panelsEl.addEventListener('click',e=>{
+    const b=e.target.closest('.copy');if(!b)return;
+    const ctrl=document.querySelector('[data-id="'+b.dataset.copy+'"]');
+    navigator.clipboard.writeText(ctrl.value).then(()=>{
+      b.textContent='Copied';b.classList.add('ok');
+      setTimeout(()=>{b.textContent='Copy';b.classList.remove('ok');},1100);
+    });
+  });
+
+  // export / import / reset
+  document.getElementById('export').addEventListener('click',()=>{
+    const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='nosh7-brand-content.json';a.click();
+  });
+  const fi=document.getElementById('fileinput');
+  document.getElementById('import').addEventListener('click',()=>fi.click());
+  fi.addEventListener('change',e=>{
+    const file=e.target.files[0];if(!file)return;
+    const r=new FileReader();r.onload=()=>{try{data=JSON.parse(r.result);save();location.reload();}catch(err){alert('Invalid file');}};r.readAsText(file);
+  });
+  document.getElementById('reset').addEventListener('click',()=>{
+    if(confirm('Reset all fields to the pre-filled defaults? Your edits on this browser will be lost.')){
+      localStorage.removeItem(KEY);location.reload();
+    }
+  });
+  </script>
+</body>
+</html>
