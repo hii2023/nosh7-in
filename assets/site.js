@@ -125,11 +125,12 @@
 
       if (target === 0) { el.textContent = prefix + '0' + suffix; return; }
 
+      const fmt = n => n >= 1000 ? n.toLocaleString('en-IN') : n;
       const timer = setInterval(() => {
         current += step;
         const done = dir === 'down' ? current <= target : current >= target;
-        if (done) { clearInterval(timer); el.textContent = prefix + target + suffix; return; }
-        el.textContent = prefix + Math.round(current) + suffix;
+        if (done) { clearInterval(timer); el.textContent = prefix + fmt(target) + suffix; return; }
+        el.textContent = prefix + fmt(Math.round(current)) + suffix;
       }, interval);
     });
   }
