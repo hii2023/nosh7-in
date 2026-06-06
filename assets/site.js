@@ -3,8 +3,8 @@
     en: {
       'nav.plans':'Plans','nav.menu':'Menu','nav.health':'Health Goals','nav.blog':'Blog','nav.order':'Order Now',
       'hero.badge':"Ahmedabad's #1 Pure Veg Salad Cloud Kitchen",
-      'hero.h1.line1':'Healthy Eating,','hero.h1.line2':'अब बिल्कुल आसान है।',
-      'hero.sub':'Fresh Salads, Health Drinks &amp; Seeds - Crafted With Seasonal Ingredients, Original Milk Paneer, And High-Protein, High-Fibre Recipes. Start Your <strong>5-Day Trial</strong> From Just <strong>₹220/Meal</strong> with code TRIAL.',
+      'hero.h1.line1':'Healthy Eating,','hero.h1.line2':'Now it\'s Easy.',
+      'hero.sub':'Fresh, Healthy Salad Meals. High Protein. High Fibre.<br><strong>Starts From ₹220/Meal.</strong>',
       'hero.btn.primary':'Start Subscription','hero.btn.secondary':'Meal Plans',
       'plans.tag':'Subscription Plans','plans.title':'Choose Your Plan',
       'plans.sub':'Fresh salads delivered daily - pick the plan that fits your health goal',
@@ -26,8 +26,8 @@
     gu: {
       'nav.plans':'પ્લાન્સ','nav.menu':'મેનૂ','nav.health':'સ્વાસ્થ્ય લક્ષ્ય','nav.blog':'બ્લૉગ','nav.order':'ઓર્ડર કરો',
       'hero.badge':'અમદાવાદનું #1 પ્યોર વેજ સલાડ ક્લાઉડ કિચન',
-      'hero.h1.line1':'Healthy Eating,','hero.h1.line2':'હવે બિલ્કુલ સહેલું છે.',
-      'hero.sub':'તાજા સલાડ, હેલ્થ ડ્રિન્ક્સ અને બીજ - સિઝનલ સામગ્રી, ઓરિજિનલ મિલ્ક પનીર, અને હાઈ-પ્રોટીન, હાઈ-ફાઇબર રેસિપી સાથે. <strong>5-દિવસ ટ્રાયલ</strong> ફક્ત <strong>₹220/Bowl</strong>થી શરૂ કરો.',
+      'hero.h1.line1':'Healthy Eating,','hero.h1.line2':'Now it\'s Easy.',
+      'hero.sub':'Fresh, Healthy Salad Meals. High Protein. High Fibre.<br><strong>Starts From ₹220/Meal.</strong>',
       'hero.btn.primary':'સબ્સ્ક્રિપ્શન શરૂ કરો','hero.btn.secondary':'Plans',
       'plans.tag':'સબ્સ્ક્રિપ્શન પ્લાન્સ','plans.title':'તમારો પ્લાન પસંદ કરો',
       'plans.sub':'દરરોજ તાજા સલાડ ડિલિવરી - તમારા સ્વાસ્થ્ય લક્ષ્ય માટે સૌથી યોગ્ય પ્લાન',
