@@ -73,8 +73,19 @@
     .btn-block { display: flex; width: 100%; justify-content: center; }
 
     /* ── NAV ── */
+    /* ── TOP ANNOUNCEMENT BAR ── */
+    .top-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 201;
+      background: var(--green-deep);
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.38rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 700;
+      color: var(--green-light); letter-spacing: 0.04em;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .top-bar svg { color: var(--saffron); flex-shrink: 0; }
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: 32px; left: 0; right: 0; z-index: 200;
       display: flex; justify-content: space-between; align-items: center;
       padding: 0.65rem 2rem;
       background: rgba(250,247,240,0.96);
@@ -120,7 +131,7 @@
     .hero {
       min-height: 60vh;
       display: flex; flex-direction: column; justify-content: center;
-      padding: 9rem 4rem 4rem;
+      padding: 10rem 4rem 4rem; /* extra top: top-bar(32px) + nav(~72px) + breathing room */
       position: relative; overflow: hidden;
       background: var(--cream);
       width: 100%;
@@ -549,7 +560,7 @@
       .plans-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
     }
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding: 7rem 2rem 3rem; gap: 2rem; text-align: center; }
+      .hero { grid-template-columns: 1fr; padding: 8rem 2rem 3rem; gap: 2rem; text-align: center; }
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-btns { justify-content: center; }
       .hero-trust { justify-content: center; flex-wrap: wrap; }
@@ -561,9 +572,10 @@
     }
     @media (max-width: 768px) {
       /* Hero fills the screen — plans section starts below the fold */
-      .hero { min-height: 100dvh; min-height: 100vh; padding: 7rem 1.8rem 4rem; box-sizing: border-box; }
+      .hero { min-height: 100dvh; min-height: 100vh; padding: 8.5rem 1.8rem 4rem; box-sizing: border-box; }
       .hero-cityscape { opacity: 0.07; object-position: center 60%; }
       nav { padding: 0.6rem 1.2rem; }
+      .top-bar { font-size: 0.72rem; padding: 0.35rem 0.8rem; }
       .how-section, .plans-section, .why-section, .menu-section, .health-section, .df-section, .testi-section, .seo-section, .cta-section, .offers-section { padding: 2rem 1.5rem; }
       .offer-badge { position: static; display: inline-block; margin-top: 0.5rem; }
       .stats-bar { padding: 1rem; }
@@ -574,7 +586,7 @@
       .health-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
-      .hero { padding: 6rem 1.2rem 3.5rem; min-height: 100dvh; min-height: 100vh; }
+      .hero { padding: 7.5rem 1.2rem 3.5rem; min-height: 100dvh; min-height: 100vh; }
       .hero h1 { font-size: clamp(2.2rem, 8vw, 2.8rem); }
       .hero-img-wrap { width: 190px; height: 190px; }
       .why-grid { grid-template-columns: 1fr; }
@@ -598,6 +610,12 @@
   </style>
 </head>
 <body>
+
+<!-- ── TOP BAR ── -->
+<div class="top-bar" role="banner">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg>
+  <span data-i18n="hero.badge">Ahmedabad's #1 Pure Veg Salad Meal Kitchen</span>
+</div>
 
 <!-- ── NAV ── -->
 <nav id="mainNav">
@@ -699,10 +717,6 @@
   <img decoding="async" class="hero-cityscape" src="/assets/ahmedabad-skyline.webp" alt="" aria-hidden="true" />
 
   <div class="hero-content">
-    <div class="hero-badge-pill">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg>
-      <span data-i18n="hero.badge">Ahmedabad's #1 Pure Veg Salad Meal Kitchen</span>
-    </div>
     <h1>
       <span data-i18n="hero.h1.line1">Your Search For Healthy Meals Ends </span><span class="hero-h1-here" data-i18n="hero.h1.line2">Here.</span>
     </h1>
