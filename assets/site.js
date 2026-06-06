@@ -2,8 +2,8 @@
   const SITE_I18N = {
     en: {
       'nav.plans':'Plans','nav.menu':'Menu','nav.health':'Health Goals','nav.blog':'Blog','nav.order':'Order Now',
-      'hero.badge':"Ahmedabad's #1 Pure Veg Salad Cloud Kitchen",
-      'hero.h1.line1':'Healthy Eating,','hero.h1.line2':'Now it\'s Easy.',
+      'hero.badge':"Ahmedabad's #1 Pure Veg Salad Meal Kitchen",
+      'hero.h1.line1':'Your Search For Healthy Meals Ends ','hero.h1.line2':'Here.',
       'hero.sub':'Fresh, Healthy Salad Meals. High Protein. High Fibre.<br><strong>Starts From ₹220/Meal.</strong>',
       'hero.btn.primary':'Start Subscription','hero.btn.secondary':'Meal Plans',
       'plans.tag':'Subscription Plans','plans.title':'Choose Your Plan',
@@ -25,8 +25,8 @@
     },
     gu: {
       'nav.plans':'પ્લાન્સ','nav.menu':'મેનૂ','nav.health':'સ્વાસ્થ્ય લક્ષ્ય','nav.blog':'બ્લૉગ','nav.order':'ઓર્ડર કરો',
-      'hero.badge':'અમદાવાદનું #1 પ્યોર વેજ સલાડ ક્લાઉડ કિચન',
-      'hero.h1.line1':'Healthy Eating,','hero.h1.line2':'Now it\'s Easy.',
+      'hero.badge':'અમદાવાદનું #1 પ્યોર વેજ સલાડ મીલ કિચન',
+      'hero.h1.line1':'Your Search For Healthy Meals Ends ','hero.h1.line2':'Here.',
       'hero.sub':'Fresh, Healthy Salad Meals. High Protein. High Fibre.<br><strong>Starts From ₹220/Meal.</strong>',
       'hero.btn.primary':'સબ્સ્ક્રિપ્શન શરૂ કરો','hero.btn.secondary':'Plans',
       'plans.tag':'સબ્સ્ક્રિપ્શન પ્લાન્સ','plans.title':'તમારો પ્લાન પસંદ કરો',
