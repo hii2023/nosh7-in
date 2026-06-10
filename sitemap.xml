@@ -208,4 +208,25 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://nosh7.in/chandkheda-ahmedabad.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://nosh7.in/juhapura-ahmedabad.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://nosh7.in/sabarmati-ahmedabad.html</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
