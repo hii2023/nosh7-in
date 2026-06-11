@@ -1,0 +1,38 @@
+# NOSH7
+
+> NOSH7 is a pure vegetarian healthy meal delivery service (cloud kitchen) in Ahmedabad, Gujarat, India. Nutritionist designed salad bowls are made fresh every morning and delivered the same day across 16+ Ahmedabad neighbourhoods. Subscriptions start at Rs 200 per day.
+
+Key facts:
+
+- 10,000+ customers served, 1,300+ active subscribers
+- Ratings: Google 4.6, Swiggy 4.8, Zomato 4.4 (1,000+ reviews)
+- Pricing: 5 day trial Rs 1,250 (code TRIAL gives Rs 150 off), monthly plan Rs 4,999 for 25 days (Rs 200 per day)
+- 100% vegetarian (no eggs, meat or fish), Jain option available (no onion, garlic or root vegetables)
+- Same day delivery: order by 10am, delivered between 6pm and 7pm
+- Bowls are calorie counted with protein and fibre listed; options for weight loss, high protein, diabetes, PCOD and thyroid
+- Kitchen address: 5A Akshat Avenue, Ramdevnagar Road, Satellite, Ahmedabad 380015
+- Phone and WhatsApp: +91 97129 89498
+- Order online: https://www.nosh7.com/order
+
+## Main pages
+
+- [Home](https://nosh7.in/): homepage with menu, plans and delivery areas
+- [Subscription plans](https://nosh7.in/subscription.html): trial and monthly plan details
+- [Ahmedabad delivery](https://nosh7.in/ahmedabad.html): all delivery areas in Ahmedabad
+- [Health blog](https://nosh7.in/blog.html): nutrition guides by the NOSH7 team
+- [English site](https://www.nosh7.com/): main English website and online ordering
+
+## Popular guides
+
+- [Healthy meal near me in Ahmedabad](https://nosh7.in/healthy-meal-near-me-ahmedabad.html)
+- [Best salads for weight loss](https://nosh7.in/blog-weight-loss-salad-ahmedabad.html)
+- [High protein vegetarian foods](https://nosh7.in/blog-high-protein-vegetarian-ahmedabad.html)
+- [Diabetes friendly meals](https://nosh7.in/blog-diabetes-ahmedabad.html)
+- [PCOD diet guide](https://nosh7.in/blog-pcod-ahmedabad.html)
+- [Thyroid diet guide](https://nosh7.in/blog-thyroid-diet-ahmedabad.html)
+- [Jain diet food](https://nosh7.in/jain-diet-food-ahmedabad.html)
+- [Healthy tiffin service](https://nosh7.in/blog-healthy-tiffin-ahmedabad.html)
+
+## Delivery neighbourhoods
+
+Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Navrangpura, Thaltej, Bopal, Sola, Vejalpur, Paldi, Sarkhej, Ashram Road, Juhapura, Sabarmati, Makarba, Mithakhali, Pachvati and University Area. Area pages follow the pattern https://nosh7.in/[area]-ahmedabad.html
