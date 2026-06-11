@@ -2,7 +2,7 @@
 **Date:** June 11, 2026 (corrected and updated same day)  
 **Site:** https://nosh7.in  
 **Auditor:** Claude Code  
-**Overall Score:** 88/100 (Strong)
+**Overall Score:** 91/100 (Strong)
 
 ---
 
@@ -29,7 +29,7 @@ Remaining optional improvements: clean URLs (remove .html extensions) and explic
 | Category | Score | Status | Priority |
 |----------|-------|--------|----------|
 | Crawlability | 95/100 | ✅ Excellent | — |
-| Indexability | 85/100 | ✅ Fixed (sitemap + hreflang) | DONE |
+| Indexability | 90/100 | ✅ Fixed (sitemap verified + hreflang) | DONE |
 | Security | 95/100 | ✅ Excellent (corrected finding) | DONE |
 | URL Structure | 75/100 | ⚠️ Needs work | OPTIONAL |
 | Mobile Optimization | 90/100 | ✅ Excellent | — |
