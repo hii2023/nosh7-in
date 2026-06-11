@@ -11,7 +11,7 @@
 The original audit reported "missing security headers" as a critical issue. This finding was WRONG. It was caused by a truncated header check during the audit. A full verification later the same day confirmed that nosh7.in already serves all six security headers via the Cloudflare Transform Rule "NOSH7 Security Headers" (CSP, X-Frame-Options, Referrer-Policy, Strict-Transport-Security, X-Content-Type-Options, Permissions-Policy). The CSP is tailored to the actual stack (Google Fonts, PostHog, Simple Analytics, Cloudflare Insights, SociableKit, chat worker, Supabase) and no page resources are blocked by it.
 
 The two real critical issues from the audit have both been fixed:
-- sitemap.xml expanded from 4 to 41 URLs and submitted to Google Search Console
+- sitemap.xml restored to the full 39 verified URLs (every URL checked against an actual page; earlier 4-URL and 41-URL versions were both wrong) and submitted to Google Search Console
 - hreflang tags (en / hi-IN) added to all pages
 
 ---
@@ -20,7 +20,7 @@ The two real critical issues from the audit have both been fixed:
 
 NOSH7.in has a strong foundation: excellent on-page SEO markup, complete security headers, mobile responsiveness, and clean static HTML. The two critical issues found at audit time (incomplete sitemap, missing hreflang tags) were fixed the same day.
 
-Remaining optional improvements: clean URLs (remove .html extensions), explicit AI crawler policy in robots.txt, and IndexNow support.
+Remaining optional improvements: clean URLs (remove .html extensions) and explicit AI crawler policy in robots.txt.
 
 ---
 
@@ -36,7 +36,7 @@ Remaining optional improvements: clean URLs (remove .html extensions), explicit 
 | Core Web Vitals | 85/100 | ✅ Good | — |
 | Structured Data | 95/100 | ✅ Excellent | — |
 | JS Rendering | 100/100 | ✅ Perfect | — |
-| IndexNow Protocol | 0/100 | ❌ Not implemented | LOW |
+| IndexNow Protocol | 100/100 | ✅ Already implemented (corrected) | DONE |
 
 ---
 
@@ -271,18 +271,13 @@ https://pagespeed.web.dev/?url=https%3A%2F%2Fnosh7.in%2F
 
 ---
 
-### 9. INDEXNOW PROTOCOL (0/100) ❌ LOW PRIORITY
+### 9. INDEXNOW PROTOCOL (100/100) ✅ ALREADY IMPLEMENTED (corrected finding)
 
-**What it is:** IndexNow lets you notify Bing, Yandex, and Naver of new/updated content for faster indexing (Google doesn't participate).
+**Correction:** The original audit reported IndexNow as not implemented. WRONG. The repo already contains the IndexNow key file (`9d861722dd3c9d64dd74b588ba61d096.txt` at site root) and a submission script (`indexnow-submit.sh`) that POSTs every sitemap URL to api.indexnow.org for Bing, Yandex, and Naver.
 
-**Current status:** Not implemented
+**Workflow:** run `./indexnow-submit.sh` after each publish so non-Google engines pick up new and updated pages quickly.
 
-**Recommendation:** Implement if pursuing non-Google SEO
-- Requires API key setup
-- Ping on page publish/update
-- Worth 5-10% additional traffic from Bing in India market
-
-**Timeline:** Optional, low priority
+**Timeline:** Done. Re-run script on each publish.
 
 ---
 
@@ -361,7 +356,7 @@ Sitemap: https://nosh7.in/sitemap.xml
 ## Action Plan
 
 ### Completed (June 11, 2026)
-- [x] Expand sitemap.xml to include all 40+ pages (now 41 URLs)
+- [x] Sitemap.xml restored and verified: 39 URLs, each one checked against an existing page (noindex pages excluded)
 - [x] Add hreflang tags to every page (en for nosh7.com, hi-IN for nosh7.in)
 - [x] Security headers via Cloudflare: already existed ("NOSH7 Security Headers" Transform Rule), verified live
 - [x] Submit sitemap to Google Search Console
@@ -374,7 +369,7 @@ Sitemap: https://nosh7.in/sitemap.xml
 ### Next Month — MEDIUM PRIORITY
 - [ ] Monitor Core Web Vitals via PageSpeed Insights
 - [ ] Add Product schema for meal plans
-- [ ] Consider IndexNow integration for Bing/Yandex
+- [x] IndexNow: already implemented (key file + indexnow-submit.sh). Re-run script on each publish
 
 ### Backlog — LOW PRIORITY
 - [ ] Enhance FAQ schema with more location-specific questions
