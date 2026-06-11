@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Circle background -->
+  <circle cx="100" cy="100" r="100" fill="#1a3c2e"/>
+  <!-- Inner ring -->
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#52b788" stroke-width="2"/>
+  <!-- Leaf / salad icon -->
+  <path d="M100 55 C80 65 65 82 68 100 C71 118 88 128 100 125 C112 128 129 118 132 100 C135 82 120 65 100 55Z" fill="none" stroke="#52b788" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M100 55 C100 75 100 100 100 125" stroke="#52b788" stroke-width="1.8" stroke-dasharray="4,3"/>
+  <path d="M68 100 C80 95 95 93 100 90 C105 87 118 83 132 80" stroke="#52b788" stroke-width="1.5"/>
+  <!-- NOSH7 text -->
+  <text x="100" y="152" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#faf7f0" text-anchor="middle" letter-spacing="3">NOSH7</text>
+  <!-- Tagline -->
+  <text x="100" y="170" font-family="Arial, sans-serif" font-size="9" fill="#b7e4c7" text-anchor="middle" letter-spacing="2.5">EAT HEALTHY</text>
+</svg>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>NOSH7 SEO Action Tracker (internal)</title>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --green-deep:#1a3c2e; --green-mid:#2d6a4f; --green-fresh:#52b788; --green-light:#b7e4c7;
+      --cream:#faf7f0; --cream-dark:#f0ebe0; --saffron:#f4a61d; --charcoal:#1c1c1c; --muted:#5a6b62;
+      --white:#fff; --line:#e7e2d6;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'IBM Plex Sans',sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.55;-webkit-font-smoothing:antialiased}
+    a{color:var(--green-mid)}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+
+    header{background:var(--green-deep);color:#fff;padding:1.4rem 0 1.1rem;position:sticky;top:0;z-index:20;box-shadow:0 2px 14px rgba(0,0,0,.12)}
+    header .wrap{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between}
+    .h-title{font-size:1.15rem;font-weight:700;letter-spacing:.01em}
+    .h-title span{display:block;font-size:.72rem;font-weight:500;color:var(--green-light);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+    .h-prog{flex:1;min-width:240px;max-width:440px}
+    .h-prog-top{display:flex;justify-content:space-between;font-size:.8rem;color:var(--green-light);margin-bottom:.3rem}
+    .bar{height:9px;background:rgba(255,255,255,.15);border-radius:999px;overflow:hidden}
+    .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green-fresh),var(--saffron));border-radius:999px;transition:width .4s ease}
+    .btn-reset{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font:inherit;font-size:.78rem;font-weight:600;padding:.4rem .8rem;border-radius:999px;cursor:pointer}
+    .btn-reset:hover{background:rgba(255,255,255,.2)}
+
+    .scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem;margin:1.5rem 0}
+    .score{background:var(--white);border:1px solid var(--line);border-radius:.8rem;padding:.9rem 1rem}
+    .score b{display:block;font-size:1.8rem;color:var(--green-deep);line-height:1}
+    .score small{display:block;font-size:.78rem;color:var(--muted);margin-top:.3rem}
+    .score.warn b{color:#b45309}
+
+    .callout{background:#eef6f0;border:1px solid var(--green-light);border-left:4px solid var(--green-fresh);border-radius:.7rem;padding:1rem 1.1rem;margin:1.25rem 0;font-size:.95rem}
+    .callout strong{color:var(--green-deep)}
+
+    h2.sec{font-size:1.35rem;color:var(--green-deep);margin:2rem 0 .2rem;font-weight:700}
+    .sec-sub{font-size:.9rem;color:var(--muted);margin-bottom:.9rem}
+    .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:2.2rem}
+    .sec-prog{font-size:.8rem;color:var(--muted);font-weight:600;white-space:nowrap}
+
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.7rem;margin:.5rem 0 1rem}
+    .why{background:var(--white);border:1px solid var(--line);border-radius:.7rem;padding:.85rem .95rem}
+    .why h4{font-size:.95rem;color:var(--green-deep);margin-bottom:.25rem}
+    .why p{font-size:.83rem;color:var(--muted)}
+
+    ul.tasks{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+    li.task{background:var(--white);border:1px solid var(--line);border-radius:.7rem;padding:.7rem .85rem;display:flex;gap:.7rem;align-items:flex-start;transition:opacity .2s,background .2s}
+    li.task.done{opacity:.55;background:#f4f7f4}
+    li.task input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:2px solid var(--green-fresh);border-radius:.4rem;cursor:pointer;flex:none;margin-top:1px;position:relative}
+    li.task input:checked{background:var(--green-mid);border-color:var(--green-mid)}
+    li.task input:checked::after{content:"";position:absolute;left:5px;top:1px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+    .task-body{flex:1;min-width:0}
+    .task-title{font-size:.92rem;font-weight:600;color:var(--charcoal)}
+    li.task.done .task-title{text-decoration:line-through}
+    .task-note{font-size:.82rem;color:var(--muted);margin-top:.2rem}
+    .tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.45rem}
+    .tag{font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.18rem .5rem;border-radius:999px}
+    .p-high{background:#fde2e1;color:#9b1c1c}.p-med{background:#fef3c7;color:#92600a}.p-low{background:#e6eef0;color:#46606a}
+    .i-high{background:#d6f3e0;color:#1a6b43}.i-med{background:#e8f0e9;color:#3a6b50}
+    .e-quick{background:#e0f2fe;color:#075985}.e-half{background:#ede9fe;color:#5b21b6}.e-multi{background:#f3e8ff;color:#6b21a8}
+
+    .local-steps{counter-reset:ls;list-style:none;margin:.4rem 0 1rem}
+    .local-steps li{position:relative;padding:.7rem .9rem .7rem 2.7rem;background:var(--white);border:1px solid var(--line);border-radius:.7rem;margin-bottom:.5rem;font-size:.9rem}
+    .local-steps li::before{counter-increment:ls;content:counter(ls);position:absolute;left:.7rem;top:.7rem;width:1.5rem;height:1.5rem;background:var(--green-mid);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700}
+    .local-steps li b{color:var(--green-deep)}
+    footer{padding:2rem 0 3rem;text-align:center;color:var(--muted);font-size:.8rem}
+    @media(max-width:560px){.h-title{font-size:1rem}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="h-title">NOSH7 SEO Action Tracker<span>Internal &middot; nosh7.in</span></div>
+      <div class="h-prog">
+        <div class="h-prog-top"><span>Overall progress</span><span id="ov-pct">0%</span></div>
+        <div class="bar"><i id="ov-bar"></i></div>
+      </div>
+      <button class="btn-reset" id="reset">Reset</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="scores">
+      <div class="score"><b>~95</b><small>On-page SEO score</small></div>
+      <div class="score"><b>93</b><small>Technical SEO score</small></div>
+      <div class="score warn"><b>3.8s</b><small>Mobile LCP (target &lt;2.5s)</small></div>
+      <div class="score"><b id="done-count">0/0</b><small>Actions completed</small></div>
+    </div>
+
+    <div class="callout">
+      <strong>The big picture:</strong> the website itself is excellent. On-page and technical SEO are near the ceiling, so more tweaks there move the needle very little. Competitors outrank you because of <strong>off-page</strong> factors: domain age, backlinks, the Google Map Pack and directories owning local results, inconsistent listing data, and the nosh7.in / nosh7.com authority split. Focus effort below on the <strong>Off-site &amp; Local</strong> and <strong>Strategic</strong> sections.
+    </div>
+
+    <h2 class="sec">Why competitors rank higher</h2>
+    <p class="sec-sub">Structural reasons, not website quality.</p>
+    <div class="why-grid">
+      <div class="why"><h4>Domain age &amp; backlinks</h4><p>saladtime.in, tatvagreens.in and others have years of history and inbound links. nosh7.in is new (2026) with almost none. Trust takes 3 to 6+ months.</p></div>
+      <div class="why"><h4>The Map Pack wins local</h4><p>For "salad delivery Ahmedabad" Google shows 3 businesses on a map first. That ranking comes from your Google Business Profile, reviews and proximity, not your site.</p></div>
+      <div class="why"><h4>Directories own organic</h4><p>"Best tiffin/salad Ahmedabad" is JustDial, Zomato, magicpin, Wanderlog, listicles. You get listed in them rather than outrank them.</p></div>
+      <div class="why"><h4>Inconsistent listing data</h4><p>Zomato/magicpin show ₹999 trial / ₹199 meal while the site says ₹1,250 / ₹220. Conflicts erode local trust. Make every listing identical.</p></div>
+      <div class="why"><h4>.in vs .com split</h4><p>Both domains rank for "NOSH7" and compete for the same authority. Pick one, redirect the other, concentrate the links.</p></div>
+      <div class="why"><h4>Thin brand &amp; social signals</h4><p>Active Instagram/FB drive brand searches and engagement that correlate with ranking. Build a consistent social presence.</p></div>
+    </div>
+
+    <h2 class="sec">How to rank for "any area of Ahmedabad"</h2>
+    <p class="sec-sub">The honest playbook for showing up when someone searches "[area] healthy food / salad / tiffin / diet meal".</p>
+    <ol class="local-steps">
+      <li><b>One landing page per area you deliver.</b> You already have ~14 (Satellite, Bodakdev, Vastrapur, Thaltej, Sola, Bopal, Gota, Prahlad Nagar, Navrangpura, Paldi, Sarkhej, Vejalpur, Ashram Road...). Add the rest of your covered zone: Ranip, Chandlodiya, Shilaj, Naranpura, Usmanpura, Vadaj, Science City, Jodhpur, Makarba, Juhapura, Shela. Each page must be genuinely unique, not a find-and-replace clone.</li>
+      <li><b>Make each page locally real.</b> Name actual landmarks, societies, office parks, gyms and roads in that area. Add an area-specific FAQ and a short "delivery in [area]" paragraph. Google rewards real local relevance.</li>
+      <li><b>LocalBusiness schema with areaServed</b> on every area page (you do this). Keep the address/phone identical to your Google Business Profile.</li>
+      <li><b>Set delivery areas in Google Business Profile.</b> A service-area business can list every neighbourhood you deliver to. This is what feeds the map pack for area and "near me" searches.</li>
+      <li><b>Target area + intent combos:</b> "[area] weight loss meal", "[area] PCOD diet food", "[area] office lunch subscription", "[area] Jain tiffin". Lower competition, high intent.</li>
+      <li><b>Get reviews that mention areas.</b> Ask customers to mention their neighbourhood in Google reviews. Google uses review text for local relevance.</li>
+      <li><b>Interlink area pages</b> from the main Ahmedabad page and from each other ("also serving..."), and earn a few local links per area (society groups, gyms, RWAs).</li>
+      <li><b>Reality check:</b> the map pack favours businesses physically near the searcher, so a single kitchen ranks strongest near Satellite. Dedicated area pages win the <em>organic</em> results, and GBP service areas + reviews stretch your map reach. Aim to own organic everywhere and the map pack in your core radius.</li>
+    </ol>
+
+    <div id="lists"></div>
+
+    <footer>Internal planning page &middot; not indexed &middot; progress saves to this browser only.</footer>
+  </main>
+
+  <script>
+  const TASKS = [
+    // QUICK WINS
+    {id:'qw-nap', cat:'Quick wins (this week)', t:'Fix NAP + pricing on every listing', n:'Make name, address, phone and prices identical to the site (₹1,250 trial / ₹200-220) on Zomato, magicpin, JustDial, Swiggy and GBP. Kills the ₹999/₹199 mismatch.', p:'high', i:'high', e:'quick'},
+    {id:'qw-gbp', cat:'Quick wins (this week)', t:'Claim & fully complete Google Business Profile', n:'Category "Health food restaurant", hours, all delivery areas, 10+ photos, products with prices, service area, website + WhatsApp link.', p:'high', i:'high', e:'quick'},
+    {id:'qw-dir', cat:'Quick wins (this week)', t:'Add NOSH7 to missing directories', n:'JustDial, Sulekha, Bing Places, Apple Business Connect, Foursquare, IndiaMART, plus ask to be added to "best healthy food Ahmedabad" listicles (hungrito, wanderlog).', p:'high', i:'med', e:'quick'},
+    {id:'qw-domain', cat:'Quick wins (this week)', t:'Decide nosh7.in vs nosh7.com and 301 one to the other', n:'Stop splitting brand authority. Pick the primary, redirect or canonical the other.', p:'high', i:'high', e:'quick'},
+    {id:'qw-gsc', cat:'Quick wins (this week)', t:'Verify in Google Search Console + submit sitemap', n:'Confirm indexing, submit https://nosh7.in/sitemap.xml, watch queries and coverage. Also add Bing Webmaster Tools.', p:'high', i:'med', e:'quick'},
+
+    // ON-SITE
+    {id:'os-lcp', cat:'On-site activities', t:'Fix hero LCP (Core Web Vitals)', n:'Preload the hero image + fetchpriority="high", confirm right-sized WebP, defer remaining render-blocking. Target LCP under 2.5s on mobile.', p:'high', i:'med', e:'half'},
+    {id:'os-areas', cat:'On-site activities', t:'Add the remaining neighbourhood pages', n:'Ranip, Chandlodiya, Shilaj, Naranpura, Usmanpura, Vadaj, Science City, Jodhpur, Makarba, Juhapura, Shela. Unique local content each.', p:'high', i:'high', e:'multi'},
+    {id:'os-compare', cat:'On-site activities', t:'Build comparison pages', n:'"NOSH7 vs Tatva Greens", "NOSH7 vs Salad Time". Commercial-intent queries competitors rank for.', p:'med', i:'med', e:'half'},
+    {id:'os-office', cat:'On-site activities', t:'Create an office-lunch / corporate landing page', n:'"Office lunch salad subscription Ahmedabad" is a high-intent query Salad Time targets. You have a corporate page; optimise + interlink it.', p:'med', i:'med', e:'half'},
+    {id:'os-interlink', cat:'On-site activities', t:'Strengthen internal linking', n:'Link every area page to nearby areas and to plans/blog. Add a single "All delivery areas" hub page linking out to all of them.', p:'med', i:'med', e:'half'},
+    {id:'os-alt', cat:'On-site activities', t:'Keyword + location image alt text everywhere', n:'e.g. "fresh salad delivery Bodakdev Ahmedabad". Helps image search and relevance.', p:'low', i:'low', e:'quick'},
+    {id:'os-fresh', cat:'On-site activities', t:'Keep content fresh', n:'Update the monthly menu on time, refresh blog posts every few months, update lastmod in sitemap. Freshness is a ranking signal.', p:'med', i:'med', e:'quick'},
+    {id:'os-faq', cat:'On-site activities', t:'Expand FAQs per page with real questions', n:'Pull from People Also Ask and customer questions. Feeds FAQ rich results and long-tail queries.', p:'low', i:'med', e:'half'},
+
+    // OFF-SITE / LOCAL
+    {id:'of-reviews', cat:'Off-site & local activities', t:'Build a Google review engine (biggest local lever)', n:'Ask every customer for a review with a short link / QR on packaging. Target 50+, then keep a steady drip. Respond to every review.', p:'high', i:'high', e:'multi'},
+    {id:'of-reviewtext', cat:'Off-site & local activities', t:'Get reviews that mention area + dish', n:'Encourage "great salad delivery in Bodakdev" style reviews. Review text boosts local relevance for that area.', p:'med', i:'high', e:'quick'},
+    {id:'of-aggr', cat:'Off-site & local activities', t:'Optimise Zomato & Swiggy listings', n:'Complete menus, photos, accurate prices, collect ratings there too. These pages rank and feed aggregator searches.', p:'high', i:'med', e:'half'},
+    {id:'of-links', cat:'Off-site & local activities', t:'Earn local backlinks', n:'Ahmedabad food/fitness bloggers, gym & yoga studio partnerships, corporate tie-ins, college tie-ups, local news/PR, dietitian collaborations.', p:'high', i:'high', e:'multi'},
+    {id:'of-listicle', cat:'Off-site & local activities', t:'Get featured in "best of Ahmedabad" listicles', n:'Reach out to hungrito, wanderlog, magicpin blog, local lifestyle sites to be included. You join the pages that already rank.', p:'med', i:'med', e:'half'},
+    {id:'of-social', cat:'Off-site & local activities', t:'Run an active Instagram + WhatsApp channel', n:'Weekly reels/posts with location tags, customer transformations, menu drops. Drives brand searches and engagement signals.', p:'med', i:'med', e:'multi'},
+    {id:'of-influencer', cat:'Off-site & local activities', t:'Collaborate with Ahmedabad micro-influencers', n:'Fitness/food micro-influencers for honest reviews + tagged posts. Cheap, builds local trust and links.', p:'med', i:'med', e:'half'},
+    {id:'of-ugc', cat:'Off-site & local activities', t:'Encourage user-generated content + a brand hashtag', n:'Customer photos and tags create fresh social proof and brand mentions.', p:'low', i:'low', e:'quick'},
+
+    // TECHNICAL
+    {id:'tc-purge', cat:'Technical activities', t:'Purge Cloudflare cache after every change', n:'"Cache Everything" means stale HTML/headers serve until purged. Caching > Configuration > Purge Everything after each deploy.', p:'med', i:'med', e:'quick'},
+    {id:'tc-cacherule', cat:'Technical activities', t:'Split the cache rule: long for assets, short for HTML', n:'Versioned CSS/JS (?v=) can cache 1 year; keep HTML short/fresh. One-time setup.', p:'low', i:'low', e:'quick'},
+    {id:'tc-hreflang', cat:'Technical activities', t:'Add hreflang or consolidate with nosh7.com', n:'If keeping both domains, add reciprocal hreflang (hi-IN / en) so they are not treated as competing duplicates.', p:'med', i:'med', e:'half'},
+    {id:'tc-psi', cat:'Technical activities', t:'Run PageSpeed Insights for field Core Web Vitals', n:'Lab numbers are not what Google ranks on. Get real-user (CrUX) data from pagespeed.web.dev.', p:'med', i:'low', e:'quick'},
+    {id:'tc-hsts', cat:'Technical activities', t:'Add HSTS preload + submit (optional hardening)', n:'Add preload to the HSTS header and submit at hstspreload.org.', p:'low', i:'low', e:'quick'},
+
+    // STRATEGIC
+    {id:'st-content', cat:'Strategic (this quarter)', t:'Publish a steady content cadence', n:'Condition guides (PCOD, thyroid, diabetes, weight loss), area guides, comparison posts. Builds topical authority over time.', p:'med', i:'high', e:'multi'},
+    {id:'st-cluster', cat:'Strategic (this quarter)', t:'Build topic clusters with a pillar page', n:'e.g. "Healthy eating in Ahmedabad" pillar linking to all condition + area + plan pages.', p:'med', i:'med', e:'multi'},
+    {id:'st-pr', cat:'Strategic (this quarter)', t:'Local PR + community presence', n:'Health camps, corporate wellness talks, society events. Generates links, reviews and brand searches.', p:'low', i:'med', e:'multi'},
+    {id:'st-track', cat:'Strategic (this quarter)', t:'Track rankings monthly', n:'Watch a fixed keyword set (area + intent) in Search Console; double down on what climbs.', p:'low', i:'med', e:'quick'},
+  ];
+
+  const KEY='nosh7-seo-tracker';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}};
+  const save=s=>localStorage.setItem(KEY,JSON.stringify(s));
+  let state=load();
+
+  const PT={high:'Priority: High',med:'Priority: Med',low:'Priority: Low'};
+  const IT={high:'Impact: High',med:'Impact: Med',low:'Impact: Low'};
+  const ET={quick:'Quick win',half:'Half day',multi:'Multi-day'};
+
+  const cats=[...new Set(TASKS.map(t=>t.cat))];
+  const root=document.getElementById('lists');
+
+  function render(){
+    root.innerHTML='';
+    cats.forEach(cat=>{
+      const items=TASKS.filter(t=>t.cat===cat);
+      const done=items.filter(t=>state[t.id]).length;
+      const head=document.createElement('div');
+      head.className='sec-head';
+      head.innerHTML='<h2 class="sec" style="margin:0">'+cat+'</h2><span class="sec-prog">'+done+' / '+items.length+' done</span>';
+      root.appendChild(head);
+      const ul=document.createElement('ul');ul.className='tasks';
+      items.forEach(t=>{
+        const li=document.createElement('li');li.className='task'+(state[t.id]?' done':'');
+        li.innerHTML='<input type="checkbox" '+(state[t.id]?'checked':'')+' aria-label="done">'+
+          '<div class="task-body"><div class="task-title">'+t.t+'</div>'+
+          '<div class="task-note">'+t.n+'</div>'+
+          '<div class="tags"><span class="tag p-'+t.p+'">'+PT[t.p]+'</span>'+
+          '<span class="tag i-'+t.i+'">'+IT[t.i]+'</span>'+
+          '<span class="tag e-'+t.e+'">'+ET[t.e]+'</span></div></div>';
+        li.querySelector('input').addEventListener('change',e=>{
+          state[t.id]=e.target.checked; save(state); render();
+        });
+        ul.appendChild(li);
+      });
+      root.appendChild(ul);
+    });
+    updateProgress();
+  }
+  function updateProgress(){
+    const total=TASKS.length, done=TASKS.filter(t=>state[t.id]).length;
+    const pct=total?Math.round(done/total*100):0;
+    document.getElementById('ov-bar').style.width=pct+'%';
+    document.getElementById('ov-pct').textContent=pct+'%';
+    document.getElementById('done-count').textContent=done+'/'+total;
+  }
+  document.getElementById('reset').addEventListener('click',()=>{
+    if(confirm('Clear all progress on this device?')){state={};save(state);render();}
+  });
+  render();
+  </script>
+</body>
+</html>

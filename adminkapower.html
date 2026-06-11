@@ -6,21 +6,21 @@
   <title>NOSH7 Admin Panel</title>
   <meta name="robots" content="noindex, nofollow"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
   <style>
     :root{--gd:#1a3c2e;--gm:#2d6a4f;--gf:#52b788;--gl:#b7e4c7;--cr:#faf7f0;--cd:#f0ebe0;--sf:#f4a61d;--sl:#fde68a;--ch:#1c1c1c;--tm:#5a6b62;--wh:#ffffff;--red:#e74c3c;--blue:#3498db;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'DM Sans',sans-serif;background:#0f1f18;color:var(--wh);min-height:100vh;}
+    body{font-family:'IBM Plex Sans','Noto Sans Devanagari','Noto Sans Gujarati',sans-serif;background:#0f1f18;color:var(--wh);min-height:100vh;}
 
     /* LOGIN */
     #loginScreen{position:fixed;inset:0;background:linear-gradient(135deg,#0a1510,#1a3c2e);display:flex;align-items:center;justify-content:center;z-index:1000;flex-direction:column;gap:1.5rem;}
     .login-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;padding:3rem;width:360px;text-align:center;backdrop-filter:blur(20px);}
     .login-box img{width:80px;height:80px;border-radius:50%;margin-bottom:1rem;}
-    .login-box h1{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.4rem;}
+    .login-box h1{font-family:'IBM Plex Sans', sans-serif;font-size:1.6rem;margin-bottom:.4rem;}
     .login-box p{color:rgba(255,255,255,.5);font-size:.85rem;margin-bottom:2rem;}
-    .login-box input{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:.8rem;padding:.9rem 1.2rem;color:var(--wh);font-family:'DM Sans',sans-serif;font-size:1rem;margin-bottom:1rem;outline:none;transition:border .2s;}
+    .login-box input{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:.8rem;padding:.9rem 1.2rem;color:var(--wh);font-family:'IBM Plex Sans',sans-serif;font-size:1rem;margin-bottom:1rem;outline:none;transition:border .2s;}
     .login-box input:focus{border-color:var(--gf);}
-    .login-btn{width:100%;background:var(--gf);color:var(--gd);border:none;padding:1rem;border-radius:.8rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;}
+    .login-btn{width:100%;background:var(--gf);color:var(--gd);border:none;padding:1rem;border-radius:.8rem;font-family:'IBM Plex Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;}
     .login-btn:hover{background:var(--gl);}
     .login-err{color:#ff6b6b;font-size:.82rem;display:none;margin-top:.5rem;}
 
@@ -29,9 +29,9 @@
     .topbar{background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
     .topbar-logo{display:flex;align-items:center;gap:.8rem;}
     .topbar-logo img{height:40px;width:40px;border-radius:50%;}
-    .topbar-logo span{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--wh);}
+    .topbar-logo span{font-family:'IBM Plex Sans', sans-serif;font-size:1.1rem;color:var(--wh);}
     .topbar-right{display:flex;align-items:center;gap:1rem;font-size:.85rem;color:rgba(255,255,255,.5);}
-    .logout-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);padding:.4rem 1rem;border-radius:100px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;transition:all .2s;}
+    .logout-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);padding:.4rem 1rem;border-radius:100px;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;font-size:.82rem;transition:all .2s;}
     .logout-btn:hover{background:rgba(255,255,255,.15);}
 
     .layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 65px);}
@@ -47,11 +47,11 @@
     .panel.active{display:block;}
 
     /* CARDS */
-    .page-title{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.4rem;}
+    .page-title{font-family:'IBM Plex Sans', sans-serif;font-size:1.6rem;margin-bottom:.4rem;}
     .page-sub{color:rgba(255,255,255,.4);font-size:.88rem;margin-bottom:2rem;}
     .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2rem;}
     .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:1.5rem;}
-    .stat-card .val{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gf);}
+    .stat-card .val{font-family:'IBM Plex Sans', sans-serif;font-size:2rem;color:var(--gf);}
     .stat-card .lbl{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.3rem;}
 
     .card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1.2rem;padding:1.5rem;margin-bottom:1.5rem;}
@@ -61,12 +61,12 @@
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
     .form-group{margin-bottom:1rem;}
     label{display:block;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.05em;}
-    input[type=text],input[type=email],input[type=url],input[type=password],textarea,select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:.7rem;padding:.75rem 1rem;color:var(--wh);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border .2s;}
+    input[type=text],input[type=email],input[type=url],input[type=password],textarea,select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:.7rem;padding:.75rem 1rem;color:var(--wh);font-family:'IBM Plex Sans',sans-serif;font-size:.9rem;outline:none;transition:border .2s;}
     input[type=text]:focus,input[type=email]:focus,input[type=url]:focus,textarea:focus,select:focus{border-color:var(--gf);}
     textarea{resize:vertical;min-height:100px;}
     select option{background:#1a3c2e;color:var(--wh);}
 
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:.7rem;border:none;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:.7rem;border:none;font-family:'IBM Plex Sans',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;}
     .btn-green{background:var(--gf);color:var(--gd);}
     .btn-green:hover{background:var(--gl);}
     .btn-red{background:rgba(231,76,60,.2);color:#ff6b6b;border:1px solid rgba(231,76,60,.3);}
@@ -128,9 +128,9 @@
 <!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-box">
-    <img src="/assets/logo.png" alt="NOSH7"/>
+    <img decoding="async" src="/assets/logo.webp" alt="NOSH7"/>
     <h1>Admin Panel</h1>
-    <p>NOSH7 Control Center — Authorized Access Only</p>
+    <p>NOSH7 Control Center - Authorized Access Only</p>
     <input type="password" id="pwInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')login()"/>
     <button class="login-btn" onclick="login()">Sign In →</button>
     <div class="login-err" id="loginErr">⚠️ Incorrect password. Try again.</div>
@@ -141,7 +141,7 @@
 <div id="adminApp">
   <div class="topbar">
     <div class="topbar-logo">
-      <img src="/assets/logo.png" alt="NOSH7"/>
+      <img decoding="async" src="/assets/logo.webp" alt="NOSH7"/>
       <span>NOSH7 Admin</span>
     </div>
     <div class="topbar-right">
@@ -176,8 +176,8 @@
         <div class="page-title">Good Morning, NOSH7 👋</div>
         <div class="page-sub">Here's your site overview.</div>
         <div class="stat-row" id="dashStats">
-          <div class="stat-card"><div class="val" id="ds-posts">—</div><div class="lbl">Blog Posts Live</div></div>
-          <div class="stat-card"><div class="val" id="ds-menu">—</div><div class="lbl">Menus Uploaded</div></div>
+          <div class="stat-card"><div class="val" id="ds-posts">-</div><div class="lbl">Blog Posts Live</div></div>
+          <div class="stat-card"><div class="val" id="ds-menu">-</div><div class="lbl">Menus Uploaded</div></div>
           <div class="stat-card"><div class="val">2000+</div><div class="lbl">Happy Customers</div></div>
           <div class="stat-card"><div class="val">3</div><div class="lbl">Active Plans</div></div>
         </div>
@@ -229,14 +229,14 @@
           </div>
           <div class="form-group">
             <label>Title (include SEO keyword)</label>
-            <input type="text" id="b-title" placeholder="e.g. Achhe Se Chabaana — Ek Habit Jo Sab Kuch Badal Deti Hai"/>
+            <input type="text" id="b-title" placeholder="e.g. Achhe Se Chabaana - Ek Habit Jo Sab Kuch Badal Deti Hai"/>
           </div>
           <div class="form-group">
             <label>Excerpt (2-3 sentences, include keyword naturally)</label>
             <textarea id="b-excerpt" placeholder="Write a compelling 2-3 sentence summary..."></textarea>
           </div>
           <div class="form-group">
-            <label>Key Insight (1 science fact — shown as callout)</label>
+            <label>Key Insight (1 science fact - shown as callout)</label>
             <input type="text" id="b-insight" placeholder="e.g. Chewing 20-30 times per bite can reduce calorie intake by 12%"/>
           </div>
           <div class="form-group">
@@ -298,7 +298,7 @@
               <strong style="color:var(--gf);">📁 For PDF or any file type:</strong><br/>
               1. Upload PDF / image to Google Drive<br/>
               2. Right click → Share → Anyone with link → Copy link<br/>
-              3. Paste the full link here — we'll embed it automatically<br/>
+              3. Paste the full link here - we'll embed it automatically<br/>
               <strong style="color:var(--sf);">Works with PDF, JPG, PNG. Recommended max: 10MB</strong>
             </div>
           </div>
@@ -372,24 +372,23 @@
       <!-- PLANS EDITOR -->
       <div class="panel" id="panel-plans">
         <div class="page-title">Plans & Pricing 💳</div>
-        <div class="page-sub">View current plan structure. Prices are set — contact your developer to change core pricing logic.</div>
+        <div class="page-sub">View current plan structure. Prices are set - contact your developer to change core pricing logic.</div>
         <div class="card">
           <h3>📊 Current Plans</h3>
           <table>
             <thead><tr><th>Plan</th><th>Price</th><th>Days</th><th>Per Day</th><th>Discount</th><th>Health Drink</th></tr></thead>
             <tbody>
-              <tr><td>Trial Pack</td><td>₹999</td><td>5</td><td>₹200</td><td><span class="badge badge-gold">16% OFF</span></td><td>—</td></tr>
-              <tr><td>26-Day Plan</td><td>₹4,914</td><td>26</td><td>₹189</td><td><span class="badge badge-gold">21% OFF</span></td><td><span class="badge badge-green">1 week free</span></td></tr>
-              <tr><td>60-Day Plan</td><td>₹10,740</td><td>60</td><td>₹179</td><td><span class="badge badge-gold">25% OFF</span></td><td><span class="badge badge-green">2 weeks free</span></td></tr>
+              <tr><td>Trial Pack</td><td>₹1,250</td><td>5</td><td>₹220</td><td><span class="badge badge-gold">26% OFF</span></td><td>-</td></tr>
+              <tr><td>25-Day Plan</td><td>₹4,999</td><td>26</td><td>₹200</td><td><span class="badge badge-gold">33% OFF</span></td><td><span class="badge badge-green">1 week free</span></td></tr>
             </tbody>
           </table>
-          <p style="font-size:.78rem;color:rgba(255,255,255,.3);margin-top:1rem;">Single meal reference price: ₹239 | Seeds included in every plan | Jain Dairy paneer</p>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.3);margin-top:1rem;">Single meal reference price: ₹299 | Seeds included in every plan | Jain Dairy paneer</p>
         </div>
         <div class="card">
           <h3>✏️ Plan Notes / Highlights</h3>
           <div class="form-group">
             <label>Special Offer Text (shown on subscription page)</label>
-            <input type="text" id="pl-offer" placeholder="e.g. 🎉 Holi Special: Extra 5% off on 60-day plan"/>
+            <input type="text" id="pl-offer" placeholder="e.g. 🎉 Holi Special: Extra 5% off on monthly plan"/>
           </div>
           <button class="btn btn-saffron" onclick="saveOffer()">💾 Save Offer Text</button>
         </div>
@@ -427,18 +426,18 @@
           <div class="rv-badge">⭐ Google Review</div>
           <div class="review-card">
             <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">"NOSH7 ne meri life change kar di. 60-day plan liya aur 4 kilo gaya. Taste bhi bahut aacha hai!"</div>
-            <div class="rv-author">— Priya Shah, Satellite Ahmedabad</div>
+            <div class="rv-text">"NOSH7 ne meri life change kar di. Monthly plan liya aur 4 kilo gaya. Taste bhi bahut aacha hai!"</div>
+            <div class="rv-author">- Priya Shah, Satellite Ahmedabad</div>
           </div>
           <div class="review-card">
             <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">"Office lunch ke liye perfect. Trial pack se shuru kiya, ab 26-day plan pe hoon. Fresh aur tasty!"</div>
-            <div class="rv-author">— Rohan Patel, Navrangpura</div>
+            <div class="rv-text">"Office lunch ke liye perfect. Trial pack se shuru kiya, ab 25-day plan pe hoon. Fresh aur tasty!"</div>
+            <div class="rv-author">- Rohan Patel, Navrangpura</div>
           </div>
           <div class="review-card">
             <div class="rv-stars">★★★★★</div>
-            <div class="rv-text">"₹179/day mein itna fresh khana — Gujarat ka best deal! Jain Dairy paneer is the best quality."</div>
-            <div class="rv-author">— Meera Desai, Bodakdev</div>
+            <div class="rv-text">"₹200/day mein itna fresh khana - Gujarat ka best deal! Jain Dairy paneer is the best quality."</div>
+            <div class="rv-author">- Meera Desai, Bodakdev</div>
           </div>
         </div>
       </div>
@@ -611,7 +610,7 @@ function showPanel(id, el) {
 // ── DASHBOARD ─────────────────────────────────────────────
 async function loadDashboard() {
   const posts = await sbGet('blog_posts', '?select=id,title,tag,date_label,published&order=created_at.desc&limit=5');
-  document.getElementById('ds-posts').textContent = Array.isArray(posts) ? posts.filter(p=>p.published).length : '—';
+  document.getElementById('ds-posts').textContent = Array.isArray(posts) ? posts.filter(p=>p.published).length : '-';
   const menus = await sbGet('monthly_menu', '?select=id');
   document.getElementById('ds-menu').textContent = Array.isArray(menus) ? menus.length : 0;
   if (Array.isArray(posts) && posts.length) {
@@ -758,7 +757,7 @@ async function loadSettingsTable() {
   const el = document.getElementById('settings-table');
   if (!Array.isArray(settings)) { el.innerHTML = '<p>Loading...</p>'; return; }
   el.innerHTML = '<table><thead><tr><th>Key</th><th>Value</th><th>Updated</th></tr></thead><tbody>' +
-    settings.map(s => `<tr><td style="font-family:monospace;font-size:.78rem;color:var(--gf);">${s.key}</td><td style="font-size:.82rem">${s.key==='admin_password'?'••••••':s.value}</td><td style="font-size:.75rem;color:rgba(255,255,255,.3)">${s.updated_at ? new Date(s.updated_at).toLocaleDateString('en-IN') : '—'}</td></tr>`).join('') +
+    settings.map(s => `<tr><td style="font-family:monospace;font-size:.78rem;color:var(--gf);">${s.key}</td><td style="font-size:.82rem">${s.key==='admin_password'?'••••••':s.value}</td><td style="font-size:.75rem;color:rgba(255,255,255,.3)">${s.updated_at ? new Date(s.updated_at).toLocaleDateString('en-IN') : '-'}</td></tr>`).join('') +
     '</tbody></table>';
 }
 
@@ -866,6 +865,17 @@ function copyEmbed() {
   const text = document.getElementById('embed-code-box').textContent;
   navigator.clipboard.writeText(text).then(() => toast('Embed code copied!'));
 }
+</script>
+
+<!-- 100% privacy-first analytics -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_AZPE2NqJmbnWMwMKgGBmFkdpXr7P3ixKZMQZHeYo3Z7C', {
+        api_host: 'https://events.nosh7.in',
+        ui_host: 'https://us.posthog.com',
+        defaults: '2026-01-30',
+        person_profiles: 'identified_only',
+    })
 </script>
 </body>
 </html>
