@@ -1,22 +1,26 @@
 # NOSH7.in Technical SEO Audit Report
-**Date:** June 11, 2026  
+**Date:** June 11, 2026 (corrected and updated same day)  
 **Site:** https://nosh7.in  
 **Auditor:** Claude Code  
-**Overall Score:** 73/100 (Good - Needs Fixes)
+**Overall Score:** 88/100 (Strong)
+
+---
+
+## Correction and Status Update (June 11, 2026)
+
+The original audit reported "missing security headers" as a critical issue. This finding was WRONG. It was caused by a truncated header check during the audit. A full verification later the same day confirmed that nosh7.in already serves all six security headers via the Cloudflare Transform Rule "NOSH7 Security Headers" (CSP, X-Frame-Options, Referrer-Policy, Strict-Transport-Security, X-Content-Type-Options, Permissions-Policy). The CSP is tailored to the actual stack (Google Fonts, PostHog, Simple Analytics, Cloudflare Insights, SociableKit, chat worker, Supabase) and no page resources are blocked by it.
+
+The two real critical issues from the audit have both been fixed:
+- sitemap.xml expanded from 4 to 41 URLs and submitted to Google Search Console
+- hreflang tags (en / hi-IN) added to all pages
 
 ---
 
 ## Executive Summary
 
-NOSH7.in has a solid foundation with excellent on-page SEO markup, mobile responsiveness, and security infrastructure. However, three critical issues limit crawl coverage and security posture:
+NOSH7.in has a strong foundation: excellent on-page SEO markup, complete security headers, mobile responsiveness, and clean static HTML. The two critical issues found at audit time (incomplete sitemap, missing hreflang tags) were fixed the same day.
 
-1. **Incomplete sitemap.xml** (only 4 of 40+ pages indexed)
-2. **Missing security headers** (CSP, X-Frame-Options, Referrer-Policy)
-3. **No hreflang tags** (language/region signals for multi-version sites)
-
-Additionally, two high-priority fixes improve UX and SEO: clean URLs (remove .html extensions) and explicit AI crawler policy in robots.txt.
-
-**Recommendation:** Fix critical items within 48 hours, high-priority items within one week.
+Remaining optional improvements: clean URLs (remove .html extensions), explicit AI crawler policy in robots.txt, and IndexNow support.
 
 ---
 
@@ -25,9 +29,9 @@ Additionally, two high-priority fixes improve UX and SEO: clean URLs (remove .ht
 | Category | Score | Status | Priority |
 |----------|-------|--------|----------|
 | Crawlability | 95/100 | ✅ Excellent | — |
-| Indexability | 65/100 | ⚠️ Needs work | CRITICAL |
-| Security | 70/100 | ⚠️ Partial | CRITICAL |
-| URL Structure | 75/100 | ⚠️ Needs work | HIGH |
+| Indexability | 85/100 | ✅ Fixed (sitemap + hreflang) | DONE |
+| Security | 95/100 | ✅ Excellent (corrected finding) | DONE |
+| URL Structure | 75/100 | ⚠️ Needs work | OPTIONAL |
 | Mobile Optimization | 90/100 | ✅ Excellent | — |
 | Core Web Vitals | 85/100 | ✅ Good | — |
 | Structured Data | 95/100 | ✅ Excellent | — |
@@ -110,50 +114,24 @@ find . -name "*.html" -type f | sort
 
 ---
 
-### 3. SECURITY (70/100) ⚠️ CRITICAL
+### 3. SECURITY (95/100) ✅ EXCELLENT (corrected finding)
 
-#### Current Security Posture:
+**Correction:** The original audit incorrectly reported CSP, X-Frame-Options, and Referrer-Policy as missing. The check used a truncated header listing. Full verification confirmed all headers were already in place via the Cloudflare Transform Rule "NOSH7 Security Headers".
 
-**What's working:**
-- ✅ HTTPS enforced (HTTP/2 200 status)
-- ✅ Valid SSL certificate (Cloudflare)
-- ✅ Strict-Transport-Security (HSTS): max-age=31536000; includeSubDomains (1-year)
+**Verified live headers (June 11, 2026):**
+- ✅ HTTPS enforced (HTTP/2 200 status), valid SSL certificate (Cloudflare)
+- ✅ Strict-Transport-Security: max-age=31536000; includeSubDomains (1 year)
 - ✅ X-Content-Type-Options: nosniff (prevents MIME sniffing)
-- ✅ Access-Control-Allow-Origin: * (appropriate for static site)
+- ✅ Content-Security-Policy: tailored allowlist covering Google Fonts, PostHog, Simple Analytics, Cloudflare Insights, SociableKit, the nosh7-chat worker, and Supabase, with object-src 'none', base-uri 'self', form-action 'self', frame-ancestors 'none', and upgrade-insecure-requests
+- ✅ X-Frame-Options: SAMEORIGIN (note: CSP frame-ancestors 'none' takes precedence and is stricter, which is fine)
+- ✅ Referrer-Policy: strict-origin-when-cross-origin
+- ✅ Permissions-Policy: geolocation=(), microphone=(), camera=()
 
-**Missing headers (CRITICAL):**
+**Compatibility verified:** every external domain the pages load is allowlisted in the CSP; no resources are blocked. Outbound links (Google Maps, Swiggy, Zomato, WhatsApp, Instagram) are unaffected by CSP.
 
-| Header | Impact | Recommended Value |
-|--------|--------|-------------------|
-| Content-Security-Policy | Prevents XSS attacks | `default-src 'self' https:; script-src 'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com` |
-| X-Frame-Options | Prevents clickjacking | `SAMEORIGIN` |
-| Referrer-Policy | Controls referrer leakage | `strict-origin-when-cross-origin` |
+**Remaining 5 points:** the CSP uses 'unsafe-inline' in script-src and style-src. Replacing inline scripts/styles with nonces or hashes would harden it further. Low priority for a static marketing site.
 
-**Fix: Configure via Cloudflare**
-
-Option A: Cloudflare Page Rules (UI)
-1. Dashboard → nosh7.in → Page Rules
-2. Create rule: URL = `nosh7.in/*`
-3. Add settings:
-   - Add Header: `Content-Security-Policy: default-src 'self' https:; script-src 'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com;`
-   - Add Header: `X-Frame-Options: SAMEORIGIN`
-   - Add Header: `Referrer-Policy: strict-origin-when-cross-origin`
-
-Option B: Cloudflare Workers (programmatic)
-```javascript
-export default {
-  async fetch(request) {
-    const response = await fetch(request);
-    const newResponse = new Response(response.body, response);
-    newResponse.headers.set('Content-Security-Policy', "default-src 'self' https:; script-src 'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com;");
-    newResponse.headers.set('X-Frame-Options', 'SAMEORIGIN');
-    newResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-    return newResponse;
-  },
-};
-```
-
-**Timeline:** This week (CRITICAL)
+**Timeline:** Done. No action needed.
 
 ---
 
@@ -382,15 +360,16 @@ Sitemap: https://nosh7.in/sitemap.xml
 
 ## Action Plan
 
-### Immediate (Today/Tomorrow) — CRITICAL
-- [ ] Expand sitemap.xml to include all 40+ pages
-- [ ] Add hreflang tags to every page (en for nosh7.com, hi-IN for nosh7.in)
-- [ ] Set up security headers via Cloudflare (CSP, X-Frame-Options, Referrer-Policy)
+### Completed (June 11, 2026)
+- [x] Expand sitemap.xml to include all 40+ pages (now 41 URLs)
+- [x] Add hreflang tags to every page (en for nosh7.com, hi-IN for nosh7.in)
+- [x] Security headers via Cloudflare: already existed ("NOSH7 Security Headers" Transform Rule), verified live
+- [x] Submit sitemap to Google Search Console
 
-### This Week — HIGH PRIORITY
+### This Week — OPTIONAL
 - [ ] Implement clean URLs (remove .html extensions, 301 redirects)
-- [ ] Decide and implement AI crawler policy in robots.txt
-- [ ] Test with Google Search Console (submit sitemap, check indexability)
+- [ ] Decide and implement AI crawler policy in robots.txt (current default: all allowed, which is the recommended setting)
+- [ ] Monitor GSC coverage report as the 41 pages get indexed (expect 1-2 weeks)
 
 ### Next Month — MEDIUM PRIORITY
 - [ ] Monitor Core Web Vitals via PageSpeed Insights
