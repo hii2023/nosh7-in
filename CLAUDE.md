@@ -9,7 +9,7 @@
 - Target audience: Health-conscious working professionals in Ahmedabad
 
 ## Purchase Flow
-- All CTAs must redirect to: https://www.nosh7.com/order
+- All CTAs must redirect to: https://start.nosh7.in/
 - No payment or checkout logic on this site
 - WhatsApp fallback order link: https://wa.me/919712989498
 - Replace 9712989498 with actual WhatsApp business number before going live
@@ -51,7 +51,7 @@
 ## Agent Rules
 1. NEVER modify nosh7.com in any way
 2. Always git commit after changes with descriptive message
-3. All CTAs and order buttons must point to https://www.nosh7.com/order
+3. All CTAs and order buttons must point to https://start.nosh7.in/
 4. Keep sitemap.xml updated whenever pages are added or modified
 5. Every page must have: title tag, meta description, canonical URL, OG tags, JSON-LD schema
 6. Image alt text must include primary keyword + location (e.g., "fresh salad delivery Ahmedabad")

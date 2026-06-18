@@ -1,6 +1,6 @@
 # NOSH7.in — India Local SEO Site
 
-The India-focused SEO landing site for **NOSH7 Cloud Kitchen**, Ahmedabad's salad and healthy meal subscription service. All order CTAs redirect to `nosh7.com/order`.
+The India-focused SEO landing site for **NOSH7 Cloud Kitchen**, Ahmedabad's salad and healthy meal subscription service. All order CTAs redirect to `start.nosh7.in`.
 
 ## What It Does
 
@@ -10,7 +10,7 @@ Targets local Indian search traffic — especially Ahmedabad users searching for
 
 - **Hindi / Hinglish homepage** — designed for Indian search intent
 - **Ahmedabad local SEO page** — location-specific content and keywords
-- **Subscription/plans page** — redirects to nosh7.com/order for conversion
+- **Subscription/plans page** — redirects to start.nosh7.in for conversion
 - **6 SEO blog articles** covering: diabetes diet, healthy living, meal plans, high-protein food, PCOD diet, and healthy food in Ahmedabad
 - **Corporate/professional diet page** — targets office-goers
 - **Admin panel** (`adminkapower.html`) — internal content management
