@@ -72,10 +72,9 @@
     localStorage.setItem('nosh7-lang', lang);
   }
 
-  window.toggleSiteLang = function() { setPageLang(siteLang === 'en' ? 'gu' : 'en'); };
-
-  const _savedLang = localStorage.getItem('nosh7-lang');
-  if (_savedLang && _savedLang !== 'en') setPageLang(_savedLang);
+  // Gujarati language disabled — site is English-only. Clear any previously saved preference.
+  window.toggleSiteLang = function() {};
+  localStorage.removeItem('nosh7-lang');
 
   // Nav scroll shadow
   const nav = document.getElementById('mainNav');
