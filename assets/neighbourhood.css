@@ -14,7 +14,7 @@
   --radius-pill: 100px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'IBM Plex Sans','Noto Sans Devanagari','Noto Sans Gujarati',sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.7; }
+body { font-family: 'IBM Plex Sans','Noto Sans Devanagari',sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.7; }
 a { text-decoration: none; }
 
 /* NAV */
