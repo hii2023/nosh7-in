@@ -447,7 +447,10 @@
     .health-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 0.6rem; }
     .health-card { background: var(--white); border-radius: var(--radius-lg); padding: 1.5rem; border: 2px solid var(--cream-dark); display: flex; align-items: center; gap: 1rem; text-decoration: none; transition: all .3s; cursor: pointer; }
     .health-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.09); }
-    .health-icon-wrap { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .health-icon-wrap { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; transition: transform .3s ease; }
+    .health-icon-wrap::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(160deg, rgba(255,255,255,.5), rgba(255,255,255,0) 55%); pointer-events: none; }
+    .health-icon-wrap svg { width: 24px; height: 24px; position: relative; z-index: 1; filter: drop-shadow(0 1px 1.5px rgba(0,0,0,.22)); }
+    .health-card:hover .health-icon-wrap { transform: scale(1.07); }
     .health-card h3 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; color: var(--green-deep); margin-bottom: 0.2rem; }
     .health-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.55; }
 
@@ -716,7 +719,7 @@
   </div>
 
   <!-- Flat links -->
-  <a href="https://nosh7.in/assets/nosh7-salad-meal-menu-july-2026-ahmedabad.webp" target="_blank" rel="noopener">
+  <a href="https://nosh7.in/assets/nosh7-salad-meal-menu-july-2026-ahmedabad.jpg" target="_blank" rel="noopener">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
     This Month's Menu
   </a>
@@ -931,7 +934,7 @@
   <div style="text-align:center; padding:1rem 1rem 2rem;">
     <span class="section-tag">Menu - July 2026</span>
     <h2 class="section-title" id="menu-title" style="color:var(--cream);">This Month's Menu</h2>
-    <a href="/assets/nosh7-salad-meal-menu-july-2026-ahmedabad.webp" target="_blank" rel="noopener" class="btn btn-saffron" style="font-size:1rem; padding:1rem 2.5rem; margin-top:1.5rem;">
+    <a href="/assets/nosh7-salad-meal-menu-july-2026-ahmedabad.jpg" target="_blank" rel="noopener" class="btn btn-saffron" style="font-size:1rem; padding:1rem 2.5rem; margin-top:1.5rem;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
       View July Menu
     </a>
@@ -1004,8 +1007,8 @@
   <div class="health-grid">
 
     <a href="https://start.nosh7.in/?track=weight-loss" class="health-card" style="border-color:#ffe0cc;">
-      <div class="health-icon-wrap" style="background:#fff0e6;">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e07000" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#fb923c,#ea580c);box-shadow:0 6px 16px -4px rgba(234,88,12,.5),inset 0 1px 0 rgba(255,255,255,.45);">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5l8 3v6.5c0 5.6-5.4 9-8 10-2.6-1-8-4.4-8-10V5.5l8-3z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12l2.3 2.3 4.3-4.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div>
         <h3>Weight Loss</h3>
@@ -1014,8 +1017,8 @@
     </a>
 
     <a href="https://start.nosh7.in/?track=low-sugar" class="health-card" style="border-color:#cce4ff;">
-      <div class="health-icon-wrap" style="background:#e8f4ff;">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="2"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M12 12v4M12 16l-2 2M12 16l2 2"/></svg>
+      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#38bdf8,#2563eb);box-shadow:0 6px 16px -4px rgba(37,99,235,.5),inset 0 1px 0 rgba(255,255,255,.45);">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.2c3 3.8 6 6.9 6 10.1a6 6 0 11-12 0c0-3.2 3-6.3 6-10.1z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.4 14a2.6 2.6 0 002.6 2.6" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg>
       </div>
       <div>
         <h3>Diabetes Management</h3>
@@ -1024,8 +1027,8 @@
     </a>
 
     <a href="https://start.nosh7.in/?track=healthy-fresh" class="health-card" style="border-color:#ffd6f0;">
-      <div class="health-icon-wrap" style="background:#fff0fa;">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#cc0077" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#f472b6,#db2777);box-shadow:0 6px 16px -4px rgba(219,39,119,.5),inset 0 1px 0 rgba(255,255,255,.45);">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 20.3l-1.3-1.2C6 14.9 3.2 12.4 3.2 9.2 3.2 6.6 5.2 4.6 7.8 4.6c1.5 0 2.9.7 3.8 1.8.9-1.1 2.3-1.8 3.8-1.8 2.6 0 4.6 2 4.6 4.6 0 3.2-2.8 5.7-7.5 9.9L12 20.3z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg>
       </div>
       <div>
         <h3>Thyroid Support</h3>
@@ -1034,8 +1037,8 @@
     </a>
 
     <a href="https://start.nosh7.in/?track=healthy-fresh" class="health-card" style="border-color:#e8ccff;">
-      <div class="health-icon-wrap" style="background:#f5eeff;">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8800cc" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#a78bfa,#7c3aed);box-shadow:0 6px 16px -4px rgba(124,58,237,.5),inset 0 1px 0 rgba(255,255,255,.45);">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.1" fill="rgba(255,255,255,.3)" stroke="#fff" stroke-width="1.6"/><path d="M12 2.6c1.6 1.2 1.6 4.2 0 6.2-1.6-2-1.6-5 0-6.2zM12 21.4c-1.6-1.2-1.6-4.2 0-6.2 1.6 2 1.6 5 0 6.2zM2.6 12c1.2-1.6 4.2-1.6 6.2 0-2 1.6-5 1.6-6.2 0zM21.4 12c-1.2 1.6-4.2 1.6-6.2 0 2-1.6 5-1.6 6.2 0z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>
       </div>
       <div>
         <h3>PCOD / PCOS</h3>
@@ -1044,8 +1047,8 @@
     </a>
 
     <a href="https://start.nosh7.in/?track=high-protein" class="health-card" style="border-color:var(--green-light);">
-      <div class="health-icon-wrap" style="background:var(--green-light);">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a3c2e" stroke-width="2"><path d="M6.5 6.5h11M6.5 17.5h11M3 12h18M6 6.5v11M18 6.5v11"/></svg>
+      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#34d399,#059669);box-shadow:0 6px 16px -4px rgba(5,150,105,.5),inset 0 1px 0 rgba(255,255,255,.45);">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="8" width="2.8" height="8" rx="1.2" fill="rgba(255,255,255,.28)" stroke="#fff" stroke-width="1.5"/><rect x="16.2" y="8" width="2.8" height="8" rx="1.2" fill="rgba(255,255,255,.28)" stroke="#fff" stroke-width="1.5"/><path d="M7.8 12h8.4M3.2 10.5v3M20.8 10.5v3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
       </div>
       <div>
         <h3>High Protein / Muscle</h3>
