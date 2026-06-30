@@ -349,16 +349,19 @@
     .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.55rem; }
     .why-card { border-radius: var(--radius-md); padding: 0.75rem 0.85rem; border: 1.5px solid transparent; transition: all .3s; position: relative; overflow: hidden; cursor: default; }
     .why-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.09); }
-    .why-icon-wrap { width: 34px; height: 34px; border-radius: 0.55rem; display: flex; align-items: center; justify-content: center; margin-bottom: 0.4rem; }
+    .why-icon-wrap { width: 42px; height: 42px; border-radius: 0.72rem; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; position: relative; transition: transform .3s ease; }
+    .why-icon-wrap::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(160deg, rgba(255,255,255,.45), rgba(255,255,255,0) 55%); pointer-events: none; }
+    .why-icon-wrap svg { width: 22px; height: 22px; position: relative; z-index: 1; filter: drop-shadow(0 1px 1.5px rgba(0,0,0,.2)); }
+    .why-card:hover .why-icon-wrap { transform: translateY(-1px) scale(1.05); }
     .why-card h3 { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.02rem; color: var(--green-deep); margin-bottom: 0.2rem; line-height: 1.3; }
     .why-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
-    /* Colourful card variants */
-    .why-c1 { background: #fff8f0; border-color: #fde0c4; } .why-c1 .why-icon-wrap { background: #ffecd9; }
-    .why-c2 { background: #f0f7ff; border-color: #c4dffe; } .why-c2 .why-icon-wrap { background: #daeeff; }
-    .why-c3 { background: #f0fdf4; border-color: #bbf7d0; } .why-c3 .why-icon-wrap { background: #d1fae5; }
-    .why-c4 { background: #fefce8; border-color: #fde68a; } .why-c4 .why-icon-wrap { background: #fef9c3; }
-    .why-c5 { background: #fdf2f8; border-color: #f5d0fe; } .why-c5 .why-icon-wrap { background: #fae8ff; }
-    .why-c6 { background: #f5f3ff; border-color: #ddd6fe; } .why-c6 .why-icon-wrap { background: #ede9fe; }
+    /* Colourful card variants — premium gradient icon tiles */
+    .why-c1 { background: #fff8f0; border-color: #fde0c4; } .why-c1 .why-icon-wrap { background: linear-gradient(145deg, #fb923c, #ea580c); box-shadow: 0 6px 15px -4px rgba(234,88,12,.55), inset 0 1px 0 rgba(255,255,255,.45); }
+    .why-c2 { background: #f0f7ff; border-color: #c4dffe; } .why-c2 .why-icon-wrap { background: linear-gradient(145deg, #38bdf8, #2563eb); box-shadow: 0 6px 15px -4px rgba(37,99,235,.55), inset 0 1px 0 rgba(255,255,255,.45); }
+    .why-c3 { background: #f0fdf4; border-color: #bbf7d0; } .why-c3 .why-icon-wrap { background: linear-gradient(145deg, #34d399, #059669); box-shadow: 0 6px 15px -4px rgba(5,150,105,.55), inset 0 1px 0 rgba(255,255,255,.45); }
+    .why-c4 { background: #fefce8; border-color: #fde68a; } .why-c4 .why-icon-wrap { background: linear-gradient(145deg, #fbbf24, #d97706); box-shadow: 0 6px 15px -4px rgba(217,119,6,.55), inset 0 1px 0 rgba(255,255,255,.45); }
+    .why-c5 { background: #fdf2f8; border-color: #f5d0fe; } .why-c5 .why-icon-wrap { background: linear-gradient(145deg, #f472b6, #db2777); box-shadow: 0 6px 15px -4px rgba(219,39,119,.55), inset 0 1px 0 rgba(255,255,255,.45); }
+    .why-c6 { background: #f5f3ff; border-color: #ddd6fe; } .why-c6 .why-icon-wrap { background: linear-gradient(145deg, #a78bfa, #7c3aed); box-shadow: 0 6px 15px -4px rgba(124,58,237,.55), inset 0 1px 0 rgba(255,255,255,.45); }
     @media (max-width: 768px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 380px) { .why-grid { grid-template-columns: 1fr; } }
 
@@ -713,7 +716,7 @@
   </div>
 
   <!-- Flat links -->
-  <a href="https://nosh7.in/assets/nosh7-salad-meal-menu-june-2026-ahmedabad.webp" target="_blank" rel="noopener">
+  <a href="https://nosh7.in/assets/nosh7-salad-meal-menu-july-2026-ahmedabad.webp" target="_blank" rel="noopener">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
     This Month's Menu
   </a>
@@ -871,10 +874,6 @@
         </li>
         <li class="plan-feature">
           <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span data-i18n="p26.f4">Health goal consultation included</span>
-        </li>
-        <li class="plan-feature">
-          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           <span data-i18n="p26.f5">Pause anytime</span>
         </li>
         <li class="plan-feature">
@@ -930,11 +929,11 @@
 <!-- ── MENU ── -->
 <section class="menu-section" id="menu" aria-labelledby="menu-title">
   <div style="text-align:center; padding:1rem 1rem 2rem;">
-    <span class="section-tag">Menu - June 2026</span>
+    <span class="section-tag">Menu - July 2026</span>
     <h2 class="section-title" id="menu-title" style="color:var(--cream);">This Month's Menu</h2>
-    <a href="/assets/nosh7-salad-meal-menu-june-2026-ahmedabad.webp" target="_blank" rel="noopener" class="btn btn-saffron" style="font-size:1rem; padding:1rem 2.5rem; margin-top:1.5rem;">
+    <a href="/assets/nosh7-salad-meal-menu-july-2026-ahmedabad.webp" target="_blank" rel="noopener" class="btn btn-saffron" style="font-size:1rem; padding:1rem 2.5rem; margin-top:1.5rem;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-      View June Menu
+      View July Menu
     </a>
   </div>
 </section>
@@ -948,7 +947,7 @@
 
     <div class="why-card why-c1">
       <div class="why-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e07000" stroke-width="2"><path d="M12 22V2M2 12h20"/><path d="M12 2C6 6 2 10 2 12s4 10 10 10 10-6 10-10S18 6 12 2z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 17C5 9 11 4 20 4c0 9-5 15-13 15-1.1 0-2.1-.2-3-.5z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M4.5 20c1.4-5 4.8-8.6 11-10.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
       </div>
       <h3>Seasonal Fresh</h3>
       <p>Peak nutrition, best taste - what nature offers this season.</p>
@@ -956,7 +955,7 @@
 
     <div class="why-card why-c2">
       <div class="why-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.8"/><path d="M3 9.5h18" stroke="#fff" stroke-width="1.8"/><path d="M8 3v4M16 3v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><path d="M8.4 14.6l2.2 2.2 4.4-4.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <h3>Flexible Plans</h3>
       <p>Trial → Monthly. Pause anytime, no lock-in.</p>
@@ -964,7 +963,7 @@
 
     <div class="why-card why-c3">
       <div class="why-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="5" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="1.7" fill="#fff"/></svg>
       </div>
       <h3>Goal-Specific Meals</h3>
       <p>Weight loss, diabetes, thyroid, PCOD, muscle gain - all covered.</p>
@@ -972,7 +971,7 @@
 
     <div class="why-card why-c4">
       <div class="why-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M13 2.5L4.6 13.4c-.4.5-.05 1.25.6 1.25H11l-1 7.35 8.4-11.1c.4-.5.05-1.25-.6-1.25H12l1-7.15z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
       </div>
       <h3>Never Pre-Made</h3>
       <p>Every order prepared 1 hr before delivery. Zero frozen.</p>
@@ -980,7 +979,7 @@
 
     <div class="why-card why-c5">
       <div class="why-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#be185d" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5l1.9 5.1c.2.6.7 1.1 1.3 1.3l5.1 1.9-5.1 1.9c-.6.2-1.1.7-1.3 1.3L12 19.1l-1.9-5.1c-.2-.6-.7-1.1-1.3-1.3L3.7 10.8l5.1-1.9c.6-.2 1.1-.7 1.3-1.3L12 2.5z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M19 4l.55 1.55L21.1 6.1l-1.55.55L19 8.2l-.55-1.55L16.9 6.1l1.55-.55L19 4z" fill="#fff"/></svg>
       </div>
       <h3>Seeds Included, Drinks Add-On</h3>
       <p>Superfood seeds in every meal. Add a health drink anytime.</p>
@@ -988,7 +987,7 @@
 
     <div class="why-card why-c6">
       <div class="why-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6l2.4 1.85 3-.1.85 2.9 2.5 1.75-.95 2.9.95 2.9-2.5 1.75-.85 2.9-3-.1L12 21.4l-2.4-1.85-3 .1-.85-2.9-2.5-1.75.95-2.9L3.25 9.2l2.5-1.75.85-2.9 3 .1L12 2.6z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.8 12l2.1 2.1 4.3-4.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <h3>Nutritionist Backed</h3>
       <p>Menu crafted by Ahmedabad nutritionists for real results.</p>
@@ -1410,7 +1409,7 @@
     </div>
     <div class="footer-col">
       <h3>Contact</h3>
-      <a href="mailto:health@nosh7.com">health@nosh7.com</a>
+      <a href="mailto:07nosh@gmail.com">07nosh@gmail.com</a>
       <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" target="_blank" rel="noopener">WhatsApp: 9712989498</a>
       <a href="tel:+919712989498">Call: +91 97129 89498</a>
       <a href="https://share.google/YHl8ctFaKCW0Hw0Aq" target="_blank" rel="noopener">Satellite, Ahmedabad, Gujarat</a>
