@@ -102,9 +102,16 @@
     .donut-legend .dot { width: 14px; height: 14px; border-radius: 4px; flex: none; }
     .donut-legend b { margin-left: auto; font-family: 'IBM Plex Sans', sans-serif; color: var(--green-deep); }
 
-    .ideal-meal { margin: 2rem 0 0.5rem; text-align: center; }
-    .ideal-meal img { width: 100%; max-width: 420px; border-radius: 18px; box-shadow: 0 12px 30px rgba(0,0,0,.12); }
     .ideal-cap { font-size: 0.82rem; color: var(--muted); text-align: center; margin: 0 0 1.5rem; }
+
+    .bowl-graphic { background: #f4f8f4; border: 1px solid #d7e6d7; border-radius: 18px; padding: 1.6rem 1.6rem 1.2rem; margin: 2rem 0 0.7rem; }
+    .bowl-graphic-title { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; color: var(--green-deep); font-size: 1.06rem; margin-bottom: 1.2rem; text-align: center; }
+    .bg-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.75rem; }
+    .bg-name { flex: 0 0 44%; font-size: 0.85rem; color: #26332b; font-weight: 600; line-height: 1.3; }
+    .bg-track { flex: 1; height: 17px; background: #dbe6db; border-radius: 8px; overflow: hidden; }
+    .bg-fill { display: block; height: 100%; border-radius: 8px; min-width: 9px; }
+    .bg-pct { flex: 0 0 38px; text-align: right; font-family: 'IBM Plex Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: var(--green-deep); }
+    @media (max-width: 520px) { .bg-name { flex-basis: 40%; font-size: 0.78rem; } }
 
     .name-box { background: linear-gradient(135deg, #14532d, #16a34a); color: #fff; border-radius: 18px; padding: 2rem; margin: 2.2rem 0; }
     .name-box h3 { color: #fff; font-family: 'IBM Plex Sans', sans-serif; margin: 0 0 0.7rem; font-size: 1.3rem; }
@@ -176,7 +183,7 @@
     <svg viewBox="0 0 240 240" width="220" height="220" role="img" aria-label="Ideal complete plate proportion: 45% vegetables, 25% whole grains, 20% protein, 10% healthy fats">
       <g transform="rotate(-90 120 120)" fill="none" stroke-width="36">
         <circle cx="120" cy="120" r="80" stroke="#16a34a" stroke-dasharray="226.19 276.46" stroke-dashoffset="0"/>
-        <circle cx="120" cy="120" r="80" stroke="#eab308" stroke-dasharray="125.66 377.00" stroke-dashoffset="-226.19"/>
+        <circle cx="120" cy="120" r="80" stroke="#ca8a04" stroke-dasharray="125.66 377.00" stroke-dashoffset="-226.19"/>
         <circle cx="120" cy="120" r="80" stroke="#2563eb" stroke-dasharray="100.53 402.13" stroke-dashoffset="-351.85"/>
         <circle cx="120" cy="120" r="80" stroke="#f97316" stroke-dasharray="50.27 452.39" stroke-dashoffset="-452.38"/>
       </g>
@@ -185,17 +192,23 @@
     </svg>
     <ul class="donut-legend">
       <li><span class="dot" style="background:#16a34a;"></span> Vegetables <span style="color:var(--muted);font-size:.8rem;">&nbsp;(fibre, vitamins, minerals)</span> <b>45%</b></li>
-      <li><span class="dot" style="background:#eab308;"></span> Whole grains &amp; complex carbs <b>25%</b></li>
+      <li><span class="dot" style="background:#ca8a04;"></span> Whole grains &amp; complex carbs <b>25%</b></li>
       <li><span class="dot" style="background:#2563eb;"></span> Protein <span style="color:var(--muted);font-size:.8rem;">&nbsp;(paneer, dal, sprouts)</span> <b>20%</b></li>
       <li><span class="dot" style="background:#f97316;"></span> Healthy fats <span style="color:var(--muted);font-size:.8rem;">&nbsp;(seeds, nuts)</span> <b>10%</b></li>
     </ul>
   </div>
-  <p style="font-size:0.9rem;color:var(--muted);text-align:center;margin-top:-0.5rem;">And the 7th nutrient, <strong>water</strong>, goes alongside every meal. Vitamins and minerals are not a separate slice - they come packed <em>inside</em> those colourful vegetables, seeds and legumes, which is exactly why variety matters.</p>
+  <p style="font-size:0.92rem;color:var(--body-text);text-align:center;margin-top:-0.5rem;">And the 7th nutrient, <strong>water</strong>, goes alongside every meal. Vitamins and minerals are not a separate slice - they come packed <em>inside</em> those colourful vegetables, seeds and legumes, which is exactly why variety matters.</p>
 
-  <div class="ideal-meal">
-    <img decoding="async" loading="lazy" src="/assets/nosh7-healthy-salad-meal-ahmedabad-og.jpg" alt="Ideal complete meal with all 7 nutrients - fresh healthy salad bowl in Ahmedabad" width="600" height="510" />
+  <div class="bowl-graphic">
+    <div class="bowl-graphic-title">What Goes Into One Complete Bowl</div>
+    <div class="bg-row"><span class="bg-name">Fresh salad &amp; greens</span><span class="bg-track"><span class="bg-fill" style="width:30%;background:#16a34a;"></span></span><span class="bg-pct">30%</span></div>
+    <div class="bg-row"><span class="bg-name">Seasonal &amp; roasted veg</span><span class="bg-track"><span class="bg-fill" style="width:15%;background:#65a30d;"></span></span><span class="bg-pct">15%</span></div>
+    <div class="bg-row"><span class="bg-name">Protein &middot; paneer, chana, sprouts</span><span class="bg-track"><span class="bg-fill" style="width:20%;background:#2563eb;"></span></span><span class="bg-pct">20%</span></div>
+    <div class="bg-row"><span class="bg-name">Whole grain &middot; quinoa, brown rice</span><span class="bg-track"><span class="bg-fill" style="width:25%;background:#ca8a04;"></span></span><span class="bg-pct">25%</span></div>
+    <div class="bg-row"><span class="bg-name">Seeds &amp; nuts &middot; healthy fats</span><span class="bg-track"><span class="bg-fill" style="width:7%;background:#7c3aed;"></span></span><span class="bg-pct">7%</span></div>
+    <div class="bg-row"><span class="bg-name">Fresh dressing</span><span class="bg-track"><span class="bg-fill" style="width:3%;background:#f97316;"></span></span><span class="bg-pct">3%</span></div>
   </div>
-  <p class="ideal-cap">One complete plate: a rainbow of vegetables, chickpeas and sprouts for protein, seeds and avocado for healthy fats, whole ingredients for carbs and fibre - all seven nutrients in one bowl.</p>
+  <p class="ideal-cap">One complete NOSH7-style bowl: the two greens make up your 45% vegetables, whole grain 25%, protein 20%, and seeds plus dressing the 10% healthy fats - every ingredient in proportion so all 7 nutrients land on one plate.</p>
 
   <h2>Why Most Everyday Meals Fall Short</h2>
   <p>Once you see food through the lens of seven nutrients, the gaps in a normal day become obvious:</p>
