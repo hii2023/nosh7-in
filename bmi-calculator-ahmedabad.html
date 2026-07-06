@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free BMI Calculator &amp; Diet Plan Advisor Ahmedabad | NOSH7</title>
+  <meta name="description" content="Free BMI calculator for Ahmedabad. Enter height, weight, age &amp; gender to get your BMI, ideal weight, daily calories, a recommended meal plan and a downloadable health report." />
+  <meta name="keywords" content="BMI calculator Ahmedabad, body mass index calculator, ideal weight calculator India, calorie calculator Ahmedabad, diet plan advisor, healthy meal plan Ahmedabad, weight loss plan Ahmedabad, NOSH7 BMI" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://nosh7.in/bmi-calculator-ahmedabad.html" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nosh7.in/bmi-calculator-ahmedabad.html" />
+  <meta property="og:title" content="Free BMI Calculator &amp; Diet Plan Advisor | NOSH7 Ahmedabad" />
+  <meta property="og:description" content="Check your BMI, ideal weight and daily calorie target. Get a matched healthy meal plan, health tips and a downloadable report. Free tool by NOSH7 Ahmedabad." />
+  <meta property="og:image" content="https://nosh7.in/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"NOSH7 BMI & Health Analysis","url":"https://nosh7.in/bmi-calculator-ahmedabad.html","applicationCategory":"HealthApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Free BMI, ideal weight and daily calorie calculator with a matched healthy meal plan recommendation and downloadable health report.","provider":{"@type":"Organization","name":"NOSH7","url":"https://nosh7.in"}},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nosh7.in/"},{"@type":"ListItem","position":2,"name":"BMI & Health Analysis","item":"https://nosh7.in/bmi-calculator-ahmedabad.html"}]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is a healthy BMI for Indians?","acceptedAnswer":{"@type":"Answer","text":"By the Asian-Indian standard a healthy BMI is 18.5 to 22.9. 23 to 24.9 is overweight and 25 or above is obese. These cut-offs are lower than the global scale because Indians carry more body fat at a lower BMI."}},
+      {"@type":"Question","name":"How is BMI calculated?","acceptedAnswer":{"@type":"Answer","text":"BMI equals your weight in kilograms divided by your height in metres squared. For example 70 kg at 1.70 m is 70 divided by 2.89, which is a BMI of 24.2."}},
+      {"@type":"Question","name":"Which NOSH7 plan should I choose based on my BMI?","acceptedAnswer":{"@type":"Answer","text":"If your BMI is above 23 the Weight Loss plan is recommended. A healthy BMI suits the Healthy Fresh plan for maintenance, and if you are underweight or want muscle gain the High Protein plan is best. The tool matches a plan for you automatically."}},
+      {"@type":"Question","name":"Can I download my health report?","acceptedAnswer":{"@type":"Answer","text":"Yes. After you get your results you can download a health report with your BMI, ideal weight, calorie target, recommended plan and health tips, or print it as a PDF."}}
+    ]}
+  ]}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+
+  <style>
+    :root {
+      --green-deep:#1a3c2e; --green-mid:#2d6a4f; --green-fresh:#52b788; --green-light:#b7e4c7;
+      --cream:#faf7f0; --cream-dark:#f0ebe0; --saffron:#f4a61d; --saffron-lt:#fde68a;
+      --charcoal:#1c1c1c; --muted:#5a6b62; --white:#fff;
+      --radius-lg:1.5rem; --radius-md:1rem; --radius-pill:100px;
+    }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; font-size:16px; }
+    body { font-family:'IBM Plex Sans','Noto Sans Devanagari',sans-serif; background:var(--cream); color:var(--charcoal); overflow-x:hidden; line-height:1.6; }
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible { outline:3px solid var(--green-fresh); outline-offset:2px; border-radius:4px; }
+    @media (prefers-reduced-motion:reduce){ *,*::before,*::after{ animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+
+    /* top bar + nav */
+    .top-bar { background:var(--green-deep); color:var(--cream); text-align:center; font-size:.78rem; font-weight:500; letter-spacing:.03em; padding:.4rem 1rem; display:flex; align-items:center; justify-content:center; gap:.4rem; }
+    .top-bar svg { color:var(--saffron); flex-shrink:0; }
+    nav { position:sticky; top:0; z-index:200; background:var(--cream); display:flex; align-items:center; justify-content:space-between; padding:.6rem 4rem; border-bottom:1px solid var(--cream-dark); }
+    .nav-logo { display:flex; align-items:center; gap:.6rem; text-decoration:none; }
+    .nav-logo img { height:52px; width:52px; object-fit:contain; display:block; mix-blend-mode:multiply; }
+    .nav-logo-text { font-family:'IBM Plex Sans',sans-serif; font-size:1.2rem; font-weight:700; color:var(--green-deep); line-height:1; }
+    .nav-logo-text span { display:block; font-size:.56rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+    .nav-links { display:flex; align-items:center; gap:1.5rem; }
+    .nav-links a { color:var(--green-deep); font-size:.9rem; font-weight:600; text-decoration:none; transition:color .2s; }
+    .nav-links a:hover { color:var(--green-fresh); }
+    .nav-cta { background:var(--green-deep); color:var(--cream)!important; padding:.45rem 1.2rem; border-radius:var(--radius-pill); }
+    .nav-cta:hover { background:var(--green-mid)!important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
+    .hamburger span { width:24px; height:2.5px; background:var(--green-deep); border-radius:2px; transition:.2s; }
+    .nav-mobile { display:none; flex-direction:column; gap:.2rem; background:var(--cream); border-bottom:2px solid var(--green-light); padding:1rem 1.5rem 1.5rem; }
+    .nav-mobile.open { display:flex; }
+    .nav-mobile a { display:flex; align-items:center; gap:.7rem; padding:.7rem 1rem; border-radius:var(--radius-md); color:var(--green-deep); font-weight:600; font-size:.95rem; text-decoration:none; }
+    .nav-mobile a:hover { background:var(--cream-dark); }
+    .nav-mobile .mob-cta { background:var(--green-deep); color:var(--cream)!important; justify-content:center; margin-top:.5rem; }
+
+    /* utils */
+    .section-tag { display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--green-mid); margin-bottom:.4rem; }
+    .section-title { font-size:clamp(1.7rem,3.2vw,2.3rem); color:var(--green-deep); line-height:1.18; margin-bottom:.5rem; }
+    .section-sub { font-size:.95rem; color:var(--muted); line-height:1.5; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.85rem 2rem; border-radius:var(--radius-pill); font-family:'IBM Plex Sans',sans-serif; font-weight:700; font-size:.95rem; text-decoration:none; cursor:pointer; transition:all .2s; border:none; }
+    .btn-primary { background:var(--green-deep); color:var(--cream); box-shadow:0 4px 20px rgba(26,60,46,.25); }
+    .btn-primary:hover { background:var(--green-mid); transform:translateY(-2px); }
+    .btn-saffron { background:var(--saffron); color:var(--green-deep); box-shadow:0 4px 20px rgba(244,166,29,.35); }
+    .btn-saffron:hover { background:#e09210; transform:translateY(-2px); }
+    .btn-outline { background:transparent; color:var(--green-deep); border:2px solid var(--green-light); }
+    .btn-outline:hover { border-color:var(--green-fresh); background:var(--green-light); }
+
+    /* hero */
+    .bmi-hero { padding:2.5rem 4rem 1rem; max-width:1100px; margin:0 auto; text-align:center; }
+    .bmi-hero .section-sub { max-width:620px; margin:0 auto; }
+    .bmi-badges { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; margin-top:1.2rem; }
+    .bmi-badge { font-size:.76rem; font-weight:600; color:var(--green-mid); background:var(--white); border:1px solid var(--green-light); padding:.35rem .9rem; border-radius:var(--radius-pill); display:inline-flex; align-items:center; gap:.4rem; }
+
+    /* layout */
+    .bmi-wrap { max-width:1100px; margin:0 auto; padding:1.5rem 4rem 3rem; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:2rem; align-items:start; }
+    .card { background:var(--white); border:1.5px solid var(--cream-dark); border-radius:var(--radius-lg); padding:1.8rem; }
+    .card h2 { font-size:1.15rem; color:var(--green-deep); margin-bottom:1.2rem; }
+
+    /* form */
+    .field { margin-bottom:1.1rem; }
+    .field > label { display:block; font-size:.82rem; font-weight:700; color:var(--green-deep); margin-bottom:.45rem; }
+    .seg { display:flex; gap:.5rem; }
+    .seg button { flex:1; padding:.7rem; border:1.5px solid var(--cream-dark); background:var(--cream); border-radius:var(--radius-md); font-family:inherit; font-size:.88rem; font-weight:600; color:var(--muted); cursor:pointer; transition:all .2s; }
+    .seg button.active { background:var(--green-deep); color:var(--cream); border-color:var(--green-deep); }
+    input[type=number], select { width:100%; padding:.75rem .9rem; border:1.5px solid var(--cream-dark); border-radius:var(--radius-md); font-family:inherit; font-size:.95rem; color:var(--charcoal); background:var(--white); }
+    input[type=number]:focus, select:focus { border-color:var(--green-fresh); }
+    .row2 { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; }
+    .unit-toggle { display:flex; gap:.4rem; margin-bottom:.5rem; }
+    .unit-toggle button { padding:.3rem .8rem; font-size:.76rem; border:1.5px solid var(--cream-dark); background:var(--cream); border-radius:var(--radius-pill); font-family:inherit; font-weight:600; color:var(--muted); cursor:pointer; }
+    .unit-toggle button.active { background:var(--green-light); color:var(--green-deep); border-color:var(--green-light); }
+    .hidden { display:none!important; }
+    .form-err { color:#c0392b; font-size:.82rem; margin-top:.4rem; min-height:1rem; }
+
+    /* results */
+    #results { display:none; }
+    #results.show { display:block; }
+    .placeholder { text-align:center; color:var(--muted); padding:2rem 1rem; }
+    .placeholder svg { width:52px; height:52px; color:var(--green-light); margin-bottom:1rem; }
+    .bmi-number { text-align:center; margin-bottom:1rem; }
+    .bmi-number .val { font-size:3.4rem; font-weight:800; line-height:1; color:var(--green-deep); }
+    .bmi-number .cat { display:inline-block; margin-top:.6rem; font-size:.85rem; font-weight:700; padding:.3rem 1rem; border-radius:var(--radius-pill); }
+    .gauge { position:relative; height:14px; border-radius:var(--radius-pill); margin:1.4rem 0 .5rem; background:linear-gradient(90deg,#38bdf8 0%,#38bdf8 20%,#52b788 20%,#52b788 44%,#f4a61d 44%,#f4a61d 60%,#ef4444 60%,#ef4444 100%); }
+    .gauge-marker { position:absolute; top:-6px; width:4px; height:26px; background:var(--charcoal); border-radius:3px; box-shadow:0 0 0 3px var(--white); transition:left .4s ease; }
+    .gauge-legend { display:flex; justify-content:space-between; font-size:.66rem; color:var(--muted); font-weight:600; }
+    .stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin:1.4rem 0; }
+    .stat { background:var(--cream); border:1px solid var(--cream-dark); border-radius:var(--radius-md); padding:.9rem 1rem; }
+    .stat .k { font-size:.72rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.04em; }
+    .stat .v { font-size:1.25rem; font-weight:800; color:var(--green-deep); margin-top:.15rem; }
+    .stat .u { font-size:.78rem; font-weight:500; color:var(--muted); }
+
+    /* plan reco */
+    .reco { background:linear-gradient(145deg,#1a3c2e,#0d2b1e); border-radius:var(--radius-lg); padding:1.4rem 1.5rem; color:var(--cream); margin:1.2rem 0; }
+    .reco .lbl { font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--green-light); }
+    .reco h3 { font-size:1.3rem; color:var(--cream); margin:.3rem 0; }
+    .reco p { font-size:.86rem; color:var(--green-light); line-height:1.5; margin-bottom:1rem; }
+    .reco .btn { width:100%; }
+
+    .tips { margin:1.2rem 0; }
+    .tips h3 { font-size:1rem; color:var(--green-deep); margin-bottom:.7rem; }
+    .tips ul { list-style:none; }
+    .tips li { display:flex; gap:.6rem; align-items:flex-start; font-size:.86rem; color:var(--muted); line-height:1.5; padding:.4rem 0; border-bottom:1px solid var(--cream-dark); }
+    .tips li:last-child { border:none; }
+    .tips li svg { flex-shrink:0; margin-top:2px; color:var(--green-fresh); }
+
+    .report-actions { display:flex; gap:.7rem; flex-wrap:wrap; }
+    .report-actions .btn { flex:1; min-width:150px; }
+    .disclaimer { font-size:.74rem; color:var(--muted); line-height:1.5; margin-top:1.2rem; padding-top:1rem; border-top:1px solid var(--cream-dark); }
+
+    /* info section */
+    .info-section { max-width:1100px; margin:0 auto; padding:1rem 4rem 3rem; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:1rem; }
+    .info-card { background:var(--white); border:1.5px solid var(--cream-dark); border-radius:var(--radius-md); padding:1.2rem 1.3rem; }
+    .info-card .t { font-weight:700; color:var(--green-deep); font-size:.92rem; margin-bottom:.3rem; }
+    .info-card .d { font-size:.82rem; color:var(--muted); line-height:1.55; }
+    .bmi-table { width:100%; border-collapse:collapse; margin-top:1rem; font-size:.86rem; }
+    .bmi-table th, .bmi-table td { text-align:left; padding:.65rem .9rem; border-bottom:1px solid var(--cream-dark); }
+    .bmi-table th { background:var(--green-deep); color:var(--cream); font-weight:600; }
+    .bmi-table th:first-child { border-top-left-radius:var(--radius-md); }
+    .bmi-table th:last-child { border-top-right-radius:var(--radius-md); }
+    .bmi-table td .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:.5rem; vertical-align:middle; }
+
+    /* faq */
+    details { border-bottom:1px solid var(--green-light); }
+    details summary { font-weight:600; color:var(--green-deep); cursor:pointer; font-size:.91rem; padding:.9rem 0; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    details summary::-webkit-details-marker { display:none; }
+    details[open] summary .faq-icon { transform:rotate(45deg); }
+    .faq-icon { transition:transform .2s; flex-shrink:0; }
+    details p { font-size:.85rem; color:var(--muted); line-height:1.65; padding-bottom:.9rem; }
+
+    /* footer */
+    footer { background:var(--charcoal); color:rgba(255,255,255,.5); padding:3rem 4rem 0; margin-top:1rem; }
+    .footer-inner { display:flex; flex-wrap:wrap; gap:3rem; justify-content:space-between; padding-bottom:2.5rem; }
+    .footer-brand { max-width:240px; }
+    .footer-brand-name { color:var(--green-fresh); font-size:1rem; font-weight:700; margin:.6rem 0 .3rem; }
+    .footer-brand p { font-size:.83rem; line-height:1.65; }
+    .footer-col h3 { color:rgba(255,255,255,.9); font-size:.88rem; font-weight:700; margin-bottom:1rem; }
+    .footer-col a { display:block; font-size:.83rem; color:rgba(255,255,255,.7); text-decoration:none; margin-bottom:.5rem; }
+    .footer-col a:hover { color:var(--green-fresh); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.07); padding:1.2rem 0; text-align:center; font-size:.77rem; }
+
+    .floating-btns { position:fixed; right:1rem; bottom:1rem; display:flex; flex-direction:column; gap:.7rem; z-index:500; }
+    .float-btn { width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(0,0,0,.25); }
+    .float-wa { background:#25D366; }
+    .float-call { background:var(--green-mid); }
+
+    @media (max-width:900px){ .bmi-wrap{ grid-template-columns:1fr; } }
+    @media (max-width:768px){
+      nav{ padding:.6rem 1.2rem; } .nav-links{ display:none; } .hamburger{ display:flex; }
+      .bmi-hero,.bmi-wrap,.info-section,footer{ padding-left:1.5rem; padding-right:1.5rem; }
+      .footer-inner{ gap:2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg>
+  <span>Free tool by Ahmedabad's #1 Pure Veg Salad Meal Kitchen</span>
+</div>
+
+<nav>
+  <a class="nav-logo" href="/" aria-label="NOSH7 home">
+    <img decoding="async" src="/assets/logo.webp?v=2" alt="NOSH7" />
+    <div class="nav-logo-text">NOSH7<span>Eat Healthy, Feel Great</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="/#plans">Plans</a>
+    <a href="/#menu">Menu</a>
+    <a href="/#health">Health Goals</a>
+    <a href="/blog.html">Blog</a>
+    <a href="https://start.nosh7.in/" class="nav-cta" target="_blank" rel="noopener">Order Now</a>
+  </div>
+  <button class="hamburger" id="ham" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="navMob">
+  <a href="/#plans">Plans &amp; Pricing</a>
+  <a href="/#menu">This Month's Menu</a>
+  <a href="/#features">Features</a>
+  <a href="/#health">Health Goals</a>
+  <a href="/blog.html">Health Blog</a>
+  <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" target="_blank" rel="noopener">WhatsApp Us</a>
+  <a href="https://start.nosh7.in/" class="mob-cta" target="_blank" rel="noopener">Order Now &rarr;</a>
+</div>
+
+<!-- HERO -->
+<section class="bmi-hero">
+  <span class="section-tag">BMI &amp; Health Analysis</span>
+  <h1 class="section-title">Know Your Numbers. Eat For Your Goal.</h1>
+  <p class="section-sub">Enter your height, weight, age and gender to instantly see your BMI, ideal weight range and daily calorie target. Get a matched NOSH7 meal plan, personalised health tips, and a report you can download.</p>
+  <div class="bmi-badges">
+    <span class="bmi-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100% Free</span>
+    <span class="bmi-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Asian-Indian BMI Standard</span>
+    <span class="bmi-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Downloadable Report</span>
+    <span class="bmi-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>No Sign-Up</span>
+  </div>
+</section>
+
+<div class="bmi-wrap">
+  <!-- FORM -->
+  <div class="card">
+    <h2>Your Details</h2>
+    <form id="bmiForm" novalidate>
+      <div class="field">
+        <label>Gender</label>
+        <div class="seg" id="genderSeg">
+          <button type="button" data-val="male" class="active">Male</button>
+          <button type="button" data-val="female">Female</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="age">Age (years)</label>
+        <input type="number" id="age" min="12" max="100" placeholder="e.g. 30" inputmode="numeric" />
+      </div>
+
+      <div class="field">
+        <label>Height</label>
+        <div class="unit-toggle" id="heightUnit">
+          <button type="button" data-unit="cm" class="active">cm</button>
+          <button type="button" data-unit="ftin">ft / in</button>
+        </div>
+        <div id="heightCm">
+          <input type="number" id="cm" min="120" max="230" placeholder="e.g. 170" inputmode="numeric" />
+        </div>
+        <div id="heightFtIn" class="row2 hidden">
+          <input type="number" id="ft" min="3" max="7" placeholder="feet" inputmode="numeric" />
+          <input type="number" id="in" min="0" max="11" placeholder="inches" inputmode="numeric" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="kg">Weight (kg)</label>
+        <input type="number" id="kg" min="30" max="250" placeholder="e.g. 72" inputmode="decimal" />
+      </div>
+
+      <div class="field">
+        <label for="activity">Activity Level</label>
+        <select id="activity">
+          <option value="1.2">Sedentary (little or no exercise)</option>
+          <option value="1.375" selected>Lightly active (1 to 3 days a week)</option>
+          <option value="1.55">Moderately active (3 to 5 days a week)</option>
+          <option value="1.725">Very active (6 to 7 days a week)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="goal">Your Goal</label>
+        <select id="goal">
+          <option value="auto" selected>Suggest based on my BMI</option>
+          <option value="weight-loss">Lose weight</option>
+          <option value="healthy-fresh">Eat healthy / maintain</option>
+          <option value="high-protein">Build muscle / high protein</option>
+          <option value="low-sugar">Diabetes friendly / low sugar</option>
+        </select>
+      </div>
+
+      <div class="form-err" id="formErr"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Calculate My BMI</button>
+    </form>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="card">
+    <h2>Your Results</h2>
+    <div class="placeholder" id="placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <p>Fill in your details and press <strong>Calculate My BMI</strong> to see your personalised analysis and meal plan here.</p>
+    </div>
+
+    <div id="results">
+      <div class="bmi-number">
+        <div class="val" id="bmiVal">--</div>
+        <div class="cat" id="bmiCat">--</div>
+      </div>
+      <div class="gauge"><div class="gauge-marker" id="gaugeMarker" style="left:50%;"></div></div>
+      <div class="gauge-legend"><span>15</span><span>18.5</span><span>23</span><span>25</span><span>35</span></div>
+
+      <div class="stat-grid">
+        <div class="stat"><div class="k">Ideal Weight</div><div class="v" id="idealW">--</div></div>
+        <div class="stat"><div class="k">Weight Status</div><div class="v" id="wStatus" style="font-size:1rem;">--</div></div>
+        <div class="stat"><div class="k">Maintain Calories</div><div class="v" id="maintCal">--<span class="u"> kcal/day</span></div></div>
+        <div class="stat"><div class="k" id="targetLbl">Target Calories</div><div class="v" id="targetCal">--<span class="u"> kcal/day</span></div></div>
+      </div>
+
+      <div class="reco">
+        <div class="lbl">Recommended For You</div>
+        <h3 id="recoName">--</h3>
+        <p id="recoDesc">--</p>
+        <a href="#" id="recoCta" class="btn btn-saffron" target="_blank" rel="noopener">Start This Plan &rarr;</a>
+      </div>
+
+      <div class="tips">
+        <h3>Your Health Tips</h3>
+        <ul id="tipsList"></ul>
+      </div>
+
+      <div class="report-actions">
+        <button type="button" class="btn btn-primary" id="downloadBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Report
+        </button>
+        <button type="button" class="btn btn-outline" id="printBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print / PDF
+        </button>
+      </div>
+
+      <p class="disclaimer">BMI is a general screening indicator, not a medical diagnosis. It does not distinguish muscle from fat and may read differently for athletes, pregnant women, children and the elderly. For personalised medical advice, consult a doctor or a registered dietitian.</p>
+    </div>
+  </div>
+</div>
+
+<!-- INFO -->
+<section class="info-section">
+  <span class="section-tag">Understand Your BMI</span>
+  <h2 class="section-title">What Do The Numbers Mean?</h2>
+  <table class="bmi-table" aria-label="Asian-Indian BMI categories">
+    <thead><tr><th>Category</th><th>BMI Range (Asian-Indian)</th><th>What It Means</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:#38bdf8;"></span>Underweight</td><td>Below 18.5</td><td>Build strength with protein-rich meals</td></tr>
+      <tr><td><span class="dot" style="background:#52b788;"></span>Healthy</td><td>18.5 to 22.9</td><td>Maintain with balanced, fresh meals</td></tr>
+      <tr><td><span class="dot" style="background:#f4a61d;"></span>Overweight</td><td>23 to 24.9</td><td>Trim gently with a calorie-controlled plan</td></tr>
+      <tr><td><span class="dot" style="background:#ef4444;"></span>Obese</td><td>25 and above</td><td>Focus on steady fat loss and portion control</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-grid">
+    <div class="info-card"><div class="t">Why the Indian scale is lower</div><div class="d">Indians tend to carry more body fat and higher heart-disease risk at a lower BMI, so 23 is treated as overweight rather than 25.</div></div>
+    <div class="info-card"><div class="t">BMI is one signal, not everything</div><div class="d">Waist size, muscle mass and lifestyle matter too. Use BMI as a starting point, then eat and move consistently.</div></div>
+    <div class="info-card"><div class="t">Food does most of the work</div><div class="d">Around 80% of results come from what you eat. A balanced, high-fibre, protein-rich meal makes the biggest difference.</div></div>
+    <div class="info-card"><div class="t">Small deficit, real results</div><div class="d">A steady 300 to 500 kcal daily deficit supports safe fat loss of roughly 2 to 4 kg a month without starving.</div></div>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <span class="section-tag">FAQ</span>
+    <h2 class="section-title" style="font-size:1.6rem;">BMI Questions</h2>
+    <details><summary>What is a healthy BMI for Indians? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>By the Asian-Indian standard a healthy BMI is 18.5 to 22.9. 23 to 24.9 is overweight and 25 or above is obese. These cut-offs are lower than the global scale because Indians carry more body fat at a lower BMI.</p></details>
+    <details><summary>How is BMI calculated? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>BMI equals your weight in kilograms divided by your height in metres squared. For example 70 kg at 1.70 m is 70 divided by 2.89, which is a BMI of 24.2.</p></details>
+    <details><summary>Which NOSH7 plan should I choose based on my BMI? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>If your BMI is above 23 the Weight Loss plan is recommended. A healthy BMI suits the Healthy Fresh plan for maintenance, and if you are underweight or want muscle gain the High Protein plan is best. This tool matches a plan for you automatically.</p></details>
+    <details><summary>Can I download my health report? <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p>Yes. After you get your results you can download a health report with your BMI, ideal weight, calorie target, recommended plan and health tips, or print it as a PDF straight from your browser.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img decoding="async" src="/assets/logo.webp?v=2" alt="NOSH7 logo" style="height:70px;width:70px;border-radius:50%;object-fit:cover;background:white;" />
+      <div class="footer-brand-name">NOSH7</div>
+      <p>Ahmedabad ka pure veg salad subscription. No eggs. Daily fresh delivery. Real results.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <a href="/#plans">Plans &amp; Pricing</a>
+      <a href="/#menu">This Month's Menu</a>
+      <a href="/#features">Features</a>
+      <a href="/#health">Health Goals</a>
+      <a href="/bmi-calculator-ahmedabad.html">BMI &amp; Health Check</a>
+      <a href="/blog.html">Health Blog</a>
+      <a href="https://start.nosh7.in/" target="_blank" rel="noopener">Order Now</a>
+    </div>
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <a href="mailto:07nosh@gmail.com">07nosh@gmail.com</a>
+      <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" target="_blank" rel="noopener">WhatsApp: 9712989498</a>
+      <a href="tel:+919712989498">Call: +91 97129 89498</a>
+      <a href="https://share.google/YHl8ctFaKCW0Hw0Aq" target="_blank" rel="noopener">Satellite, Ahmedabad, Gujarat</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 NOSH7 · Eat Healthy, Feel Great · 100% Pure Veg · No Eggs · Made with love in Ahmedabad, India</div>
+</footer>
+
+<div class="floating-btns">
+  <a href="https://wa.me/919712989498?text=Hi+Team+Nosh7" class="float-btn float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0012.05 0z"/></svg>
+  </a>
+  <a href="tel:+919712989498" class="float-btn float-call" aria-label="Call NOSH7">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var ham=document.getElementById('ham'), navMob=document.getElementById('navMob');
+  if(ham){ ham.addEventListener('click',function(){ var o=navMob.classList.toggle('open'); ham.setAttribute('aria-expanded',o?'true':'false'); }); }
+
+  var gender='male';
+  document.querySelectorAll('#genderSeg button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#genderSeg button').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active'); gender=b.dataset.val;
+    });
+  });
+
+  var heightUnit='cm';
+  document.querySelectorAll('#heightUnit button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#heightUnit button').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active'); heightUnit=b.dataset.unit;
+      document.getElementById('heightCm').classList.toggle('hidden',heightUnit!=='cm');
+      document.getElementById('heightFtIn').classList.toggle('hidden',heightUnit!=='ftin');
+    });
+  });
+
+  var PLANS={
+    'weight-loss':{name:'Weight Loss Plan',url:'https://start.nosh7.in/?track=weight-loss',desc:'High fibre, low calorie, portion-controlled bowls with 30g+ protein to keep you full while you shed fat steadily.'},
+    'healthy-fresh':{name:'Healthy Fresh Plan',url:'https://start.nosh7.in/?track=healthy-fresh',desc:'Balanced, fresh salad meals to maintain your healthy weight and energy, packed with seeds, greens and complete protein.'},
+    'high-protein':{name:'High Protein Plan',url:'https://start.nosh7.in/?track=high-protein',desc:'40g+ protein per bowl with extra low-fat paneer to build strength and lean muscle on a pure veg diet.'},
+    'low-sugar':{name:'Diabetes Friendly Plan',url:'https://start.nosh7.in/?track=low-sugar',desc:'Low GI, no refined carbs, blood-sugar friendly salad meals designed to keep your glucose steady through the day.'}
+  };
+
+  function fmt(n){ return Math.round(n).toLocaleString('en-IN'); }
+
+  function tipsFor(cat, planKey){
+    var t=[];
+    if(cat==='Underweight'){
+      t=['Aim for a small calorie surplus with protein-rich meals to build lean weight.','Eat every 3 to 4 hours; do not skip meals.','Add strength training 3 times a week to turn extra calories into muscle.'];
+    } else if(cat==='Healthy'){
+      t=['You are in a great range, focus on maintaining it with consistent, balanced meals.','Keep protein at 20g+ per meal to protect muscle as you age.','Stay active 30 minutes most days to hold your weight steady.'];
+    } else if(cat==='Overweight'){
+      t=['A gentle 300 to 500 kcal daily deficit will trim weight without starving.','Prioritise high-fibre, high-protein meals to control hunger and cravings.','Cut sugary drinks and late-night snacking first, they add up fast.'];
+    } else {
+      t=['Target steady fat loss of 2 to 4 kg a month; avoid crash diets.','Replace one heavy meal a day with a filling, portion-controlled salad bowl.','Walk 8,000 to 10,000 steps daily and reduce refined carbs and sugar.'];
+    }
+    if(planKey==='low-sugar'){ t.push('Keep meals low GI and space carbs evenly to avoid sugar spikes.'); }
+    t.push('Drink 2.5 to 3 litres of water a day and aim for 7 to 8 hours of sleep.');
+    return t;
+  }
+
+  var LAST=null;
+
+  document.getElementById('bmiForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var err=document.getElementById('formErr'); err.textContent='';
+    var age=parseFloat(document.getElementById('age').value);
+    var kg=parseFloat(document.getElementById('kg').value);
+    var cm;
+    if(heightUnit==='cm'){ cm=parseFloat(document.getElementById('cm').value); }
+    else {
+      var ft=parseFloat(document.getElementById('ft').value)||0;
+      var inch=parseFloat(document.getElementById('in').value)||0;
+      cm=(ft*30.48)+(inch*2.54);
+      if(!ft && !inch) cm=NaN;
+    }
+    if(!age||age<12||age>100){ err.textContent='Please enter a valid age between 12 and 100.'; return; }
+    if(!cm||cm<120||cm>230){ err.textContent='Please enter a valid height.'; return; }
+    if(!kg||kg<25||kg>250){ err.textContent='Please enter a valid weight in kg.'; return; }
+
+    var m=cm/100;
+    var bmi=kg/(m*m);
+    var cat, catColor;
+    if(bmi<18.5){ cat='Underweight'; catColor='#38bdf8'; }
+    else if(bmi<23){ cat='Healthy'; catColor='#52b788'; }
+    else if(bmi<25){ cat='Overweight'; catColor='#f4a61d'; }
+    else { cat='Obese'; catColor='#ef4444'; }
+
+    // ideal weight range for healthy BMI 18.5 to 22.9
+    var lo=18.5*m*m, hi=22.9*m*m;
+
+    // BMR Mifflin-St Jeor
+    var bmr=(10*kg)+(6.25*cm)-(5*age)+(gender==='male'?5:-161);
+    var act=parseFloat(document.getElementById('activity').value);
+    var maintain=bmr*act;
+
+    // plan
+    var goal=document.getElementById('goal').value;
+    var planKey;
+    if(goal!=='auto'){ planKey=goal; }
+    else if(bmi>=23){ planKey='weight-loss'; }
+    else if(bmi<18.5){ planKey='high-protein'; }
+    else { planKey='healthy-fresh'; }
+    var plan=PLANS[planKey];
+
+    // target calories
+    var target, targetLbl;
+    if(planKey==='weight-loss' || (goal==='auto'&&bmi>=23)){
+      target=maintain-500; var floor=gender==='male'?1500:1200; if(target<floor) target=floor;
+      targetLbl='Fat-Loss Calories';
+    } else if(planKey==='high-protein' && bmi<18.5){
+      target=maintain+300; targetLbl='Lean-Gain Calories';
+    } else { target=maintain; targetLbl='Maintain Calories'; }
+
+    // render
+    document.getElementById('bmiVal').textContent=bmi.toFixed(1);
+    var catEl=document.getElementById('bmiCat');
+    catEl.textContent=cat; catEl.style.background=catColor+'22'; catEl.style.color=catColor==='#f4a61d'?'#8a5a00':catColor;
+    document.getElementById('bmiVal').style.color=catColor==='#f4a61d'?'#b8860b':catColor;
+    var pct=((bmi-15)/(35-15))*100; if(pct<1)pct=1; if(pct>99)pct=99;
+    document.getElementById('gaugeMarker').style.left=pct+'%';
+    document.getElementById('idealW').innerHTML=fmt(lo)+' to '+fmt(hi)+'<span class="u"> kg</span>';
+    document.getElementById('wStatus').textContent=cat;
+    document.getElementById('wStatus').style.color=catColor==='#f4a61d'?'#b8860b':catColor;
+    document.getElementById('maintCal').innerHTML=fmt(maintain)+'<span class="u"> kcal/day</span>';
+    document.getElementById('targetLbl').textContent=targetLbl;
+    document.getElementById('targetCal').innerHTML=fmt(target)+'<span class="u"> kcal/day</span>';
+    document.getElementById('recoName').textContent=plan.name;
+    document.getElementById('recoDesc').textContent=plan.desc;
+    document.getElementById('recoCta').href=plan.url;
+
+    var tips=tipsFor(cat,planKey);
+    var ul=document.getElementById('tipsList'); ul.innerHTML='';
+    tips.forEach(function(tip){
+      var li=document.createElement('li');
+      li.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span></span>';
+      li.querySelector('span').textContent=tip; ul.appendChild(li);
+    });
+
+    document.getElementById('placeholder').style.display='none';
+    document.getElementById('results').classList.add('show');
+    document.getElementById('results').scrollIntoView({behavior:'smooth',block:'nearest'});
+
+    LAST={bmi:bmi.toFixed(1),cat:cat,age:age,gender:gender,cm:Math.round(cm),kg:kg,lo:fmt(lo),hi:fmt(hi),
+          maintain:fmt(maintain),target:fmt(target),targetLbl:targetLbl,plan:plan,tips:tips};
+  });
+
+  function reportHTML(d){
+    var date=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+    var tipsLi=d.tips.map(function(t){return '<li>'+t+'</li>';}).join('');
+    return '<!DOCTYPE html><html><head><meta charset="utf-8"><title>NOSH7 Health Report</title>'+
+      '<style>body{font-family:Arial,Helvetica,sans-serif;color:#1c1c1c;max-width:720px;margin:24px auto;padding:0 20px;line-height:1.6}'+
+      'h1{color:#1a3c2e;margin:0 0 2px}.sub{color:#5a6b62;font-size:13px;margin-bottom:18px}'+
+      '.big{font-size:40px;font-weight:800;color:#1a3c2e}.tag{display:inline-block;padding:3px 12px;border-radius:20px;background:#eef;font-weight:700;font-size:13px}'+
+      'table{width:100%;border-collapse:collapse;margin:16px 0}td{padding:8px 10px;border-bottom:1px solid #eee;font-size:14px}td:first-child{color:#5a6b62;width:45%}'+
+      'td:last-child{font-weight:700;color:#1a3c2e}.box{background:#1a3c2e;color:#faf7f0;border-radius:12px;padding:16px 18px;margin:16px 0}'+
+      '.box h3{margin:0 0 6px;color:#fff}.box p{margin:0;color:#b7e4c7;font-size:13px}ul{padding-left:18px}li{margin-bottom:6px;font-size:14px}'+
+      '.foot{margin-top:24px;border-top:1px solid #eee;padding-top:12px;color:#5a6b62;font-size:12px}a{color:#2d6a4f}</style></head><body>'+
+      '<h1>NOSH7 Health Report</h1><div class="sub">Generated '+date+' · nosh7.in</div>'+
+      '<div class="big">'+d.bmi+'</div><span class="tag">'+d.cat+' (Asian-Indian BMI)</span>'+
+      '<table>'+
+      '<tr><td>Gender</td><td>'+(d.gender==='male'?'Male':'Female')+'</td></tr>'+
+      '<tr><td>Age</td><td>'+d.age+' years</td></tr>'+
+      '<tr><td>Height</td><td>'+d.cm+' cm</td></tr>'+
+      '<tr><td>Weight</td><td>'+d.kg+' kg</td></tr>'+
+      '<tr><td>Body Mass Index</td><td>'+d.bmi+' ('+d.cat+')</td></tr>'+
+      '<tr><td>Ideal Weight Range</td><td>'+d.lo+' to '+d.hi+' kg</td></tr>'+
+      '<tr><td>Maintenance Calories</td><td>'+d.maintain+' kcal/day</td></tr>'+
+      '<tr><td>'+d.targetLbl+'</td><td>'+d.target+' kcal/day</td></tr>'+
+      '</table>'+
+      '<div class="box"><h3>Recommended Plan: '+d.plan.name+'</h3><p>'+d.plan.desc+'</p></div>'+
+      '<h3 style="color:#1a3c2e">Your Health Tips</h3><ul>'+tipsLi+'</ul>'+
+      '<div class="foot">This report is a general screening guide, not a medical diagnosis. Consult a doctor or registered dietitian for personalised advice.<br>'+
+      'Start your plan at <a href="https://start.nosh7.in/">start.nosh7.in</a> · WhatsApp +91 97129 89498 · NOSH7, Satellite, Ahmedabad.</div>'+
+      '</body></html>';
+  }
+
+  document.getElementById('downloadBtn').addEventListener('click',function(){
+    if(!LAST) return;
+    var blob=new Blob([reportHTML(LAST)],{type:'text/html'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a'); a.href=url; a.download='NOSH7-Health-Report.html';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  });
+
+  document.getElementById('printBtn').addEventListener('click',function(){
+    if(!LAST) return;
+    var w=window.open('','_blank');
+    if(!w){ window.print(); return; }
+    w.document.write(reportHTML(LAST)); w.document.close();
+    w.focus(); setTimeout(function(){ w.print(); },300);
+  });
+})();
+</script>
+</body>
+</html>
