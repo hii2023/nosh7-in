@@ -110,7 +110,13 @@
 
     /* results */
     #results { display:none; }
-    #results.show { display:block; }
+    #results.show { display:block; animation:resultsIn .45s cubic-bezier(.22,1,.36,1); }
+    @keyframes resultsIn { from{ opacity:0; transform:translateY(12px); } to{ opacity:1; transform:none; } }
+    #placeholder { transition:opacity .25s ease; }
+    @keyframes bmiPop { 0%{ transform:scale(.85); opacity:.3; } 100%{ transform:scale(1); opacity:1; } }
+    .bmi-number .val.pop { animation:bmiPop .4s cubic-bezier(.22,1,.36,1); }
+    .seg button, .unit-toggle button { transition:background .2s ease, color .2s ease, border-color .2s ease, transform .12s ease; }
+    .seg button:active, .unit-toggle button:active { transform:scale(.96); }
     .placeholder { text-align:center; color:var(--muted); padding:2rem 1rem; }
     .placeholder svg { width:52px; height:52px; color:var(--green-light); margin-bottom:1rem; }
     .bmi-number { text-align:center; margin-bottom:1rem; }
@@ -132,6 +138,13 @@
     .reco p { font-size:.86rem; color:var(--green-light); line-height:1.5; margin-bottom:1rem; }
     .reco .btn { width:100%; }
 
+    .hydration { display:flex; gap:1rem; align-items:flex-start; background:#eef7ff; border:1.5px solid #cce4ff; border-radius:var(--radius-lg); padding:1.2rem 1.3rem; margin:1.2rem 0; }
+    .hydration .h-icon { width:44px; height:44px; border-radius:0.8rem; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:linear-gradient(145deg,#38bdf8,#2563eb); box-shadow:0 6px 15px -4px rgba(37,99,235,.5); }
+    .hydration .h-icon svg { width:22px; height:22px; }
+    .hydration .h-amt { font-size:1.5rem; font-weight:800; color:#1e60c0; line-height:1.1; }
+    .hydration .h-amt span { font-size:.8rem; font-weight:600; color:#5a6b62; }
+    .hydration .h-lbl { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:#2563eb; margin-bottom:.15rem; }
+    .hydration p { font-size:.82rem; color:var(--muted); line-height:1.5; margin-top:.4rem; }
     .tips { margin:1.2rem 0; }
     .tips h3 { font-size:1rem; color:var(--green-deep); margin-bottom:.7rem; }
     .tips ul { list-style:none; }
@@ -326,6 +339,15 @@
         <a href="#" id="recoCta" class="btn btn-saffron" target="_blank" rel="noopener">Start This Plan &rarr;</a>
       </div>
 
+      <div class="hydration">
+        <div class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7c3.2 4 6 7.1 6 10.3a6 6 0 1 1-12 0c0-3.2 2.8-6.3 6-10.3z"/></svg></div>
+        <div>
+          <div class="h-lbl">Daily Water Intake</div>
+          <div class="h-amt" id="waterAmt">--<span> per day</span></div>
+          <p>Sip it slowly and mindfully through the day, do not gulp it down. "Chew" each sip and eat water-rich foods like cucumber, tomato and salad greens so your body actually absorbs it. Add more on hot days or after exercise.</p>
+        </div>
+      </div>
+
       <div class="tips">
         <h3>Your Health Tips</h3>
         <ul id="tipsList"></ul>
@@ -425,7 +447,7 @@
   document.querySelectorAll('#genderSeg button').forEach(function(b){
     b.addEventListener('click',function(){
       document.querySelectorAll('#genderSeg button').forEach(function(x){x.classList.remove('active');});
-      b.classList.add('active'); gender=b.dataset.val;
+      b.classList.add('active'); gender=b.dataset.val; calculate(false);
     });
   });
 
@@ -436,6 +458,7 @@
       b.classList.add('active'); heightUnit=b.dataset.unit;
       document.getElementById('heightCm').classList.toggle('hidden',heightUnit!=='cm');
       document.getElementById('heightFtIn').classList.toggle('hidden',heightUnit!=='ftin');
+      calculate(false);
     });
   });
 
@@ -447,6 +470,12 @@
   };
 
   function fmt(n){ return Math.round(n).toLocaleString('en-IN'); }
+
+  function waterLitres(kg, act){
+    // ~35 ml per kg of body weight, plus a bonus for higher activity
+    var bonus = act>=1.725 ? 750 : act>=1.55 ? 500 : act>=1.375 ? 250 : 0;
+    return (kg*35 + bonus)/1000;
+  }
 
   function tipsFor(cat, planKey){
     var t=[];
@@ -460,15 +489,15 @@
       t=['Target steady fat loss of 2 to 4 kg a month; avoid crash diets.','Replace one heavy meal a day with a filling, portion-controlled salad bowl.','Walk 8,000 to 10,000 steps daily and reduce refined carbs and sugar.'];
     }
     if(planKey==='low-sugar'){ t.push('Keep meals low GI and space carbs evenly to avoid sugar spikes.'); }
-    t.push('Drink 2.5 to 3 litres of water a day and aim for 7 to 8 hours of sleep.');
+    t.push('Sip water slowly and mindfully through the day, do not gulp it. "Chew" each sip and eat water-rich foods like cucumber, tomato and salad greens so it absorbs better.');
+    t.push('Aim for 7 to 8 hours of good sleep, it controls appetite and recovery as much as diet does.');
     return t;
   }
 
   var LAST=null;
 
-  document.getElementById('bmiForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    var err=document.getElementById('formErr'); err.textContent='';
+  function calculate(showErrors){
+    var err=document.getElementById('formErr');
     var age=parseFloat(document.getElementById('age').value);
     var kg=parseFloat(document.getElementById('kg').value);
     var cm;
@@ -479,9 +508,16 @@
       cm=(ft*30.48)+(inch*2.54);
       if(!ft && !inch) cm=NaN;
     }
-    if(!age||age<12||age>100){ err.textContent='Please enter a valid age between 12 and 100.'; return; }
-    if(!cm||cm<120||cm>230){ err.textContent='Please enter a valid height.'; return; }
-    if(!kg||kg<25||kg>250){ err.textContent='Please enter a valid weight in kg.'; return; }
+    var ageBad=(!age||age<12||age>100), cmBad=(!cm||cm<120||cm>230), kgBad=(!kg||kg<25||kg>250);
+    if(ageBad||cmBad||kgBad){
+      if(showErrors){
+        err.textContent = ageBad ? 'Please enter a valid age between 12 and 100.'
+                        : cmBad ? 'Please enter a valid height.'
+                        : 'Please enter a valid weight in kg.';
+      }
+      return false;
+    }
+    err.textContent='';
 
     var m=cm/100;
     var bmi=kg/(m*m);
@@ -517,8 +553,12 @@
       target=maintain+300; targetLbl='Lean-Gain Calories';
     } else { target=maintain; targetLbl='Maintain Calories'; }
 
+    var water=waterLitres(kg,act);
+
     // render
-    document.getElementById('bmiVal').textContent=bmi.toFixed(1);
+    var bv=document.getElementById('bmiVal');
+    bv.textContent=bmi.toFixed(1);
+    bv.classList.remove('pop'); void bv.offsetWidth; bv.classList.add('pop');
     var catEl=document.getElementById('bmiCat');
     catEl.textContent=cat; catEl.style.background=catColor+'22'; catEl.style.color=catColor==='#f4a61d'?'#8a5a00':catColor;
     document.getElementById('bmiVal').style.color=catColor==='#f4a61d'?'#b8860b':catColor;
@@ -533,6 +573,7 @@
     document.getElementById('recoName').textContent=plan.name;
     document.getElementById('recoDesc').textContent=plan.desc;
     document.getElementById('recoCta').href=plan.url;
+    document.getElementById('waterAmt').innerHTML=water.toFixed(1)+' L<span> per day</span>';
 
     var tips=tipsFor(cat,planKey);
     var ul=document.getElementById('tipsList'); ul.innerHTML='';
@@ -542,13 +583,26 @@
       li.querySelector('span').textContent=tip; ul.appendChild(li);
     });
 
+    var res=document.getElementById('results');
+    var firstReveal=!res.classList.contains('show');
     document.getElementById('placeholder').style.display='none';
-    document.getElementById('results').classList.add('show');
-    document.getElementById('results').scrollIntoView({behavior:'smooth',block:'nearest'});
+    res.classList.add('show');
+    if(showErrors && firstReveal){ res.scrollIntoView({behavior:'smooth',block:'nearest'}); }
 
     LAST={bmi:bmi.toFixed(1),cat:cat,age:age,gender:gender,cm:Math.round(cm),kg:kg,lo:fmt(lo),hi:fmt(hi),
-          maintain:fmt(maintain),target:fmt(target),targetLbl:targetLbl,plan:plan,tips:tips};
+          maintain:fmt(maintain),target:fmt(target),targetLbl:targetLbl,water:water.toFixed(1),plan:plan,tips:tips};
+    return true;
+  }
+
+  // Auto-calculate as the user types (fewer clicks), and on select changes.
+  var deb;
+  ['age','cm','ft','in','kg'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.addEventListener('input',function(){ clearTimeout(deb); deb=setTimeout(function(){ calculate(false); },250); });
   });
+  document.getElementById('activity').addEventListener('change',function(){ calculate(false); });
+  document.getElementById('goal').addEventListener('change',function(){ calculate(false); });
+  document.getElementById('bmiForm').addEventListener('submit',function(e){ e.preventDefault(); calculate(true); });
 
   function reportHTML(d){
     var date=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
@@ -572,6 +626,7 @@
       '<tr><td>Ideal Weight Range</td><td>'+d.lo+' to '+d.hi+' kg</td></tr>'+
       '<tr><td>Maintenance Calories</td><td>'+d.maintain+' kcal/day</td></tr>'+
       '<tr><td>'+d.targetLbl+'</td><td>'+d.target+' kcal/day</td></tr>'+
+      '<tr><td>Daily Water Intake</td><td>'+d.water+' L/day (sip slowly, do not gulp)</td></tr>'+
       '</table>'+
       '<div class="box"><h3>Recommended Plan: '+d.plan.name+'</h3><p>'+d.plan.desc+'</p></div>'+
       '<h3 style="color:#1a3c2e">Your Health Tips</h3><ul>'+tipsLi+'</ul>'+
