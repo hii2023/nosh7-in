@@ -94,15 +94,23 @@
     .card h2 { font-size:1.15rem; color:var(--green-deep); margin-bottom:1.2rem; }
 
     /* form */
-    .field { margin-bottom:1.1rem; }
-    .field > label { display:block; font-size:.82rem; font-weight:700; color:var(--green-deep); margin-bottom:.45rem; }
+    .field { margin-bottom:1rem; }
+    .field-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:.45rem; }
+    .field > label, .field-head label { display:block; font-size:.82rem; font-weight:700; color:var(--green-deep); }
     .seg { display:flex; gap:.5rem; }
-    .seg button { flex:1; padding:.7rem; border:1.5px solid var(--cream-dark); background:var(--cream); border-radius:var(--radius-md); font-family:inherit; font-size:.88rem; font-weight:600; color:var(--muted); cursor:pointer; transition:all .2s; }
-    .seg button.active { background:var(--green-deep); color:var(--cream); border-color:var(--green-deep); }
-    input[type=number], select { width:100%; padding:.75rem .9rem; border:1.5px solid var(--cream-dark); border-radius:var(--radius-md); font-family:inherit; font-size:.95rem; color:var(--charcoal); background:var(--white); }
-    input[type=number]:focus, select:focus { border-color:var(--green-fresh); }
+    .seg button { flex:1; padding:.8rem; border:1.5px solid var(--cream-dark); background:var(--cream); border-radius:var(--radius-md); font-family:inherit; font-size:.9rem; font-weight:600; color:var(--muted); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:.45rem; }
+    .seg button svg { width:16px; height:16px; opacity:.8; }
+    .seg button.active { background:var(--green-deep); color:var(--cream); border-color:var(--green-deep); box-shadow:0 4px 14px -4px rgba(26,60,46,.5); }
+    input[type=number], select { width:100%; padding:.85rem .9rem; border:1.5px solid var(--cream-dark); border-radius:var(--radius-md); font-family:inherit; font-size:1.05rem; font-weight:600; color:var(--charcoal); background:var(--white); transition:border-color .15s, box-shadow .15s; -moz-appearance:textfield; }
+    input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+    input[type=number]:focus, select:focus { border-color:var(--green-fresh); box-shadow:0 0 0 3px rgba(82,183,136,.18); outline:none; }
+    input[type=number]::placeholder { color:#b3bdb7; font-weight:400; }
+    select { font-size:.92rem; font-weight:500; cursor:pointer; }
+    .input-wrap { position:relative; }
+    .input-wrap input { padding-right:3rem; }
+    .input-wrap .suffix { position:absolute; right:0; top:0; bottom:0; display:flex; align-items:center; padding-right:.95rem; font-size:.82rem; font-weight:700; color:var(--muted); pointer-events:none; }
     .row2 { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; }
-    .unit-toggle { display:flex; gap:.4rem; margin-bottom:.5rem; }
+    .unit-toggle { display:flex; gap:.4rem; }
     .unit-toggle button { padding:.3rem .8rem; font-size:.76rem; border:1.5px solid var(--cream-dark); background:var(--cream); border-radius:var(--radius-pill); font-family:inherit; font-weight:600; color:var(--muted); cursor:pointer; }
     .unit-toggle button.active { background:var(--green-light); color:var(--green-deep); border-color:var(--green-light); }
     .hidden { display:none!important; }
@@ -138,15 +146,9 @@
     .reco p { font-size:.86rem; color:var(--green-light); line-height:1.5; margin-bottom:1rem; }
     .reco .btn { width:100%; }
 
-    .hydration { display:flex; gap:1rem; align-items:flex-start; background:#eef7ff; border:1.5px solid #cce4ff; border-radius:var(--radius-lg); padding:1.2rem 1.3rem; margin:1.2rem 0; }
-    .hydration .h-icon { width:44px; height:44px; border-radius:0.8rem; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:linear-gradient(145deg,#38bdf8,#2563eb); box-shadow:0 6px 15px -4px rgba(37,99,235,.5); }
-    .hydration .h-icon svg { width:22px; height:22px; }
-    .hydration .h-amt { font-size:1.5rem; font-weight:800; color:#1e60c0; line-height:1.1; }
-    .hydration .h-amt span { font-size:.8rem; font-weight:600; color:#5a6b62; }
-    .hydration .h-lbl { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:#2563eb; margin-bottom:.15rem; }
-    .hydration p { font-size:.82rem; color:var(--muted); line-height:1.5; margin-top:.4rem; }
-    .tips { margin:1.2rem 0; }
-    .tips h3 { font-size:1rem; color:var(--green-deep); margin-bottom:.7rem; }
+    .tips { margin:1.4rem 0; }
+    .tips h3 { font-size:1rem; color:var(--green-deep); margin-bottom:.35rem; }
+    .tips-note { font-size:.82rem; color:var(--muted); line-height:1.5; margin-bottom:.7rem; padding:.7rem .9rem; background:var(--cream); border-left:3px solid var(--green-fresh); border-radius:0 var(--radius-md) var(--radius-md) 0; }
     .tips ul { list-style:none; }
     .tips li { display:flex; gap:.6rem; align-items:flex-start; font-size:.86rem; color:var(--muted); line-height:1.5; padding:.4rem 0; border-bottom:1px solid var(--cream-dark); }
     .tips li:last-child { border:none; }
@@ -253,34 +255,37 @@
       <div class="field">
         <label>Gender</label>
         <div class="seg" id="genderSeg">
-          <button type="button" data-val="male" class="active">Male</button>
-          <button type="button" data-val="female">Female</button>
+          <button type="button" data-val="male" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="6"/><path d="M14.5 9.5 20 4M15 4h5v5"/></svg>Male</button>
+          <button type="button" data-val="female"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7M9 18h6"/></svg>Female</button>
         </div>
       </div>
 
-      <div class="field">
-        <label for="age">Age (years)</label>
-        <input type="number" id="age" min="12" max="100" placeholder="e.g. 30" inputmode="numeric" />
+      <div class="row2">
+        <div class="field" style="margin-bottom:0;">
+          <label for="age">Age</label>
+          <div class="input-wrap"><input type="number" id="age" min="12" max="100" step="1" placeholder="30" inputmode="numeric" /><span class="suffix">yrs</span></div>
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label for="kg">Weight</label>
+          <div class="input-wrap"><input type="number" id="kg" min="30" max="250" step="0.5" placeholder="72" inputmode="decimal" /><span class="suffix">kg</span></div>
+        </div>
       </div>
 
-      <div class="field">
-        <label>Height</label>
-        <div class="unit-toggle" id="heightUnit">
-          <button type="button" data-unit="cm" class="active">cm</button>
-          <button type="button" data-unit="ftin">ft / in</button>
+      <div class="field" style="margin-top:1rem;">
+        <div class="field-head">
+          <label>Height</label>
+          <div class="unit-toggle" id="heightUnit">
+            <button type="button" data-unit="cm" class="active">cm</button>
+            <button type="button" data-unit="ftin">ft / in</button>
+          </div>
         </div>
         <div id="heightCm">
-          <input type="number" id="cm" min="120" max="230" placeholder="e.g. 170" inputmode="numeric" />
+          <div class="input-wrap"><input type="number" id="cm" min="120" max="230" step="1" placeholder="170" inputmode="numeric" /><span class="suffix">cm</span></div>
         </div>
         <div id="heightFtIn" class="row2 hidden">
-          <input type="number" id="ft" min="3" max="7" placeholder="feet" inputmode="numeric" />
-          <input type="number" id="in" min="0" max="11" placeholder="inches" inputmode="numeric" />
+          <div class="input-wrap"><input type="number" id="ft" min="3" max="7" step="1" placeholder="5" inputmode="numeric" /><span class="suffix">ft</span></div>
+          <div class="input-wrap"><input type="number" id="in" min="0" max="11" step="1" placeholder="7" inputmode="numeric" /><span class="suffix">in</span></div>
         </div>
-      </div>
-
-      <div class="field">
-        <label for="kg">Weight (kg)</label>
-        <input type="number" id="kg" min="30" max="250" placeholder="e.g. 72" inputmode="decimal" />
       </div>
 
       <div class="field">
@@ -314,7 +319,7 @@
     <h2>Your Results</h2>
     <div class="placeholder" id="placeholder">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-      <p>Fill in your details and press <strong>Calculate My BMI</strong> to see your personalised analysis and meal plan here.</p>
+      <p>Fill in your details on the left. Your BMI, ideal weight, calorie targets and matched meal plan appear here <strong>instantly</strong>.</p>
     </div>
 
     <div id="results">
@@ -339,17 +344,9 @@
         <a href="#" id="recoCta" class="btn btn-saffron" target="_blank" rel="noopener">Start This Plan &rarr;</a>
       </div>
 
-      <div class="hydration">
-        <div class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7c3.2 4 6 7.1 6 10.3a6 6 0 1 1-12 0c0-3.2 2.8-6.3 6-10.3z"/></svg></div>
-        <div>
-          <div class="h-lbl">Daily Water Intake</div>
-          <div class="h-amt" id="waterAmt">--<span> per day</span></div>
-          <p>Sip it slowly and mindfully through the day, do not gulp it down. "Chew" each sip and eat water-rich foods like cucumber, tomato and salad greens so your body actually absorbs it. Add more on hot days or after exercise.</p>
-        </div>
-      </div>
-
       <div class="tips">
-        <h3>Your Health Tips</h3>
+        <h3>Your Food Habit Guide</h3>
+        <p class="tips-note">Small habits that strengthen how your body absorbs nutrients, so you get more from real food instead of adding marketed or premium products.</p>
         <ul id="tipsList"></ul>
       </div>
 
@@ -471,26 +468,20 @@
 
   function fmt(n){ return Math.round(n).toLocaleString('en-IN'); }
 
-  function waterLitres(kg, act){
-    // ~35 ml per kg of body weight, plus a bonus for higher activity
-    var bonus = act>=1.725 ? 750 : act>=1.55 ? 500 : act>=1.375 ? 250 : 0;
-    return (kg*35 + bonus)/1000;
-  }
-
   function tipsFor(cat, planKey){
     var t=[];
-    if(cat==='Underweight'){
-      t=['Aim for a small calorie surplus with protein-rich meals to build lean weight.','Eat every 3 to 4 hours; do not skip meals.','Add strength training 3 times a week to turn extra calories into muscle.'];
-    } else if(cat==='Healthy'){
-      t=['You are in a great range, focus on maintaining it with consistent, balanced meals.','Keep protein at 20g+ per meal to protect muscle as you age.','Stay active 30 minutes most days to hold your weight steady.'];
-    } else if(cat==='Overweight'){
-      t=['A gentle 300 to 500 kcal daily deficit will trim weight without starving.','Prioritise high-fibre, high-protein meals to control hunger and cravings.','Cut sugary drinks and late-night snacking first, they add up fast.'];
-    } else {
-      t=['Target steady fat loss of 2 to 4 kg a month; avoid crash diets.','Replace one heavy meal a day with a filling, portion-controlled salad bowl.','Walk 8,000 to 10,000 steps daily and reduce refined carbs and sugar.'];
-    }
-    if(planKey==='low-sugar'){ t.push('Keep meals low GI and space carbs evenly to avoid sugar spikes.'); }
-    t.push('Sip water slowly and mindfully through the day, do not gulp it. "Chew" each sip and eat water-rich foods like cucumber, tomato and salad greens so it absorbs better.');
-    t.push('Aim for 7 to 8 hours of good sleep, it controls appetite and recovery as much as diet does.');
+    // one goal-specific line for context
+    if(cat==='Underweight'){ t.push('Eat a little more than you burn, with protein at every meal, to build lean weight steadily.'); }
+    else if(cat==='Healthy'){ t.push('You are in a great range. Keep meals balanced and protein-rich to hold it there.'); }
+    else if(cat==='Overweight'){ t.push('A gentle 300 to 500 kcal daily deficit trims weight without starving.'); }
+    else { t.push('Aim for steady fat loss of 2 to 4 kg a month and avoid crash diets.'); }
+    if(planKey==='low-sugar'){ t.push('Keep meals low GI and space your carbs evenly to avoid sugar spikes.'); }
+    // universal food habits that strengthen absorption
+    t.push('Chew every bite slowly and well. Try counting the ingredients you can taste, it keeps you present and eases digestion.');
+    t.push('Eat without distractions. Put the phone and TV away and focus only on your food.');
+    t.push('Keep dinner light and eat it earlier. A heavy late-night meal disturbs sleep and digestion.');
+    t.push('Get a proper night of sleep. It controls hunger and how well your body uses food.');
+    t.push('Drink water slowly and mindfully through the day rather than gulping it down.');
     return t;
   }
 
@@ -553,8 +544,6 @@
       target=maintain+300; targetLbl='Lean-Gain Calories';
     } else { target=maintain; targetLbl='Maintain Calories'; }
 
-    var water=waterLitres(kg,act);
-
     // render
     var bv=document.getElementById('bmiVal');
     bv.textContent=bmi.toFixed(1);
@@ -573,7 +562,6 @@
     document.getElementById('recoName').textContent=plan.name;
     document.getElementById('recoDesc').textContent=plan.desc;
     document.getElementById('recoCta').href=plan.url;
-    document.getElementById('waterAmt').innerHTML=water.toFixed(1)+' L<span> per day</span>';
 
     var tips=tipsFor(cat,planKey);
     var ul=document.getElementById('tipsList'); ul.innerHTML='';
@@ -590,7 +578,7 @@
     if(showErrors && firstReveal){ res.scrollIntoView({behavior:'smooth',block:'nearest'}); }
 
     LAST={bmi:bmi.toFixed(1),cat:cat,age:age,gender:gender,cm:Math.round(cm),kg:kg,lo:fmt(lo),hi:fmt(hi),
-          maintain:fmt(maintain),target:fmt(target),targetLbl:targetLbl,water:water.toFixed(1),plan:plan,tips:tips};
+          maintain:fmt(maintain),target:fmt(target),targetLbl:targetLbl,plan:plan,tips:tips};
     return true;
   }
 
@@ -626,10 +614,9 @@
       '<tr><td>Ideal Weight Range</td><td>'+d.lo+' to '+d.hi+' kg</td></tr>'+
       '<tr><td>Maintenance Calories</td><td>'+d.maintain+' kcal/day</td></tr>'+
       '<tr><td>'+d.targetLbl+'</td><td>'+d.target+' kcal/day</td></tr>'+
-      '<tr><td>Daily Water Intake</td><td>'+d.water+' L/day (sip slowly, do not gulp)</td></tr>'+
       '</table>'+
       '<div class="box"><h3>Recommended Plan: '+d.plan.name+'</h3><p>'+d.plan.desc+'</p></div>'+
-      '<h3 style="color:#1a3c2e">Your Health Tips</h3><ul>'+tipsLi+'</ul>'+
+      '<h3 style="color:#1a3c2e">Your Food Habit Guide</h3><ul>'+tipsLi+'</ul>'+
       '<div class="foot">This report is a general screening guide, not a medical diagnosis. Consult a doctor or registered dietitian for personalised advice.<br>'+
       'Start your plan at <a href="https://start.nosh7.in/">start.nosh7.in</a> · WhatsApp +91 97129 89498 · NOSH7, Satellite, Ahmedabad.</div>'+
       '</body></html>';
