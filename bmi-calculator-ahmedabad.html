@@ -89,9 +89,64 @@
     .bmi-badge { font-size:.76rem; font-weight:600; color:var(--green-mid); background:var(--white); border:1px solid var(--green-light); padding:.35rem .9rem; border-radius:var(--radius-pill); display:inline-flex; align-items:center; gap:.4rem; }
 
     /* layout */
-    .bmi-wrap { max-width:1100px; margin:0 auto; padding:1.5rem 4rem 3rem; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:2rem; align-items:start; }
+    .bmi-wrap { max-width:560px; margin:0 auto; padding:1.5rem 1.5rem 3rem; }
     .card { background:var(--white); border:1.5px solid var(--cream-dark); border-radius:var(--radius-lg); padding:1.8rem; }
     .card h2 { font-size:1.15rem; color:var(--green-deep); margin-bottom:1.2rem; }
+
+    /* wizard */
+    .wizard { min-height:420px; display:flex; flex-direction:column; }
+    .wiz-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.4rem; min-height:26px; }
+    .wiz-back { background:none; border:none; font-family:inherit; font-size:.85rem; font-weight:700; color:var(--muted); cursor:pointer; padding:.2rem .1rem; visibility:hidden; }
+    .wiz-back.show { visibility:visible; }
+    .wiz-back:hover { color:var(--green-deep); }
+    .wiz-dots { display:flex; gap:.4rem; }
+    .wiz-dots span { width:8px; height:8px; border-radius:50%; background:var(--cream-dark); transition:all .25s; }
+    .wiz-dots span.on { background:var(--green-fresh); width:22px; border-radius:5px; }
+    .wiz-step { display:none; flex:1; flex-direction:column; animation:stepIn .35s cubic-bezier(.22,1,.36,1); }
+    .wiz-step.active { display:flex; }
+    @keyframes stepIn { from{ opacity:0; transform:translateX(14px); } to{ opacity:1; transform:none; } }
+    .wiz-q { font-size:1.35rem; color:var(--green-deep); line-height:1.25; margin-bottom:.3rem; }
+    .wiz-help { font-size:.85rem; color:var(--muted); margin-bottom:1.4rem; }
+    .wiz-cont, .btn-eval { margin-top:auto; width:100%; }
+
+    /* gender cards */
+    .gender-cards { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:auto 0; }
+    .gender-card { background:var(--cream); border:2px solid var(--cream-dark); border-radius:var(--radius-lg); padding:2rem 1rem; display:flex; flex-direction:column; align-items:center; gap:.9rem; font-family:inherit; font-size:1.05rem; font-weight:700; color:var(--green-deep); cursor:pointer; transition:all .18s; }
+    .gender-card svg { width:44px; height:44px; color:var(--green-mid); transition:transform .18s; }
+    .gender-card:hover, .gender-card.sel { border-color:var(--green-fresh); background:var(--white); box-shadow:0 12px 30px -10px rgba(45,106,79,.35); transform:translateY(-3px); }
+    .gender-card:hover svg, .gender-card.sel svg { transform:scale(1.1); color:var(--green-fresh); }
+
+    /* scroll pickers */
+    .picker-row { display:flex; align-items:center; justify-content:center; gap:.8rem; margin:auto 0; }
+    .picker-unit { font-size:1rem; font-weight:600; color:var(--muted); }
+    .picker-wrap { position:relative; width:110px; height:160px; -webkit-mask-image:linear-gradient(180deg,transparent,#000 26%,#000 74%,transparent); mask-image:linear-gradient(180deg,transparent,#000 26%,#000 74%,transparent); }
+    .picker-wrap.sm { width:78px; }
+    .picker-center { position:absolute; left:0; right:0; top:60px; height:40px; border-top:2px solid var(--green-light); border-bottom:2px solid var(--green-light); background:rgba(82,183,136,.08); border-radius:8px; pointer-events:none; z-index:2; }
+    .picker-suffix { position:absolute; right:7px; top:70px; font-size:.8rem; font-weight:700; color:var(--green-mid); z-index:3; pointer-events:none; }
+    .picker { height:160px; overflow-y:scroll; scroll-snap-type:y mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; text-align:center; }
+    .picker::-webkit-scrollbar { display:none; }
+    .picker-item { height:40px; line-height:40px; scroll-snap-align:center; font-size:1.15rem; color:var(--muted); font-weight:500; transition:color .12s, transform .12s; }
+    .picker-item.sel { color:var(--green-deep); font-weight:800; font-size:1.6rem; }
+    .picker-pad { height:60px; }
+    .hw-grid { display:flex; flex-direction:column; align-items:center; gap:0.6rem; margin:auto 0; }
+    .hw-block { text-align:center; }
+    .hw-label { font-size:.82rem; font-weight:700; color:var(--green-deep); margin-bottom:.5rem; text-align:center; }
+    .hw-pickers { display:flex; gap:.4rem; justify-content:center; }
+    .hw-hint { text-align:center; font-size:.82rem; font-weight:600; color:var(--muted); margin:.3rem 0 1rem; }
+
+    /* option lists */
+    .wiz-field { margin-bottom:1.1rem; }
+    .opt-list { display:flex; flex-direction:column; gap:.5rem; }
+    .opt-list button { text-align:left; background:var(--cream); border:1.5px solid var(--cream-dark); border-radius:var(--radius-md); padding:.7rem .9rem; font-family:inherit; cursor:pointer; transition:all .15s; display:flex; flex-direction:column; gap:1px; }
+    .opt-list button b { font-size:.9rem; font-weight:700; color:var(--green-deep); }
+    .opt-list button small { font-size:.75rem; color:var(--muted); }
+    .opt-list button.sel { border-color:var(--green-fresh); background:var(--white); box-shadow:0 4px 14px -6px rgba(45,106,79,.4); }
+    .opt-list button.sel b { color:var(--green-fresh); }
+
+    .results-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.2rem; }
+    .results-head h2 { margin:0; }
+    .restart { display:inline-flex; align-items:center; gap:.35rem; background:var(--cream); border:1.5px solid var(--cream-dark); border-radius:var(--radius-pill); padding:.4rem .9rem; font-family:inherit; font-size:.8rem; font-weight:700; color:var(--green-deep); cursor:pointer; transition:all .15s; }
+    .restart:hover { border-color:var(--green-fresh); background:var(--white); }
 
     /* form */
     .field { margin-bottom:1rem; }
@@ -238,7 +293,7 @@
 <section class="bmi-hero">
   <span class="section-tag">BMI &amp; Health Analysis</span>
   <h1 class="section-title">Know Your Numbers. Eat For Your Goal.</h1>
-  <p class="section-sub">Enter your height, weight, age and gender to instantly see your BMI, ideal weight range and daily calorie target. Get a matched NOSH7 meal plan, personalised health tips, and a report you can download.</p>
+  <p class="section-sub">Answer a few quick taps, no typing. See your BMI, ideal weight and daily calorie target, get a matched NOSH7 meal plan and health tips, and download your report.</p>
   <div class="bmi-badges">
     <span class="bmi-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100% Free</span>
     <span class="bmi-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Asian-Indian BMI Standard</span>
@@ -248,78 +303,101 @@
 </section>
 
 <div class="bmi-wrap">
-  <!-- FORM -->
-  <div class="card">
-    <h2>Your Details</h2>
-    <form id="bmiForm" novalidate>
-      <div class="field">
-        <label>Gender</label>
-        <div class="seg" id="genderSeg">
-          <button type="button" data-val="male" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="6"/><path d="M14.5 9.5 20 4M15 4h5v5"/></svg>Male</button>
-          <button type="button" data-val="female"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7M9 18h6"/></svg>Female</button>
-        </div>
-      </div>
+  <!-- WIZARD -->
+  <div class="wizard card" id="wizard">
+    <div class="wiz-top">
+      <button type="button" class="wiz-back" id="wizBack">&larr; Back</button>
+      <div class="wiz-dots"><span data-d="1" class="on"></span><span data-d="2"></span><span data-d="3"></span><span data-d="4"></span></div>
+    </div>
 
-      <div class="row2">
-        <div class="field" style="margin-bottom:0;">
-          <label for="age">Age</label>
-          <div class="input-wrap"><input type="number" id="age" min="12" max="100" step="1" placeholder="30" inputmode="numeric" /><span class="suffix">yrs</span></div>
-        </div>
-        <div class="field" style="margin-bottom:0;">
-          <label for="kg">Weight</label>
-          <div class="input-wrap"><input type="number" id="kg" min="30" max="250" step="0.5" placeholder="72" inputmode="decimal" /><span class="suffix">kg</span></div>
-        </div>
+    <!-- Step 1: Gender -->
+    <div class="wiz-step active" data-step="1">
+      <h2 class="wiz-q">What is your gender?</h2>
+      <p class="wiz-help">Tap one to continue.</p>
+      <div class="gender-cards">
+        <button type="button" class="gender-card" data-val="male">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="6"/><path d="M15 9 20 4M15.5 4H20v4.5"/></svg>
+          <span>Male</span>
+        </button>
+        <button type="button" class="gender-card" data-val="female">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7M9 18h6"/></svg>
+          <span>Female</span>
+        </button>
       </div>
+    </div>
 
-      <div class="field" style="margin-top:1rem;">
-        <div class="field-head">
-          <label>Height</label>
-          <div class="unit-toggle" id="heightUnit">
-            <button type="button" data-unit="cm" class="active">cm</button>
-            <button type="button" data-unit="ftin">ft / in</button>
+    <!-- Step 2: Age -->
+    <div class="wiz-step" data-step="2">
+      <h2 class="wiz-q">How old are you?</h2>
+      <p class="wiz-help">Scroll the wheel to your age.</p>
+      <div class="picker-row">
+        <div class="picker-wrap"><div class="picker-center"></div><div class="picker" id="pickAge" data-min="12" data-max="100" data-def="30"></div></div>
+        <span class="picker-unit">years</span>
+      </div>
+      <button type="button" class="btn btn-primary wiz-cont" data-next="3">Continue</button>
+    </div>
+
+    <!-- Step 3: Height + Weight -->
+    <div class="wiz-step" data-step="3">
+      <h2 class="wiz-q">Your height &amp; weight</h2>
+      <p class="wiz-help">Scroll each wheel to set your value.</p>
+      <div class="hw-grid">
+        <div class="hw-block">
+          <div class="hw-label">Height</div>
+          <div class="hw-pickers">
+            <div class="picker-wrap sm"><div class="picker-center"></div><div class="picker" id="pickFt" data-min="3" data-max="7" data-def="5"></div><span class="picker-suffix">ft</span></div>
+            <div class="picker-wrap sm"><div class="picker-center"></div><div class="picker" id="pickIn" data-min="0" data-max="11" data-def="7"></div><span class="picker-suffix">in</span></div>
           </div>
         </div>
-        <div id="heightCm">
-          <div class="input-wrap"><input type="number" id="cm" min="120" max="230" step="1" placeholder="170" inputmode="numeric" /><span class="suffix">cm</span></div>
+        <div class="hw-block">
+          <div class="hw-label">Weight</div>
+          <div class="hw-pickers">
+            <div class="picker-wrap sm"><div class="picker-center"></div><div class="picker" id="pickKg" data-min="30" data-max="150" data-def="65"></div><span class="picker-suffix">kg</span></div>
+          </div>
         </div>
-        <div id="heightFtIn" class="row2 hidden">
-          <div class="input-wrap"><input type="number" id="ft" min="3" max="7" step="1" placeholder="5" inputmode="numeric" /><span class="suffix">ft</span></div>
-          <div class="input-wrap"><input type="number" id="in" min="0" max="11" step="1" placeholder="7" inputmode="numeric" /><span class="suffix">in</span></div>
+      </div>
+      <div class="hw-hint" id="cmHint">= 170 cm</div>
+      <button type="button" class="btn btn-primary wiz-cont" data-next="4">Continue</button>
+    </div>
+
+    <!-- Step 4: Activity + Goal -->
+    <div class="wiz-step" data-step="4">
+      <h2 class="wiz-q">A couple more things</h2>
+      <div class="wiz-field">
+        <div class="hw-label">How active are you?</div>
+        <div class="opt-list" id="optActivity">
+          <button type="button" data-val="1.2"><b>Sedentary</b><small>Little or no exercise</small></button>
+          <button type="button" data-val="1.375" class="sel"><b>Lightly active</b><small>1 to 3 days a week</small></button>
+          <button type="button" data-val="1.55"><b>Moderately active</b><small>3 to 5 days a week</small></button>
+          <button type="button" data-val="1.725"><b>Very active</b><small>6 to 7 days a week</small></button>
         </div>
       </div>
-
-      <div class="field">
-        <label for="activity">Activity Level</label>
-        <select id="activity">
-          <option value="1.2">Sedentary (little or no exercise)</option>
-          <option value="1.375" selected>Lightly active (1 to 3 days a week)</option>
-          <option value="1.55">Moderately active (3 to 5 days a week)</option>
-          <option value="1.725">Very active (6 to 7 days a week)</option>
-        </select>
+      <div class="wiz-field">
+        <div class="hw-label">Your goal</div>
+        <div class="opt-list" id="optGoal">
+          <button type="button" data-val="auto" class="sel"><b>Suggest based on my BMI</b></button>
+          <button type="button" data-val="weight-loss"><b>Lose weight</b></button>
+          <button type="button" data-val="healthy-fresh"><b>Eat healthy / maintain</b></button>
+          <button type="button" data-val="high-protein"><b>Build muscle / high protein</b></button>
+          <button type="button" data-val="low-sugar"><b>Diabetes friendly / low sugar</b></button>
+        </div>
       </div>
-
-      <div class="field">
-        <label for="goal">Your Goal</label>
-        <select id="goal">
-          <option value="auto" selected>Suggest based on my BMI</option>
-          <option value="weight-loss">Lose weight</option>
-          <option value="healthy-fresh">Eat healthy / maintain</option>
-          <option value="high-protein">Build muscle / high protein</option>
-          <option value="low-sugar">Diabetes friendly / low sugar</option>
-        </select>
-      </div>
-
       <div class="form-err" id="formErr"></div>
-      <button type="submit" class="btn btn-primary" style="width:100%;">Calculate My BMI</button>
-    </form>
+      <button type="button" class="btn btn-primary btn-eval" id="evaluateBtn">Evaluate &rarr;</button>
+    </div>
+  </div>
+
+  <!-- hidden inputs consumed by calculate() -->
+  <div style="display:none;" aria-hidden="true">
+    <input type="hidden" id="age"><input type="hidden" id="cm"><input type="hidden" id="ft">
+    <input type="hidden" id="in"><input type="hidden" id="kg"><input type="hidden" id="activity"><input type="hidden" id="goal">
   </div>
 
   <!-- RESULTS -->
-  <div class="card">
-    <h2>Your Results</h2>
-    <div class="placeholder" id="placeholder">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-      <p>Fill in your details on the left. Your BMI, ideal weight, calorie targets and matched meal plan appear here <strong>instantly</strong>.</p>
+  <div class="card" id="resultsCard" style="display:none;">
+    <div class="results-head">
+      <h2>Your Results</h2>
+      <button type="button" class="restart" id="restartBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg> Recalculate</button>
     </div>
 
     <div id="results">
@@ -330,18 +408,18 @@
       <div class="gauge"><div class="gauge-marker" id="gaugeMarker" style="left:50%;"></div></div>
       <div class="gauge-legend"><span>15</span><span>18.5</span><span>23</span><span>25</span><span>35</span></div>
 
-      <div class="stat-grid">
-        <div class="stat"><div class="k">Ideal Weight</div><div class="v" id="idealW">--</div></div>
-        <div class="stat"><div class="k">Weight Status</div><div class="v" id="wStatus" style="font-size:1rem;">--</div></div>
-        <div class="stat"><div class="k">Maintain Calories</div><div class="v" id="maintCal">--<span class="u"> kcal/day</span></div></div>
-        <div class="stat"><div class="k" id="targetLbl">Target Calories</div><div class="v" id="targetCal">--<span class="u"> kcal/day</span></div></div>
-      </div>
-
       <div class="reco">
         <div class="lbl">Recommended For You</div>
         <h3 id="recoName">--</h3>
         <p id="recoDesc">--</p>
         <a href="#" id="recoCta" class="btn btn-saffron" target="_blank" rel="noopener">Start This Plan &rarr;</a>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat"><div class="k">Ideal Weight</div><div class="v" id="idealW">--</div></div>
+        <div class="stat"><div class="k">Weight Status</div><div class="v" id="wStatus" style="font-size:1rem;">--</div></div>
+        <div class="stat"><div class="k">Maintain Calories</div><div class="v" id="maintCal">--<span class="u"> kcal/day</span></div></div>
+        <div class="stat"><div class="k" id="targetLbl">Target Calories</div><div class="v" id="targetCal">--<span class="u"> kcal/day</span></div></div>
       </div>
 
       <div class="tips">
@@ -440,23 +518,83 @@
   var ham=document.getElementById('ham'), navMob=document.getElementById('navMob');
   if(ham){ ham.addEventListener('click',function(){ var o=navMob.classList.toggle('open'); ham.setAttribute('aria-expanded',o?'true':'false'); }); }
 
-  var gender='male';
-  document.querySelectorAll('#genderSeg button').forEach(function(b){
-    b.addEventListener('click',function(){
-      document.querySelectorAll('#genderSeg button').forEach(function(x){x.classList.remove('active');});
-      b.classList.add('active'); gender=b.dataset.val; calculate(false);
+  var gender=null, heightUnit='ftin';
+
+  /* ---- scroll pickers ---- */
+  var ITEM=40;
+  function buildPicker(el){
+    var min=+el.dataset.min, max=+el.dataset.max, def=+el.dataset.def, html='<div class="picker-pad"></div>';
+    for(var v=min; v<=max; v++){ html+='<div class="picker-item">'+v+'</div>'; }
+    html+='<div class="picker-pad"></div>';
+    el.innerHTML=html;
+    var items=el.querySelectorAll('.picker-item');
+    el._min=min; el._max=max; el._def=def; el._inited=false; el._value=def;
+    function read(){ return Math.min(max, Math.max(min, min + Math.round(el.scrollTop/ITEM))); }
+    el._val=function(){ return el._value; };   // stored, valid even when the step is hidden
+    el._hl=function(){ var idx=Math.round(el.scrollTop/ITEM); items.forEach(function(it,i){ it.classList.toggle('sel', i===idx); }); };
+    var to;
+    el.addEventListener('scroll',function(){ el._value=read(); el._hl(); clearTimeout(to); to=setTimeout(function(){ if(el._onchange) el._onchange(); },110); });
+    return el;
+  }
+  function initPicker(el){ if(!el._inited){ el.scrollTop=(el._def-el._min)*ITEM; el._value=el._def; el._inited=true; } el._hl(); }
+  var pAge=buildPicker(document.getElementById('pickAge'));
+  var pFt=buildPicker(document.getElementById('pickFt'));
+  var pIn=buildPicker(document.getElementById('pickIn'));
+  var pKg=buildPicker(document.getElementById('pickKg'));
+
+  function updCmHint(){ var cm=Math.round(pFt._val()*30.48 + pIn._val()*2.54); document.getElementById('cmHint').textContent='= '+cm+' cm'; }
+  pFt._onchange=updCmHint; pIn._onchange=updCmHint;
+
+  /* ---- wizard navigation ---- */
+  var curStep=1;
+  function goStep(n){
+    curStep=n;
+    document.querySelectorAll('.wiz-step').forEach(function(s){ s.classList.toggle('active', +s.dataset.step===n); });
+    document.querySelectorAll('.wiz-dots span').forEach(function(d){ d.classList.toggle('on', +d.dataset.d===n); });
+    document.getElementById('wizBack').classList.toggle('show', n>1);
+    if(n===2){ initPicker(pAge); }
+    if(n===3){ initPicker(pFt); initPicker(pIn); initPicker(pKg); updCmHint(); }
+  }
+  document.getElementById('wizBack').addEventListener('click',function(){ if(curStep>1) goStep(curStep-1); });
+  document.querySelectorAll('.wiz-cont').forEach(function(b){ b.addEventListener('click',function(){ goStep(+b.dataset.next); }); });
+
+  document.querySelectorAll('.gender-card').forEach(function(c){
+    c.addEventListener('click',function(){
+      document.querySelectorAll('.gender-card').forEach(function(x){x.classList.remove('sel');});
+      c.classList.add('sel'); gender=c.dataset.val;
+      setTimeout(function(){ goStep(2); },170);
     });
   });
 
-  var heightUnit='cm';
-  document.querySelectorAll('#heightUnit button').forEach(function(b){
-    b.addEventListener('click',function(){
-      document.querySelectorAll('#heightUnit button').forEach(function(x){x.classList.remove('active');});
-      b.classList.add('active'); heightUnit=b.dataset.unit;
-      document.getElementById('heightCm').classList.toggle('hidden',heightUnit!=='cm');
-      document.getElementById('heightFtIn').classList.toggle('hidden',heightUnit!=='ftin');
-      calculate(false);
+  function optList(id){
+    var list=document.getElementById(id);
+    list.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click',function(){ list.querySelectorAll('button').forEach(function(x){x.classList.remove('sel');}); b.classList.add('sel'); });
     });
+    return function(){ var s=list.querySelector('button.sel'); return s?s.dataset.val:null; };
+  }
+  var getActivity=optList('optActivity'), getGoal=optList('optGoal');
+
+  document.getElementById('evaluateBtn').addEventListener('click',function(){
+    document.getElementById('age').value=pAge._val();
+    document.getElementById('ft').value=pFt._val();
+    document.getElementById('in').value=pIn._val();
+    document.getElementById('kg').value=pKg._val();
+    document.getElementById('activity').value=getActivity();
+    document.getElementById('goal').value=getGoal();
+    if(calculate(true)){
+      document.getElementById('wizard').style.display='none';
+      var rc=document.getElementById('resultsCard'); rc.style.display='block';
+      window.scrollTo({top: rc.getBoundingClientRect().top+window.scrollY-80, behavior:'smooth'});
+    }
+  });
+
+  document.getElementById('restartBtn').addEventListener('click',function(){
+    document.getElementById('resultsCard').style.display='none';
+    var wz=document.getElementById('wizard'); wz.style.display='flex';
+    document.getElementById('results').classList.remove('show');
+    goStep(1);
+    window.scrollTo({top: wz.getBoundingClientRect().top+window.scrollY-80, behavior:'smooth'});
   });
 
   var PLANS={
@@ -572,25 +710,14 @@
     });
 
     var res=document.getElementById('results');
-    var firstReveal=!res.classList.contains('show');
-    document.getElementById('placeholder').style.display='none';
-    res.classList.add('show');
-    if(showErrors && firstReveal){ res.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+    res.classList.remove('show'); void res.offsetWidth; res.classList.add('show');
 
     LAST={bmi:bmi.toFixed(1),cat:cat,age:age,gender:gender,cm:Math.round(cm),kg:kg,lo:fmt(lo),hi:fmt(hi),
           maintain:fmt(maintain),target:fmt(target),targetLbl:targetLbl,plan:plan,tips:tips};
     return true;
   }
 
-  // Auto-calculate as the user types (fewer clicks), and on select changes.
-  var deb;
-  ['age','cm','ft','in','kg'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) el.addEventListener('input',function(){ clearTimeout(deb); deb=setTimeout(function(){ calculate(false); },250); });
-  });
-  document.getElementById('activity').addEventListener('change',function(){ calculate(false); });
-  document.getElementById('goal').addEventListener('change',function(){ calculate(false); });
-  document.getElementById('bmiForm').addEventListener('submit',function(e){ e.preventDefault(); calculate(true); });
+  // Results are triggered by the wizard's Evaluate button (see above).
 
   function reportHTML(d){
     var date=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
