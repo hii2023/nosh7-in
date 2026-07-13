@@ -81,10 +81,17 @@
     var modalWrap = null;
     var lastFocus = null;
 
-    history.pushState({}, '');
+    // Arm on the FIRST user interaction, not on load: Chrome marks history
+    // entries added without user activation as "skippable" and the back
+    // button ignores them, which silently defeats the trap on real phones.
+    var armed = false;
+    var arm = function () { if (armed) return; armed = true; history.pushState({}, ''); };
+    ['pointerdown', 'touchstart', 'keydown'].forEach(function (t) {
+      document.addEventListener(t, arm, { once: true, capture: true, passive: true });
+    });
 
     window.addEventListener('popstate', function () {
-      if (leaving) return;
+      if (leaving || !armed) return;
       history.pushState({}, '');   // hold position while we ask
       showModal();
     });
