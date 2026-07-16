@@ -318,6 +318,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://nosh7.in/blog-indian-food-lifestyle-gap-ahmedabad.html</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <url>
     <loc>https://nosh7.in/fruit-bowl-pack-ahmedabad.html</loc>
