@@ -1,0 +1,9 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "nosh7-cms",
+  "main": "worker.js",
+  "compatibility_date": "2026-07-01",
+  "observability": {
+    "enabled": true
+  }
+}
