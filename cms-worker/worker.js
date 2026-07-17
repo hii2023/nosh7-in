@@ -14,6 +14,177 @@ const BRANCH = 'main';
 const SITE = 'https://nosh7.in';
 const ARTICLE_RE = /^blog-[a-z0-9-]+\.html$/;
 const IMG_NAME_RE = /^[a-z0-9][a-z0-9._-]*\.(webp|jpe?g|png)$/;
+const INDEXNOW_KEY = '9d861722dd3c9d64dd74b588ba61d096';
+
+const ACCENTS = {
+  green:  { hero1: '#14532d', hero2: '#16a34a', tint: '#86efac', card1: '#d1fae5', card2: '#6ee7b7', accent: '#059669' },
+  orange: { hero1: '#431407', hero2: '#9a3412', tint: '#fdba74', card1: '#ffedd5', card2: '#fdba74', accent: '#c2410c' },
+  teal:   { hero1: '#134e4a', hero2: '#0d9488', tint: '#5eead4', card1: '#ccfbf1', card2: '#5eead4', accent: '#0d9488' },
+  pink:   { hero1: '#831843', hero2: '#db2777', tint: '#f9a8d4', card1: '#fce7f3', card2: '#f9a8d4', accent: '#db2777' }
+};
+
+function b64decode(b64) {
+  const bin = atob(String(b64).replace(/\n/g, ''));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+// Strip characters that could break HTML attributes or JSON-LD; no em dashes on this site
+function cleanText(s) {
+  return String(s || '').replace(/[<>"]/g, '').replace(/—/g, '-').replace(/\s+/g, ' ').trim();
+}
+
+function fillTpl(tpl, map) {
+  let out = tpl;
+  for (const k in map) out = out.split('{{' + k + '}}').join(map[k]);
+  return out;
+}
+
+const CARD_TPL = `    <a href="https://nosh7.in/{{SLUG}}" data-cat="{{CAT}}" class="blog-card">
+      <div class="blog-card-top" style="color:{{ACCENT}}; background: linear-gradient(135deg, {{CARD1}}, {{CARD2}});"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">{{TAG}}</div>
+        <div class="blog-card-title">{{H1_SHORT}}</div>
+        <div class="blog-card-desc">{{CARD_DESC}}</div>
+        <div class="blog-card-meta"><span>{{MONTH_YEAR}}</span><span>{{MINS}} min read</span></div>
+      </div>
+    </a>
+`;
+
+const SITEMAP_TPL = `  <url>
+    <loc>https://nosh7.in/{{SLUG}}</loc>
+    <lastmod>{{DATE}}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+`;
+
+const PAGE_TPL = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{SEO_TITLE}}</title>
+  <meta name="description" content="{{META_DESC}}" />
+  <meta name="keywords" content="{{TAG}} Ahmedabad, healthy meal delivery Ahmedabad, NOSH7 {{TAG}}" />
+  <link rel="canonical" href="https://nosh7.in/{{SLUG}}" />
+  <link rel="alternate" hreflang="en" href="https://www.nosh7.com/" />
+  <link rel="alternate" hreflang="hi-IN" href="https://nosh7.in/{{SLUG}}" />
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nosh7.in/"}, {"@type": "ListItem", "position": 2, "name": "Health Blog", "item": "https://nosh7.in/blog.html"}, {"@type": "ListItem", "position": 3, "name": "{{H1_SHORT}}", "item": "https://nosh7.in/{{SLUG}}"}]}
+  </script>
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://nosh7.in/{{SLUG}}" />
+  <meta property="og:title" content="{{SEO_TITLE}}" />
+  <meta property="og:description" content="{{META_DESC}}" />
+  <meta property="og:image" content="https://nosh7.in/assets/nosh7-healthy-salad-meal-ahmedabad-og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{H1}}",
+    "description": "{{META_DESC}}",
+    "author": {"@type": "Organization", "name": "NOSH7"},
+    "publisher": {"@type": "Organization", "name": "NOSH7", "logo": {"@type": "ImageObject", "url": "https://nosh7.in/assets/logo.png"}},
+    "url": "https://nosh7.in/{{SLUG}}",
+    "datePublished": "{{DATE}}",
+    "dateModified": "{{DATE}}"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://events.nosh7.in" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet" href="/assets/blog.css?v=2026-06-25" />
+  <style>
+    .hero { background: linear-gradient(135deg, {{HERO1}}, {{HERO2}}); }
+    .hero-tag { color: {{TINT}}; }
+    .hero-meta { color: {{TINT}}; }
+  </style>
+<style id="n7-nav-enh">
+.n7-nav-right{display:flex;align-items:center;gap:1.1rem}
+.n7-links{display:flex;align-items:center;gap:1.1rem}
+.n7-links a{color:#1a3c2e;font-weight:600;font-size:.88rem;white-space:nowrap;text-decoration:none}
+.n7-links a:hover{color:#52b788}
+.n7-login{display:inline-flex;align-items:center;gap:.35rem;border:1.5px solid #b7e4c7;border-radius:100px;padding:.32rem .85rem;background:rgba(45,106,79,.08);color:#1a3c2e;font-weight:700;font-size:.82rem;text-decoration:none;white-space:nowrap}
+.n7-login:hover{background:#1a3c2e;color:#faf7f0}
+.n7-login svg{flex:none}
+@media(max-width:820px){.n7-links{display:none}.n7-nav-right{gap:.6rem}}
+.n7-float{position:fixed;bottom:1.4rem;right:1.1rem;z-index:500;display:flex;flex-direction:column;gap:.6rem}
+.n7-float a{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.22);transition:transform .2s}
+.n7-float a:hover{transform:scale(1.08)}
+.n7-float .wa{background:#25D366}.n7-float .call{background:#1a3c2e}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <img decoding="async" src="/assets/logo.webp" alt="NOSH7 logo" />
+    <div class="nav-logo-text">NOSH7<span>Pure Veg &middot; Ahmedabad</span></div>
+  </a><div class="n7-nav-right"><div class="n7-links"><a href="/#plans">Plans</a><a href="/#menu">Menu</a><a href="/blog.html">Blog</a><a href="/bmi-calculator-ahmedabad.html">BMI</a><a href="/fruit-bowl-pack-ahmedabad.html">Fruit</a><a href="/office-lunch-ahmedabad.html">Office</a></div><a class="n7-login" href="https://www.nosh7.com" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Login</a></div>
+  <a class="nav-back" href="/blog.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    All Articles
+  </a>
+</nav>
+
+<div class="hero">
+  <span class="hero-tag">{{TAG}}</span>
+  <h1>{{H1}}</h1>
+  <p class="hero-meta">By NOSH7 Kitchen &amp; Nutrition Team &middot; {{MONTH_YEAR}} &middot; {{MINS}} min read</p>
+</div>
+
+<div class="article-wrap" role="main">
+
+  <p class="intro">{{INTRO}}</p>
+
+  <p>Start writing your article here. In the CMS, tap Edit on this block to replace this text, or delete it and add your own text and image blocks.</p>
+
+  <div class="cta-block">
+    <h3>Fresh, Balanced Meals Delivered in Ahmedabad</h3>
+    <p>20g+ protein, high fibre, controlled calories - designed by the NOSH7 kitchen for the way we live now. Start with a 5-day trial at ₹1,250 (code Healthy = ₹1,100).</p>
+    <a href="https://start.nosh7.in/?track={{TRACK}}" class="cta-btn" target="_blank" rel="noopener">Start Your Trial &rarr;</a>
+  </div>
+
+  <div class="related">
+    <h3>Related Articles</h3>
+    <div class="related-links">
+      <a href="/blog-7-essential-nutrients-ahmedabad.html">The 7 Essential Nutrients Every Complete Meal Needs &rarr;</a>
+      <a href="/blog-weight-loss-science-ahmedabad.html">The Science of Weight Loss for Indian Vegetarians &rarr;</a>
+      <a href="/blog.html">View All Health Articles &rarr;</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2026 NOSH7 &middot; Ahmedabad ka Pure Veg Salad Cloud Kitchen
+</footer>
+
+<!-- 100% privacy-first analytics -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_AZPE2NqJmbnWMwMKgGBmFkdpXr7P3ixKZMQZHeYo3Z7C', {
+        api_host: 'https://events.nosh7.in',
+        ui_host: 'https://us.posthog.com',
+        defaults: '2026-01-30',
+        person_profiles: 'identified_only',
+    })
+</script>
+<div class="n7-float" role="complementary" aria-label="Quick contact"><a class="wa" href="https://wa.me/919712989498?text=Hi+Team+Nosh7" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a><a class="call" href="tel:+919712989498" aria-label="Call NOSH7"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a></div>
+<script src="/js/site-nav.js" defer></script>
+</body>
+</html>
+`;
 
 function b64encode(str) {
   const bytes = new TextEncoder().encode(str);
@@ -96,8 +267,102 @@ export default {
       const res = await fetch('https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/' + p, {
         headers: { 'User-Agent': 'nosh7-cms-worker' }
       });
-      if (!res.ok) return json({ error: 'Could not load article (' + res.status + ')' }, 502);
-      return json({ html: await res.text() });
+      if (res.ok) return json({ html: await res.text() });
+      // Fallback (raw CDN can lag right after a create): authenticated contents API
+      if (env.GITHUB_TOKEN) {
+        const cur = await gh(env, 'GET', '/repos/' + REPO + '/contents/' + p + '?ref=' + BRANCH);
+        if (cur.ok && cur.data.content) return json({ html: b64decode(cur.data.content) });
+      }
+      return json({ error: 'Could not load article (' + res.status + ')' }, 502);
+    }
+
+    if (path === '/api/create' && req.method === 'POST') {
+      if (!env.GITHUB_TOKEN) return json({ error: 'GITHUB_TOKEN secret not set. Publishing is locked.' }, 503);
+      const b = await req.json().catch(function () { return null; });
+      if (!b) return json({ error: 'Bad request' }, 400);
+
+      const slug = String(b.slug || '').trim();
+      if (!/^blog-[a-z0-9-]{3,70}-ahmedabad\.html$/.test(slug)) {
+        return json({ error: 'File name must look like blog-your-topic-ahmedabad.html (lowercase letters, numbers, hyphens)' }, 400);
+      }
+      const h1 = cleanText(b.h1);
+      const seoTitle = cleanText(b.seoTitle);
+      const metaDesc = cleanText(b.metaDesc);
+      const tag = cleanText(b.tag);
+      const cardDesc = cleanText(b.cardDesc);
+      const intro = cleanText(b.intro);
+      if (!h1 || !seoTitle || !metaDesc || !tag || !cardDesc || !intro) return json({ error: 'All fields are required' }, 400);
+      if (h1.length > 140 || seoTitle.length > 70 || metaDesc.length > 175 || tag.length > 30 || cardDesc.length > 200 || intro.length > 800) {
+        return json({ error: 'One of the fields is too long' }, 400);
+      }
+      const cat = ['conditions', 'weightloss', 'protein', 'value', 'lifestyle'].indexOf(b.cat) > -1 ? b.cat : 'lifestyle';
+      const acc = ACCENTS[b.accent] || ACCENTS.green;
+      const track = ['healthy-fresh', 'weight-loss', 'low-sugar', 'high-protein', 'fruit-pack'].indexOf(b.track) > -1 ? b.track : 'healthy-fresh';
+      const mins = Math.min(15, Math.max(3, parseInt(b.mins, 10) || 6));
+
+      // Slug collision check
+      const head = await fetch('https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/' + slug, {
+        method: 'HEAD', headers: { 'User-Agent': 'nosh7-cms-worker' }
+      });
+      if (head.ok) return json({ error: 'An article with this file name already exists' }, 409);
+
+      const now = new Date();
+      const date = now.toISOString().slice(0, 10);
+      const monthYear = now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+      const h1Short = h1.length > 60 ? h1.slice(0, 57).replace(/\s+\S*$/, '') + '...' : h1;
+      const map = {
+        SLUG: slug, H1: h1, H1_SHORT: h1Short, SEO_TITLE: seoTitle, META_DESC: metaDesc,
+        TAG: tag, CAT: cat, CARD_DESC: cardDesc, INTRO: intro, TRACK: track,
+        MINS: String(mins), DATE: date, MONTH_YEAR: monthYear,
+        HERO1: acc.hero1, HERO2: acc.hero2, TINT: acc.tint,
+        CARD1: acc.card1, CARD2: acc.card2, ACCENT: acc.accent
+      };
+      const page = fillTpl(PAGE_TPL, map);
+      const card = fillTpl(CARD_TPL, map);
+      const smEntry = fillTpl(SITEMAP_TPL, map);
+
+      if (b.dryRun) return json({ ok: true, dryRun: true, page: page, card: card, sitemapEntry: smEntry });
+
+      // 1. Commit the new article page
+      const putPage = await gh(env, 'PUT', '/repos/' + REPO + '/contents/' + slug, {
+        message: 'CMS: new article ' + slug, content: b64encode(page), branch: BRANCH
+      });
+      if (!putPage.ok) return json({ error: 'Could not create page: ' + (putPage.data.message || putPage.status) }, 502);
+
+      // 2. Add to sitemap.xml
+      const sm = await gh(env, 'GET', '/repos/' + REPO + '/contents/sitemap.xml?ref=' + BRANCH);
+      if (!sm.ok) return json({ error: 'Page created, but could not read sitemap.xml: ' + (sm.data.message || sm.status) }, 502);
+      const smText = b64decode(sm.data.content);
+      if (smText.indexOf('</urlset>') === -1) return json({ error: 'Page created, but sitemap.xml looks unexpected; not touched' }, 502);
+      const newSm = smText.replace('</urlset>', smEntry + '</urlset>');
+      const putSm = await gh(env, 'PUT', '/repos/' + REPO + '/contents/sitemap.xml', {
+        message: 'CMS: sitemap entry for ' + slug, content: b64encode(newSm), sha: sm.data.sha, branch: BRANCH
+      });
+      if (!putSm.ok) return json({ error: 'Page created, but sitemap update failed: ' + (putSm.data.message || putSm.status) }, 502);
+
+      // 3. Add card to blog.html listing (newest first) + bump the visible count
+      const bl = await gh(env, 'GET', '/repos/' + REPO + '/contents/blog.html?ref=' + BRANCH);
+      if (!bl.ok) return json({ error: 'Page + sitemap done, but could not read blog.html: ' + (bl.data.message || bl.status) }, 502);
+      let blText = b64decode(bl.data.content);
+      const anchor = '<div class="blog-grid">';
+      if (blText.indexOf(anchor) === -1) return json({ error: 'Page + sitemap done, but blog.html grid anchor not found; card not added' }, 502);
+      blText = blText.replace(anchor, anchor + '\n' + card);
+      blText = blText.replace(/>(\d+) articles</, function (m, n) { return '>' + (parseInt(n, 10) + 1) + ' articles<'; });
+      const putBl = await gh(env, 'PUT', '/repos/' + REPO + '/contents/blog.html', {
+        message: 'CMS: blog listing card for ' + slug, content: b64encode(blText), sha: bl.data.sha, branch: BRANCH
+      });
+      if (!putBl.ok) return json({ error: 'Page + sitemap done, but blog.html update failed: ' + (putBl.data.message || putBl.status) }, 502);
+
+      // 4. Tell search engines (best effort)
+      try {
+        await fetch('https://api.indexnow.org/indexnow', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
+          body: JSON.stringify({ host: 'nosh7.in', key: INDEXNOW_KEY, keyLocation: SITE + '/' + INDEXNOW_KEY + '.txt', urlList: [SITE + '/' + slug, SITE + '/blog.html', SITE + '/sitemap.xml'] })
+        });
+      } catch (e) { /* non-fatal */ }
+
+      return json({ ok: true, slug: slug });
     }
 
     if (path === '/api/publish' && req.method === 'POST') {
@@ -235,11 +500,46 @@ const UI_HTML = '<!DOCTYPE html>\n' +
 'function showList(){\n' +
 '  var h="";\n' +
 '  if(!state.tokenOk){h+=\'<div class="banner"><b>Publishing is locked.</b> The GitHub token is not configured yet. You can browse and prepare edits, but Publish will fail. One-time setup: create a fine-grained GitHub token for <code>hii2023/nosh7-in</code> (Contents: read &amp; write) and run <code>npx wrangler secret put GITHUB_TOKEN</code> in the cms-worker folder.</div>\';}\n' +
-'  h+=\'<div class="crumb">\'+state.articles.length+\' articles &middot; tap one to edit</div><div class="alist">\';\n' +
+'  h+=\'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"><span class="crumb" style="margin:0;">\'+state.articles.length+\' articles &middot; tap one to edit</span><button class="btn-g" id="newArt">+ New Article</button></div><div class="alist">\';\n' +
 '  state.articles.forEach(function(a){h+=\'<a data-p="\'+esc(a.path)+\'">\'+esc(prettify(a.path))+\'<small>\'+esc(a.path)+\'</small></a>\';});\n' +
 '  h+="</div>";\n' +
 '  app.innerHTML=h;\n' +
+'  document.getElementById("newArt").onclick=newArticle;\n' +
 '  Array.prototype.forEach.call(app.querySelectorAll(".alist a"),function(el){el.onclick=function(){openArticle(el.getAttribute("data-p"));};});\n' +
+'}\n' +
+'\n' +
+'/* ---------- NEW ARTICLE ---------- */\n' +
+'function counterHint(el,min,max,out){var f=function(){var n=el.value.trim().length;out.textContent=n+" chars (aim "+min+"-"+max+")";out.style.color=(n>=min&&n<=max)?"#2d6a4f":"#c0392b";};el.addEventListener("input",f);f();}\n' +
+'function newArticle(){\n' +
+'  var bg=modal(\'<h3>New Article</h3>\'+\n' +
+'    \'<label>Article heading (H1)</label><input id="na-h1" placeholder="e.g. Best Foods for Better Sleep" />\'+\n' +
+'    \'<label>File name</label><input id="na-slug" /><p class="hint">Auto-generated from the heading. This becomes the page URL.</p>\'+\n' +
+'    \'<label>Browser/SEO title <span id="na-stc" style="font-weight:400;"></span></label><input id="na-st" placeholder="ends with | NOSH7" />\'+\n' +
+'    \'<label>Meta description <span id="na-mdc" style="font-weight:400;"></span></label><textarea id="na-md" style="min-height:70px;font-family:inherit;font-size:14px;"></textarea>\'+\n' +
+'    \'<label>Card tag (short category label)</label><input id="na-tag" placeholder="e.g. Sleep &amp; Recovery" />\'+\n' +
+'    \'<label>Card description (1-2 lines for the blog listing)</label><input id="na-cd" />\'+\n' +
+'    \'<label>Intro paragraph (first paragraph of the article)</label><textarea id="na-in" style="min-height:90px;font-family:inherit;font-size:14px;"></textarea>\'+\n' +
+'    \'<div style="display:flex;gap:8px;flex-wrap:wrap;">\'+\n' +
+'    \'<div style="flex:1;min-width:130px;"><label>Filter category</label><select id="na-cat" style="width:100%;padding:10px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;"><option value="lifestyle">Lifestyle &amp; Guides</option><option value="conditions">Health Conditions</option><option value="weightloss">Weight Loss</option><option value="protein">High Protein</option><option value="value">Value &amp; Cost</option></select></div>\'+\n' +
+'    \'<div style="flex:1;min-width:130px;"><label>Colour theme</label><select id="na-acc" style="width:100%;padding:10px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;"><option value="green">Green</option><option value="orange">Orange</option><option value="teal">Teal</option><option value="pink">Pink</option></select></div>\'+\n' +
+'    \'<div style="flex:1;min-width:130px;"><label>CTA plan</label><select id="na-tr" style="width:100%;padding:10px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;"><option value="healthy-fresh">Healthy Fresh</option><option value="weight-loss">Weight Loss</option><option value="low-sugar">Low Sugar</option><option value="high-protein">High Protein</option><option value="fruit-pack">Fruit Pack</option></select></div>\'+\n' +
+'    \'<div style="flex:1;min-width:130px;"><label>Read time (min)</label><input id="na-mins" type="number" value="6" min="3" max="15" /></div>\'+\n' +
+'    \'</div>\'+\n' +
+'    \'<div class="row"><button class="btn-o" id="cxl">Cancel</button><button class="btn-g" id="crt">Create Article</button></div>\');\n' +
+'  var slugTouched=false;\n' +
+'  bg.querySelector("#na-slug").addEventListener("input",function(){slugTouched=true;});\n' +
+'  bg.querySelector("#na-h1").addEventListener("input",function(){if(!slugTouched){bg.querySelector("#na-slug").value="blog-"+slugify(bg.querySelector("#na-h1").value)+"-ahmedabad.html";}});\n' +
+'  counterHint(bg.querySelector("#na-st"),55,60,bg.querySelector("#na-stc"));\n' +
+'  counterHint(bg.querySelector("#na-md"),150,160,bg.querySelector("#na-mdc"));\n' +
+'  bg.querySelector("#cxl").onclick=function(){bg.remove();};\n' +
+'  bg.querySelector("#crt").onclick=function(){\n' +
+'    var body={h1:bg.querySelector("#na-h1").value,slug:bg.querySelector("#na-slug").value.trim(),seoTitle:bg.querySelector("#na-st").value,metaDesc:bg.querySelector("#na-md").value,tag:bg.querySelector("#na-tag").value,cardDesc:bg.querySelector("#na-cd").value,intro:bg.querySelector("#na-in").value,cat:bg.querySelector("#na-cat").value,accent:bg.querySelector("#na-acc").value,track:bg.querySelector("#na-tr").value,mins:bg.querySelector("#na-mins").value};\n' +
+'    var btn=bg.querySelector("#crt");btn.disabled=true;btn.textContent="Creating...";\n' +
+'    api("/api/create",{method:"POST",body:JSON.stringify(body)}).then(function(d){\n' +
+'      bg.remove();toast("Article created. Site rebuilds in ~1-2 min. Now add your content and Publish.");\n' +
+'      openArticle(d.slug);\n' +
+'    }).catch(function(e){btn.disabled=false;btn.textContent="Create Article";toast(e.message,true);});\n' +
+'  };\n' +
 '}\n' +
 '\n' +
 '/* ---------- EDITOR ---------- */\n' +
@@ -278,7 +578,7 @@ const UI_HTML = '<!DOCTYPE html>\n' +
 'function renderEditor(){\n' +
 '  var h=\'<div class="crumb"><a id="backBtn">&larr; All articles</a> &nbsp;/&nbsp; \'+esc(state.path)+\' &nbsp;&middot;&nbsp; <a href="https://nosh7.in/\'+esc(state.path)+\'" target="_blank">view live &nearr;</a></div>\';\n' +
 '  if(!state.tokenOk){h+=\'<div class="banner"><b>Publishing locked</b> until the GitHub token is configured (see article list page).</div>\';}\n' +
-'  h+=\'<div class="addbar"><button class="btn-o" data-add="0">+ Add image here</button></div>\';\n' +
+'  h+=\'<div class="addbar"><button class="btn-o" data-addtxt="0">+ Text here</button> <button class="btn-o" data-add="0">+ Image here</button></div>\';\n' +
 '  state.blocks.forEach(function(b,i){\n' +
 '    h+=\'<div class="blk"><div class="blk-head"><span class="blk-tag">\'+tagLabel(b)+\'</span><span class="sp">\'+\n' +
 '      \'<button class="btn-o" data-up="\'+i+\'" title="Move up">&uarr;</button>\'+\n' +
@@ -286,7 +586,7 @@ const UI_HTML = '<!DOCTYPE html>\n' +
 '      \'<button class="btn-o" data-ed="\'+i+\'">Edit</button>\'+\n' +
 '      \'<button class="btn-r" data-del="\'+i+\'">Delete</button>\'+\n' +
 '      \'</span></div><div class="blk-body">\'+previewHTML(b)+\'</div></div>\';\n' +
-'    h+=\'<div class="addbar"><button class="btn-o" data-add="\'+(i+1)+\'">+ Add image here</button></div>\';\n' +
+'    h+=\'<div class="addbar"><button class="btn-o" data-addtxt="\'+(i+1)+\'">+ Text here</button> <button class="btn-o" data-add="\'+(i+1)+\'">+ Image here</button></div>\';\n' +
 '  });\n' +
 '  h+=\'<div style="height:52px;"></div>\';\n' +
 '  app.innerHTML=h;\n' +
@@ -301,6 +601,20 @@ const UI_HTML = '<!DOCTYPE html>\n' +
 '  Array.prototype.forEach.call(app.querySelectorAll("[data-up]"),function(el){el.onclick=function(){var i=+el.getAttribute("data-up");if(i>0){var b=state.blocks.splice(i,1)[0];state.blocks.splice(i-1,0,b);state.dirty=true;renderEditor();}};});\n' +
 '  Array.prototype.forEach.call(app.querySelectorAll("[data-dn]"),function(el){el.onclick=function(){var i=+el.getAttribute("data-dn");if(i<state.blocks.length-1){var b=state.blocks.splice(i,1)[0];state.blocks.splice(i+1,0,b);state.dirty=true;renderEditor();}};});\n' +
 '  Array.prototype.forEach.call(app.querySelectorAll("[data-add]"),function(el){el.onclick=function(){addImage(+el.getAttribute("data-add"));};});\n' +
+'  Array.prototype.forEach.call(app.querySelectorAll("[data-addtxt]"),function(el){el.onclick=function(){addText(+el.getAttribute("data-addtxt"));};});\n' +
+'}\n' +
+'\n' +
+'/* ---------- ADD TEXT ---------- */\n' +
+'function addText(pos){\n' +
+'  var bg=modal(\'<h3>Add text block</h3><div style="display:flex;gap:6px;margin-bottom:8px;"><button class="btn-o" data-t="p">Paragraph</button><button class="btn-o" data-t="h2">Heading</button><button class="btn-o" data-t="ul">Bullet list</button></div><textarea id="thtml"></textarea><p class="hint">Write your text between the tags.</p><div class="row"><button class="btn-o" id="cxl">Cancel</button><button class="btn-g" id="ins">Add Block</button></div>\');\n' +
+'  var ta=bg.querySelector("#thtml");ta.value="<p>Write your paragraph here.</p>";\n' +
+'  Array.prototype.forEach.call(bg.querySelectorAll("[data-t]"),function(b){b.onclick=function(){var t=b.getAttribute("data-t");if(t==="p")ta.value="<p>Write your paragraph here.</p>";if(t==="h2")ta.value="<h2>Your Section Heading</h2>";if(t==="ul")ta.value="<ul>\\n  <li><strong>Point one:</strong> details here.</li>\\n  <li><strong>Point two:</strong> details here.</li>\\n</ul>";};});\n' +
+'  bg.querySelector("#cxl").onclick=function(){bg.remove();};\n' +
+'  bg.querySelector("#ins").onclick=function(){\n' +
+'    var t=document.createElement("div");t.innerHTML=ta.value;\n' +
+'    if(t.children.length!==1){toast("Block must be exactly one HTML element",true);return;}\n' +
+'    state.blocks.splice(pos,0,t.children[0]);state.dirty=true;bg.remove();renderEditor();\n' +
+'  };\n' +
 '}\n' +
 '\n' +
 '/* ---------- EDIT BLOCK ---------- */\n' +
