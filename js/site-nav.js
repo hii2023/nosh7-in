@@ -92,6 +92,10 @@
 
     window.addEventListener('popstate', function () {
       if (leaving || !armed) return;
+      // In-page anchor navigation (e.g. tapping "Meal Plans" -> #plans) also
+      // fires popstate in Chrome; that is not a leave attempt. Only guard
+      // hash-less entries so section links never trigger the modal.
+      if (location.hash) return;
       history.pushState({}, '');   // hold position while we ask
       showModal();
     });

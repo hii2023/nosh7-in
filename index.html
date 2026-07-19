@@ -680,6 +680,11 @@
       .float-btn svg { width: 22px; height: 22px; }
     }
 
+    /* ── PLANS: two equal cards ── */
+    .plans-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 940px; align-items: stretch; }
+    .plan-card { display: flex; flex-direction: column; }
+    .plan-card .btn-block { margin-top: auto; }
+
     /* ── HERO CERT LINE (FSSAI + Razorpay) ── */
     .hero-certs { display: flex; align-items: center; gap: 0.6rem 1.6rem; flex-wrap: wrap; margin-top: 1rem; font-size: 0.78rem; font-weight: 600; color: var(--muted); position: relative; z-index: 1; }
     .hero-certs .hc-item { display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
@@ -973,34 +978,6 @@
         </li>
       </ul>
       <a href="https://start.nosh7.in/?track=healthy-fresh" class="btn btn-saffron btn-block" target="_blank" rel="noopener" data-i18n="p26.btn">Get Monthly Plan →</a>
-    </div>
-
-    <!-- Healthy Fruit Bowl -->
-    <div class="plan-card">
-      <div class="plan-top-badge" style="color:#7c3aed;background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.4);"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-2-3-7-2-7 3 0 5 4 9 7 9s7-4 7-9c0-5-5-6-7-3Z"/><path d="M12 7V4c0-1 1-2 2.5-2"/></svg> New</div>
-      <div class="plan-title">Healthy Fruit Bowl</div>
-      <div class="plan-who">Fresh-cut seasonal fruit bowls, light and refreshing</div>
-      <div class="plan-price">₹1,250 <span class="plan-period">/ 5 days</span></div>
-      <div class="plan-value-compare">Monthly ₹4,999 · 25 days · ₹200/day</div>
-      <ul class="plan-features" style="margin-top:1.2rem;">
-        <li class="plan-feature">
-          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Seasonal fresh fruit, cut fresh daily</span>
-        </li>
-        <li class="plan-feature">
-          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Good fruit combinations in every bowl</span>
-        </li>
-        <li class="plan-feature">
-          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Easy to digest, light on the stomach</span>
-        </li>
-        <li class="plan-feature">
-          <svg class="plan-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Full of nutrients, vitamins and fibre</span>
-        </li>
-      </ul>
-      <a href="https://start.nosh7.in/?track=fruit-pack" class="btn btn-primary btn-block" target="_blank" rel="noopener">Get Fruit Bowl →</a>
     </div>
 
   </div>
@@ -1899,6 +1876,6 @@
         person_profiles: 'identified_only',
     })
 </script>
-<script src="/js/site-nav.js" defer></script>
+<script src="/js/site-nav.js?v=20260718" defer></script>
 </body>
 </html>
