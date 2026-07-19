@@ -679,6 +679,14 @@
       .float-btn { width: 46px; height: 46px; }
       .float-btn svg { width: 22px; height: 22px; }
     }
+
+    /* ── TRUST STRIP (FSSAI + Razorpay) ── */
+    .trust-strip { display: flex; align-items: center; justify-content: center; gap: 1.1rem 2.6rem; flex-wrap: wrap; margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.12); color: var(--cream); }
+    .ts-item { display: flex; align-items: center; gap: 0.6rem; }
+    .ts-fssai { font-family: 'IBM Plex Sans', sans-serif; font-weight: 800; font-size: 1.35rem; letter-spacing: -0.5px; line-height: 1; }
+    .ts-txt { display: flex; flex-direction: column; text-align: left; }
+    .ts-title { font-size: 0.8rem; font-weight: 700; line-height: 1.3; }
+    .ts-sub { font-size: 0.7rem; opacity: 0.72; line-height: 1.35; }
   </style>
 </head>
 <body>
@@ -988,6 +996,21 @@
   </div>
 
   <p class="plans-proof"><svg class="ico" style="margin-right:.3em;color:var(--saffron)" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg>10,000+ customers served &nbsp;·&nbsp; Rated 4.8 / 5 &nbsp;·&nbsp; Trusted since 2023</p>
+
+  <div class="trust-strip" aria-label="Certification and secure payments">
+    <div class="ts-item">
+      <span class="ts-fssai">fssai</span>
+      <span class="ts-txt"><span class="ts-title">FSSAI Registered Kitchen</span><span class="ts-sub">Lic. No. 20723038000600</span></span>
+    </div>
+    <div class="ts-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.436 0l-11.91 7.773-1.174 4.276 6.625-4.297L11.65 24h4.391l6.395-24zM14.26 10.098L3.389 17.166 1.564 24h9.008l3.688-13.902Z"/></svg>
+      <span class="ts-txt"><span class="ts-title">Payments by Razorpay</span><span class="ts-sub">100% secure &middot; UPI, cards, netbanking</span></span>
+    </div>
+    <div class="ts-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+      <span class="ts-txt"><span class="ts-title">No Auto-Renewal</span><span class="ts-sub">Full refund on trial if not satisfied</span></span>
+    </div>
+  </div>
 </section>
 
 <!-- ── TRIAL MODAL ── -->
@@ -1618,6 +1641,7 @@
       </div>
     </div>
   </div>
+  <div style="text-align:center;font-size:0.75rem;color:rgba(255,255,255,.45);padding-bottom:0.6rem;">FSSAI Registered Kitchen &middot; Lic. No. 20723038000600 &middot; Payments secured by Razorpay</div>
   <div class="footer-bottom" data-i18n="footer.copy">
     © 2026 NOSH7 · Eat Healthy, Feel Great · 100% Pure Veg · No Eggs · Made with love in Ahmedabad, India
   </div>
