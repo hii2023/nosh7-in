@@ -685,8 +685,9 @@
     @media (max-width: 1024px) { .feat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 480px) { .feat-grid { grid-template-columns: 1fr; } }
 
-    /* ── PLANS: two equal cards ── */
-    .plans-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 940px; align-items: stretch; }
+    /* ── PLANS: two equal cards (desktop only; stacks on mobile/tablet) ── */
+    .plans-grid { max-width: 940px; align-items: stretch; }
+    @media (min-width: 1025px) { .plans-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .plan-card { display: flex; flex-direction: column; }
     .plan-card .btn-block { margin-top: auto; }
 
