@@ -135,7 +135,7 @@
     /* ── HERO ── */
     .hero {
       min-height: 60vh;
-      display: flex; flex-direction: column; justify-content: center;
+      display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 3rem;
       padding: 10rem 4rem 4rem; /* extra top: top-bar(32px) + nav(~72px) + breathing room */
       position: relative; overflow: hidden;
       background: var(--cream);
@@ -181,7 +181,7 @@
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 40px 100px rgba(26,60,46,.18);
       animation: float 5s ease-in-out infinite;
-      position: relative; overflow: hidden;
+      position: relative;
     }
     .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
@@ -610,6 +610,7 @@
       .hero-trust { justify-content: center; flex-wrap: wrap; }
       .hero-visual { order: -1; }
       .hero-img-wrap { width: 240px; height: 240px; }
+      .hero-spin-badge { width: 62px; height: 62px; font-size: 0.58rem; top: 8px; right: -2px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .df-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -870,6 +871,13 @@
     <div class="hero-certs" aria-label="Certification and secure payments">
       <span class="hc-item"><img src="/assets/fssai-logo.svg" alt="FSSAI" style="height:22px;width:auto;display:block;" decoding="async" /> Lic. No. 20723038000600</span>
       <span class="hc-item"><img src="/assets/razorpay-logo.svg" alt="Razorpay" style="height:15px;width:auto;display:block;" decoding="async" /> Secure Payments</span>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-img-wrap">
+      <img src="/assets/hero-bowl.webp" alt="Fresh high-protein salad bowl with tofu, corn and greens - healthy meal delivery Ahmedabad by NOSH7" width="420" height="420" decoding="async" fetchpriority="high" />
+      <span class="hero-spin-badge" aria-hidden="true">100%<br>VEG</span>
     </div>
   </div>
 
