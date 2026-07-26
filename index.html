@@ -186,14 +186,9 @@
     @media (prefers-reduced-motion: reduce) { .hero-img-wrap img { animation: none; } }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
     .hero-spin-badge {
-      position: absolute; top: 24px; right: -8px;
-      width: 96px; height: 96px; border-radius: 50%;
-      background: var(--white);
-      border: 2px solid var(--green-fresh);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'IBM Plex Sans', sans-serif; font-size: 0.7rem; font-weight: 800;
-      color: var(--green-deep); text-align: center; line-height: 1.3; letter-spacing: 0.02em;
-      box-shadow: 0 8px 24px rgba(26,60,46,.28);
+      position: absolute; top: 20px; right: 6px;
+      width: 53px; height: 53px;
+      filter: drop-shadow(0 6px 16px rgba(26,60,46,.3));
     }
     .hero-spin-outer { animation: spin-slow 9s linear infinite; }
     .hero-spin-inner { animation: spin-slow 9s linear infinite reverse; }
@@ -611,14 +606,20 @@
       .hero-trust { justify-content: center; flex-wrap: wrap; }
       .hero-visual { order: -1; }
       .hero-img-wrap { width: 240px; height: 240px; }
-      .hero-spin-badge { width: 62px; height: 62px; font-size: 0.58rem; top: 8px; right: -2px; }
+      .hero-spin-badge { width: 40px; height: 40px; top: 8px; right: 4px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .df-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
     @media (max-width: 768px) {
-      /* Hero fills the screen — plans section starts below the fold */
-      .hero { min-height: 100dvh; min-height: 100vh; padding: 8.5rem 1.8rem 4rem; box-sizing: border-box; }
+      /* Hero fills the screen — everything down to the Razorpay line stays above the fold */
+      .hero { min-height: 100dvh; min-height: 100vh; padding: 6.4rem 1.5rem 1.4rem; gap: 1.1rem; box-sizing: border-box; }
+      .hero-img-wrap { width: 200px; height: 200px; }
+      .hero h1 { font-size: clamp(2rem, 6.8vw, 2.7rem); line-height: 1.12; margin-bottom: 0.35rem; }
+      .hero-sub { margin: 0.75rem auto 1rem; font-size: 0.92rem; line-height: 1.55; }
+      .hero-btns { margin-bottom: 1rem; }
+      .hero-trust { padding: 0.35rem 0.8rem; }
+      .hero-certs { margin-top: 0.5rem; }
       .hero-cityscape { opacity: 0.07; object-position: center 60%; }
       nav { padding: 0.6rem 1.2rem; }
       .top-bar { font-size: 0.72rem; padding: 0.35rem 0.8rem; }
@@ -632,9 +633,9 @@
       .health-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
-      .hero { padding: 7.5rem 1.2rem 3.5rem; min-height: 100dvh; min-height: 100vh; }
-      .hero h1 { font-size: clamp(2.2rem, 8vw, 2.8rem); }
-      .hero-img-wrap { width: 190px; height: 190px; }
+      .hero { padding: 6rem 1.2rem 1.2rem; min-height: 100dvh; min-height: 100vh; }
+      .hero h1 { font-size: clamp(1.85rem, 7.4vw, 2.5rem); }
+      .hero-img-wrap { width: 172px; height: 172px; }
       .why-grid { grid-template-columns: 1fr; }
       .menu-grid { grid-template-columns: 1fr; }
       .testi-grid { grid-template-columns: 1fr; }
@@ -643,6 +644,17 @@
       .pbar-btn { padding: 0.42rem 0.7rem; font-size: 0.75rem; gap: 0.3rem; }
       .pbar-btn svg { width: 14px; height: 14px; }
       .cta-btns { flex-direction: column; align-items: center; }
+    }
+    /* Short phones: keep the whole hero (down to the Razorpay line) above the fold */
+    @media (max-width: 768px) and (max-height: 740px) {
+      .hero { padding: 6.9rem 1.2rem 1rem; gap: 0.5rem; }
+      .hero-img-wrap { width: 146px; height: 146px; }
+      .hero-spin-badge { width: 34px; height: 34px; top: 4px; right: 2px; }
+      .hero h1 { font-size: clamp(1.65rem, 6.2vw, 2.1rem); line-height: 1.1; margin-bottom: 0.2rem; }
+      .hero-sub { margin: 0.5rem auto 0.75rem; font-size: 0.85rem; line-height: 1.45; }
+      .hero-btns { margin-bottom: 0.75rem; gap: 0.6rem; }
+      .hero-trust { padding: 0.3rem 0.7rem; }
+      .hero-certs { margin-top: 0.4rem; }
     }
 
     /* ── LOGIN BUTTON ── */
@@ -846,7 +858,7 @@
       <span data-i18n="hero.h1.line1">Your Search For Healthy Meals Ends </span><span class="hero-h1-here" data-i18n="hero.h1.line2">Here.</span>
     </h1>
     <p class="hero-sub" data-i18n-html="hero.sub">
-      Fresh, Healthy Salad Meals. High Protein. High Fibre.<br><strong>Starts From ₹200/Meal.</strong>
+      Healthy Salad Meals. High Protein. High Fibre. Low In Calories.<br><strong>Starts From ₹200/Meal.</strong>
     </p>
     <div class="hero-btns">
       <a href="https://start.nosh7.in/?track=healthy-fresh" class="btn btn-saffron" target="_blank" rel="noopener">
@@ -878,7 +890,12 @@
   <div class="hero-visual">
     <div class="hero-img-wrap">
       <img src="/assets/hero-bowl.webp" alt="Fresh high-protein salad bowl with tofu, corn and greens - healthy meal delivery Ahmedabad by NOSH7" width="420" height="420" decoding="async" fetchpriority="high" />
-      <span class="hero-spin-badge" aria-hidden="true">100%<br>VEG</span>
+      <svg class="hero-spin-badge" viewBox="0 0 100 100" role="img" aria-label="100 percent Vegetarian">
+        <path d="M 50.00 1.00 C 52.76 1.00 55.17 7.69 58.29 8.32 C 61.42 8.94 66.20 3.67 68.75 4.73 C 71.30 5.79 70.96 12.89 73.61 14.66 C 76.26 16.43 82.69 13.40 84.65 15.35 C 86.60 17.31 83.57 23.74 85.34 26.39 C 87.11 29.04 94.21 28.70 95.27 31.25 C 96.33 33.80 91.06 38.58 91.68 41.71 C 92.31 44.83 99.00 47.24 99.00 50.00 C 99.00 52.76 92.31 55.17 91.68 58.29 C 91.06 61.42 96.33 66.20 95.27 68.75 C 94.21 71.30 87.11 70.96 85.34 73.61 C 83.57 76.26 86.60 82.69 84.65 84.65 C 82.69 86.60 76.26 83.57 73.61 85.34 C 70.96 87.11 71.30 94.21 68.75 95.27 C 66.20 96.33 61.42 91.06 58.29 91.68 C 55.17 92.31 52.76 99.00 50.00 99.00 C 47.24 99.00 44.83 92.31 41.71 91.68 C 38.58 91.06 33.80 96.33 31.25 95.27 C 28.70 94.21 29.04 87.11 26.39 85.34 C 23.74 83.57 17.31 86.60 15.35 84.65 C 13.40 82.69 16.43 76.26 14.66 73.61 C 12.89 70.96 5.79 71.30 4.73 68.75 C 3.67 66.20 8.94 61.42 8.32 58.29 C 7.69 55.17 1.00 52.76 1.00 50.00 C 1.00 47.24 7.69 44.83 8.32 41.71 C 8.94 38.58 3.67 33.80 4.73 31.25 C 5.79 28.70 12.89 29.04 14.66 26.39 C 16.43 23.74 13.40 17.31 15.35 15.35 C 17.31 13.40 23.74 16.43 26.39 14.66 C 29.04 12.89 28.70 5.79 31.25 4.73 C 33.80 3.67 38.58 8.94 41.71 8.32 C 44.83 7.69 47.24 1.00 50.00 1.00 Z" fill="var(--green-mid)"/>
+        <circle cx="50" cy="50" r="37" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.6"/>
+        <text x="50" y="46" text-anchor="middle" fill="var(--white)" font-family="'IBM Plex Sans',sans-serif" font-weight="800" font-size="23" letter-spacing="-1">100<tspan font-size="13" dy="-8">%</tspan></text>
+        <text x="50" y="70" text-anchor="middle" fill="var(--white)" font-family="'IBM Plex Sans',sans-serif" font-weight="800" font-size="22" letter-spacing="1.5">VEG</text>
+      </svg>
     </div>
   </div>
 
