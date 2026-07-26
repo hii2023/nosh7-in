@@ -52,7 +52,7 @@
 1. NEVER modify nosh7.com in any way
 2. Always git commit after changes with descriptive message
 3. All CTAs and order buttons must point to https://start.nosh7.in/
-4. Keep sitemap.xml updated whenever pages are added or modified
+4. Keep sitemap.xml updated whenever pages are added or modified. After committing content changes and before pushing, run `python3 update-sitemap-lastmod.py` so every `<lastmod>` matches that page's last git commit date. Never hand-edit or invent lastmod values: once Google detects they are unreliable it ignores the signal site-wide. `--check` reports drift without writing.
 5. Every page must have: title tag, meta description, canonical URL, OG tags, JSON-LD schema
 6. Image alt text must include primary keyword + location (e.g., "fresh salad delivery Ahmedabad")
 7. Run Lighthouse suggestions on each SEO pass
