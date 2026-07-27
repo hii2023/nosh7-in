@@ -331,7 +331,7 @@
       <h2 class="wiz-q">How old are you?</h2>
       <p class="wiz-help">Scroll the wheel to your age.</p>
       <div class="picker-row">
-        <div class="picker-wrap"><div class="picker-center"></div><div class="picker" id="pickAge" data-min="12" data-max="100" data-def="30"></div></div>
+        <div class="picker-wrap"><div class="picker-center"></div><div class="picker" id="pickAge" data-min="15" data-max="65" data-def="30"></div></div>
         <span class="picker-unit">years</span>
       </div>
       <button type="button" class="btn btn-primary wiz-cont" data-next="3">Continue</button>
@@ -345,7 +345,7 @@
         <div class="hw-block">
           <div class="hw-label">Height</div>
           <div class="hw-pickers">
-            <div class="picker-wrap sm"><div class="picker-center"></div><div class="picker" id="pickFt" data-min="3" data-max="7" data-def="5"></div><span class="picker-suffix">ft</span></div>
+            <div class="picker-wrap sm"><div class="picker-center"></div><div class="picker" id="pickFt" data-min="4" data-max="6" data-def="5"></div><span class="picker-suffix">ft</span></div>
             <div class="picker-wrap sm"><div class="picker-center"></div><div class="picker" id="pickIn" data-min="0" data-max="11" data-def="7"></div><span class="picker-suffix">in</span></div>
           </div>
         </div>
@@ -543,7 +543,10 @@
   var pKg=buildPicker(document.getElementById('pickKg'));
 
   function updCmHint(){ var cm=Math.round(pFt._val()*30.48 + pIn._val()*2.54); document.getElementById('cmHint').textContent='= '+cm+' cm'; }
-  pFt._onchange=updCmHint; pIn._onchange=updCmHint;
+  // Height ceiling 6 ft 7 in: the ft/in wheels are independent, so cap inches at 7 when ft hits 6.
+  function capHeight(){ if(pFt._val()>=6 && pIn._val()>7){ pIn.scrollTop=(7-pIn._min)*ITEM; pIn._value=7; pIn._hl(); } }
+  pFt._onchange=function(){ capHeight(); updCmHint(); };
+  pIn._onchange=function(){ capHeight(); updCmHint(); };
 
   /* ---- wizard navigation ---- */
   var curStep=1;
@@ -577,8 +580,10 @@
 
   document.getElementById('evaluateBtn').addEventListener('click',function(){
     document.getElementById('age').value=pAge._val();
-    document.getElementById('ft').value=pFt._val();
-    document.getElementById('in').value=pIn._val();
+    var _ft=pFt._val(), _in=pIn._val();
+    if(_ft>=6 && _in>7){ _in=7; }   // safety net: never exceed 6 ft 7 in
+    document.getElementById('ft').value=_ft;
+    document.getElementById('in').value=_in;
     document.getElementById('kg').value=pKg._val();
     document.getElementById('activity').value=getActivity();
     document.getElementById('goal').value=getGoal();
