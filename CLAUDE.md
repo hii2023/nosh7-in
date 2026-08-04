@@ -35,8 +35,9 @@
 - Product (for salad plans)
 
 ### hreflang
-- This site: hi-IN
-- Canonical English version: nosh7.com (en)
+- This site (nosh7.in) serves ENGLISH content, so it is labelled `en-IN` (India English). Do NOT set it back to `hi-IN` — that told Google to serve this English page to Hindi searchers (fixed 2026-08-04).
+- nosh7.com is the generic English alternate (`en`).
+- Convention per page: `<link hreflang="en-IN" href="[this nosh7.in page]">` + `<link hreflang="en" href="[matching nosh7.com page]">`.
 
 ## Pages to Maintain
 
