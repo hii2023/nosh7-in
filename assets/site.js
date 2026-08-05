@@ -81,3 +81,57 @@
       if (icon) icon.style.transform = d.open ? 'rotate(45deg)' : '';
     });
   });
+
+  // ── SCROLL REVEAL ── (details fade + lift in as they scroll into view)
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+
+    const targets = document.querySelectorAll([
+      'section:not(.hero) .section-tag',
+      'section:not(.hero) .section-title',
+      'section:not(.hero) .section-sub',
+      '.plans-grid > *',
+      '.why-grid > *',
+      '.feat-grid > *',
+      '.health-grid > *',
+      '.blog-grid > *',
+      '.df-grid > *',
+      '.location-inner > *'
+    ].join(','));
+    if (!targets.length) return;
+
+    // Hide only once JS is confirmed — no-JS visitors keep everything visible.
+    document.documentElement.classList.add('reveal-ready');
+
+    // Stagger: each element gets a small delay based on its position among siblings.
+    const perParent = new Map();
+    targets.forEach(el => {
+      const p = el.parentElement;
+      const i = perParent.get(p) || 0;
+      perParent.set(p, i + 1);
+      el.classList.add('rv');
+      el.style.transitionDelay = Math.min(i * 90, 450) + 'ms';
+    });
+
+    let ioFired = false;
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          ioFired = true;
+          e.target.classList.add('rv-in');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    targets.forEach(el => io.observe(el));
+
+    function revealAll() {
+      document.querySelectorAll('.rv:not(.rv-in)').forEach(el => el.classList.add('rv-in'));
+    }
+
+    // Failsafe: if the observer never delivers (throttled/unsupported), don't leave
+    // content invisible — reveal everything after a short grace period.
+    setTimeout(function () { if (!ioFired) revealAll(); }, 2500);
+  })();

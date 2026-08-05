@@ -70,6 +70,13 @@
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
 
+    /* ── SCROLL REVEAL ── (details fade + lift in as they enter view; JS adds .reveal-ready) */
+    .reveal-ready .rv { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,0.61,0.36,1), transform 0.7s cubic-bezier(0.22,0.61,0.36,1); will-change: opacity, transform; }
+    .reveal-ready .rv.rv-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-ready .rv { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
     /* ── UTILS ── */
     .section-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-mid); margin-bottom: 0.4rem; }
     .plans-section .section-tag { font-size: 1rem; letter-spacing: 0.08em; }
@@ -1692,7 +1699,7 @@
   </a>
 </div>
 
-<script src="/assets/site.js?v=2026-06-24" defer></script>
+<script src="/assets/site.js?v=2026-08-05" defer></script>
 
 <!-- ── JULIE CHATBOT (disabled — keep code, hidden via CSS) ── -->
 <style>
