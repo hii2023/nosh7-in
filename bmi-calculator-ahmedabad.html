@@ -406,10 +406,23 @@
       nav{ padding:.6rem 1.2rem; } .nav-links{ display:none; } .hamburger{ display:flex; }
       .bmi-hero,.bmi-wrap,.info-section,footer{ padding-left:1.5rem; padding-right:1.5rem; }
       .footer-inner{ gap:2rem; }
+
+      /* ── Phone-app mode: while the wizard is running, only the current step
+            fills the screen. Everything else is hidden until results appear. ── */
+      body.wiz-active .top-bar,
+      body.wiz-active .bmi-hero,
+      body.wiz-active .info-section,
+      body.wiz-active footer,
+      body.wiz-active .floating-btns { display:none !important; }
+      body.wiz-active .bmi-wrap { max-width:none; padding:.9rem 1.1rem 1.1rem; min-height:calc(100dvh - 72px); display:flex; }
+      body.wiz-active .wizard { flex:1; min-height:0; justify-content:flex-start; }
+      body.wiz-active .wiz-step { flex:1; justify-content:center; }
+      body.wiz-active .wiz-cont,
+      body.wiz-active .btn-eval { margin-top:1.2rem; }
     }
   </style>
 </head>
-<body>
+<body class="wiz-active">
 
 <div class="top-bar">
   <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.6.96-4.8 4.68 1.13 6.6L12 17.27 5.97 20.5 7.1 13.9 2.3 9.22l6.6-.96L12 2z"/></svg>
@@ -739,6 +752,7 @@
     document.getElementById('activity').value=getActivity();
     document.getElementById('goal').value=getGoal();
     if(calculate(true)){
+      document.body.classList.remove('wiz-active');   // exit phone-app mode: reveal full page + results
       document.getElementById('wizard').style.display='none';
       var rc=document.getElementById('resultsCard'); rc.style.display='block';
       window.scrollTo({top: rc.getBoundingClientRect().top+window.scrollY-80, behavior:'smooth'});
@@ -749,8 +763,9 @@
     document.getElementById('resultsCard').style.display='none';
     var wz=document.getElementById('wizard'); wz.style.display='flex';
     document.getElementById('results').classList.remove('show');
+    document.body.classList.add('wiz-active');   // back to phone-app single-detail mode
     goStep(1);
-    window.scrollTo({top: wz.getBoundingClientRect().top+window.scrollY-80, behavior:'smooth'});
+    window.scrollTo({top:0});
   });
 
   var PLANS={
