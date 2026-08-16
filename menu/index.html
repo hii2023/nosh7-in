@@ -128,6 +128,43 @@
  "description": "Monthly rotating salad meal menu for NOSH7, Ahmedabad. 20+ high protein pure veg bowls with calories and protein listed.",
  "image": "https://nosh7.in/assets/nosh7-salad-meal-menu-august-2026-ahmedabad.jpg",
  "inLanguage": "en-IN",
+ "hasMenuSection": {
+  "@type": "MenuSection",
+  "name": "Salad Bowls",
+  "description": "Complete pure-veg salad meal bowls, around 400g each, prepared fresh daily.",
+  "hasMenuItem": [
+   {
+    "@type": "MenuItem",
+    "name": "Signature Salad Bowl",
+    "description": "A complete 400g pure-veg salad meal with seasonal vegetables, Original Milk Paneer, a daily mix of seeds and a fresh in-house dressing.",
+    "suitableForDiet": "https://schema.org/VegetarianDiet"
+   },
+   {
+    "@type": "MenuItem",
+    "name": "High-Protein Bowl",
+    "description": "Built for muscle gain and recovery, with 40g or more protein per meal from extra low-fat paneer, legumes and seeds.",
+    "suitableForDiet": "https://schema.org/VegetarianDiet"
+   },
+   {
+    "@type": "MenuItem",
+    "name": "Weight-Loss Bowl",
+    "description": "A calorie-controlled bowl with 30g or more protein and high fibre to keep you full while losing fat.",
+    "suitableForDiet": ["https://schema.org/VegetarianDiet", "https://schema.org/LowCalorieDiet"]
+   },
+   {
+    "@type": "MenuItem",
+    "name": "Low-Sugar Bowl",
+    "description": "A low-glycaemic bowl designed for blood-sugar management, low in refined carbs and sugar.",
+    "suitableForDiet": ["https://schema.org/VegetarianDiet", "https://schema.org/DiabeticDiet"]
+   },
+   {
+    "@type": "MenuItem",
+    "name": "Fresh Fruit Bowl",
+    "description": "A colourful seasonal fruit bowl, a rainbow mix for vitamins, fibre and natural energy.",
+    "suitableForDiet": "https://schema.org/VegetarianDiet"
+   }
+  ]
+ },
  "provider": {
   "@type": "FoodEstablishment",
   "name": "NOSH7",
@@ -148,6 +185,46 @@
    "addressCountry": "IN"
   }
  }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Do you have a high-protein bowl in Ahmedabad?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The NOSH7 High-Protein Bowl delivers 40g or more of protein per meal from extra low-fat paneer, legumes and seeds, and is delivered fresh daily across Ahmedabad. There is also a Weight-Loss Bowl with 30g or more protein for calorie-controlled fat loss."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is there a salad bowl or diet bowl near me in Ahmedabad?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "NOSH7 delivers fresh salad bowls, high-protein bowls, weight-loss bowls and fruit bowls daily across West Ahmedabad, including Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, SG Highway, Bopal and 25+ surrounding areas. Delivery is free within 5 km of the Satellite kitchen."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How many salad varieties are on the NOSH7 menu?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The menu rotates 20+ salad meal varieties each month across five bowl types, with a seasonal refresh so you rarely eat the same bowl twice in a week. Calories and protein are listed for every dish."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Are the bowls a full meal or a side salad?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Every NOSH7 bowl is a complete meal of around 400g, not a side salad. It combines vegetables, a real protein source, seeds and a fresh in-house dressing, so it keeps you full for hours."
+   }
+  }
+ ]
 }
 </script>
 
@@ -219,6 +296,26 @@
       h1 { font-size: 1.25rem; }
       .btn { width: 100%; justify-content: center; }
     }
+    h2 { font-size: 1.25rem; font-weight: 700; letter-spacing: -.01em; margin: 2.5rem 0 .4rem; }
+    .sec-intro { color: var(--muted); font-size: .93rem; margin-bottom: 1.1rem; }
+    .bowls { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+    .bowl {
+      background: var(--white); border: 1px solid #e6efe8; border-radius: 1rem;
+      padding: 1.1rem 1.2rem;
+    }
+    .bowl h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: .3rem; }
+    .bowl p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+    .bowl .spec {
+      display: inline-block; margin-top: .6rem; font-size: .75rem; font-weight: 600;
+      background: rgba(45,106,79,.1); color: var(--green-mid);
+      padding: .2rem .6rem; border-radius: 100px;
+    }
+    .faq details { border-bottom: 1px solid #e6efe8; padding: .8rem 0; }
+    .faq summary { font-weight: 600; cursor: pointer; font-size: .92rem; }
+    .faq p { font-size: .87rem; color: var(--muted); line-height: 1.65; margin-top: .5rem; }
+    .links { margin-top: 1rem; font-size: .9rem; line-height: 2; }
+    .links a { color: var(--green-mid); font-weight: 600; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -245,6 +342,57 @@
     </div>
 
     <p class="note">Tap the menu to open it full size, or <a href="/assets/nosh7-salad-meal-menu-august-2026-ahmedabad.jpg" target="_blank" rel="noopener">download the image</a>.</p>
+
+    <h2>Our Salad Bowls</h2>
+    <p class="sec-intro">The monthly menu above rotates, but every NOSH7 bowl is built the same way: a complete meal of around 400g with vegetables, a real protein source, a daily mix of seeds and a fresh in-house dressing. Five bowl types cover most health goals.</p>
+
+    <div class="bowls">
+      <div class="bowl">
+        <h3>Signature Salad Bowl</h3>
+        <p>Our everyday complete meal: seasonal vegetables, Original Milk Paneer, a rotating mix of seeds and a fresh in-house dressing. Balanced protein, fibre and healthy fats in one bowl.</p>
+        <span class="spec">Complete meal &middot; 400g</span>
+      </div>
+      <div class="bowl">
+        <h3>High-Protein Bowl</h3>
+        <p>Built for muscle gain and recovery, with extra low-fat sauteed paneer, legumes and seeds. The choice if you train and need protein that comes inside a real meal.</p>
+        <span class="spec">40g+ protein</span>
+      </div>
+      <div class="bowl">
+        <h3>Weight-Loss Bowl</h3>
+        <p>Calorie-controlled but genuinely filling, with extra low-fat paneer and high fibre so you lose fat without spending the evening hungry.</p>
+        <span class="spec">30g+ protein &middot; calorie controlled</span>
+      </div>
+      <div class="bowl">
+        <h3>Low-Sugar Bowl</h3>
+        <p>A low-glycaemic bowl for blood-sugar management, low in refined carbs and sugar, designed for anyone watching their numbers.</p>
+        <span class="spec">Low glycaemic</span>
+      </div>
+      <div class="bowl">
+        <h3>Fresh Fruit Bowl</h3>
+        <p>A seasonal rainbow fruit bowl for vitamins, fibre and natural energy. Works well as a mid-morning or evening addition to a meal plan.</p>
+        <span class="spec">Seasonal fruit</span>
+      </div>
+    </div>
+
+    <h2>Every Bowl Includes</h2>
+    <p class="sec-intro">Whatever you pick, the fundamentals do not change. Bowls are prepared about an hour before your delivery slot, never pre-made or frozen. Jain preparation is available on request using Original Milk Paneer, with onion, garlic and root vegetables excluded. Everything is 100% pure vegetarian with no eggs, and every dressing is made fresh in our kitchen daily.</p>
+
+    <h2>Bowl FAQs</h2>
+    <div class="faq">
+      <details><summary>Do you have a high-protein bowl in Ahmedabad?</summary><p>Yes. The NOSH7 High-Protein Bowl delivers 40g or more of protein per meal from extra low-fat paneer, legumes and seeds, and is delivered fresh daily across Ahmedabad. There is also a Weight-Loss Bowl with 30g or more protein for calorie-controlled fat loss.</p></details>
+      <details><summary>Is there a salad bowl or diet bowl near me in Ahmedabad?</summary><p>NOSH7 delivers fresh salad bowls, high-protein bowls, weight-loss bowls and fruit bowls daily across West Ahmedabad, including Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, SG Highway, Bopal and 25+ surrounding areas. Delivery is free within 5 km of the Satellite kitchen.</p></details>
+      <details><summary>How many salad varieties are on the NOSH7 menu?</summary><p>The menu rotates 20+ salad meal varieties each month across five bowl types, with a seasonal refresh so you rarely eat the same bowl twice in a week. Calories and protein are listed for every dish.</p></details>
+      <details><summary>Are the bowls a full meal or a side salad?</summary><p>Every NOSH7 bowl is a complete meal of around 400g, not a side salad. It combines vegetables, a real protein source, seeds and a fresh in-house dressing, so it keeps you full for hours.</p></details>
+    </div>
+
+    <h2>Explore More</h2>
+    <p class="links">
+      <a href="/subscription.html">Subscription plans and pricing</a><br />
+      <a href="/healthy-food-ahmedabad.html">Healthy food in Ahmedabad: a practical guide</a><br />
+      <a href="/weight-loss-meal-delivery-ahmedabad.html">Weight-loss meal delivery</a><br />
+      <a href="/fruit-bowl-pack-ahmedabad.html">Fruit bowl pack</a><br />
+      <a href="/ahmedabad.html">All delivery areas in Ahmedabad</a>
+    </p>
 
     <a class="home-link" href="https://nosh7.in/">&larr; Back to nosh7.in</a>
   </div>
