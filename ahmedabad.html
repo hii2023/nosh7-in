@@ -34,83 +34,183 @@
   <meta name="twitter:image" content="https://nosh7.in/assets/nosh7-og-card-1200x630.jpg" />
 
   <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
   {
-    "@context": "https://schema.org",
-    "@type": ["FoodEstablishment", "LocalBusiness"],
-    "@id": "https://nosh7.in/ahmedabad.html#local",
-    "name": "NOSH7 Ahmedabad",
-    "description": "Fresh salad delivery and subscription service serving Ahmedabad, Gujarat.",
-    "url": "https://nosh7.in/ahmedabad.html",
+   "@type": "Organization",
+   "@id": "https://nosh7.in/#organization",
+   "name": "NOSH7",
+   "url": "https://nosh7.in/",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://nosh7.in/#logo",
+    "url": "https://nosh7.in/assets/logo.png",
+    "width": 512,
+    "height": 512,
+    "caption": "NOSH7"
+   },
+   "image": {
+    "@id": "https://nosh7.in/#logo"
+   },
+   "description": "Pure-veg salad meal kitchen in Ahmedabad. Fresh salad subscriptions, health drinks and superfood seeds delivered daily.",
+   "telephone": "+91-9712989498",
+   "areaServed": {
+    "@type": "City",
+    "name": "Ahmedabad"
+   },
+   "contactPoint": {
+    "@type": "ContactPoint",
     "telephone": "+91-9712989498",
-    "image": "https://nosh7.in/assets/nosh7-salad-delivery-ahmedabad-og.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "5A, Akshat Avenue, Satellite",
-      "addressLocality": "Ahmedabad",
-      "addressRegion": "Gujarat",
-      "postalCode": "380015",
-      "addressCountry": "IN"
+    "contactType": "customer service",
+    "areaServed": "IN",
+    "availableLanguage": [
+     "en",
+     "hi",
+     "gu"
+    ]
+   },
+   "sameAs": [
+    "https://www.nosh7.com",
+    "https://www.instagram.com/nosh7salad",
+    "https://link.zomato.com/xqzv/rshare?id=4824355730563e1b",
+    "https://www.swiggy.com/city/ahmedabad/nosh-7-vastrapur-rest1152457",
+    "https://g.page/r/CeuSXgSA4qXEEBE"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://nosh7.in/#website",
+   "url": "https://nosh7.in/",
+   "name": "NOSH7",
+   "publisher": {
+    "@id": "https://nosh7.in/#organization"
+   },
+   "inLanguage": "en-IN"
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://nosh7.in/ahmedabad.html#webpage",
+   "url": "https://nosh7.in/ahmedabad.html",
+   "name": "Salad Delivery in Ahmedabad | NOSH7 Cloud Kitchen Gujarat",
+   "isPartOf": {
+    "@id": "https://nosh7.in/#website"
+   },
+   "about": {
+    "@id": "https://nosh7.in/#organization"
+   },
+   "primaryImageOfPage": {
+    "@id": "https://nosh7.in/#logo"
+   },
+   "inLanguage": "en-IN",
+   "breadcrumb": {
+    "@id": "https://nosh7.in/ahmedabad.html#breadcrumb"
+   }
+  },
+  {
+   "@type": "Service",
+   "@id": "https://nosh7.in/ahmedabad.html#service",
+   "serviceType": "Healthy salad meal subscription delivery",
+   "name": "NOSH7 salad delivery in Ahmedabad",
+   "description": "Fresh salad delivery and subscription service serving Ahmedabad, Gujarat.",
+   "url": "https://nosh7.in/ahmedabad.html",
+   "provider": {
+    "@id": "https://nosh7.in/#organization"
+   },
+   "areaServed": [
+    {
+     "@type": "Place",
+     "name": "Satellite, Ahmedabad"
     },
-    "openingHours": ["Mo-Sa 08:00-20:30"],
-    "areaServed": [
-      { "@type": "Place", "name": "Satellite, Ahmedabad" },
-      { "@type": "Place", "name": "Navrangpura, Ahmedabad" },
-      { "@type": "Place", "name": "Bodakdev, Ahmedabad" },
-      { "@type": "Place", "name": "Vastrapur, Ahmedabad" },
-      { "@type": "Place", "name": "Prahlad Nagar, Ahmedabad" },
-      { "@type": "Place", "name": "Thaltej, Ahmedabad" },
-      { "@type": "Place", "name": "Maninagar, Ahmedabad" },
-      { "@type": "Place", "name": "CG Road, Ahmedabad" }
-    ],
-    "priceRange": "₹₹",
-    "servesCuisine": "Healthy, Salads"
+    {
+     "@type": "Place",
+     "name": "Navrangpura, Ahmedabad"
+    },
+    {
+     "@type": "Place",
+     "name": "Bodakdev, Ahmedabad"
+    },
+    {
+     "@type": "Place",
+     "name": "Vastrapur, Ahmedabad"
+    },
+    {
+     "@type": "Place",
+     "name": "Prahlad Nagar, Ahmedabad"
+    },
+    {
+     "@type": "Place",
+     "name": "Thaltej, Ahmedabad"
+    },
+    {
+     "@type": "Place",
+     "name": "Maninagar, Ahmedabad"
+    },
+    {
+     "@type": "Place",
+     "name": "CG Road, Ahmedabad"
+    }
+   ]
   }
-  </script>
+ ]
+}
+</script>
 
   <!-- FAQ Schema for local search -->
   <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Does NOSH7 deliver salads in Satellite Ahmedabad?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! NOSH7 delivers fresh salads in Satellite, Ahmedabad as part of our subscription service. Order weekly or monthly at nosh7.com."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What areas in Ahmedabad does NOSH7 cover?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "NOSH7 currently covers Iskcon, Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Gurukul, Thaltej, SG Highway, Makarba, Jodhpur, Ambli, South Bopal, Bopal, Shilaj, Gota, Motera, Navrangpura, Naranpura, Memnagar, Science City, Shela, and Ghatlodia. More areas being added. Check nosh7.com for full list."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I subscribe to NOSH7 salad delivery in Ahmedabad?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Visit start.nosh7.in to choose a weekly or monthly plan. We'll confirm your delivery zone in Ahmedabad and start your subscription."
-        }
-      }
-    ]
+   "@type": "Question",
+   "name": "Does NOSH7 deliver salads in Satellite Ahmedabad?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes! NOSH7 delivers fresh salads in Satellite, Ahmedabad as part of our subscription service. Order weekly or monthly at nosh7.com."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What areas in Ahmedabad does NOSH7 cover?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "NOSH7 currently covers Iskcon, Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Gurukul, Thaltej, SG Highway, Makarba, Jodhpur, Ambli, South Bopal, Bopal, Shilaj, Gota, Motera, Navrangpura, Naranpura, Memnagar, Science City, Shela, and Ghatlodia. More areas being added. Check nosh7.com for full list."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I subscribe to NOSH7 salad delivery in Ahmedabad?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Visit start.nosh7.in to choose a weekly or monthly plan. We'll confirm your delivery zone in Ahmedabad and start your subscription."
+   }
   }
-  </script>
+ ]
+}
+</script>
 
   <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
   {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nosh7.in/" },
-      { "@type": "ListItem", "position": 2, "name": "Ahmedabad Delivery", "item": "https://nosh7.in/ahmedabad.html" }
-    ]
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://nosh7.in/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Ahmedabad Delivery",
+   "item": "https://nosh7.in/ahmedabad.html"
   }
-  </script>
+ ],
+ "@id": "https://nosh7.in/ahmedabad.html#breadcrumb"
+}
+</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://events.nosh7.in" />
