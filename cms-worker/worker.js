@@ -418,292 +418,373 @@ export default {
   }
 };
 
-const UI_HTML = '<!DOCTYPE html>\n' +
-'<html lang="en">\n<head>\n' +
-'<meta charset="UTF-8" />\n' +
-'<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n' +
-'<meta name="robots" content="noindex, nofollow" />\n' +
-'<title>NOSH7 Blog CMS</title>\n' +
-'<link rel="preconnect" href="https://fonts.googleapis.com" />\n' +
-'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n' +
-'<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />\n' +
-'<style>\n' +
-':root{--green:#1a3c2e;--sage:#52b788;--cream:#faf7f0;--line:#e5e0d5;--muted:#777;--red:#c0392b;}\n' +
-'*{box-sizing:border-box;margin:0;padding:0;}\n' +
-'body{font-family:"IBM Plex Sans",sans-serif;background:var(--cream);color:#222;min-height:100vh;}\n' +
-'.top{background:var(--green);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;}\n' +
-'.top b{font-size:17px;}.top span{opacity:.7;font-size:12px;}\n' +
-'.top .right{margin-left:auto;display:flex;gap:8px;}\n' +
-'.wrap{max-width:860px;margin:0 auto;padding:20px 16px 80px;}\n' +
-'.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px;}\n' +
-'button{font-family:inherit;font-size:14px;font-weight:600;border:none;border-radius:10px;padding:10px 16px;cursor:pointer;}\n' +
-'.btn-g{background:var(--green);color:#fff;}.btn-s{background:var(--sage);color:#fff;}\n' +
-'.btn-o{background:#fff;color:var(--green);border:1.5px solid var(--line);}\n' +
-'.btn-r{background:#fdf0ee;color:var(--red);border:1.5px solid #f2c9c3;}\n' +
-'button:disabled{opacity:.5;cursor:not-allowed;}\n' +
-'input,textarea{font-family:inherit;font-size:15px;width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;}\n' +
-'textarea{min-height:140px;font-family:ui-monospace,Menlo,monospace;font-size:13px;line-height:1.5;}\n' +
-'.login{max-width:360px;margin:14vh auto 0;text-align:center;}\n' +
-'.login h1{color:var(--green);font-size:22px;margin-bottom:6px;}\n' +
-'.login p{color:var(--muted);font-size:13px;margin-bottom:18px;}\n' +
-'.login input{text-align:center;margin-bottom:10px;}\n' +
-'.alist a{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;color:var(--green);font-weight:600;text-decoration:none;font-size:15px;}\n' +
-'.alist a small{display:block;color:var(--muted);font-weight:400;font-size:12px;margin-top:2px;}\n' +
-'.banner{background:#fff8e6;border:1px solid #f0dfa8;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.6;margin-bottom:14px;}\n' +
-'.banner code{background:#f4efe2;padding:1px 6px;border-radius:6px;font-size:12px;}\n' +
-'.blk{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;}\n' +
-'.blk-head{display:flex;align-items:center;gap:8px;padding:8px 12px;background:#f7f4ec;border-bottom:1px solid var(--line);}\n' +
-'.blk-tag{font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--sage);text-transform:uppercase;}\n' +
-'.blk-head .sp{margin-left:auto;display:flex;gap:4px;}\n' +
-'.blk-head button{padding:4px 9px;font-size:12px;border-radius:8px;}\n' +
-'.blk-body{padding:12px 14px;font-size:14px;line-height:1.65;overflow-x:auto;}\n' +
-'.blk-body h2{color:var(--green);font-size:19px;}\n' +
-'.blk-body img{max-width:100%;height:auto;border-radius:10px;}\n' +
-'.blk-body table{border-collapse:collapse;font-size:12px;}.blk-body td,.blk-body th{border:1px solid var(--line);padding:4px 8px;}\n' +
-'.addbar{text-align:center;margin:2px 0 12px;}\n' +
-'.addbar button{font-size:12px;padding:6px 12px;}\n' +
-'.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:100;padding:16px;}\n' +
-'.modal{background:#fff;border-radius:16px;padding:20px;width:100%;max-width:560px;max-height:88vh;overflow:auto;}\n' +
-'.modal h3{color:var(--green);font-size:17px;margin-bottom:12px;}\n' +
-'.modal label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:12px 0 4px;}\n' +
-'.modal .row{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;}\n' +
-'.imgprev{max-width:100%;max-height:220px;border-radius:10px;display:block;margin:8px auto;}\n' +
-'.hint{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5;}\n' +
-'.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:11px 20px;border-radius:100px;font-size:13.5px;z-index:200;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:92vw;}\n' +
-'.toast.err{background:var(--red);}\n' +
-'.pubbar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:10px 16px;display:flex;gap:10px;justify-content:center;z-index:60;}\n' +
-'.crumb{font-size:13px;color:var(--muted);margin-bottom:12px;}\n' +
-'.crumb a{color:var(--sage);font-weight:600;text-decoration:none;cursor:pointer;}\n' +
-'</style>\n</head>\n<body>\n' +
-'<div class="top"><b>NOSH7 Blog CMS</b><span>nosh7.in</span><div class="right"><button class="btn-o" id="logoutBtn" style="display:none;padding:6px 12px;font-size:12px;">Logout</button></div></div>\n' +
-'<div class="wrap" id="app"></div>\n' +
-'<script>\n' +
-'(function(){\n' +
-'var app=document.getElementById("app");\n' +
-'var KEY=sessionStorage.getItem("n7cmsKey")||"";\n' +
-'var state={articles:[],path:null,raw:"",pre:"",post:"",blocks:[],pending:{},tokenOk:true,dirty:false};\n' +
-'function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}\n' +
-'function toast(msg,err){var t=document.createElement("div");t.className="toast"+(err?" err":"");t.textContent=msg;document.body.appendChild(t);setTimeout(function(){t.remove();},err?5000:3000);}\n' +
-'function api(p,opts){opts=opts||{};opts.headers=opts.headers||{};opts.headers["x-cms-key"]=KEY;if(opts.body){opts.headers["Content-Type"]="application/json";}return fetch(p,opts).then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(d.error||("HTTP "+r.status));return d;});});}\n' +
-'function prettify(slug){return slug.replace(/^blog-/,"").replace(/-ahmedabad\\.html$/,"").replace(/\\.html$/,"").replace(/-/g," ").replace(/\\b\\w/g,function(c){return c.toUpperCase();});}\n' +
-'\n' +
-'/* ---------- LOGIN ---------- */\n' +
-'function showLogin(){\n' +
-'  document.getElementById("logoutBtn").style.display="none";\n' +
-'  app.innerHTML=\'<div class="login card"><h1>Blog C-Panel</h1><p>Enter the admin passcode to edit nosh7.in articles.</p><input type="password" id="pc" placeholder="Passcode" autofocus /><button class="btn-g" id="go" style="width:100%;">Open Panel</button></div>\';\n' +
-'  var go=function(){var v=document.getElementById("pc").value;fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({passcode:v})}).then(function(r){if(r.ok){KEY=v;sessionStorage.setItem("n7cmsKey",v);boot();}else{toast("Wrong passcode",true);}});};\n' +
-'  document.getElementById("go").onclick=go;\n' +
-'  document.getElementById("pc").addEventListener("keydown",function(e){if(e.key==="Enter")go();});\n' +
-'}\n' +
-'document.getElementById("logoutBtn").onclick=function(){sessionStorage.removeItem("n7cmsKey");KEY="";showLogin();};\n' +
-'\n' +
-'/* ---------- ARTICLE LIST ---------- */\n' +
-'function boot(){\n' +
-'  document.getElementById("logoutBtn").style.display="";\n' +
-'  app.innerHTML="<p style=\\"color:#777;\\">Loading articles...</p>";\n' +
-'  Promise.all([api("/api/articles"),api("/api/status")]).then(function(res){\n' +
-'    state.articles=res[0].articles;state.tokenOk=res[1].tokenConfigured;showList();\n' +
-'  }).catch(function(e){if(String(e.message).indexOf("Unauthorized")>-1){showLogin();}else{app.innerHTML="<div class=\\"card\\">Error: "+esc(e.message)+"</div>";}});\n' +
-'}\n' +
-'function showList(){\n' +
-'  var h="";\n' +
-'  if(!state.tokenOk){h+=\'<div class="banner"><b>Publishing is locked.</b> The GitHub token is not configured yet. You can browse and prepare edits, but Publish will fail. One-time setup: create a fine-grained GitHub token for <code>hii2023/nosh7-in</code> (Contents: read &amp; write) and run <code>npx wrangler secret put GITHUB_TOKEN</code> in the cms-worker folder.</div>\';}\n' +
-'  h+=\'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"><span class="crumb" style="margin:0;">\'+state.articles.length+\' articles &middot; tap one to edit</span><button class="btn-g" id="newArt">+ New Article</button></div><div class="alist">\';\n' +
-'  state.articles.forEach(function(a){h+=\'<a data-p="\'+esc(a.path)+\'">\'+esc(prettify(a.path))+\'<small>\'+esc(a.path)+\'</small></a>\';});\n' +
-'  h+="</div>";\n' +
-'  app.innerHTML=h;\n' +
-'  document.getElementById("newArt").onclick=newArticle;\n' +
-'  Array.prototype.forEach.call(app.querySelectorAll(".alist a"),function(el){el.onclick=function(){openArticle(el.getAttribute("data-p"));};});\n' +
-'}\n' +
-'\n' +
-'/* ---------- NEW ARTICLE ---------- */\n' +
-'function counterHint(el,min,max,out){var f=function(){var n=el.value.trim().length;out.textContent=n+" chars (aim "+min+"-"+max+")";out.style.color=(n>=min&&n<=max)?"#2d6a4f":"#c0392b";};el.addEventListener("input",f);f();}\n' +
-'function newArticle(){\n' +
-'  var bg=modal(\'<h3>New Article</h3>\'+\n' +
-'    \'<label>Article heading (H1)</label><input id="na-h1" placeholder="e.g. Best Foods for Better Sleep" />\'+\n' +
-'    \'<label>File name</label><input id="na-slug" /><p class="hint">Auto-generated from the heading. This becomes the page URL.</p>\'+\n' +
-'    \'<label>Browser/SEO title <span id="na-stc" style="font-weight:400;"></span></label><input id="na-st" placeholder="ends with | NOSH7" />\'+\n' +
-'    \'<label>Meta description <span id="na-mdc" style="font-weight:400;"></span></label><textarea id="na-md" style="min-height:70px;font-family:inherit;font-size:14px;"></textarea>\'+\n' +
-'    \'<label>Card tag (short category label)</label><input id="na-tag" placeholder="e.g. Sleep &amp; Recovery" />\'+\n' +
-'    \'<label>Card description (1-2 lines for the blog listing)</label><input id="na-cd" />\'+\n' +
-'    \'<label>Intro paragraph (first paragraph of the article)</label><textarea id="na-in" style="min-height:90px;font-family:inherit;font-size:14px;"></textarea>\'+\n' +
-'    \'<div style="display:flex;gap:8px;flex-wrap:wrap;">\'+\n' +
-'    \'<div style="flex:1;min-width:130px;"><label>Filter category</label><select id="na-cat" style="width:100%;padding:10px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;"><option value="lifestyle">Lifestyle &amp; Guides</option><option value="conditions">Health Conditions</option><option value="weightloss">Weight Loss</option><option value="protein">High Protein</option><option value="value">Value &amp; Cost</option></select></div>\'+\n' +
-'    \'<div style="flex:1;min-width:130px;"><label>Colour theme</label><select id="na-acc" style="width:100%;padding:10px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;"><option value="green">Green</option><option value="orange">Orange</option><option value="teal">Teal</option><option value="pink">Pink</option></select></div>\'+\n' +
-'    \'<div style="flex:1;min-width:130px;"><label>CTA plan</label><select id="na-tr" style="width:100%;padding:10px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;"><option value="healthy-fresh">Healthy Fresh</option><option value="weight-loss">Weight Loss</option><option value="low-sugar">Low Sugar</option><option value="high-protein">High Protein</option><option value="fruit-pack">Fruit Pack</option></select></div>\'+\n' +
-'    \'<div style="flex:1;min-width:130px;"><label>Read time (min)</label><input id="na-mins" type="number" value="6" min="3" max="15" /></div>\'+\n' +
-'    \'</div>\'+\n' +
-'    \'<div class="row"><button class="btn-o" id="cxl">Cancel</button><button class="btn-g" id="crt">Create Article</button></div>\');\n' +
-'  var slugTouched=false;\n' +
-'  bg.querySelector("#na-slug").addEventListener("input",function(){slugTouched=true;});\n' +
-'  bg.querySelector("#na-h1").addEventListener("input",function(){if(!slugTouched){bg.querySelector("#na-slug").value="blog-"+slugify(bg.querySelector("#na-h1").value)+"-ahmedabad.html";}});\n' +
-'  counterHint(bg.querySelector("#na-st"),55,60,bg.querySelector("#na-stc"));\n' +
-'  counterHint(bg.querySelector("#na-md"),150,160,bg.querySelector("#na-mdc"));\n' +
-'  bg.querySelector("#cxl").onclick=function(){bg.remove();};\n' +
-'  bg.querySelector("#crt").onclick=function(){\n' +
-'    var body={h1:bg.querySelector("#na-h1").value,slug:bg.querySelector("#na-slug").value.trim(),seoTitle:bg.querySelector("#na-st").value,metaDesc:bg.querySelector("#na-md").value,tag:bg.querySelector("#na-tag").value,cardDesc:bg.querySelector("#na-cd").value,intro:bg.querySelector("#na-in").value,cat:bg.querySelector("#na-cat").value,accent:bg.querySelector("#na-acc").value,track:bg.querySelector("#na-tr").value,mins:bg.querySelector("#na-mins").value};\n' +
-'    var btn=bg.querySelector("#crt");btn.disabled=true;btn.textContent="Creating...";\n' +
-'    api("/api/create",{method:"POST",body:JSON.stringify(body)}).then(function(d){\n' +
-'      bg.remove();toast("Article created. Site rebuilds in ~1-2 min. Now add your content and Publish.");\n' +
-'      openArticle(d.slug);\n' +
-'    }).catch(function(e){btn.disabled=false;btn.textContent="Create Article";toast(e.message,true);});\n' +
-'  };\n' +
-'}\n' +
-'\n' +
-'/* ---------- EDITOR ---------- */\n' +
-'function openArticle(p){\n' +
-'  app.innerHTML="<p style=\\"color:#777;\\">Loading "+esc(p)+"...</p>";\n' +
-'  api("/api/article?path="+encodeURIComponent(p)).then(function(d){\n' +
-'    var raw=d.html;\n' +
-'    var m=raw.match(/(<div class="article-wrap"[^>]*>)([\\s\\S]*?)(<\\/div>\\s*<footer)/);\n' +
-'    if(!m){toast("Could not find the article body in this page",true);showList();return;}\n' +
-'    state.path=p;state.raw=raw;state.pending={};state.dirty=false;\n' +
-'    state.pre=raw.slice(0,m.index)+m[1];\n' +
-'    state.post=m[3]+raw.slice(m.index+m[0].length);\n' +
-'    var host=document.createElement("div");host.innerHTML=m[2];\n' +
-'    state.blocks=Array.prototype.slice.call(host.children);\n' +
-'    renderEditor();\n' +
-'  }).catch(function(e){toast(e.message,true);});\n' +
-'}\n' +
-'function tagLabel(el){\n' +
-'  if(el.tagName==="H2")return "Heading";\n' +
-'  if(el.tagName==="P")return el.className==="intro"?"Intro":"Paragraph";\n' +
-'  if(el.tagName==="UL"||el.tagName==="OL")return "List";\n' +
-'  if(el.tagName==="TABLE")return "Table";\n' +
-'  if(el.tagName==="FIGURE")return "Image";\n' +
-'  if(el.tagName==="DIV"){if(el.className.indexOf("cta")>-1)return "CTA";if(el.className.indexOf("related")>-1)return "Related";if(el.className.indexOf("tip")>-1)return "Tip Box";if(el.className.indexOf("pull-quote")>-1)return "Quote";return "Block";}\n' +
-'  return el.tagName;\n' +
-'}\n' +
-'function previewHTML(el){\n' +
-'  var c=el.cloneNode(true);\n' +
-'  Array.prototype.forEach.call(c.querySelectorAll?c.querySelectorAll("img"):[],function(im){\n' +
-'    var src=im.getAttribute("src")||"";var name=src.split("/").pop();\n' +
-'    if(state.pending[name]){im.src=state.pending[name].url;}\n' +
-'    else if(src.charAt(0)==="/"){im.src="https://nosh7.in"+src;}\n' +
-'  });\n' +
-'  return c.outerHTML;\n' +
-'}\n' +
-'function renderEditor(){\n' +
-'  var h=\'<div class="crumb"><a id="backBtn">&larr; All articles</a> &nbsp;/&nbsp; \'+esc(state.path)+\' &nbsp;&middot;&nbsp; <a href="https://nosh7.in/\'+esc(state.path)+\'" target="_blank">view live &nearr;</a></div>\';\n' +
-'  if(!state.tokenOk){h+=\'<div class="banner"><b>Publishing locked</b> until the GitHub token is configured (see article list page).</div>\';}\n' +
-'  h+=\'<div class="addbar"><button class="btn-o" data-addtxt="0">+ Text here</button> <button class="btn-o" data-add="0">+ Image here</button></div>\';\n' +
-'  state.blocks.forEach(function(b,i){\n' +
-'    h+=\'<div class="blk"><div class="blk-head"><span class="blk-tag">\'+tagLabel(b)+\'</span><span class="sp">\'+\n' +
-'      \'<button class="btn-o" data-up="\'+i+\'" title="Move up">&uarr;</button>\'+\n' +
-'      \'<button class="btn-o" data-dn="\'+i+\'" title="Move down">&darr;</button>\'+\n' +
-'      \'<button class="btn-o" data-ed="\'+i+\'">Edit</button>\'+\n' +
-'      \'<button class="btn-r" data-del="\'+i+\'">Delete</button>\'+\n' +
-'      \'</span></div><div class="blk-body">\'+previewHTML(b)+\'</div></div>\';\n' +
-'    h+=\'<div class="addbar"><button class="btn-o" data-addtxt="\'+(i+1)+\'">+ Text here</button> <button class="btn-o" data-add="\'+(i+1)+\'">+ Image here</button></div>\';\n' +
-'  });\n' +
-'  h+=\'<div style="height:52px;"></div>\';\n' +
-'  app.innerHTML=h;\n' +
-'  var bar=document.createElement("div");bar.className="pubbar";\n' +
-'  bar.innerHTML=\'<button class="btn-g" id="pubBtn"\'+(state.dirty?"":" disabled")+\'>Publish to nosh7.in</button>\';\n' +
-'  var old=document.querySelector(".pubbar");if(old)old.remove();\n' +
-'  document.body.appendChild(bar);\n' +
-'  document.getElementById("backBtn").onclick=function(){if(state.dirty&&!confirm("Discard unpublished changes?"))return;var pb=document.querySelector(".pubbar");if(pb)pb.remove();showList();};\n' +
-'  document.getElementById("pubBtn").onclick=publish;\n' +
-'  Array.prototype.forEach.call(app.querySelectorAll("[data-ed]"),function(el){el.onclick=function(){editBlock(+el.getAttribute("data-ed"));};});\n' +
-'  Array.prototype.forEach.call(app.querySelectorAll("[data-del]"),function(el){el.onclick=function(){var i=+el.getAttribute("data-del");if(confirm("Delete this block?")){state.blocks.splice(i,1);state.dirty=true;renderEditor();}};});\n' +
-'  Array.prototype.forEach.call(app.querySelectorAll("[data-up]"),function(el){el.onclick=function(){var i=+el.getAttribute("data-up");if(i>0){var b=state.blocks.splice(i,1)[0];state.blocks.splice(i-1,0,b);state.dirty=true;renderEditor();}};});\n' +
-'  Array.prototype.forEach.call(app.querySelectorAll("[data-dn]"),function(el){el.onclick=function(){var i=+el.getAttribute("data-dn");if(i<state.blocks.length-1){var b=state.blocks.splice(i,1)[0];state.blocks.splice(i+1,0,b);state.dirty=true;renderEditor();}};});\n' +
-'  Array.prototype.forEach.call(app.querySelectorAll("[data-add]"),function(el){el.onclick=function(){addImage(+el.getAttribute("data-add"));};});\n' +
-'  Array.prototype.forEach.call(app.querySelectorAll("[data-addtxt]"),function(el){el.onclick=function(){addText(+el.getAttribute("data-addtxt"));};});\n' +
-'}\n' +
-'\n' +
-'/* ---------- ADD TEXT ---------- */\n' +
-'function addText(pos){\n' +
-'  var bg=modal(\'<h3>Add text block</h3><div style="display:flex;gap:6px;margin-bottom:8px;"><button class="btn-o" data-t="p">Paragraph</button><button class="btn-o" data-t="h2">Heading</button><button class="btn-o" data-t="ul">Bullet list</button></div><textarea id="thtml"></textarea><p class="hint">Write your text between the tags.</p><div class="row"><button class="btn-o" id="cxl">Cancel</button><button class="btn-g" id="ins">Add Block</button></div>\');\n' +
-'  var ta=bg.querySelector("#thtml");ta.value="<p>Write your paragraph here.</p>";\n' +
-'  Array.prototype.forEach.call(bg.querySelectorAll("[data-t]"),function(b){b.onclick=function(){var t=b.getAttribute("data-t");if(t==="p")ta.value="<p>Write your paragraph here.</p>";if(t==="h2")ta.value="<h2>Your Section Heading</h2>";if(t==="ul")ta.value="<ul>\\n  <li><strong>Point one:</strong> details here.</li>\\n  <li><strong>Point two:</strong> details here.</li>\\n</ul>";};});\n' +
-'  bg.querySelector("#cxl").onclick=function(){bg.remove();};\n' +
-'  bg.querySelector("#ins").onclick=function(){\n' +
-'    var t=document.createElement("div");t.innerHTML=ta.value;\n' +
-'    if(t.children.length!==1){toast("Block must be exactly one HTML element",true);return;}\n' +
-'    state.blocks.splice(pos,0,t.children[0]);state.dirty=true;bg.remove();renderEditor();\n' +
-'  };\n' +
-'}\n' +
-'\n' +
-'/* ---------- EDIT BLOCK ---------- */\n' +
-'function modal(inner){var bg=document.createElement("div");bg.className="modal-bg";bg.innerHTML=\'<div class="modal">\'+inner+"</div>";document.body.appendChild(bg);bg.addEventListener("click",function(e){if(e.target===bg)bg.remove();});return bg;}\n' +
-'function editBlock(i){\n' +
-'  var bg=modal(\'<h3>Edit block (HTML)</h3><textarea id="bhtml"></textarea><p class="hint">Edit the text between the tags. Keep the tags themselves intact.</p><div class="row"><button class="btn-o" id="cxl">Cancel</button><button class="btn-g" id="sav">Apply</button></div>\');\n' +
-'  bg.querySelector("#bhtml").value=state.blocks[i].outerHTML;\n' +
-'  bg.querySelector("#cxl").onclick=function(){bg.remove();};\n' +
-'  bg.querySelector("#sav").onclick=function(){\n' +
-'    var v=bg.querySelector("#bhtml").value;var t=document.createElement("div");t.innerHTML=v;\n' +
-'    if(t.children.length!==1){toast("Block must be exactly one HTML element",true);return;}\n' +
-'    state.blocks[i]=t.children[0];state.dirty=true;bg.remove();renderEditor();\n' +
-'  };\n' +
-'}\n' +
-'\n' +
-'/* ---------- ADD IMAGE ---------- */\n' +
-'function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,40)||"blog-image";}\n' +
-'function addImage(pos){\n' +
-'  var bg=modal(\'<h3>Add image</h3><input type="file" id="imf" accept="image/*" /><img class="imgprev" id="imp" style="display:none;" /><div id="imsz" class="hint"></div><label>Alt text (required, include keyword + Ahmedabad)</label><input id="ima" placeholder="e.g. high protein salad bowl Ahmedabad" /><label>Caption (optional, shows under the image)</label><input id="imc" placeholder="optional" /><div class="row"><button class="btn-o" id="cxl">Cancel</button><button class="btn-g" id="ins" disabled>Insert Image</button></div>\');\n' +
-'  var blob=null,w=0,hgt=0;\n' +
-'  bg.querySelector("#cxl").onclick=function(){bg.remove();};\n' +
-'  bg.querySelector("#imf").onchange=function(e){\n' +
-'    var f=e.target.files[0];if(!f)return;\n' +
-'    var img=new Image();\n' +
-'    img.onload=function(){\n' +
-'      var scale=Math.min(1,1200/img.width);\n' +
-'      w=Math.round(img.width*scale);hgt=Math.round(img.height*scale);\n' +
-'      var cv=document.createElement("canvas");cv.width=w;cv.height=hgt;\n' +
-'      cv.getContext("2d").drawImage(img,0,0,w,hgt);\n' +
-'      var qs=[0.82,0.72,0.6,0.5,0.4],qi=0;\n' +
-'      (function tryQ(){\n' +
-'        cv.toBlob(function(b){\n' +
-'          if(!b){toast("Image conversion failed",true);return;}\n' +
-'          if(b.size>200*1024&&qi<qs.length-1){qi++;tryQ();return;}\n' +
-'          blob=b;\n' +
-'          bg.querySelector("#imp").src=URL.createObjectURL(b);bg.querySelector("#imp").style.display="";\n' +
-'          bg.querySelector("#imsz").textContent=w+"x"+hgt+" WebP, "+Math.round(b.size/1024)+" KB"+(b.size>200*1024?" (still over 200KB - consider a smaller image)":"");\n' +
-'          bg.querySelector("#ins").disabled=false;\n' +
-'        },"image/webp",qs[qi]);\n' +
-'      })();\n' +
-'    };\n' +
-'    img.src=URL.createObjectURL(f);\n' +
-'  };\n' +
-'  bg.querySelector("#ins").onclick=function(){\n' +
-'    var alt=bg.querySelector("#ima").value.trim();\n' +
-'    if(!alt){toast("Alt text is required for SEO",true);return;}\n' +
-'    if(!blob){toast("Choose an image first",true);return;}\n' +
-'    var cap=bg.querySelector("#imc").value.trim();\n' +
-'    var name="n7-"+slugify(alt)+"-"+Date.now().toString(36)+".webp";\n' +
-'    var rd=new FileReader();\n' +
-'    rd.onload=function(){\n' +
-'      var b64=String(rd.result).split(",")[1];\n' +
-'      state.pending[name]={base64:b64,url:URL.createObjectURL(blob)};\n' +
-'      var fig=document.createElement("figure");\n' +
-'      fig.setAttribute("style","margin:2rem 0;text-align:center;");\n' +
-'      var imh=\'<img src="/assets/blog/\'+name+\'" alt="\'+esc(alt)+\'" width="\'+w+\'" height="\'+hgt+\'" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:14px;" />\';\n' +
-'      if(cap){imh+=\'<figcaption style="font-size:.85rem;color:#777;margin-top:.55rem;">\'+esc(cap)+"</figcaption>";}\n' +
-'      fig.innerHTML=imh;\n' +
-'      state.blocks.splice(pos,0,fig);state.dirty=true;bg.remove();renderEditor();\n' +
-'    };\n' +
-'    rd.readAsDataURL(blob);\n' +
-'  };\n' +
-'}\n' +
-'\n' +
-'/* ---------- PUBLISH ---------- */\n' +
-'function publish(){\n' +
-'  var btn=document.getElementById("pubBtn");btn.disabled=true;btn.textContent="Publishing...";\n' +
-'  var inner="\\n\\n  "+state.blocks.map(function(b){return b.outerHTML;}).join("\\n\\n  ")+"\\n\\n";\n' +
-'  var html=state.pre+inner+state.post;\n' +
-'  var today=new Date().toISOString().slice(0,10);\n' +
-'  html=html.replace(/"dateModified":\\s*"[^"]*"/,\'"dateModified": "\'+today+\'"\');\n' +
-'  var used={};state.blocks.forEach(function(b){var t=document.createElement("div");t.appendChild(b.cloneNode(true));Array.prototype.forEach.call(t.querySelectorAll("img"),function(im){used[(im.getAttribute("src")||"").split("/").pop()]=1;});});\n' +
-'  var images=Object.keys(state.pending).filter(function(n){return used[n];}).map(function(n){return{name:n,base64:state.pending[n].base64};});\n' +
-'  api("/api/publish",{method:"POST",body:JSON.stringify({path:state.path,html:html,images:images})}).then(function(){\n' +
-'    state.dirty=false;state.pending={};\n' +
-'    btn.textContent="Publish to nosh7.in";\n' +
-'    toast("Published. Site rebuilds in ~1-2 min. Cached pages may take longer (or purge Cloudflare cache).");\n' +
-'    renderEditor();\n' +
-'  }).catch(function(e){btn.disabled=false;btn.textContent="Publish to nosh7.in";toast(e.message,true);});\n' +
-'}\n' +
-'\n' +
-'if(KEY){boot();}else{showLogin();}\n' +
-'})();\n' +
-'</script>\n</body>\n</html>';
+const UI_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>NOSH7 Blog Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--green:#1a3c2e;--sage:#52b788;--cream:#faf7f0;--line:#e5e0d5;--muted:#777;--red:#c0392b;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"IBM Plex Sans",sans-serif;background:var(--cream);color:#222;min-height:100vh;}
+.top{background:var(--green);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;}
+.top b{font-size:17px;}.top span{opacity:.7;font-size:12px;}
+.top .right{margin-left:auto;display:flex;gap:8px;}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 110px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px;}
+button{font-family:inherit;font-size:14px;font-weight:600;border:none;border-radius:10px;padding:10px 16px;cursor:pointer;}
+.btn-g{background:var(--green);color:#fff;}.btn-s{background:var(--sage);color:#fff;}
+.btn-o{background:#fff;color:var(--green);border:1.5px solid var(--line);}
+.btn-r{background:#fdf0ee;color:var(--red);border:1.5px solid #f2c9c3;}
+button:disabled{opacity:.5;cursor:not-allowed;}
+input,textarea,select{font-family:inherit;font-size:15px;width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:#222;}
+textarea{line-height:1.6;resize:vertical;overflow:hidden;}
+.login{max-width:380px;margin:12vh auto 0;text-align:center;}
+.login h1{color:var(--green);font-size:24px;margin-bottom:6px;}
+.login p{color:var(--muted);font-size:14px;margin-bottom:20px;line-height:1.5;}
+.login input{text-align:center;margin-bottom:12px;font-size:17px;}
+.hero-cta{background:var(--green);color:#fff;border-radius:16px;padding:20px;margin-bottom:16px;display:flex;align-items:center;gap:16px;}
+.hero-cta div{flex:1;}
+.hero-cta h2{font-size:18px;margin-bottom:3px;}
+.hero-cta p{font-size:13px;opacity:.85;}
+.hero-cta button{background:#fff;color:var(--green);white-space:nowrap;font-size:15px;padding:12px 20px;}
+.alist a{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;color:var(--green);font-weight:600;text-decoration:none;font-size:15px;cursor:pointer;}
+.alist a:hover{border-color:var(--sage);}
+.alist a .ttl{flex:1;}
+.alist a small{display:block;color:var(--muted);font-weight:400;font-size:12px;margin-top:2px;}
+.alist a .go{color:var(--sage);font-size:13px;font-weight:600;}
+.banner{background:#fff8e6;border:1px solid #f0dfa8;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.6;margin-bottom:14px;}
+.banner code{background:#f4efe2;padding:1px 6px;border-radius:6px;font-size:12px;}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.crumb a{color:var(--sage);font-weight:600;text-decoration:none;cursor:pointer;}
+.titlefield{margin-bottom:6px;}
+.titlefield input{font-size:22px;font-weight:600;padding:14px;border:1.5px solid var(--line);border-radius:12px;}
+.subnote{font-size:12.5px;color:var(--muted);margin:0 2px 16px;line-height:1.5;}
+.cblk{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden;}
+.cblk-head{display:flex;align-items:center;gap:8px;padding:7px 10px 7px 14px;background:#f7f4ec;border-bottom:1px solid var(--line);}
+.cblk-tag{font-size:11px;font-weight:700;letter-spacing:.5px;color:var(--sage);text-transform:uppercase;}
+.cblk-head .sp{margin-left:auto;display:flex;gap:4px;}
+.cblk-head button{padding:5px 9px;font-size:12px;border-radius:8px;line-height:1;}
+.cblk-body{padding:12px 14px;}
+.cblk-body label{display:block;font-size:11.5px;font-weight:600;color:var(--muted);margin-bottom:5px;}
+.cblk-body .hint{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.4;}
+.cblk-body img{max-width:100%;height:auto;border-radius:10px;display:block;margin-bottom:10px;}
+.cblk-intro .cblk-head{background:#eef7f0;}
+.cblk-intro .cblk-tag{color:var(--green);}
+.cblk-locked .cblk-body{color:var(--muted);font-size:13px;}
+.addrow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:18px 0 4px;}
+.addrow button{font-size:13px;padding:9px 14px;}
+.adv{background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:16px;padding:0;}
+.adv summary{padding:14px 16px;cursor:pointer;font-weight:600;color:var(--green);font-size:14px;list-style:none;}
+.adv summary::-webkit-details-marker{display:none;}
+.adv[open] summary{border-bottom:1px solid var(--line);}
+.adv-body{padding:14px 16px;}
+.adv-body label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:12px 0 5px;}
+.adv-body .grid{display:flex;gap:10px;flex-wrap:wrap;}
+.adv-body .grid>div{flex:1;min-width:150px;}
+.imgprev{max-width:100%;max-height:220px;border-radius:10px;display:block;margin:8px auto;}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:100;padding:16px;}
+.modal{background:#fff;border-radius:16px;padding:20px;width:100%;max-width:520px;max-height:88vh;overflow:auto;}
+.modal h3{color:var(--green);font-size:17px;margin-bottom:12px;}
+.modal label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:12px 0 4px;}
+.modal .row{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;}
+.hint{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.5;}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:12px 20px;border-radius:100px;font-size:13.5px;z-index:200;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:92vw;text-align:center;}
+.toast.err{background:var(--red);}
+.pubbar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:12px 16px;display:flex;gap:10px;justify-content:center;align-items:center;z-index:60;}
+.pubbar .btn-g{min-width:220px;}
+</style>
+</head>
+<body>
+<div class="top"><b>NOSH7 Blog Editor</b><span>nosh7.in</span><div class="right"><button class="btn-o" id="logoutBtn" style="display:none;padding:6px 12px;font-size:12px;">Log out</button></div></div>
+<div class="wrap" id="app"></div>
+<script>
+(function(){
+var app=document.getElementById("app");
+var KEY=localStorage.getItem("n7cmsKey")||"";
+var state={articles:[],tokenOk:true,comp:null,pending:{}};
+
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function collapse(t){return String(t==null?"":t).replace(/\\s+/g," ").trim();}
+function toast(msg,err){var t=document.createElement("div");t.className="toast"+(err?" err":"");t.textContent=msg;document.body.appendChild(t);setTimeout(function(){t.remove();},err?5000:3200);}
+function api(p,opts){opts=opts||{};opts.headers=opts.headers||{};opts.headers["x-cms-key"]=KEY;if(opts.body){opts.headers["Content-Type"]="application/json";}return fetch(p,opts).then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(d.error||("HTTP "+r.status));return d;});});}
+function slugify(s){return String(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,50)||"blog-post";}
+function prettify(slug){return slug.replace(/^blog-/,"").replace(/-ahmedabad\\.html$/,"").replace(/\\.html$/,"").replace(/-/g," ").replace(/\\b\\w/g,function(c){return c.toUpperCase();});}
+function modal(inner){var bg=document.createElement("div");bg.className="modal-bg";bg.innerHTML='<div class="modal">'+inner+"</div>";document.body.appendChild(bg);bg.addEventListener("click",function(e){if(e.target===bg)bg.remove();});return bg;}
+function ag(t){t.style.height="auto";t.style.height=(t.scrollHeight+2)+"px";}
+function growAll(){Array.prototype.forEach.call(app.querySelectorAll("textarea"),function(t){ag(t);});}
+
+/* ---------- LOGIN ---------- */
+function showLogin(){
+  document.getElementById("logoutBtn").style.display="none";
+  app.innerHTML='<div class="login card"><h1>Welcome</h1><p>Enter the password to write and edit blog posts on nosh7.in</p><input type="password" id="pc" placeholder="Password" autofocus /><button class="btn-g" id="go" style="width:100%;font-size:16px;padding:13px;">Log in</button></div>';
+  var go=function(){var v=document.getElementById("pc").value;fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({passcode:v})}).then(function(r){if(r.ok){KEY=v;localStorage.setItem("n7cmsKey",v);boot();}else{toast("Wrong password",true);}});};
+  document.getElementById("go").onclick=go;
+  document.getElementById("pc").addEventListener("keydown",function(e){if(e.key==="Enter")go();});
+}
+document.getElementById("logoutBtn").onclick=function(){localStorage.removeItem("n7cmsKey");KEY="";showLogin();};
+
+/* ---------- LIST ---------- */
+function boot(){
+  document.getElementById("logoutBtn").style.display="";
+  app.innerHTML='<p style="color:#777;">Loading your posts...</p>';
+  Promise.all([api("/api/articles"),api("/api/status")]).then(function(res){
+    state.articles=res[0].articles;state.tokenOk=res[1].tokenConfigured;showList();
+  }).catch(function(e){if(String(e.message).indexOf("Unauthorized")>-1){showLogin();}else{app.innerHTML='<div class="card">Error: '+esc(e.message)+'</div>';}});
+}
+function showList(){
+  var pb=document.querySelector(".pubbar");if(pb)pb.remove();
+  var h="";
+  if(!state.tokenOk){h+='<div class="banner"><b>Publishing is locked.</b> The GitHub token is not set yet, so posts cannot be saved online. One-time setup needed by the developer.</div>';}
+  h+='<div class="hero-cta"><div><h2>Write a new post</h2><p>Just add a title, write, and publish. Everything else is automatic.</p></div><button id="newBtn">Start writing</button></div>';
+  h+='<div class="crumb">Your posts &middot; tap any post to edit it</div><div class="alist">';
+  state.articles.forEach(function(a){h+='<a data-p="'+esc(a.path)+'"><span class="ttl">'+esc(prettify(a.path))+'<small>'+esc(a.path)+'</small></span><span class="go">Edit &rarr;</span></a>';});
+  h+="</div>";
+  app.innerHTML=h;
+  document.getElementById("newBtn").onclick=newPost;
+  Array.prototype.forEach.call(app.querySelectorAll(".alist a"),function(el){el.onclick=function(){openArticle(el.getAttribute("data-p"));};});
+}
+
+/* ---------- BODY PARSING ---------- */
+function parseBody(html){
+  var m=html.match(/(<div class="article-wrap"[^>]*>)([\\s\\S]*?)(<\\/div>\\s*<footer)/);
+  if(!m)return null;
+  var pre=html.slice(0,m.index)+m[1];
+  var post=m[3]+html.slice(m.index+m[0].length);
+  var host=document.createElement("div");host.innerHTML=m[2];
+  return {pre:pre,post:post,els:Array.prototype.slice.call(host.children)};
+}
+function lockedLabel(el){
+  var c=el.className||"";
+  if(c.indexOf("cta")>-1)return "Call to action (kept)";
+  if(c.indexOf("related")>-1)return "Related links (kept)";
+  if(el.tagName==="TABLE")return "Table (kept)";
+  if(c.indexOf("tip")>-1)return "Tip box (kept)";
+  if(c.indexOf("quote")>-1)return "Quote (kept)";
+  return "Extra block (kept)";
+}
+function mapEl(el){
+  var tag=el.tagName,html=el.outerHTML;
+  if(tag==="P"&&(el.className||"").indexOf("intro")>-1)return {type:"intro",text:el.textContent,html:html,edited:false};
+  if(tag==="P")return {type:"p",text:el.textContent,html:html,edited:false};
+  if(tag==="H2")return {type:"h2",text:el.textContent,html:html,edited:false};
+  if(tag==="UL"||tag==="OL"){var items=[];Array.prototype.forEach.call(el.querySelectorAll("li"),function(li){items.push(li.textContent);});return {type:"ul",ordered:tag==="OL",items:items,html:html,edited:false};}
+  if(tag==="FIGURE"||tag==="IMG"){var im=tag==="IMG"?el:el.querySelector("img");var fc=el.querySelector?el.querySelector("figcaption"):null;var src=im?(im.getAttribute("src")||""):"";return {type:"img",edited:false,html:html,img:{finalSrc:src,alt:im?(im.getAttribute("alt")||""):"",cap:fc?fc.textContent:"",w:im?im.getAttribute("width"):"",h:im?im.getAttribute("height"):"",displaySrc:src.charAt(0)==="/"?"https://nosh7.in"+src:src}};}
+  return {type:"locked",label:lockedLabel(el),html:html};
+}
+
+/* ---------- NEW POST ---------- */
+function newPost(){
+  state.comp={isNew:true,title:"",path:null,pre:"",post:"",blocks:[
+    {type:"intro",text:"",edited:true},
+    {type:"p",text:"",edited:true}
+  ]};
+  state.pending={};
+  renderComposer();
+}
+
+/* ---------- EDIT EXISTING ---------- */
+function openArticle(p){
+  app.innerHTML='<p style="color:#777;">Loading '+esc(p)+'...</p>';
+  api("/api/article?path="+encodeURIComponent(p)).then(function(d){
+    var parsed=parseBody(d.html);
+    if(!parsed){toast("Could not read this post's content",true);showList();return;}
+    state.comp={isNew:false,title:"",path:p,pre:parsed.pre,post:parsed.post,blocks:parsed.els.map(mapEl)};
+    state.pending={};
+    renderComposer();
+  }).catch(function(e){toast(e.message,true);showList();});
+}
+
+/* ---------- COMPOSER ---------- */
+function renderComposer(){
+  var c=state.comp;
+  var h='<div class="crumb"><a id="backBtn">&larr; Back to posts</a>'+(c.path?' &nbsp;/&nbsp; <a href="https://nosh7.in/'+esc(c.path)+'" target="_blank">view live &nearr;</a>':'')+'</div>';
+  if(!state.tokenOk){h+='<div class="banner"><b>Publishing locked</b> until the GitHub token is set by the developer. You can write, but Publish will fail.</div>';}
+  if(c.isNew){
+    h+='<div class="titlefield"><input id="ct-title" placeholder="Post title (e.g. Best Foods for Better Sleep)" value="'+esc(c.title)+'" /></div>';
+    h+='<p class="subnote">This becomes your headline and page address. The web address, SEO title and description are created for you automatically.</p>';
+  }else{
+    h+='<p class="subnote" style="margin-top:0;">Editing this post. Change any text below, or add paragraphs, headings, lists and photos. The title and settings stay the same.</p>';
+  }
+  c.blocks.forEach(function(b,i){h+=blockCard(b,i,c.blocks.length);});
+  h+='<div class="addrow"><button class="btn-o" data-add="p">+ Paragraph</button><button class="btn-o" data-add="h2">+ Heading</button><button class="btn-o" data-add="ul">+ Bullet list</button><button class="btn-o" data-add="img">+ Photo</button></div>';
+  if(c.isNew){
+    h+='<details class="adv"><summary>Advanced options (optional)</summary><div class="adv-body">'+
+      '<p class="hint">These are filled in automatically. Only change them if you want to.</p>'+
+      '<label>SEO / browser title</label><input id="adv-st" placeholder="Auto from your title" />'+
+      '<label>Search description (meta)</label><textarea id="adv-md" placeholder="Auto from your intro" style="min-height:60px;"></textarea>'+
+      '<div class="grid">'+
+      '<div><label>Card tag</label><input id="adv-tag" placeholder="Healthy Eating" /></div>'+
+      '<div><label>Read time (min)</label><input id="adv-mins" type="number" min="3" max="15" placeholder="auto" /></div>'+
+      '</div><div class="grid">'+
+      '<div><label>Category</label><select id="adv-cat"><option value="lifestyle">Lifestyle &amp; Guides</option><option value="conditions">Health Conditions</option><option value="weightloss">Weight Loss</option><option value="protein">High Protein</option><option value="value">Value &amp; Cost</option></select></div>'+
+      '<div><label>Colour theme</label><select id="adv-acc"><option value="green">Green</option><option value="orange">Orange</option><option value="teal">Teal</option><option value="pink">Pink</option></select></div>'+
+      '<div><label>CTA plan</label><select id="adv-tr"><option value="healthy-fresh">Healthy Fresh</option><option value="weight-loss">Weight Loss</option><option value="low-sugar">Low Sugar</option><option value="high-protein">High Protein</option><option value="fruit-pack">Fruit Pack</option></select></div>'+
+      '</div></div></details>';
+  }
+  app.innerHTML=h;
+
+  var old=document.querySelector(".pubbar");if(old)old.remove();
+  var bar=document.createElement("div");bar.className="pubbar";
+  bar.innerHTML='<button class="btn-g" id="pubBtn">'+(c.isNew?"Publish post":"Save changes")+'</button>';
+  document.body.appendChild(bar);
+  document.getElementById("pubBtn").onclick=publishComposer;
+
+  document.getElementById("backBtn").onclick=function(){if(!confirm("Leave without publishing? Unsaved changes will be lost."))return;var pb=document.querySelector(".pubbar");if(pb)pb.remove();showList();};
+
+  var tt=document.getElementById("ct-title");if(tt)tt.addEventListener("input",function(){state.comp.title=tt.value;});
+
+  Array.prototype.forEach.call(app.querySelectorAll("[data-tx]"),function(el){el.addEventListener("input",function(){var i=+el.getAttribute("data-tx");state.comp.blocks[i].text=el.value;state.comp.blocks[i].edited=true;if(el.tagName==="TEXTAREA")ag(el);});});
+  Array.prototype.forEach.call(app.querySelectorAll("[data-ul]"),function(el){el.addEventListener("input",function(){var i=+el.getAttribute("data-ul");state.comp.blocks[i].items=el.value.split("\\n");state.comp.blocks[i].edited=true;ag(el);});});
+  Array.prototype.forEach.call(app.querySelectorAll("[data-alt]"),function(el){el.addEventListener("input",function(){var i=+el.getAttribute("data-alt");state.comp.blocks[i].img.alt=el.value;state.comp.blocks[i].edited=true;});});
+  Array.prototype.forEach.call(app.querySelectorAll("[data-cap]"),function(el){el.addEventListener("input",function(){var i=+el.getAttribute("data-cap");state.comp.blocks[i].img.cap=el.value;state.comp.blocks[i].edited=true;});});
+  Array.prototype.forEach.call(app.querySelectorAll("[data-rep]"),function(el){el.onclick=function(){var i=+el.getAttribute("data-rep");pickPhoto(function(im){state.comp.blocks[i].img=im;state.comp.blocks[i].edited=true;renderComposer();});};});
+  Array.prototype.forEach.call(app.querySelectorAll("[data-del]"),function(el){el.onclick=function(){var i=+el.getAttribute("data-del");if(confirm("Remove this block?")){state.comp.blocks.splice(i,1);renderComposer();}};});
+  Array.prototype.forEach.call(app.querySelectorAll("[data-up]"),function(el){el.onclick=function(){var i=+el.getAttribute("data-up");if(i>0){var b=state.comp.blocks.splice(i,1)[0];state.comp.blocks.splice(i-1,0,b);renderComposer();}};});
+  Array.prototype.forEach.call(app.querySelectorAll("[data-dn]"),function(el){el.onclick=function(){var i=+el.getAttribute("data-dn");if(i<state.comp.blocks.length-1){var b=state.comp.blocks.splice(i,1)[0];state.comp.blocks.splice(i+1,0,b);renderComposer();}};});
+  Array.prototype.forEach.call(app.querySelectorAll("[data-add]"),function(el){el.onclick=function(){addBlock(el.getAttribute("data-add"));};});
+  growAll();
+}
+
+function blockCard(b,i,n){
+  var name={intro:"Intro",p:"Paragraph",h2:"Heading",ul:"Bullet list",img:"Photo",locked:(b.label||"Kept block")}[b.type]||"Block";
+  var ctrls='<span class="sp">'+
+    (i>0?'<button class="btn-o" data-up="'+i+'" title="Move up">&uarr;</button>':'')+
+    (i<n-1?'<button class="btn-o" data-dn="'+i+'" title="Move down">&darr;</button>':'')+
+    '<button class="btn-r" data-del="'+i+'">Delete</button></span>';
+  var body="";
+  if(b.type==="intro"){body='<label>Short intro shown at the top of the post</label><textarea data-tx="'+i+'" placeholder="One or two sentences that sum up the post.">'+esc(b.text)+'</textarea>';}
+  else if(b.type==="p"){body='<textarea data-tx="'+i+'" placeholder="Write your paragraph here.">'+esc(b.text)+'</textarea>';}
+  else if(b.type==="h2"){body='<input data-tx="'+i+'" placeholder="Section heading" value="'+esc(b.text)+'" />';}
+  else if(b.type==="ul"){body='<textarea data-ul="'+i+'" placeholder="One point per line">'+esc((b.items||[]).join("\\n"))+'</textarea><p class="hint">Write one bullet point per line.</p>';}
+  else if(b.type==="img"){body='<img src="'+esc(b.img.displaySrc||b.img.finalSrc)+'" alt="" /><label>Describe the photo (alt text, good for SEO)</label><input data-alt="'+i+'" value="'+esc(b.img.alt)+'" /><label>Caption (optional)</label><input data-cap="'+i+'" value="'+esc(b.img.cap)+'" /><div style="margin-top:8px;"><button class="btn-o" data-rep="'+i+'">Replace photo</button></div>';}
+  else {body='This part of the post is kept exactly as it is.';}
+  return '<div class="cblk cblk-'+b.type+'"><div class="cblk-head"><span class="cblk-tag">'+name+'</span>'+ctrls+'</div><div class="cblk-body">'+body+'</div></div>';
+}
+
+function addBlock(type){
+  if(type==="img"){pickPhoto(function(im){state.comp.blocks.push({type:"img",img:im,edited:true});renderComposer();});return;}
+  if(type==="p")state.comp.blocks.push({type:"p",text:"",edited:true});
+  if(type==="h2")state.comp.blocks.push({type:"h2",text:"",edited:true});
+  if(type==="ul")state.comp.blocks.push({type:"ul",items:[""],ordered:false,edited:true});
+  renderComposer();
+}
+
+/* ---------- PHOTO ---------- */
+function processImageFile(file,cb){
+  var img=new Image();
+  img.onload=function(){
+    var scale=Math.min(1,1200/img.width);
+    var w=Math.round(img.width*scale),hgt=Math.round(img.height*scale);
+    var cv=document.createElement("canvas");cv.width=w;cv.height=hgt;
+    cv.getContext("2d").drawImage(img,0,0,w,hgt);
+    var qs=[0.82,0.72,0.6,0.5,0.4],qi=0;
+    (function tryQ(){
+      cv.toBlob(function(bb){
+        if(!bb){toast("Image conversion failed",true);return;}
+        if(bb.size>200*1024&&qi<qs.length-1){qi++;tryQ();return;}
+        var rd=new FileReader();
+        rd.onload=function(){cb({b64:String(rd.result).split(",")[1],w:w,h:hgt,objurl:URL.createObjectURL(bb),size:bb.size});};
+        rd.readAsDataURL(bb);
+      },"image/webp",qs[qi]);
+    })();
+  };
+  img.src=URL.createObjectURL(file);
+}
+function pickPhoto(cb){
+  var bg=modal('<h3>Add a photo</h3><input type="file" id="pf" accept="image/*" /><img class="imgprev" id="pp" style="display:none;" /><div id="psz" class="hint"></div><label>Describe the photo (required)</label><input id="pa" placeholder="e.g. fresh protein salad bowl Ahmedabad" /><label>Caption (optional, shows under the photo)</label><input id="pcap" /><div class="row"><button class="btn-o" id="px">Cancel</button><button class="btn-g" id="pi" disabled>Add photo</button></div>');
+  var data=null;
+  bg.querySelector("#px").onclick=function(){bg.remove();};
+  bg.querySelector("#pf").onchange=function(e){var f=e.target.files[0];if(!f)return;processImageFile(f,function(d){data=d;var pp=bg.querySelector("#pp");pp.src=d.objurl;pp.style.display="";bg.querySelector("#psz").textContent=d.w+"x"+d.h+" WebP, "+Math.round(d.size/1024)+" KB"+(d.size>200*1024?" (a bit large, a smaller photo loads faster)":"");bg.querySelector("#pi").disabled=false;});};
+  bg.querySelector("#pi").onclick=function(){var alt=bg.querySelector("#pa").value.trim();if(!alt){toast("Please describe the photo",true);return;}if(!data){toast("Choose a photo first",true);return;}var cap=bg.querySelector("#pcap").value.trim();var nm="n7-"+slugify(alt)+"-"+Date.now().toString(36)+".webp";state.pending[nm]=data.b64;bg.remove();cb({name:nm,alt:alt,cap:cap,w:data.w,h:data.h,finalSrc:"/assets/blog/"+nm,displaySrc:data.objurl});};
+}
+
+/* ---------- SERIALIZE + PUBLISH ---------- */
+function imgHTML(b){
+  var wh=(b.img.w?' width="'+b.img.w+'"':'')+(b.img.h?' height="'+b.img.h+'"':'');
+  var im='<img src="'+b.img.finalSrc+'" alt="'+esc(b.img.alt||"")+'"'+wh+' loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:14px;" />';
+  var cap=b.img.cap?'<figcaption style="font-size:.85rem;color:#777;margin-top:.55rem;">'+esc(b.img.cap)+'</figcaption>':'';
+  return '<figure style="margin:2rem 0;text-align:center;">'+im+cap+'</figure>';
+}
+function blockHTML(b){
+  if(b.type==="intro"){var t=collapse(b.text);return t?'<p class="intro">'+esc(t)+'</p>':'';}
+  if(b.type==="p"){if(!b.edited)return b.html;var t=collapse(b.text);return t?'<p>'+esc(t)+'</p>':'';}
+  if(b.type==="h2"){if(!b.edited)return b.html;var t=collapse(b.text);return t?'<h2>'+esc(t)+'</h2>':'';}
+  if(b.type==="ul"){if(!b.edited)return b.html;var items=(b.items||[]).map(function(x){return collapse(x);}).filter(Boolean);if(!items.length)return '';var tag=b.ordered?"ol":"ul";return '<'+tag+'>\\n'+items.map(function(x){return '  <li>'+esc(x)+'</li>';}).join("\\n")+'\\n</'+tag+'>';}
+  if(b.type==="img"){return b.edited?imgHTML(b):b.html;}
+  return b.html;
+}
+function computeFields(){
+  var c=state.comp;var title=collapse(c.title);var introText="",words=0;
+  c.blocks.forEach(function(b){
+    if((b.type==="intro"||b.type==="p")&&b.text){var t=collapse(b.text);if(!introText&&t)introText=t;words+=t.split(/\\s+/).filter(Boolean).length;}
+    if(b.type==="h2"&&b.text)words+=collapse(b.text).split(/\\s+/).filter(Boolean).length;
+    if(b.type==="ul"&&b.items)b.items.forEach(function(x){words+=collapse(x).split(/\\s+/).filter(Boolean).length;});
+  });
+  if(!introText)introText=title;
+  if(introText.length>800)introText=introText.slice(0,797)+"...";
+  var mins=Math.min(15,Math.max(3,Math.round(words/200)||3));
+  var core=slugify(title);if(core.length<3)core=core+"-post";if(core.length>60)core=core.slice(0,60).replace(/-+$/,"");
+  var slug="blog-"+core+"-ahmedabad.html";
+  var suffix=" | NOSH7",st=title;if((st+suffix).length>70)st=st.slice(0,70-suffix.length).replace(/\\s+\\S*$/,"").trim();var seoTitle=st+suffix;
+  var md=introText;if(md.length>175)md=md.slice(0,172).replace(/\\s+\\S*$/,"").trim()+"...";
+  var cd=introText;if(cd.length>200)cd=cd.slice(0,197).replace(/\\s+\\S*$/,"").trim()+"...";
+  var g=function(id){var e=document.getElementById(id);return e?e.value.trim():"";};
+  var tag=g("adv-tag")||"Healthy Eating";
+  var cat=g("adv-cat")||"lifestyle";
+  var acc=g("adv-acc")||"green";
+  var tr=g("adv-tr")||"healthy-fresh";
+  var am=g("adv-mins");if(am)mins=Math.min(15,Math.max(3,parseInt(am,10)||mins));
+  var ast=g("adv-st");if(ast)seoTitle=ast.slice(0,70);
+  var amd=g("adv-md");if(amd)md=amd.slice(0,175);
+  return {h1:title,slug:slug,seoTitle:seoTitle,metaDesc:md,tag:tag.slice(0,30),cardDesc:cd,intro:introText,cat:cat,accent:acc,track:tr,mins:String(mins)};
+}
+function doPublish(path,btn){
+  var parts=[];state.comp.blocks.forEach(function(b){var s=blockHTML(b);if(s)parts.push(s);});
+  var html=state.comp.pre+"\\n\\n  "+parts.join("\\n\\n  ")+"\\n\\n"+state.comp.post;
+  var today=new Date().toISOString().slice(0,10);
+  html=html.replace(/"dateModified":\\s*"[^"]*"/,'"dateModified": "'+today+'"');
+  var used={};state.comp.blocks.forEach(function(b){if(b.type==="img"&&b.img&&b.img.finalSrc){var n=b.img.finalSrc.split("/").pop();if(state.pending[n])used[n]=1;}});
+  var images=Object.keys(used).map(function(n){return {name:n,base64:state.pending[n]};});
+  return api("/api/publish",{method:"POST",body:JSON.stringify({path:path,html:html,images:images})}).then(function(){
+    toast("Published! Your post is live in about 1-2 minutes.");
+    var pb=document.querySelector(".pubbar");if(pb)pb.remove();
+    boot();
+  });
+}
+function publishComposer(){
+  var btn=document.getElementById("pubBtn");
+  var reset=function(t){btn.disabled=false;btn.textContent=t;};
+  if(state.comp.isNew){
+    var title=collapse(state.comp.title);
+    if(!title){toast("Please add a title",true);return;}
+    if(title.length>140){toast("Title is too long (max 140 characters)",true);return;}
+    var fields=computeFields();
+    if(!fields.intro||fields.intro===title){/* intro allowed to equal title as fallback */}
+    if(!collapse(fields.intro)){toast("Please write a short intro or a paragraph",true);return;}
+    btn.disabled=true;btn.textContent="Publishing...";
+    api("/api/create",{method:"POST",body:JSON.stringify(fields)}).then(function(d){
+      return api("/api/article?path="+encodeURIComponent(d.slug)).then(function(a){
+        var parsed=parseBody(a.html);
+        if(!parsed)throw new Error("Post created but its layout could not be read");
+        state.comp.pre=parsed.pre;state.comp.post=parsed.post;state.comp.path=d.slug;state.comp.isNew=false;
+        parsed.els.forEach(function(el){var c=el.className||"";if(c.indexOf("cta")>-1)state.comp.blocks.push({type:"locked",label:"Call to action (kept)",html:el.outerHTML});else if(c.indexOf("related")>-1)state.comp.blocks.push({type:"locked",label:"Related links (kept)",html:el.outerHTML});});
+        return doPublish(d.slug,btn);
+      });
+    }).catch(function(e){reset("Publish post");toast(e.message,true);});
+  }else{
+    btn.disabled=true;btn.textContent="Saving...";
+    doPublish(state.comp.path,btn).catch(function(e){reset("Save changes");toast(e.message,true);});
+  }
+}
+
+if(KEY){boot();}else{showLogin();}
+})();
+</script>
+</body>
+</html>`;
