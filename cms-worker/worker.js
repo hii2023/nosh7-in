@@ -414,6 +414,61 @@ export default {
       return json({ ok: true, commit: put.data.commit && put.data.commit.sha });
     }
 
+    if (path === '/api/delete' && req.method === 'POST') {
+      if (!env.GITHUB_TOKEN) return json({ error: 'GITHUB_TOKEN secret not set. Deleting is locked.' }, 503);
+      const body = await req.json().catch(function () { return null; });
+      const slug = body && body.path;
+      if (!slug || !ARTICLE_RE.test(slug)) return json({ error: 'Invalid article path' }, 400);
+
+      // 1. Delete the article page itself
+      const cur = await gh(env, 'GET', '/repos/' + REPO + '/contents/' + slug + '?ref=' + BRANCH);
+      if (!cur.ok) return json({ error: 'Could not find the post to delete: ' + (cur.data.message || cur.status) }, 502);
+      const del = await gh(env, 'DELETE', '/repos/' + REPO + '/contents/' + slug, {
+        message: 'CMS: delete article ' + slug, sha: cur.data.sha, branch: BRANCH
+      });
+      if (!del.ok) return json({ error: 'Could not delete the post: ' + (del.data.message || del.status) }, 502);
+
+      const slugRe = slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+      // 2. Remove its entry from sitemap.xml (best effort)
+      const sm = await gh(env, 'GET', '/repos/' + REPO + '/contents/sitemap.xml?ref=' + BRANCH);
+      if (sm.ok && sm.data.content) {
+        const smText = b64decode(sm.data.content);
+        const smRe = new RegExp('\\s*<url>\\s*<loc>https://nosh7\\.in/' + slugRe + '</loc>[\\s\\S]*?</url>', 'i');
+        const newSm = smText.replace(smRe, '');
+        if (newSm !== smText) {
+          await gh(env, 'PUT', '/repos/' + REPO + '/contents/sitemap.xml', {
+            message: 'CMS: remove sitemap entry for ' + slug, content: b64encode(newSm), sha: sm.data.sha, branch: BRANCH
+          });
+        }
+      }
+
+      // 3. Remove its card from blog.html + decrement the visible count (best effort)
+      const bl = await gh(env, 'GET', '/repos/' + REPO + '/contents/blog.html?ref=' + BRANCH);
+      if (bl.ok && bl.data.content) {
+        const blText = b64decode(bl.data.content);
+        const cardRe = new RegExp('\\s*<a href="https://nosh7\\.in/' + slugRe + '"[\\s\\S]*?</a>', 'i');
+        let newBl = blText.replace(cardRe, '');
+        if (newBl !== blText) {
+          newBl = newBl.replace(/>(\d+) articles</, function (m, n) { return '>' + Math.max(0, parseInt(n, 10) - 1) + ' articles<'; });
+          await gh(env, 'PUT', '/repos/' + REPO + '/contents/blog.html', {
+            message: 'CMS: remove blog listing card for ' + slug, content: b64encode(newBl), sha: bl.data.sha, branch: BRANCH
+          });
+        }
+      }
+
+      // 4. Tell search engines the list + sitemap changed (best effort)
+      try {
+        await fetch('https://api.indexnow.org/indexnow', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
+          body: JSON.stringify({ host: 'nosh7.in', key: INDEXNOW_KEY, keyLocation: SITE + '/' + INDEXNOW_KEY + '.txt', urlList: [SITE + '/blog.html', SITE + '/sitemap.xml'] })
+        });
+      } catch (e) { /* non-fatal */ }
+
+      return json({ ok: true });
+    }
+
     return json({ error: 'Not found' }, 404);
   }
 };
@@ -588,6 +643,13 @@ function newPost(){
   renderComposer();
 }
 
+/* ---------- DELETE ---------- */
+function deleteArticle(path){
+  var bg=modal('<h3>Delete this post?</h3><p class="hint" style="font-size:13px;line-height:1.6;margin-bottom:2px;">This permanently removes <b>'+esc(path)+'</b> from nosh7.in, the blog list and the sitemap. This cannot be undone.</p><div class="row"><button class="btn-o" id="dx">Cancel</button><button class="btn-r" id="dok">Delete permanently</button></div>');
+  bg.querySelector("#dx").onclick=function(){bg.remove();};
+  bg.querySelector("#dok").onclick=function(){var b=bg.querySelector("#dok");b.disabled=true;b.textContent="Deleting...";api("/api/delete",{method:"POST",body:JSON.stringify({path:path})}).then(function(){bg.remove();var pb=document.querySelector(".pubbar");if(pb)pb.remove();toast("Post deleted. The blog updates in about 1-2 minutes.");boot();}).catch(function(e){b.disabled=false;b.textContent="Delete permanently";toast(e.message,true);});};
+}
+
 /* ---------- EDIT EXISTING ---------- */
 function openArticle(p){
   app.innerHTML='<p style="color:#777;">Loading '+esc(p)+'...</p>';
@@ -603,7 +665,7 @@ function openArticle(p){
 /* ---------- COMPOSER ---------- */
 function renderComposer(){
   var c=state.comp;
-  var h='<div class="crumb"><a id="backBtn">&larr; Back to posts</a>'+(c.path?' &nbsp;/&nbsp; <a href="https://nosh7.in/'+esc(c.path)+'" target="_blank">view live &nearr;</a>':'')+'</div>';
+  var h='<div class="crumb"><a id="backBtn">&larr; Back to posts</a>'+(c.path?' &nbsp;/&nbsp; <a href="https://nosh7.in/'+esc(c.path)+'" target="_blank">view live &nearr;</a> &nbsp;&middot;&nbsp; <a id="delBtn" style="color:var(--red);">Delete post</a>':'')+'</div>';
   if(!state.tokenOk){h+='<div class="banner"><b>Publishing locked</b> until the GitHub token is set by the developer. You can write, but Publish will fail.</div>';}
   if(c.isNew){
     h+='<div class="titlefield"><input id="ct-title" placeholder="Post title (e.g. Best Foods for Better Sleep)" value="'+esc(c.title)+'" /></div>';
@@ -636,6 +698,7 @@ function renderComposer(){
   document.getElementById("pubBtn").onclick=publishComposer;
 
   document.getElementById("backBtn").onclick=function(){if(!confirm("Leave without publishing? Unsaved changes will be lost."))return;var pb=document.querySelector(".pubbar");if(pb)pb.remove();showList();};
+  var delb=document.getElementById("delBtn");if(delb)delb.onclick=function(){deleteArticle(c.path);};
 
   var tt=document.getElementById("ct-title");if(tt)tt.addEventListener("input",function(){state.comp.title=tt.value;});
 
