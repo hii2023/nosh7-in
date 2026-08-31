@@ -979,7 +979,7 @@ function renderMenu(st){
 
 function takeMenuFile(f){
   if(menuState.busy)return;
-  if(!webpSupported()){toast("This browser cannot prepare the fast web image. Please use Chrome, Edge or Safari.",true);return;}
+  if(!webpSupported()){toast("This browser cannot prepare the fast web image. Please open this page in Chrome and try again.",true);return;}
   menuState.busy=true;menuState.file=f;menuState.assets=null;
   var btn=document.getElementById("mpub");if(btn)btn.disabled=true;
   document.getElementById("mprev").innerHTML='<div class="hint" style="margin-top:12px;">Preparing the picture...</div>';
