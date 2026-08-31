@@ -16,6 +16,11 @@ const ARTICLE_RE = /^blog-[a-z0-9-]+\.html$/;
 const IMG_NAME_RE = /^[a-z0-9][a-z0-9._-]*\.(webp|jpe?g|png)$/;
 const INDEXNOW_KEY = '9d861722dd3c9d64dd74b588ba61d096';
 
+const MONTHS = ['january','february','march','april','may','june','july','august','september','october','november','december'];
+// Pages that carry the month name / menu artwork. Order matters only for reporting.
+const MENU_PAGES = ['menu/index.html', 'subscription.html', 'index.html'];
+const MENU_URLS = [SITE + '/', SITE + '/menu/', SITE + '/subscription.html'];
+
 const ACCENTS = {
   green:  { hero1: '#14532d', hero2: '#16a34a', tint: '#86efac', card1: '#d1fae5', card2: '#6ee7b7', accent: '#059669' },
   orange: { hero1: '#431407', hero2: '#9a3412', tint: '#fdba74', card1: '#ffedd5', card2: '#fdba74', accent: '#c2410c' },
@@ -223,6 +228,93 @@ async function gh(env, method, path, body) {
   });
   const data = await res.json().catch(function () { return {}; });
   return { ok: res.ok, status: res.status, data: data };
+}
+
+
+function titleCase(m) { return m.charAt(0).toUpperCase() + m.slice(1); }
+
+function escRe(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+/**
+ * Swap every menu-month reference on a page from one month to another.
+ * Anchored patterns only, so unrelated prose that happens to contain a month
+ * name is left alone. Returns the new text plus a per-rule hit count.
+ */
+function rewriteMenuMonth(text, oldM, oldY, newM, newY) {
+  const OM = titleCase(oldM), NM = titleCase(newM);
+  let hits = 0;
+  function sub(re, rep) {
+    text = text.replace(re, function () { hits++; return rep; });
+  }
+  // 1. artwork + full-res filenames
+  sub(new RegExp('nosh7-salad-meal-menu-' + oldM + '-' + oldY + '-ahmedabad', 'g'),
+      'nosh7-salad-meal-menu-' + newM + '-' + newY + '-ahmedabad');
+  // 2. social share image filename
+  sub(new RegExp('nosh7-menu-og-' + oldM + '-' + oldY, 'g'),
+      'nosh7-menu-og-' + newM + '-' + newY);
+  // 3. "September 2026" in titles, meta, alt text, JSON-LD, h1, section tags
+  sub(new RegExp(escRe(OM) + ' ' + oldY, 'g'), NM + ' ' + newY);
+  // 4. WhatsApp prefill: "I saw the September menu"
+  sub(new RegExp('%20' + escRe(OM) + '%20menu', 'g'), '%20' + NM + '%20menu');
+  // 5. homepage button: "View September Menu"
+  sub(new RegExp('View ' + escRe(OM) + ' Menu', 'g'), 'View ' + NM + ' Menu');
+  return { text: text, hits: hits };
+}
+
+// The artwork's aspect ratio changes month to month, so keep the declared
+// sizes honest: wrong width/height attributes cause layout shift.
+function patchMenuDims(text, d) {
+  let t = text;
+  t = t.replace(/(<meta property="og:image:width" content=")\d+(")/, '$1' + d.ogW + '$2');
+  t = t.replace(/(<meta property="og:image:height" content=")\d+(")/, '$1' + d.ogH + '$2');
+  t = t.replace(/(<img src="\/assets\/nosh7-salad-meal-menu-[a-z]+-\d{4}-ahmedabad\.webp"[\s\S]{0,400}?)width="\d+" height="\d+"/,
+                '$1width="' + d.w + '" height="' + d.h + '"');
+  return t;
+}
+
+function bumpSitemap(xml, urls, date) {
+  let hits = 0;
+  for (const u of urls) {
+    const re = new RegExp('(<loc>' + escRe(u) + '</loc>\\s*\\n\\s*<lastmod>)\\d{4}-\\d{2}-\\d{2}(</lastmod>)');
+    xml = xml.replace(re, function (m, a, c) { hits++; return a + date + c; });
+  }
+  return { xml: xml, hits: hits };
+}
+
+// Contents API refuses to return the body of files over 1MB, but we only need
+// the sha to overwrite. Fall back to the directory listing when that happens.
+async function ghSha(env, filePath) {
+  const cur = await gh(env, 'GET', '/repos/' + REPO + '/contents/' + filePath + '?ref=' + BRANCH);
+  if (cur.ok && cur.data && cur.data.sha) return cur.data.sha;
+  const slash = filePath.lastIndexOf('/');
+  const dir = slash === -1 ? '' : filePath.slice(0, slash);
+  const name = filePath.slice(slash + 1);
+  const list = await gh(env, 'GET', '/repos/' + REPO + '/contents/' + dir + '?ref=' + BRANCH);
+  if (list.ok && Array.isArray(list.data)) {
+    for (const e of list.data) if (e.name === name) return e.sha;
+  }
+  return null;
+}
+
+async function ghPutFile(env, filePath, contentB64, message) {
+  const body = { message: message, content: contentB64, branch: BRANCH };
+  const sha = await ghSha(env, filePath);
+  if (sha) body.sha = sha;
+  return gh(env, 'PUT', '/repos/' + REPO + '/contents/' + filePath, body);
+}
+
+// Optional: only runs if CF_ZONE_ID + CF_API_TOKEN secrets are set.
+async function purgeCloudflare(env, urls) {
+  if (!env.CF_ZONE_ID || !env.CF_API_TOKEN) return { skipped: true };
+  try {
+    const r = await fetch('https://api.cloudflare.com/client/v4/zones/' + env.CF_ZONE_ID + '/purge_cache', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + env.CF_API_TOKEN, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ files: urls })
+    });
+    const d = await r.json().catch(function () { return {}; });
+    return { ok: r.ok && d.success !== false };
+  } catch (e) { return { ok: false }; }
 }
 
 export default {
@@ -469,6 +561,136 @@ export default {
       return json({ ok: true });
     }
 
+    /* ---------- MONTHLY MENU ---------- */
+
+    if (path === '/api/menu/state') {
+      const res = await fetch('https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/menu/index.html?t=' + Date.now(),
+        { headers: { 'User-Agent': 'nosh7-cms-worker' } });
+      if (!res.ok) return json({ error: 'Could not read the menu page (' + res.status + ')' }, 502);
+      const html = await res.text();
+      const m = html.match(/nosh7-salad-meal-menu-([a-z]+)-(\d{4})-ahmedabad/);
+      if (!m) return json({ error: 'Could not work out which month is live on /menu/. The page may have been edited by hand.' }, 500);
+      return json({
+        month: m[1],
+        year: m[2],
+        tokenConfigured: !!env.GITHUB_TOKEN,
+        purgeConfigured: !!(env.CF_ZONE_ID && env.CF_API_TOKEN)
+      });
+    }
+
+    if (path === '/api/menu/publish' && req.method === 'POST') {
+      if (!env.GITHUB_TOKEN) return json({ error: 'GITHUB_TOKEN secret not set. Publishing is locked.' }, 503);
+      const b = await req.json().catch(function () { return null; });
+      if (!b) return json({ error: 'Bad request' }, 400);
+
+      const newM = String(b.month || '').toLowerCase();
+      const newY = String(b.year || '');
+      if (MONTHS.indexOf(newM) === -1) return json({ error: 'Pick a valid month' }, 400);
+      if (!/^20\d{2}$/.test(newY)) return json({ error: 'Pick a valid year' }, 400);
+
+      const parts = [['full-size image', b.jpg], ['fast web image', b.webp], ['share image', b.og]];
+      for (const pair of parts) {
+        const v = pair[1];
+        if (!v || !v.base64) return json({ error: 'The ' + pair[0] + ' is missing. Choose the menu picture again.' }, 400);
+        if (!/^[A-Za-z0-9+/=]+$/.test(v.base64)) return json({ error: 'The ' + pair[0] + ' is not valid image data' }, 400);
+        if (v.base64.length > 4000000) return json({ error: 'The ' + pair[0] + ' is too large. Try a smaller picture.' }, 400);
+      }
+      const w = parseInt(b.w, 10), h = parseInt(b.h, 10);
+      const ogW = parseInt(b.ogW, 10), ogH = parseInt(b.ogH, 10);
+      if (!(w > 200 && h > 200 && ogW > 200 && ogH > 200)) return json({ error: 'The picture is too small to use as a menu' }, 400);
+
+      // --- Which month is live right now? ---
+      const curRes = await fetch('https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/menu/index.html?t=' + Date.now(),
+        { headers: { 'User-Agent': 'nosh7-cms-worker' } });
+      if (!curRes.ok) return json({ error: 'Could not read the menu page (' + curRes.status + ')' }, 502);
+      const curMatch = (await curRes.text()).match(/nosh7-salad-meal-menu-([a-z]+)-(\d{4})-ahmedabad/);
+      if (!curMatch) return json({ error: 'Could not work out which month is live on /menu/.' }, 500);
+      const oldM = curMatch[1], oldY = curMatch[2];
+
+      const base = 'nosh7-salad-meal-menu-' + newM + '-' + newY + '-ahmedabad';
+      const ogName = 'nosh7-menu-og-' + newM + '-' + newY + '.jpg';
+      const dims = { w: w, h: h, ogW: ogW, ogH: ogH };
+
+      // --- Phase 1: work out every page edit BEFORE committing anything, so a
+      // page that no longer matches aborts the run instead of half-applying it.
+      const edits = [];
+      for (const pg of MENU_PAGES) {
+        const cur = await gh(env, 'GET', '/repos/' + REPO + '/contents/' + pg + '?ref=' + BRANCH);
+        if (!cur.ok || !cur.data.content) return json({ error: 'Could not read ' + pg + ': ' + (cur.data.message || cur.status) }, 502);
+        const orig = b64decode(cur.data.content);
+        const r = rewriteMenuMonth(orig, oldM, oldY, newM, newY);
+        let text = pg === 'menu/index.html' ? patchMenuDims(r.text, dims) : r.text;
+        if (r.hits === 0) {
+          return json({ error: 'Nothing on ' + pg + ' matched the ' + titleCase(oldM) + ' ' + oldY + ' menu, so nothing was changed. The page may have been edited by hand - ask the developer to check it.' }, 409);
+        }
+        if (text.indexOf('</html>') === -1 || text.length < 2000) {
+          return json({ error: 'Refusing to save ' + pg + ': the result looks broken' }, 500);
+        }
+        edits.push({ path: pg, sha: cur.data.sha, text: text, hits: r.hits, changed: text !== orig });
+      }
+
+      const label = titleCase(newM) + ' ' + newY;
+
+      // --- Phase 2: images first, so the pages never point at a missing file.
+      const uploads = [
+        { name: 'assets/' + base + '.jpg', b64: b.jpg.base64 },
+        { name: 'assets/' + base + '.webp', b64: b.webp.base64 },
+        { name: 'assets/' + ogName, b64: b.og.base64 }
+      ];
+      for (const u of uploads) {
+        const put = await ghPutFile(env, u.name, u.b64, 'CMS: ' + label + ' menu artwork (' + u.name.split('/').pop() + ')');
+        if (!put.ok) return json({ error: 'Upload of ' + u.name + ' failed: ' + (put.data.message || put.status) }, 502);
+      }
+
+      // --- Phase 3: the pages.
+      const updated = [];
+      for (const e of edits) {
+        if (!e.changed) continue;
+        const put = await gh(env, 'PUT', '/repos/' + REPO + '/contents/' + e.path, {
+          message: 'CMS: show ' + label + ' menu on ' + e.path,
+          content: b64encode(e.text), sha: e.sha, branch: BRANCH
+        });
+        if (!put.ok) return json({ error: 'Saving ' + e.path + ' failed: ' + (put.data.message || put.status) + '. The pictures uploaded fine - try publishing again.' }, 502);
+        updated.push({ path: e.path, hits: e.hits });
+      }
+
+      // --- Phase 4: sitemap freshness (best effort).
+      let sitemapOk = false;
+      const sm = await gh(env, 'GET', '/repos/' + REPO + '/contents/sitemap.xml?ref=' + BRANCH);
+      if (sm.ok && sm.data.content) {
+        const today = new Date().toISOString().slice(0, 10);
+        const res2 = bumpSitemap(b64decode(sm.data.content), MENU_URLS, today);
+        if (res2.hits > 0) {
+          const put = await gh(env, 'PUT', '/repos/' + REPO + '/contents/sitemap.xml', {
+            message: 'CMS: sitemap lastmod for ' + label + ' menu',
+            content: b64encode(res2.xml), sha: sm.data.sha, branch: BRANCH
+          });
+          sitemapOk = put.ok;
+        }
+      }
+
+      // --- Phase 5: tell search engines + drop the CDN cache (both best effort).
+      try {
+        await fetch('https://api.indexnow.org/indexnow', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
+          body: JSON.stringify({
+            host: 'nosh7.in', key: INDEXNOW_KEY, keyLocation: SITE + '/' + INDEXNOW_KEY + '.txt',
+            urlList: MENU_URLS.concat([SITE + '/sitemap.xml'])
+          })
+        });
+      } catch (e) { /* non-fatal */ }
+
+      const purge = await purgeCloudflare(env, MENU_URLS);
+
+      return json({
+        ok: true, month: newM, year: newY, label: label,
+        replaced: titleCase(oldM) + ' ' + oldY,
+        pages: updated, sitemap: sitemapOk, purge: purge,
+        sameMonth: (oldM === newM && oldY === newY)
+      });
+    }
+
     return json({ error: 'Not found' }, 404);
   }
 };
@@ -479,7 +701,7 @@ const UI_HTML = `<!DOCTYPE html>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>NOSH7 Blog Editor</title>
+<title>NOSH7 Site Editor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -553,10 +775,29 @@ textarea{line-height:1.6;resize:vertical;overflow:hidden;}
 .toast.err{background:var(--red);}
 .pubbar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:12px 16px;display:flex;gap:10px;justify-content:center;align-items:center;z-index:60;}
 .pubbar .btn-g{min-width:220px;}
+.nav2{display:flex;gap:8px;margin-bottom:16px;}
+.nav2 button{flex:1;background:#fff;color:var(--muted);border:1.5px solid var(--line);}
+.nav2 button.on{background:var(--green);color:#fff;border-color:var(--green);}
+.mnow{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px;}
+.mnow img{width:62px;height:auto;border-radius:8px;border:1px solid var(--line);display:block;}
+.mnow .t{font-size:12px;color:var(--muted);}
+.mnow .v{font-size:17px;font-weight:700;color:var(--green);}
+.mgrid{display:flex;gap:10px;flex-wrap:wrap;}
+.mgrid>div{flex:1;min-width:130px;}
+.drop{border:2px dashed var(--line);border-radius:14px;padding:26px 16px;text-align:center;background:#fff;cursor:pointer;transition:border-color .15s;}
+.drop:hover,.drop.over{border-color:var(--sage);}
+.drop .big{font-size:15px;font-weight:600;color:var(--green);margin-bottom:4px;}
+.drop .sm{font-size:12.5px;color:var(--muted);}
+.mprev{display:flex;gap:14px;align-items:flex-start;margin-top:14px;}
+.mprev img{width:120px;height:auto;border-radius:10px;border:1px solid var(--line);display:block;}
+.mprev .meta{font-size:12.5px;color:var(--muted);line-height:1.7;}
+.mprev .meta b{color:#222;}
+.steps{font-size:12.5px;color:var(--muted);line-height:1.9;margin-top:6px;}
+.steps li{margin-left:16px;}
 </style>
 </head>
 <body>
-<div class="top"><b>NOSH7 Blog Editor</b><span>nosh7.in</span><div class="right"><button class="btn-o" id="logoutBtn" style="display:none;padding:6px 12px;font-size:12px;">Log out</button></div></div>
+<div class="top"><b>NOSH7 Site Editor</b><span>nosh7.in</span><div class="right"><button class="btn-o" id="logoutBtn" style="display:none;padding:6px 12px;font-size:12px;">Log out</button></div></div>
 <div class="wrap" id="app"></div>
 <script>
 (function(){
@@ -577,32 +818,209 @@ function growAll(){Array.prototype.forEach.call(app.querySelectorAll("textarea")
 /* ---------- LOGIN ---------- */
 function showLogin(){
   document.getElementById("logoutBtn").style.display="none";
-  app.innerHTML='<div class="login card"><h1>Welcome</h1><p>Enter the password to write and edit blog posts on nosh7.in</p><input type="password" id="pc" placeholder="Password" autofocus /><button class="btn-g" id="go" style="width:100%;font-size:16px;padding:13px;">Log in</button></div>';
+  app.innerHTML='<div class="login card"><h1>Welcome</h1><p>Enter the password to update the monthly menu and blog posts on nosh7.in</p><input type="password" id="pc" placeholder="Password" autofocus /><button class="btn-g" id="go" style="width:100%;font-size:16px;padding:13px;">Log in</button></div>';
   var go=function(){var v=document.getElementById("pc").value;fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({passcode:v})}).then(function(r){if(r.ok){KEY=v;localStorage.setItem("n7cmsKey",v);boot();}else{toast("Wrong password",true);}});};
   document.getElementById("go").onclick=go;
   document.getElementById("pc").addEventListener("keydown",function(e){if(e.key==="Enter")go();});
 }
 document.getElementById("logoutBtn").onclick=function(){localStorage.removeItem("n7cmsKey");KEY="";showLogin();};
 
+/* ---------- NAV ---------- */
+function navHTML(active){
+  return '<div class="nav2"><button class="'+(active==="posts"?"on":"")+'" data-nav="posts">Blog posts</button>'
+       + '<button class="'+(active==="menu"?"on":"")+'" data-nav="menu">Monthly menu</button></div>';
+}
+function wireNav(){
+  Array.prototype.forEach.call(app.querySelectorAll("[data-nav]"),function(el){
+    el.onclick=function(){
+      var n=el.getAttribute("data-nav");
+      if(n==="posts"){location.hash="";showList();}else{location.hash="menu";showMenu();}
+    };
+  });
+}
+
 /* ---------- LIST ---------- */
 function boot(){
   document.getElementById("logoutBtn").style.display="";
   app.innerHTML='<p style="color:#777;">Loading your posts...</p>';
   Promise.all([api("/api/articles"),api("/api/status")]).then(function(res){
-    state.articles=res[0].articles;state.tokenOk=res[1].tokenConfigured;showList();
+    state.articles=res[0].articles;state.tokenOk=res[1].tokenConfigured;
+    if(location.hash==="#menu"){showMenu();}else{showList();}
   }).catch(function(e){if(String(e.message).indexOf("Unauthorized")>-1){showLogin();}else{app.innerHTML='<div class="card">Error: '+esc(e.message)+'</div>';}});
 }
 function showList(){
   var pb=document.querySelector(".pubbar");if(pb)pb.remove();
-  var h="";
+  var h=navHTML("posts");
   if(!state.tokenOk){h+='<div class="banner"><b>Publishing is locked.</b> The GitHub token is not set yet, so posts cannot be saved online. One-time setup needed by the developer.</div>';}
   h+='<div class="hero-cta"><div><h2>Write a new post</h2><p>Just add a title, write, and publish. Everything else is automatic.</p></div><button id="newBtn">Start writing</button></div>';
   h+='<div class="crumb">Your posts &middot; tap any post to edit it</div><div class="alist">';
   state.articles.forEach(function(a){h+='<a data-p="'+esc(a.path)+'"><span class="ttl">'+esc(prettify(a.path))+'<small>'+esc(a.path)+'</small></span><span class="go">Edit &rarr;</span></a>';});
   h+="</div>";
   app.innerHTML=h;
+  wireNav();
   document.getElementById("newBtn").onclick=newPost;
   Array.prototype.forEach.call(app.querySelectorAll(".alist a"),function(el){el.onclick=function(){openArticle(el.getAttribute("data-p"));};});
+}
+
+/* ---------- MONTHLY MENU ---------- */
+var MONTH_NAMES=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var menuState={file:null,assets:null,busy:false};
+
+function webpSupported(){
+  var c=document.createElement("canvas");c.width=c.height=2;
+  try{return c.toDataURL("image/webp").indexOf("data:image/webp")===0;}catch(e){return false;}
+}
+
+// Try each quality until the file fits the budget, then hand back base64.
+function encodeCanvas(cv,type,qs,budget,cb,onerr){
+  var i=0;
+  (function go(){
+    cv.toBlob(function(bb){
+      if(!bb){onerr("Your browser could not create the "+type+" version of the picture");return;}
+      if(bb.size>budget&&i<qs.length-1){i++;go();return;}
+      var rd=new FileReader();
+      rd.onerror=function(){onerr("Could not read the converted picture");};
+      rd.onload=function(){cb({b64:String(rd.result).split(",")[1],size:bb.size,url:URL.createObjectURL(bb)});};
+      rd.readAsDataURL(bb);
+    },type,qs[i]);
+  })();
+}
+
+// One upload becomes three files: full-size JPG, fast WebP, and a share image.
+function buildMenuAssets(file,cb,onerr){
+  var img=new Image();
+  img.onerror=function(){onerr("That file could not be opened as a picture. Use a JPG or PNG.");};
+  img.onload=function(){
+    if(img.width<400||img.height<400){onerr("That picture is too small to read as a menu");return;}
+    function paint(tw){
+      var th=Math.round(img.height*(tw/img.width));
+      var cv=document.createElement("canvas");cv.width=tw;cv.height=th;
+      var cx=cv.getContext("2d");
+      cx.fillStyle="#ffffff";cx.fillRect(0,0,tw,th);
+      cx.drawImage(img,0,0,tw,th);
+      return {cv:cv,w:tw,h:th};
+    }
+    var full=paint(Math.min(1400,img.width));
+    var og=paint(Math.min(1200,img.width));
+    encodeCanvas(full.cv,"image/jpeg",[0.85,0.78,0.7,0.62],1000*1024,function(jpg){
+      encodeCanvas(full.cv,"image/webp",[0.85,0.78,0.7,0.62],550*1024,function(webp){
+        encodeCanvas(og.cv,"image/jpeg",[0.7,0.62,0.55],500*1024,function(share){
+          cb({w:full.w,h:full.h,ogW:og.w,ogH:og.h,jpg:jpg,webp:webp,og:share,srcW:img.width,srcH:img.height});
+        },onerr);
+      },onerr);
+    },onerr);
+  };
+  img.src=URL.createObjectURL(file);
+}
+
+function showMenu(){
+  var pb=document.querySelector(".pubbar");if(pb)pb.remove();
+  menuState={file:null,assets:null,busy:false};
+  app.innerHTML=navHTML("menu")+'<p style="color:#777;">Checking which menu is live...</p>';
+  wireNav();
+  api("/api/menu/state").then(renderMenu).catch(function(e){
+    if(String(e.message).indexOf("Unauthorized")>-1){showLogin();return;}
+    app.innerHTML=navHTML("menu")+'<div class="card">Could not load: '+esc(e.message)+'</div>';
+    wireNav();
+  });
+}
+
+function renderMenu(st){
+  // Default to the month after whatever is live, which is what you normally upload.
+  var li=MONTH_NAMES.map(function(m){return m.toLowerCase();}).indexOf(st.month);
+  var ny=parseInt(st.year,10),ni=li+1;
+  if(ni>11){ni=0;ny=ny+1;}
+  var liveLabel=MONTH_NAMES[li>-1?li:0]+" "+st.year;
+
+  var h=navHTML("menu");
+  if(!st.tokenConfigured){h+='<div class="banner"><b>Publishing is locked.</b> The GitHub token is not set, so the menu cannot be updated. One-time setup needed by the developer.</div>';}
+  h+='<div class="mnow"><img src="https://nosh7.in/assets/nosh7-salad-meal-menu-'+esc(st.month)+'-'+esc(st.year)+'-ahmedabad.webp" alt="" /><div><div class="t">Live on the website right now</div><div class="v">'+esc(liveLabel)+'</div></div></div>';
+
+  h+='<div class="card"><label style="display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;">Which month is this menu for?</label><div class="mgrid"><div><select id="mm">';
+  for(var i=0;i<12;i++){h+='<option value="'+MONTH_NAMES[i].toLowerCase()+'"'+(i===ni?" selected":"")+'>'+MONTH_NAMES[i]+'</option>';}
+  h+='</select></div><div><select id="my">';
+  for(var y=ny-1;y<=ny+2;y++){h+='<option value="'+y+'"'+(y===ny?" selected":"")+'>'+y+'</option>';}
+  h+='</select></div></div></div>';
+
+  h+='<div class="card"><div class="drop" id="drop"><div class="big">Choose the menu picture</div><div class="sm">Tap here, or drag the image in. JPG or PNG straight from Canva is fine.</div></div>';
+  h+='<input type="file" id="mf" accept="image/*" style="display:none;" />';
+  h+='<div id="mprev"></div></div>';
+
+  h+='<div class="card"><div style="font-size:13px;font-weight:600;color:var(--green);margin-bottom:4px;">What Publish does</div><ol class="steps">';
+  h+='<li>Saves the picture in three sizes (full, fast, social preview)</li>';
+  h+='<li>Updates the menu page, the subscription page and the homepage</li>';
+  h+='<li>Refreshes the titles, alt text, Google data and WhatsApp message</li>';
+  h+='<li>Tells search engines the pages changed</li>';
+  h+='</ol>';
+  if(!st.purgeConfigured){h+='<div class="hint" style="margin-top:8px;">Note: the website is cached, so the new menu can take a few minutes to show for everyone.</div>';}
+  h+='</div>';
+
+  app.innerHTML=h;
+  wireNav();
+
+  var drop=document.getElementById("drop"),mf=document.getElementById("mf");
+  drop.onclick=function(){mf.click();};
+  drop.addEventListener("dragover",function(e){e.preventDefault();drop.classList.add("over");});
+  drop.addEventListener("dragleave",function(){drop.classList.remove("over");});
+  drop.addEventListener("drop",function(e){
+    e.preventDefault();drop.classList.remove("over");
+    if(e.dataTransfer.files&&e.dataTransfer.files[0])takeMenuFile(e.dataTransfer.files[0]);
+  });
+  mf.onchange=function(e){if(e.target.files[0])takeMenuFile(e.target.files[0]);};
+
+  var bar=document.createElement("div");
+  bar.className="pubbar";
+  bar.innerHTML='<button class="btn-g" id="mpub" disabled>Publish this menu</button>';
+  document.body.appendChild(bar);
+  document.getElementById("mpub").onclick=publishMenu;
+  if(!st.tokenConfigured)document.getElementById("mpub").disabled=true;
+  menuState.tokenOk=st.tokenConfigured;
+}
+
+function takeMenuFile(f){
+  if(menuState.busy)return;
+  if(!webpSupported()){toast("This browser cannot prepare the fast web image. Please use Chrome, Edge or Safari.",true);return;}
+  menuState.busy=true;menuState.file=f;menuState.assets=null;
+  var btn=document.getElementById("mpub");if(btn)btn.disabled=true;
+  document.getElementById("mprev").innerHTML='<div class="hint" style="margin-top:12px;">Preparing the picture...</div>';
+  buildMenuAssets(f,function(a){
+    menuState.busy=false;menuState.assets=a;
+    var kb=function(n){return Math.round(n/1024)+" KB";};
+    document.getElementById("mprev").innerHTML=
+      '<div class="mprev"><img src="'+a.webp.url+'" alt="menu preview" /><div class="meta">'
+      +'<b>'+a.srcW+' x '+a.srcH+'</b> uploaded<br />'
+      +'Full size: '+a.w+' x '+a.h+', '+kb(a.jpg.size)+'<br />'
+      +'Fast web version: '+kb(a.webp.size)+'<br />'
+      +'Social preview: '+a.ogW+' x '+a.ogH+', '+kb(a.og.size)
+      +'</div></div>';
+    if(btn&&menuState.tokenOk)btn.disabled=false;
+  },function(err){
+    menuState.busy=false;menuState.file=null;
+    document.getElementById("mprev").innerHTML="";
+    toast(err,true);
+  });
+}
+
+function publishMenu(){
+  var btn=document.getElementById("mpub");
+  var a=menuState.assets;
+  if(!a){toast("Choose the menu picture first",true);return;}
+  var mo=document.getElementById("mm").value,yr=document.getElementById("my").value;
+  var label=mo.charAt(0).toUpperCase()+mo.slice(1)+" "+yr;
+  if(!confirm("Publish this as the "+label+" menu?\\n\\nIt will replace the menu on the homepage, the menu page and the subscription page."))return;
+  btn.disabled=true;btn.textContent="Publishing...";
+  api("/api/menu/publish",{method:"POST",body:JSON.stringify({
+    month:mo,year:yr,w:a.w,h:a.h,ogW:a.ogW,ogH:a.ogH,
+    jpg:{base64:a.jpg.b64},webp:{base64:a.webp.b64},og:{base64:a.og.b64}
+  })}).then(function(d){
+    btn.textContent="Published";
+    var msg=d.sameMonth?("Menu picture for "+d.label+" replaced"):(d.label+" menu is live, replacing "+d.replaced);
+    toast(msg+". It can take a few minutes to appear.");
+    setTimeout(showMenu,2600);
+  }).catch(function(e){
+    btn.disabled=false;btn.textContent="Publish this menu";
+    toast(e.message,true);
+  });
 }
 
 /* ---------- BODY PARSING ---------- */
