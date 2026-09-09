@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="hi-IN">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GXXKEPDFF"></script>
+  <!-- Google tag (gtag.js) - loaded off the critical path to protect LCP/TBT.
+       gtag() calls queue into dataLayer now and are processed once gtag.js loads on idle. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-4GXXKEPDFF');
+    (function(){
+      function loadGtag(){
+        if (window.__gtagLoaded) return; window.__gtagLoaded = true;
+        var s = document.createElement('script'); s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-4GXXKEPDFF';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) requestIdleCallback(loadGtag, { timeout: 4000 });
+      else window.addEventListener('load', function(){ setTimeout(loadGtag, 1500); });
+    })();
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -357,6 +367,11 @@
   <link rel="preconnect" href="https://events.nosh7.in" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+
+  <!-- Preload the LCP hero image; mobile gets the 400px variant, desktop the 760px one -->
+  <link rel="preload" as="image" href="/assets/hero-bowl.webp"
+        imagesrcset="/assets/hero-bowl-400.webp 400w, /assets/hero-bowl.webp 760w"
+        imagesizes="(max-width: 930px) 264px, 420px" fetchpriority="high" />
 
   <style>
     :root {
@@ -1111,7 +1126,7 @@
 <!-- ── NAV ── -->
 <nav id="mainNav">
   <a class="nav-logo" href="/" aria-label="NOSH7 home">
-    <img decoding="async" src="/assets/logo.webp?v=2" alt="NOSH7" />
+    <img decoding="async" src="/assets/logo.webp?v=2" alt="NOSH7" width="56" height="56" />
     <div class="nav-logo-text"><span>Eat Healthy, Feel Great</span></div>
   </a>
   <div class="nav-links">
@@ -1223,7 +1238,7 @@
 <main id="main-content">
 <section class="hero" aria-label="Hero section">
 
-  <img decoding="async" class="hero-cityscape" src="/assets/ahmedabad-skyline.webp" alt="" aria-hidden="true" />
+  <img decoding="async" class="hero-cityscape" src="/assets/ahmedabad-skyline.webp" alt="" aria-hidden="true" width="1000" height="500" />
 
   <div class="hero-content">
     <h1>
@@ -1261,7 +1276,7 @@
 
   <div class="hero-visual">
     <div class="hero-img-wrap">
-      <img src="/assets/hero-bowl.webp" alt="Fresh high-protein salad bowl with tofu, corn and greens - healthy meal delivery Ahmedabad by NOSH7" width="420" height="420" decoding="async" fetchpriority="high" />
+      <img src="/assets/hero-bowl.webp" srcset="/assets/hero-bowl-400.webp 400w, /assets/hero-bowl.webp 760w" sizes="(max-width: 930px) 264px, 420px" alt="Fresh high-protein salad bowl with tofu, corn and greens - healthy meal delivery Ahmedabad by NOSH7" width="420" height="420" decoding="async" fetchpriority="high" />
       <svg class="hero-spin-badge" viewBox="0 0 100 100" role="img" aria-label="100 percent Vegetarian">
         <path d="M 50.00 1.00 C 52.76 1.00 55.17 7.69 58.29 8.32 C 61.42 8.94 66.20 3.67 68.75 4.73 C 71.30 5.79 70.96 12.89 73.61 14.66 C 76.26 16.43 82.69 13.40 84.65 15.35 C 86.60 17.31 83.57 23.74 85.34 26.39 C 87.11 29.04 94.21 28.70 95.27 31.25 C 96.33 33.80 91.06 38.58 91.68 41.71 C 92.31 44.83 99.00 47.24 99.00 50.00 C 99.00 52.76 92.31 55.17 91.68 58.29 C 91.06 61.42 96.33 66.20 95.27 68.75 C 94.21 71.30 87.11 70.96 85.34 73.61 C 83.57 76.26 86.60 82.69 84.65 84.65 C 82.69 86.60 76.26 83.57 73.61 85.34 C 70.96 87.11 71.30 94.21 68.75 95.27 C 66.20 96.33 61.42 91.06 58.29 91.68 C 55.17 92.31 52.76 99.00 50.00 99.00 C 47.24 99.00 44.83 92.31 41.71 91.68 C 38.58 91.06 33.80 96.33 31.25 95.27 C 28.70 94.21 29.04 87.11 26.39 85.34 C 23.74 83.57 17.31 86.60 15.35 84.65 C 13.40 82.69 16.43 76.26 14.66 73.61 C 12.89 70.96 5.79 71.30 4.73 68.75 C 3.67 66.20 8.94 61.42 8.32 58.29 C 7.69 55.17 1.00 52.76 1.00 50.00 C 1.00 47.24 7.69 44.83 8.32 41.71 C 8.94 38.58 3.67 33.80 4.73 31.25 C 5.79 28.70 12.89 29.04 14.66 26.39 C 16.43 23.74 13.40 17.31 15.35 15.35 C 17.31 13.40 23.74 16.43 26.39 14.66 C 29.04 12.89 28.70 5.79 31.25 4.73 C 33.80 3.67 38.58 8.94 41.71 8.32 C 44.83 7.69 47.24 1.00 50.00 1.00 Z" fill="var(--green-mid)"/>
         <circle cx="50" cy="50" r="37" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.6"/>
@@ -1978,7 +1993,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <img decoding="async" src="/assets/logo.webp?v=2" alt="NOSH7 logo" style="height:80px;width:80px;border-radius:50%;object-fit:cover;margin-bottom:1rem;display:block;" />
+      <img decoding="async" loading="lazy" src="/assets/logo.webp?v=2" alt="NOSH7 logo" width="80" height="80" style="height:80px;width:80px;border-radius:50%;object-fit:cover;margin-bottom:1rem;display:block;" />
       <p data-i18n="footer.tagline">Ahmedabad ka pure veg salad subscription. No eggs. Daily fresh delivery. Real results.</p>
     </div>
     <div class="footer-col">
@@ -2041,7 +2056,7 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
   <button id="julie-toggle" aria-label="Chat with Julie" onclick="toggleJulie()">
-    <img decoding="async" src="/assets/julie-face.webp?v=1" alt="Chat with Julie"
+    <img decoding="async" loading="lazy" src="/assets/julie-face.webp?v=1" alt="Chat with Julie" width="52" height="52"
          style="width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center top;display:block;" />
     <div id="julie-badge">1</div>
   </button>
@@ -2230,7 +2245,7 @@
 <!-- Chat window -->
 <div id="julie-window" role="dialog" aria-label="Chat with Julie">
   <div class="julie-header">
-    <div class="julie-avatar"><img decoding="async" src="/assets/julie-face.webp?v=1" alt="Julie"></div>
+    <div class="julie-avatar"><img decoding="async" loading="lazy" src="/assets/julie-face.webp?v=1" alt="Julie" width="40" height="40"></div>
     <div class="julie-header-info">
       <div class="julie-name">Julie</div>
       <div class="julie-status"><span class="julie-dot"></span> NOSH7 Assistant · Online</div>
@@ -2270,12 +2285,19 @@
 <!-- 100% privacy-first analytics -->
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_AZPE2NqJmbnWMwMKgGBmFkdpXr7P3ixKZMQZHeYo3Z7C', {
-        api_host: 'https://events.nosh7.in',
-        ui_host: 'https://us.posthog.com',
-        defaults: '2026-01-30',
-        person_profiles: 'identified_only',
-    })
+    // Defer init (which injects array.js) off the critical path to protect LCP/TBT.
+    (function(){
+      function loadPH(){
+        posthog.init('phc_AZPE2NqJmbnWMwMKgGBmFkdpXr7P3ixKZMQZHeYo3Z7C', {
+            api_host: 'https://events.nosh7.in',
+            ui_host: 'https://us.posthog.com',
+            defaults: '2026-01-30',
+            person_profiles: 'identified_only',
+        });
+      }
+      if ('requestIdleCallback' in window) requestIdleCallback(loadPH, { timeout: 5000 });
+      else window.addEventListener('load', function(){ setTimeout(loadPH, 2000); });
+    })();
 </script>
 <script src="/js/site-nav.js?v=20260718" defer></script>
 </body>

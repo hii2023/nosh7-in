@@ -56,3 +56,33 @@ NOTE: GitHub Pages already gives you HTTPS automatically.
 The above Cloudflare rules add extra security headers on top.
 You only need Part 1 once Cloudflare is connected as your proxy.
 --------------------------------------------------
+
+--------------------------------------------------
+PART 4: STATIC ASSET CACHING (PageSpeed "Efficient cache lifetimes")
+--------------------------------------------------
+Why: GitHub Pages serves assets with only Cache-Control: max-age=600 (10 min),
+so returning visitors re-download JS/CSS/images. The _headers file in this repo
+is IGNORED by GitHub Pages, so the cache lifetime must be set at Cloudflare.
+Safe to set a 1-year immutable TTL because every asset URL carries a ?v= query
+string that we bump whenever the file changes (assets/*.js, *.css, *.webp, etc).
+
+Go to: Cloudflare Dashboard -> nosh7.in -> Caching -> Cache Rules -> Create rule
+Name it: Long-cache static assets
+
+When incoming requests match (edit expression):
+  (starts_with(http.request.uri.path, "/assets/")) or
+  (starts_with(http.request.uri.path, "/js/")) or
+  (http.request.uri.path.extension in {"webp" "png" "jpg" "jpeg" "svg" "gif" "ico" "css" "js" "woff" "woff2"})
+
+Then, under "Cache eligibility":
+  - Eligible for cache: ON  (Cache status: Eligible for cache)
+  - Edge TTL: Override origin -> 1 year (31536000 seconds)
+  - Browser TTL: Override origin -> 1 year (31536000 seconds)
+
+Click Deploy.
+
+IMPORTANT: Do NOT match .html here — HTML must stay short-lived so content edits
+go live immediately. This rule only targets fingerprinted/versioned static assets.
+Verify after ~5 min:  curl -I https://nosh7.in/assets/site.js?v=2026-08-05
+  -> should show Cache-Control: max-age=31536000 and cf-cache-status: HIT
+--------------------------------------------------
