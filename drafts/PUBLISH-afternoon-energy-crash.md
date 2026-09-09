@@ -60,9 +60,10 @@ Stage everything (`git add -A`), commit with message
 and amend or add a follow-up commit. Then `git push` to `main`.
 
 ## Step 8 — Verify live
-Wait for the GitHub Pages deploy to finish (poll with
-`gh run list --repo hii2023/nosh7-in --workflow "Deploy to GitHub Pages" --limit 1`
-or `gh run watch <id> --repo hii2023/nosh7-in --exit-status`). Then:
+Wait for the GitHub Pages deploy to finish. If `gh` is available and authenticated
+you may poll with `gh run list --repo hii2023/nosh7-in --workflow "Deploy to GitHub Pages" --limit 1`.
+If `gh` is missing or not authenticated, do NOT block on it: simply re-run the curl
+check below every 30 seconds for up to 6 minutes until it returns 200. Then:
 - `curl -s -o /dev/null -w "%{http_code}" "https://nosh7.in/blog-afternoon-energy-crash-ahmedabad.html?cb=$RANDOM"` must be 200.
 - Confirm the card is live: `curl -s "https://nosh7.in/blog.html?cb=$RANDOM" | grep -c blog-afternoon-energy-crash-ahmedabad.html` is at least 1.
 
