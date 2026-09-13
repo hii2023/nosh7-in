@@ -151,3 +151,52 @@
     };
   }
 })();
+
+/**
+ * NOSH7 conversion click tracking (MPA-safe, privacy-safe).
+ *
+ * Fires a named event whenever a visitor clicks a money CTA, to BOTH
+ * gtag (Google Analytics 4) and PostHog. No personal data is sent, only
+ * which CTA was clicked and on which page, so the owner can see which
+ * organic landing pages actually drive orders and subscriptions.
+ *
+ * Events: order_click (start.nosh7.in), whatsapp_click, call_click,
+ * view_plans_click, view_menu_click. Mark order_click / whatsapp_click /
+ * call_click as Key Events in GA4 to measure organic -> order conversion.
+ *
+ * NOTE: gtag events only reach GA4 once googletagmanager.com and
+ * google-analytics.com are allowed in the Cloudflare CSP. PostHog works
+ * today (its domain is already allowlisted), so tracking is live either way.
+ */
+(function () {
+  'use strict';
+
+  function track(name, params) {
+    try { if (window.gtag) window.gtag('event', name, params); } catch (e) {}
+    try { if (window.posthog && window.posthog.capture) window.posthog.capture(name, params); } catch (e) {}
+  }
+
+  function classify(href) {
+    if (!href) return null;
+    var h = href.toLowerCase();
+    if (h.indexOf('start.nosh7.in') > -1) return 'order_click';
+    if (h.indexOf('wa.me/') > -1 || h.indexOf('api.whatsapp.com') > -1) return 'whatsapp_click';
+    if (h.indexOf('tel:') === 0) return 'call_click';
+    if (h.indexOf('/subscription.html') > -1 || h.indexOf('#plans') > -1) return 'view_plans_click';
+    if (h.indexOf('/menu') > -1 || h.indexOf('#menu') > -1) return 'view_menu_click';
+    return null;
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var name = classify(a.getAttribute('href') || a.href || '');
+    if (!name) return;
+    var label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+    track(name, {
+      link_url: a.href,
+      link_text: label,
+      page_path: location.pathname
+    });
+  }, true);
+})();
