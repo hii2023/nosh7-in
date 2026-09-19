@@ -10,14 +10,14 @@
 
   <url>
     <loc>https://nosh7.in/menu/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://nosh7.in/blog.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -136,7 +136,7 @@
   <!-- Corporate / B2B page -->
   <url>
     <loc>https://nosh7.in/diet-services-for-professional-and-corporate/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
