@@ -17,7 +17,7 @@
 
   <url>
     <loc>https://nosh7.in/blog.html</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -519,6 +519,12 @@
   <url>
     <loc>https://nosh7.in/blog-gym-without-diet-ahmedabad.html</loc>
     <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nosh7.in/blog-immunity-boosting-diet-ahmedabad.html</loc>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
