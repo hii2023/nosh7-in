@@ -4,12 +4,13 @@
 - Name: NOSH7
 - Type: Salad cloud kitchen + subscription service
 - City: Ahmedabad, Gujarat, India
-- Main site: nosh7.com (DO NOT MODIFY — read only for reference)
+- Main site: nosh7.com. Since 2026-10-02 it 301-redirects to https://app.nosh7.com/customer.html (the customer site: banner, all plans, login). That redirect is a Squarespace Domain Forwarding rule; the old content of nosh7.com is retired.
 - This site: nosh.in (India-focused local SEO site)
 - Target audience: Health-conscious working professionals in Ahmedabad
 
 ## Purchase Flow
-- All CTAs must redirect to: https://start.nosh7.in/
+- All CTAs must point to the order flow: https://app.nosh7.com/start.html (it replaced start.nosh7.in on 2026-10-02; start.nosh7.in now just redirects there, keeping ?track= etc.)
+- Every link labelled "Plans" goes to https://app.nosh7.com/customer.html#lpPlans (the plans section of the customer site)
 - No payment or checkout logic on this site
 - WhatsApp fallback order link: https://wa.me/919712989498
 - Replace 9712989498 with actual WhatsApp business number before going live
@@ -50,9 +51,9 @@
 | robots.txt | Allow all crawlers | Text |
 
 ## Agent Rules
-1. NEVER modify nosh7.com in any way
+1. nosh7.com is only a redirect now (to app.nosh7.com/customer.html); do not point new content at it
 2. Always git commit after changes with descriptive message
-3. All CTAs and order buttons must point to https://start.nosh7.in/
+3. All CTAs and order buttons must point to https://app.nosh7.com/start.html
 4. Keep sitemap.xml updated whenever pages are added or modified. After committing content changes and before pushing, run `python3 update-sitemap-lastmod.py` so every `<lastmod>` matches that page's last git commit date. Never hand-edit or invent lastmod values: once Google detects they are unreliable it ignores the signal site-wide. `--check` reports drift without writing.
 5. Every page must have: title tag, meta description, canonical URL, OG tags, JSON-LD schema
 6. Image alt text must include primary keyword + location (e.g., "fresh salad delivery Ahmedabad")
