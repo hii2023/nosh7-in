@@ -93,7 +93,7 @@ Yes, we DO deliver to Ashram Road and Sabarmati Ashram area. Roughly bounded by 
     if (/offer|discount|cashback|deal|promo/.test(t))
       return `**Active Offers:** Double Cashback (2 subs = 5% each) · Group Offer (3+ people = 10%) · Refer a Friend = 1 bowl each · Loyalty (3 months = 3 free meals). WhatsApp **9712989498** to avail!`;
     if (/deliver|area|zone|location|where|cover|pincode|satellite|prahlad|jodhpur|anandnagar|bodakdev|vastrapur|thaltej|sola|shilaj|bopal|ambli|science.?city|sg.?highway|sindhu|navrangpura|ashram|usmanpura|naranpura|stadium|gujarat.?univ|vadaj|paldi|gota|ranip|chandlodiya|nirnaynagar|sabarmati|vejalpur|makarba|juhapura|sarkhej|shela/.test(t))
-      return `We deliver across **west, central & north-west Ahmedabad** - including **Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Sola, Bopal, SG Highway, Navrangpura, Ashram Road, Usmanpura, Naranpura, Gujarat University, Paldi, Gota, Ranip, Chandlodiya, Sabarmati, Vejalpur, Juhapura & Sarkhej**. Yes, **Ashram Road is covered**! 4 daily batches. Not sure about your area? WhatsApp **9712989498** and we'll confirm in seconds.`;
+      return `We deliver across **west, central & north-west Ahmedabad** - including **Satellite, Prahlad Nagar, Bodakdev, Vastrapur, Thaltej, Sola, Bopal, SG Highway, Navrangpura, Ashram Road, Usmanpura, Naranpura, Gujarat University, Paldi, Gota, Ranip, Chandlodiya, Sabarmati, Vejalpur, Juhapura & Sarkhej**. Yes, **Ashram Road is covered**! 3 daily batches. Not sure about your area? WhatsApp **9712989498** and we'll confirm in seconds.`;
     if (/weight|loss|slim|fat|calorie|diet/.test(t))
       return `Our bowls are **350–420 kcal**, high fibre, zero junk. Customers lose **3–7 kg in 60 days**. The **Monthly Plan** is the best place to start - want to try it?`;
     if (/protein|muscle|gym|fitness/.test(t))
@@ -105,7 +105,7 @@ Yes, we DO deliver to Ashram Road and Sabarmati Ashram area. Roughly bounded by 
     if (/order|buy|\bstart\b|subscri|book/.test(t))
       return `Easiest way: **nosh7.com/order** for best price, or WhatsApp **9712989498**. Also on Zomato & Swiggy. Start with the **Trial Pack (₹1,250 - use code TRIAL for ₹150 off)** - no risk!`;
     if (/customis|custom|change|dish|menu|jain/.test(t))
-      return `Monthly fixed menu that rotates. Customise any dish for just **₹49/meal** extra - WhatsApp **9712989498** before the delivery day. Jain options on all plans!`;
+      return `One fixed menu each day, rotating through the month. Customise any dish for just **₹49/meal** extra - WhatsApp **9712989498** before the delivery day. Jain options on all plans!`;
     if (/drink|juice/.test(t))
       return `Health drinks are **₹29/day**. **Monthly Plan** includes 1 week free (worth ₹499). Great add-on!`;
     return `WhatsApp us at **9712989498** for instant help - we're very responsive! Or pick a question below`;
@@ -207,16 +207,15 @@ Yes, we DO deliver to Ashram Road and Sabarmati Ashram area. Roughly bounded by 
       else if (/25|4.?999|month/.test(t)) orderState.plan = 'Monthly Plan - ₹4,999 (25 days)';
       else { addMsg('Please pick one of the plans below', 'bot'); setQuick(['Trial Pack - ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']); return; }
       orderState.step = 'slot';
-      addMsg('Great choice!<br><br><strong>Step 2:</strong> Which delivery slot do you prefer? We have 4 daily batches:', 'bot');
-      setQuick(['Morning - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Evening - 4:30 to 6:30 PM', 'Dinner - 6:30 to 8:30 PM']);
+      addMsg('Great choice!<br><br><strong>Step 2:</strong> Which delivery slot do you prefer? We have 3 daily batches:', 'bot');
+      setQuick(['Breakfast - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Dinner - 6 to 8 PM']);
       return;
     }
     if (orderState.step === 'slot') {
-      if (/9.?30|11.?30|morning/i.test(t)) orderState.slot = 'Morning - 9:30 AM to 11:30 AM';
+      if (/9.?30|breakfast|morning/i.test(t)) orderState.slot = 'Breakfast - 9:30 AM to 11:30 AM';
       else if (/11.?30|1.?30|lunch/i.test(t)) orderState.slot = 'Lunch - 11:30 AM to 1:30 PM';
-      else if (/4.?30|6.?30|evening/i.test(t)) orderState.slot = 'Evening - 4:30 PM to 6:30 PM';
-      else if (/6.?30|8.?30|dinner/i.test(t)) orderState.slot = 'Dinner - 6:30 PM to 8:30 PM';
-      else { addMsg('Please pick one of the 4 delivery slots below', 'bot'); setQuick(['Morning - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Evening - 4:30 to 6:30 PM', 'Dinner - 6:30 to 8:30 PM']); return; }
+      else if (/\b6\b|\b8\b|evening|dinner|night/i.test(t)) orderState.slot = 'Dinner - 6 PM to 8 PM';
+      else { addMsg('Please pick one of the 3 delivery slots below', 'bot'); setQuick(['Breakfast - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Dinner - 6 to 8 PM']); return; }
       orderState.step = 'name';
       addMsg('Perfect!<br><br><strong>Step 3:</strong> What\'s your name?', 'bot');
       setQuick([]);
