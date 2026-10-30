@@ -13,17 +13,17 @@ RESPONSE RULES:
 - Keep replies to 2-3 sentences max. Never write essays.
 - Sound human and natural, not like a chatbot.
 - Use **bold** for prices, days, protein values, savings, and key facts (e.g. **₹200/day**, **25 days**, **18-24g protein**).
-- Always end with a soft push towards ordering or next step (e.g. "Want to start with the trial?" or "Grab it at nosh7.com/order").
+- Always end with a soft push towards ordering or next step (e.g. "Want to start with the trial?" or "Grab it at start.nosh7.in").
 - Never make up information. If unsure, say "WhatsApp us at **9712989498** and we'll sort it out!"
 - Think like a salesperson - understand what the customer needs and give them the one best answer, not a list of options.
 
 ABOUT NOSH7:
 - Pure veg salad cloud kitchen in Ahmedabad. Fresh meals delivered daily.
 - Jain options available on all plans.
-- Contact: WhatsApp **9712989498** | Order: nosh7.com/order
+- Contact: WhatsApp **9712989498** | Order: start.nosh7.in
 
 PLANS & PRICING:
-1. Trial Pack - **₹1,250 / 5 days** - use code **TRIAL** at checkout for ₹150 off → pay only **₹1,100** (**₹220/day**). One-time offer. No commitment, full refund if not happy.
+1. Trial Pack - **₹1,250 / 5 days** - use code **HEALTHY** at checkout for ₹150 off → pay only **₹1,100** (**₹220/day**). One-time offer. No commitment, full refund if not happy.
 2. Monthly Plan - **₹4,999 / 25 days** (**₹200/day**, 33% off, save **₹2,476**). Includes superfood seeds weekly, free nutrition consultation, pause anytime. [MOST POPULAR]
 
 MENU & CUSTOMISATION:
@@ -46,7 +46,7 @@ HEALTH GOALS:
 - Diabetes: Low GI, high fibre, zero added sugar
 - Thyroid: Selenium-rich seeds, anti-inflammatory greens
 
-ORDERING: nosh7.com/order (best price) | Zomato | Swiggy | WhatsApp **9712989498**
+ORDERING: start.nosh7.in (best price) | Zomato | Swiggy | WhatsApp **9712989498**
 
 DELIVERY: We deliver across west, central and north-west Ahmedabad. Covered areas include:
 - West / SG Highway: Satellite, Prahlad Nagar, Jodhpur, Anandnagar, Bodakdev, Vastrapur, Thaltej, Sola, Shilaj, Bopal, Ambli, Science City, SG Highway, Sindhu Bhavan Road
@@ -83,13 +83,13 @@ Yes, we DO deliver to Ashram Road and Sabarmati Ashram area. Roughly bounded by 
   function keywordFallback(text) {
     const t = text.toLowerCase();
     if (/\bhi\b|hello|namaste|hey|\bstart\b/.test(t))
-      return `Hi! I'm Julie from NOSH7 We deliver fresh pure veg salad bowls in Ahmedabad - from **₹220/day** (trial, with code TRIAL) or **₹200/day** (monthly). What brings you here? Weight loss, high protein, or clean eating?`;
+      return `Hi! I'm Julie from NOSH7 We deliver fresh pure veg salad bowls in Ahmedabad - from **₹220/day** (trial, with code HEALTHY) or **₹200/day** (monthly). What brings you here? Weight loss, high protein, or clean eating?`;
     if (/trial|5.?day|\btry\b|sample/.test(t))
-      return `Our **Trial Pack** is **₹1,250 for 5 days**. Use code **TRIAL** at checkout → pay only **₹1,100** (**₹220/day**, 26% off). One-time offer. No commitment, full refund if not happy. Order at **nosh7.com/order** or WhatsApp **9712989498**.`;
+      return `Our **Trial Pack** is **₹1,250 for 5 days**. Use code **HEALTHY** at checkout → pay only **₹1,100** (**₹220/day**, 26% off). One-time offer. No commitment, full refund if not happy. Order at **start.nosh7.in** or WhatsApp **9712989498**.`;
     if (/26.?day|month|popular/.test(t))
       return `The **Monthly Plan** is **₹4,999 for 25 days** (₹200/day, 33% off, save **₹2,476**). Includes superfood seeds + nutrition consultation. Our most popular! Ready to start?`;
     if (/plan|pric|cost|rate|how.?much|kitna/.test(t))
-      return `2 plans: **Trial ₹1,250/5 days** (code TRIAL = ₹1,100) | **Monthly ₹4,999/25 days** (most popular, ₹200/day). All fresh daily salad bowls. Which one suits you?`;
+      return `2 plans: **Trial ₹1,250/5 days** (code HEALTHY = ₹1,100) | **Monthly ₹4,999/25 days** (most popular, ₹200/day). All fresh daily salad bowls. Which one suits you?`;
     if (/offer|discount|cashback|deal|promo/.test(t))
       return `**Active Offers:** Double Cashback (2 subs = 5% each) · Group Offer (3+ people = 10%) · Refer a Friend = 1 bowl each · Loyalty (3 months = 3 free meals). WhatsApp **9712989498** to avail!`;
     if (/deliver|area|zone|location|where|cover|pincode|satellite|prahlad|jodhpur|anandnagar|bodakdev|vastrapur|thaltej|sola|shilaj|bopal|ambli|science.?city|sg.?highway|sindhu|navrangpura|ashram|usmanpura|naranpura|stadium|gujarat.?univ|vadaj|paldi|gota|ranip|chandlodiya|nirnaynagar|sabarmati|vejalpur|makarba|juhapura|sarkhej|shela/.test(t))
@@ -103,7 +103,7 @@ Yes, we DO deliver to Ashram Road and Sabarmati Ashram area. Roughly bounded by 
     if (/diabet|sugar|glyc/.test(t))
       return `Our bowls are **low GI, high fibre, zero added sugar** - ideal for diabetics. WhatsApp **9712989498** and our nutritionist will guide you.`;
     if (/order|buy|\bstart\b|subscri|book/.test(t))
-      return `Easiest way: **nosh7.com/order** for best price, or WhatsApp **9712989498**. Also on Zomato & Swiggy. Start with the **Trial Pack (₹1,250 - use code TRIAL for ₹150 off)** - no risk!`;
+      return `Easiest way: **start.nosh7.in** for best price, or WhatsApp **9712989498**. Also on Zomato & Swiggy. Start with the **Trial Pack (₹1,250 - use code HEALTHY for ₹150 off)** - no risk!`;
     if (/customis|custom|change|dish|menu|jain/.test(t))
       return `One fixed menu each day, rotating through the month. Customise any dish for just **₹49/meal** extra - WhatsApp **9712989498** before the delivery day. Jain options on all plans!`;
     if (/drink|juice/.test(t))
@@ -197,15 +197,15 @@ Yes, we DO deliver to Ashram Road and Sabarmati Ashram area. Roughly bounded by 
   function startOrderFlow() {
     orderState = { step: 'plan', plan: null, slot: null, name: null, address: null };
     addMsg('Sure! Let me help you place your order in 4 quick steps<br><br><strong>Step 1:</strong> Which plan would you like?', 'bot');
-    setQuick(['Trial Pack - ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']);
+    setQuick(['Trial Pack - ₹1,250 (use code HEALTHY = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']);
   }
 
   function handleOrderStep(text) {
     const t = text.toLowerCase();
     if (orderState.step === 'plan') {
-      if (/trial|1.?250|1.?100|5.?day/.test(t)) orderState.plan = 'Trial Pack (5 days) - ₹1,250 (code TRIAL = ₹1,100)';
+      if (/trial|1.?250|1.?100|5.?day/.test(t)) orderState.plan = 'Trial Pack (5 days) - ₹1,250 (code HEALTHY = ₹1,100)';
       else if (/25|4.?999|month/.test(t)) orderState.plan = 'Monthly Plan - ₹4,999 (25 days)';
-      else { addMsg('Please pick one of the plans below', 'bot'); setQuick(['Trial Pack - ₹1,250 (use code TRIAL = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']); return; }
+      else { addMsg('Please pick one of the plans below', 'bot'); setQuick(['Trial Pack - ₹1,250 (use code HEALTHY = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']); return; }
       orderState.step = 'slot';
       addMsg('Great choice!<br><br><strong>Step 2:</strong> Which delivery slot do you prefer? We have 3 daily batches:', 'bot');
       setQuick(['Breakfast - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Dinner - 6 to 8 PM']);
