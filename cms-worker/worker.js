@@ -82,7 +82,6 @@ const PAGE_TPL = `<!DOCTYPE html>
   <meta name="description" content="{{META_DESC}}" />
   <meta name="keywords" content="{{TAG}} Ahmedabad, healthy meal delivery Ahmedabad, NOSH7 {{TAG}}" />
   <link rel="canonical" href="https://nosh7.in/{{SLUG}}" />
-  <link rel="alternate" hreflang="en" href="https://www.nosh7.com/" />
   <link rel="alternate" hreflang="hi-IN" href="https://nosh7.in/{{SLUG}}" />
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nosh7.in/"}, {"@type": "ListItem", "position": 2, "name": "Health Blog", "item": "https://nosh7.in/blog.html"}, {"@type": "ListItem", "position": 3, "name": "{{H1_SHORT}}", "item": "https://nosh7.in/{{SLUG}}"}]}
@@ -143,7 +142,7 @@ const PAGE_TPL = `<!DOCTYPE html>
   <a class="nav-logo" href="/">
     <img decoding="async" src="/assets/logo.webp" alt="NOSH7 logo" />
     <div class="nav-logo-text">NOSH7<span>Pure Veg &middot; Ahmedabad</span></div>
-  </a><div class="n7-nav-right"><div class="n7-links"><a href="/#plans">Plans</a><a href="/#menu">Menu</a><a href="/blog.html">Blog</a><a href="/bmi-calculator-ahmedabad.html">BMI</a><a href="/fruit-bowl-pack-ahmedabad.html">Fruit</a><a href="/office-lunch-ahmedabad.html">Office</a></div><a class="n7-login" href="https://www.nosh7.com" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Login</a></div>
+  </a><div class="n7-nav-right"><div class="n7-links"><a href="/#plans">Plans</a><a href="/#menu">Menu</a><a href="/blog.html">Blog</a><a href="/bmi-calculator-ahmedabad.html">BMI</a><a href="/fruit-bowl-pack-ahmedabad.html">Fruit</a><a href="/office-lunch-ahmedabad.html">Office</a></div><a class="n7-login" href="https://app.nosh7.com/customer.html#login" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Login</a></div>
   <a class="nav-back" href="/blog.html">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
     All Articles
