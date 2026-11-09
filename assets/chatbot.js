@@ -208,14 +208,14 @@ Yes, we DO deliver to Ashram Road and Sabarmati Ashram area. Roughly bounded by 
       else { addMsg('Please pick one of the plans below', 'bot'); setQuick(['Trial Pack - ₹1,250 (use code HEALTHY = ₹1,100)', 'Monthly Plan - ₹4,999 (25 days)']); return; }
       orderState.step = 'slot';
       addMsg('Great choice!<br><br><strong>Step 2:</strong> Which delivery slot do you prefer? We have 3 daily batches:', 'bot');
-      setQuick(['Breakfast - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Dinner - 6 to 8 PM']);
+      setQuick(['Breakfast - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Dinner - 5 to 8 PM']);
       return;
     }
     if (orderState.step === 'slot') {
       if (/9.?30|breakfast|morning/i.test(t)) orderState.slot = 'Breakfast - 9:30 AM to 11:30 AM';
       else if (/11.?30|1.?30|lunch/i.test(t)) orderState.slot = 'Lunch - 11:30 AM to 1:30 PM';
       else if (/\b6\b|\b8\b|evening|dinner|night/i.test(t)) orderState.slot = 'Dinner - 6 PM to 8 PM';
-      else { addMsg('Please pick one of the 3 delivery slots below', 'bot'); setQuick(['Breakfast - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Dinner - 6 to 8 PM']); return; }
+      else { addMsg('Please pick one of the 3 delivery slots below', 'bot'); setQuick(['Breakfast - 9:30 to 11:30 AM', 'Lunch - 11:30 AM to 1:30 PM', 'Dinner - 5 to 8 PM']); return; }
       orderState.step = 'name';
       addMsg('Perfect!<br><br><strong>Step 3:</strong> What\'s your name?', 'bot');
       setQuick([]);
