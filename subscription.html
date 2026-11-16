@@ -699,7 +699,7 @@
         <li class="pf">Free delivery within 5 KM · ₹10/km beyond</li>
         <li class="pf">⏸ Pause &amp; resume anytime, unlimited times</li>
         <li class="pf">Cancel free up to 2 hrs before batch</li>
-        <li class="pf">No auto-renewal — plan ends after 25 days</li>
+        <li class="pf">No auto-renewal - plan ends after 25 days</li>
       </ul>
       <a href="https://app.nosh7.com/start.html?track=healthy-fresh" class="btn-order btn-saffron" target="_blank" rel="noopener">Get Monthly Plan - ₹4,999 / 25 days →</a>
     </div>
@@ -1061,34 +1061,6 @@
   <p>© 2025 NOSH7 – Eat Healthy, Feel Great | <a href="/">nosh7.in</a> | <a href="/bmi-calculator-ahmedabad.html">BMI Calculator</a> | <a href="https://app.nosh7.com/start.html">app.nosh7.com/start.html</a> | <a href="mailto:07nosh@gmail.com">07nosh@gmail.com</a> | <a href="https://maps.google.com/?q=NOSH7+Satellite+Ahmedabad+Gujarat+India" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Satellite, Ahmedabad</a> | <a href="https://wa.me/919712989498?text=Hello+Team+Nosh7">WhatsApp: 9712989498</a> | <a href="tel:+919712989498">Call</a> | FSSAI Lic. No. 20723038000600 | <a href="https://www.instagram.com/nosh7salad" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg> Instagram: @nosh7salad</a> | Ahmedabad</p>
 </footer>
 
-<script>
-const SB='https://sqosmiifjqecidxhyjtg.supabase.co';
-const KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxb3NtaWlmanFlY2lkeGh5anRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4MDczNzQsImV4cCI6MjA4ODM4MzM3NH0.xAVThNZNjRbZ5ObA721XZLexUiRUIVSXx0UZNs0ZwTI';
-
-async function sbGet(table,params=''){
-  const r=await fetch(SB+'/rest/v1/'+table+params,{headers:{apikey:KEY,'Authorization':'Bearer '+KEY}});
-  return r.json();
-}
-
-async function loadPlatforms(){
-  const s=await sbGet('site_settings','?select=key,value&key=in.(zomato_url,swiggy_url)');
-  if(!Array.isArray(s))return;
-  const m=Object.fromEntries(s.map(x=>[x.key,x.value]));
-  if(m.zomato_url){
-    document.getElementById('zomato-btn').href=m.zomato_url;
-    const zl=document.getElementById('z-link');
-    if(zl)zl.href=m.zomato_url;
-  }
-  if(m.swiggy_url){
-    document.getElementById('swiggy-btn').href=m.swiggy_url;
-    const sl=document.getElementById('s-link');
-    if(sl)sl.href=m.swiggy_url;
-  }
-}
-
-
-loadPlatforms();
-</script>
 
 <!-- 100% privacy-first analytics -->
 <script>
