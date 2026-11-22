@@ -10,7 +10,7 @@
 
 ## Purchase Flow
 - All CTAs must point to the order flow: https://app.nosh7.com/start.html (it replaced start.nosh7.in on 2026-10-02; start.nosh7.in now just redirects there, keeping ?track= etc.)
-- Every link labelled "Plans" goes to https://app.nosh7.com/customer.html#lpPlans (the plans section of the customer site)
+- Every link labelled "Plans" goes to /subscription.html (the healthy meal & salad plans page on nosh7.in; changed 2026-11-22 so plan clicks stay on the primary site, was app.nosh7.com/customer.html#lpPlans)
 - No payment or checkout logic on this site
 - WhatsApp fallback order link: https://wa.me/919712989498
 - Replace 9712989498 with actual WhatsApp business number before going live
