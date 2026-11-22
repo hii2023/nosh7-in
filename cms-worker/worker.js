@@ -262,11 +262,14 @@ function rewriteMenuMonth(text, oldM, oldY, newM, newY) {
 
 // The artwork's aspect ratio changes month to month, so keep the declared
 // sizes honest: wrong width/height attributes cause layout shift.
-function patchMenuDims(text, d) {
+function patchMenuDims(text, d, withOg) {
   let t = text;
-  t = t.replace(/(<meta property="og:image:width" content=")\d+(")/, '$1' + d.ogW + '$2');
-  t = t.replace(/(<meta property="og:image:height" content=")\d+(")/, '$1' + d.ogH + '$2');
-  t = t.replace(/(<img src="\/assets\/nosh7-salad-meal-menu-[a-z]+-\d{4}-ahmedabad\.webp"[\s\S]{0,400}?)width="\d+" height="\d+"/,
+  if (withOg) {
+    t = t.replace(/(<meta property="og:image:width" content=")\d+(")/, '$1' + d.ogW + '$2');
+    t = t.replace(/(<meta property="og:image:height" content=")\d+(")/, '$1' + d.ogH + '$2');
+  }
+  // Every menu <img> (menu page and subscription page) carries the web image's real size.
+  t = t.replace(/(<img\b[^>]*?src="\/assets\/nosh7-salad-meal-menu-[a-z]+-\d{4}-ahmedabad\.webp"[^>]*?)width="\d+" height="\d+"/g,
                 '$1width="' + d.w + '" height="' + d.h + '"');
   return t;
 }
@@ -618,7 +621,7 @@ export default {
         if (!cur.ok || !cur.data.content) return json({ error: 'Could not read ' + pg + ': ' + (cur.data.message || cur.status) }, 502);
         const orig = b64decode(cur.data.content);
         const r = rewriteMenuMonth(orig, oldM, oldY, newM, newY);
-        let text = pg === 'menu/index.html' ? patchMenuDims(r.text, dims) : r.text;
+        let text = patchMenuDims(r.text, dims, pg === 'menu/index.html');
         if (r.hits === 0) {
           return json({ error: 'Nothing on ' + pg + ' matched the ' + titleCase(oldM) + ' ' + oldY + ' menu, so nothing was changed. The page may have been edited by hand - ask the developer to check it.' }, 409);
         }
@@ -900,11 +903,12 @@ function buildMenuAssets(file,cb,onerr){
       return {cv:cv,w:tw,h:th};
     }
     var full=paint(Math.min(1400,img.width));
+    var web=paint(Math.min(1080,img.width));
     var og=paint(Math.min(1200,img.width));
     encodeCanvas(full.cv,"image/jpeg",[0.85,0.78,0.7,0.62],1000*1024,function(jpg){
-      encodeCanvas(full.cv,"image/webp",[0.85,0.78,0.7,0.62],550*1024,function(webp){
+      encodeCanvas(web.cv,"image/webp",[0.82,0.75,0.68,0.6,0.52,0.45],170*1024,function(webp){
         encodeCanvas(og.cv,"image/jpeg",[0.7,0.62,0.55],500*1024,function(share){
-          cb({w:full.w,h:full.h,ogW:og.w,ogH:og.h,jpg:jpg,webp:webp,og:share,srcW:img.width,srcH:img.height});
+          cb({w:web.w,h:web.h,ogW:og.w,ogH:og.h,jpg:jpg,webp:webp,og:share,srcW:img.width,srcH:img.height});
         },onerr);
       },onerr);
     },onerr);
