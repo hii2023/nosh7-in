@@ -827,6 +827,21 @@
     .health-card h3 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; color: var(--green-deep); margin-bottom: 0.2rem; }
     .health-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.55; }
 
+    /* Icon chips in the NOSH7 app "Fresh Market" look (2026-11-25): soft tint, crisp line icon, no gloss */
+    .why-icon-wrap, .feat-icon, .health-icon-wrap, .feat-group .fg-icon { background: linear-gradient(145deg, #E3F3E8, #F1F8F2); color: #0B6B35; box-shadow: inset 0 0 0 1px rgba(11,107,53,.07); }
+    .why-icon-wrap::after, .health-icon-wrap::after { content: none; }
+    .why-icon-wrap svg, .feat-icon svg, .health-icon-wrap svg, .feat-group .fg-icon svg { fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; filter: none; }
+    .why-icon-wrap { background: #fff; border-radius: 12px; box-shadow: 0 1px 2px rgba(16,40,24,.06), 0 4px 10px -4px rgba(16,40,24,.12); }
+    .feat-icon { border-radius: 14px; }
+    .feat-card.feat-cta .feat-icon { background: #C2DD55; color: #08361C; box-shadow: none; }
+    .health-icon-wrap { border-radius: 16px; }
+    .health-icon-wrap.hi-kcal { background: #FFEBDD; color: #C2541A; }
+    .health-icon-wrap.hi-warn { background: #FFF3DC; color: #B86E00; }
+    .health-icon-wrap.hi-info { background: #E6F0FB; color: #2563A8; }
+    .health-icon-wrap.hi-pink { background: #FCE7F3; color: #BE185D; }
+    .health-icon-wrap.hi-violet { background: #EEEAFB; color: #6D5BD0; }
+    .health-icon-wrap.hi-leaf { background: #E3F3E8; color: #0B6B35; }
+
     /* ── DELIVERY + FAQ ── */
     .df-section { padding: 1.1rem 4rem; background: var(--cream); }
     .df-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; max-width: 1100px; margin: 0 auto; }
@@ -1479,7 +1494,7 @@
 
     <div class="why-card why-c1">
       <div class="why-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M5 17C5 9 11 4 20 4c0 9-5 15-13 15-1.1 0-2.1-.2-3-.5z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M4.5 20c1.4-5 4.8-8.6 11-10.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
       </div>
       <h3>Seasonal Fresh</h3>
       <p>Peak nutrition, best taste - what nature offers this season.</p>
@@ -1487,7 +1502,7 @@
 
     <div class="why-card why-c2">
       <div class="why-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.8"/><path d="M3 9.5h18" stroke="#fff" stroke-width="1.8"/><path d="M8 3v4M16 3v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><path d="M8.4 14.6l2.2 2.2 4.4-4.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
       </div>
       <h3>Flexible Plans</h3>
       <p>Trial → Monthly. Pause anytime, no lock-in.</p>
@@ -1495,7 +1510,7 @@
 
     <div class="why-card why-c3">
       <div class="why-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="5" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="1.7" fill="#fff"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
       </div>
       <h3>Goal-Specific Meals</h3>
       <p>Weight loss, diabetes, thyroid, PCOD, muscle gain - all covered.</p>
@@ -1503,7 +1518,7 @@
 
     <div class="why-card why-c4">
       <div class="why-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M13 2.5L4.6 13.4c-.4.5-.05 1.25.6 1.25H11l-1 7.35 8.4-11.1c.4-.5.05-1.25-.6-1.25H12l1-7.15z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/></svg>
       </div>
       <h3>Never Pre-Made</h3>
       <p>Every order prepared 1 hr before delivery. Zero frozen.</p>
@@ -1511,7 +1526,7 @@
 
     <div class="why-card why-c5">
       <div class="why-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5l1.9 5.1c.2.6.7 1.1 1.3 1.3l5.1 1.9-5.1 1.9c-.6.2-1.1.7-1.3 1.3L12 19.1l-1.9-5.1c-.2-.6-.7-1.1-1.3-1.3L3.7 10.8l5.1-1.9c.6-.2 1.1-.7 1.3-1.3L12 2.5z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M19 4l.55 1.55L21.1 6.1l-1.55.55L19 8.2l-.55-1.55L16.9 6.1l1.55-.55L19 4z" fill="#fff"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
       </div>
       <h3>Seeds Included, Drinks Add-On</h3>
       <p>Superfood seeds in every meal. Add a health drink anytime.</p>
@@ -1519,7 +1534,7 @@
 
     <div class="why-card why-c6">
       <div class="why-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.6l2.4 1.85 3-.1.85 2.9 2.5 1.75-.95 2.9.95 2.9-2.5 1.75-.85 2.9-3-.1L12 21.4l-2.4-1.85-3 .1-.85-2.9-2.5-1.75.95-2.9L3.25 9.2l2.5-1.75.85-2.9 3 .1L12 2.6z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.8 12l2.1 2.1 4.3-4.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
       </div>
       <h3>Nutritionist Backed</h3>
       <p>Menu crafted by Ahmedabad nutritionists for real results.</p>
@@ -1536,68 +1551,68 @@
   <div class="feat-grid">
 
     <div class="feat-group">
-      <span class="fg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/></svg></span>
+      <span class="fg-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></span>
       <span>App &amp; Flexibility</span>
       <span class="fg-line"></span>
     </div>
 
     <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" fill="rgba(255,255,255,.24)" stroke="#fff" stroke-width="1.8"/><path d="M12 9.4c-1-1.35-3.1-.7-3.1 1 0 1.35 2 2.75 3.1 3.35 1.1-.6 3.1-2 3.1-3.35 0-1.7-2.1-2.35-3.1-1z" fill="#fff"/><line x1="10.4" y1="18.7" x2="13.6" y2="18.7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div class="feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></div>
       <span class="feat-badge">Self-Serve</span>
       <h3>Manage Everything From Your Phone</h3>
       <p>Pause, resume, skip a day, change your delivery batch or update your address in seconds. One message on WhatsApp and it is done, no calls needed.</p>
     </div>
 
     <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8"/><rect x="8.7" y="8" width="2.3" height="8" rx="1.1" fill="#fff"/><rect x="13" y="8" width="2.3" height="8" rx="1.1" fill="#fff"/></svg></div>
+      <div class="feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 15V9M14 15V9"/></svg></div>
       <span class="feat-badge">Free · Unlimited</span>
       <h3>Unlimited Free Pause &amp; Resume</h3>
       <p>Travelling or busy? Pause your plan any number of times at zero cost and resume when you are back. You never lose a single day you paid for.</p>
     </div>
 
     <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3.2" y="4.8" width="17.6" height="16" rx="2.6" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8"/><path d="M3.2 9.6h17.6" stroke="#fff" stroke-width="1.8"/><path d="M8 2.6v4M16 2.6v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><path d="M8.5 14.7l2.1 2.1 4.2-4.3" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></div>
       <span class="feat-badge">Plan Ahead</span>
       <h3>Choose Your Delivery Days</h3>
       <p>Set your schedule in advance and pick exactly which days you want meals. Only weekdays, skip Sundays, or any pattern you like, and change it whenever your week changes.</p>
     </div>
 
     <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8"/><path d="M12 7v5.2l3.4 2" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
       <span class="feat-badge">Flexible</span>
       <h3>4 Delivery Batches To Pick From</h3>
       <p>Morning, lunch, evening or dinner, choose the slot that fits your routine and switch it any day. Every batch is prepped fresh 1 hour before it leaves.</p>
     </div>
 
     <div class="feat-group">
-      <span class="fg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17C5 9 11 4 20 4c0 9-5 15-13 15-1.1 0-2.1-.2-3-.5z"/><path d="M4.5 20c1.4-5 4.8-8.6 11-10.6"/></svg></span>
+      <span class="fg-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-2.77 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/><path d="m13 12 4-4"/><path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/></svg></span>
       <span>Food &amp; Nutrition</span>
       <span class="fg-line"></span>
     </div>
 
     <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 17C5 9 11 4 20 4c0 9-5 15-13 15-1.1 0-2.1-.2-3-.5z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M4.5 20c1.4-5 4.8-8.6 11-10.6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div class="feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-2.77 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/><path d="m13 12 4-4"/><path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/></svg></div>
       <span class="feat-badge">Never Boring</span>
       <h3>20+ Salad Varieties</h3>
       <p>A rotating monthly menu with more than 20 salad varieties, so you never eat the same bowl twice in a week. Fresh, seasonal and nutritionist designed.</p>
     </div>
 
     <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3.3 11.2h17.4a8.7 8.7 0 0 1-17.4 0z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><line x1="2.4" y1="11.2" x2="21.6" y2="11.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><path d="M7 11c.1-1.8 1.4-3.1 3-3.3M12 11c.1-2.1 1.5-3.6 3.3-3.9M9.2 8c.5-1.4 1.9-2.3 3.5-2.2" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg></div>
       <span class="feat-badge">Complete Meal</span>
       <h3>Balanced Nutrition In Every Bowl</h3>
       <p>Protein, fibre, healthy fats, seeds and greens in one 350 to 420g bowl. A full, filling meal that replaces lunch or dinner, not a tiny side salad.</p>
     </div>
 
     <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2.8" width="16" height="18.4" rx="2.4" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8"/><line x1="7.5" y1="7" x2="16.5" y2="7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><rect x="7.3" y="11" width="3" height="6.2" rx="1.1" fill="#fff"/><rect x="12" y="13" width="3" height="4.2" rx="1.1" fill="#fff"/></svg></div>
+      <div class="feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
       <span class="feat-badge saffron">Full Transparency</span>
       <h3>Protein &amp; Calories On Every Dish</h3>
       <p>Every item on the menu shows its protein and calorie count, so you always know exactly what you are eating. Each bowl carries 20 to 25g of protein.</p>
     </div>
 
     <div class="feat-card feat-cta">
-      <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M20.8 10.35c.1-.46.15-.94.15-1.45C20.95 6 18.75 4 16.25 4c-1.7 0-3.3.9-4.25 2.4C11.05 4.9 9.45 4 7.75 4 5.25 4 3.05 6 3.05 8.9c0 4.5 4 7.6 8.95 11.4" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 13.2l1.7-2.7 1.9 3.6 1.3-1.8H21" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></div>
       <span class="feat-badge saffron">Free Tool</span>
       <h3>BMI &amp; Health Analysis</h3>
       <p>Check your BMI, ideal weight and daily calorie target, get a matched NOSH7 plan and health tips, then download your report, all free in one minute.</p>
@@ -1615,8 +1630,8 @@
   <div class="health-grid">
 
     <a href="https://app.nosh7.com/start.html?track=weight-loss" class="health-card" style="border-color:#ffe0cc;">
-      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#fb923c,#ea580c);box-shadow:0 6px 16px -4px rgba(234,88,12,.5),inset 0 1px 0 rgba(255,255,255,.45);">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5l8 3v6.5c0 5.6-5.4 9-8 10-2.6-1-8-4.4-8-10V5.5l8-3z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 12l2.3 2.3 4.3-4.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="health-icon-wrap hi-kcal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M7.5 10a4.5 4.5 0 0 1 9 0"/><path d="m12 10 1.6-2.2"/></svg>
       </div>
       <div>
         <h3>Weight Loss</h3>
@@ -1625,8 +1640,8 @@
     </a>
 
     <a href="https://app.nosh7.com/start.html?track=healthy-fresh" class="health-card" style="border-color:#fde6c8;">
-      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#f59e0b,#b45309);box-shadow:0 6px 16px -4px rgba(180,83,9,.5),inset 0 1px 0 rgba(255,255,255,.45);">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M4 7c0-1.7 1.3-3 3-3h7c3.3 0 6 2.7 6 6 0 4.4-3.6 8-8 8h-1c-3.9 0-7-3.1-7-7V7z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 11h2.2l1.3 2.6 1.8-4 1.2 1.4H17" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="health-icon-wrap hi-warn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7c0-1.7 1.3-3 3-3h7c3.3 0 6 2.7 6 6 0 4.4-3.6 8-8 8h-1c-3.9 0-7-3.1-7-7V7z"/><path d="M8 11h2l1.3 2.6 1.8-4 1.2 1.4H17"/></svg>
       </div>
       <div>
         <h3>Fatty Liver</h3>
@@ -1635,8 +1650,8 @@
     </a>
 
     <a href="https://app.nosh7.com/start.html?track=low-sugar" class="health-card" style="border-color:#cce4ff;">
-      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#38bdf8,#2563eb);box-shadow:0 6px 16px -4px rgba(37,99,235,.5),inset 0 1px 0 rgba(255,255,255,.45);">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.2c3 3.8 6 6.9 6 10.1a6 6 0 11-12 0c0-3.2 3-6.3 6-10.1z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.4 14a2.6 2.6 0 002.6 2.6" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <div class="health-icon-wrap hi-info">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/><path d="M9.5 15.5a2.5 2.5 0 0 0 2.5 2.5"/></svg>
       </div>
       <div>
         <h3>Diabetes Management</h3>
@@ -1645,8 +1660,8 @@
     </a>
 
     <a href="https://app.nosh7.com/start.html?track=healthy-fresh" class="health-card" style="border-color:#ffd6f0;">
-      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#f472b6,#db2777);box-shadow:0 6px 16px -4px rgba(219,39,119,.5),inset 0 1px 0 rgba(255,255,255,.45);">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 20.3l-1.3-1.2C6 14.9 3.2 12.4 3.2 9.2 3.2 6.6 5.2 4.6 7.8 4.6c1.5 0 2.9.7 3.8 1.8.9-1.1 2.3-1.8 3.8-1.8 2.6 0 4.6 2 4.6 4.6 0 3.2-2.8 5.7-7.5 9.9L12 20.3z" fill="rgba(255,255,255,.25)" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      <div class="health-icon-wrap hi-pink">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
       </div>
       <div>
         <h3>Thyroid Support</h3>
@@ -1655,8 +1670,8 @@
     </a>
 
     <a href="https://app.nosh7.com/start.html?track=healthy-fresh" class="health-card" style="border-color:#e8ccff;">
-      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#a78bfa,#7c3aed);box-shadow:0 6px 16px -4px rgba(124,58,237,.5),inset 0 1px 0 rgba(255,255,255,.45);">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.1" fill="rgba(255,255,255,.3)" stroke="#fff" stroke-width="1.6"/><path d="M12 2.6c1.6 1.2 1.6 4.2 0 6.2-1.6-2-1.6-5 0-6.2zM12 21.4c-1.6-1.2-1.6-4.2 0-6.2 1.6 2 1.6 5 0 6.2zM2.6 12c1.2-1.6 4.2-1.6 6.2 0-2 1.6-5 1.6-6.2 0zM21.4 12c-1.2 1.6-4.2 1.6-6.2 0 2-1.6 5-1.6 6.2 0z" fill="rgba(255,255,255,.22)" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <div class="health-icon-wrap hi-violet">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9M7.5 12H9M16.5 12H15M12 16.5V15"/></svg>
       </div>
       <div>
         <h3>PCOD / PCOS</h3>
@@ -1665,8 +1680,8 @@
     </a>
 
     <a href="https://app.nosh7.com/start.html?track=high-protein" class="health-card" style="border-color:var(--green-light);">
-      <div class="health-icon-wrap" style="background:linear-gradient(145deg,#34d399,#059669);box-shadow:0 6px 16px -4px rgba(5,150,105,.5),inset 0 1px 0 rgba(255,255,255,.45);">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="8" width="2.8" height="8" rx="1.2" fill="rgba(255,255,255,.28)" stroke="#fff" stroke-width="1.5"/><rect x="16.2" y="8" width="2.8" height="8" rx="1.2" fill="rgba(255,255,255,.28)" stroke="#fff" stroke-width="1.5"/><path d="M7.8 12h8.4M3.2 10.5v3M20.8 10.5v3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      <div class="health-icon-wrap hi-leaf">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.6 12.8a2 2 0 1 0 2.8-2.8l-1.8-1.8a2 2 0 0 0 2.8-2.8l-2.8-2.8a2 2 0 0 0-2.8 2.8l-1.8-1.8a2 2 0 1 0-2.8 2.8z"/><path d="m2.5 21.5 1.4-1.4M20.1 3.9l1.4-1.4"/><path d="M5.3 21.5a2 2 0 1 0 2.8-2.8l1.8 1.8a2 2 0 1 0 2.8-2.8l-6.4-6.4a2 2 0 1 0-2.8 2.8l1.8 1.8a2 2 0 0 0-2.8 2.8z"/><path d="m9.6 14.4 4.8-4.8"/></svg>
       </div>
       <div>
         <h3>High Protein / Muscle</h3>
